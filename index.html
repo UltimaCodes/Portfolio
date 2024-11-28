@@ -1,75 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ryaan Aaqil - Game Developer</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ryaan Aaqil's Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="logo">Ryaan Aaqil</div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
+  <header class="header">
+    <div class="intro">
+      <h1>Ryaan Aaqil</h1>
+      <ul class="roles">
+        <li>Amateur Game Developer</li>
+        <li>O Levels Student</li>
+        <li>Robotics Enthusiast</li>
+        <li>Math Geek</li>
+      </ul>
+      <p>
+        // Welcome to my website! I'm Ryaan Aaqil, a game developer who thrives on exploring
+        <strong>schizo math</strong> and somewhat dangerous machines. When I’m not coding or
+        building robots, you’ll find me gaming, sketching, cooking, or hanging out with my cat, <strong>Remo</strong>.
+      </p>
+      <button class="btn"><a href="#about">About Me</a></button>
+    </div>
+  </header>
+
+  <section id="about" class="about-section">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <img src="path/to/your-image.jpg" alt="Picture of Ryaan Aaqil" class="about-image">
+      <div class="about-text">
+        <h3>Academics</h3>
+        <p>Currently studying for O Levels with subjects: English, Math, Chemistry, Physics, and Computer Science.</p>
+
+        <h3>Extracurriculars</h3>
+        <ul>
+          <li>President and Founder of the Robotics Club</li>
+          <li>Member of the Wingmen Football Team</li>
+          <li>Game Development Intern at TekRevol</li>
         </ul>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Welcome to My Website</h1>
-        <p>I am an O levels student who is really interested in game development and robotics!</p>
-        <a href="#projects" class="cta-btn">View My Work</a>
-    </section>
+        <h3>Skills</h3>
+        <ul>
+          <li>C#, Python, C/C++, JavaScript, HTML5, CSS3</li>
+          <li>Unity, Unreal Engine, GameMaker Studio</li>
+          <li>Arduino, ESP32, AWS, Git/GitHub</li>
+        </ul>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <h2>About Me</h2>
-        <p>My skills include Unity, C#, game mechanics, and more. Check out some of my recent projects below!</p>
-    </section>
+        <h3>Fun Facts</h3>
+        <ul>
+          <li>Dream projects: Designing a jet engine and creating a high-speed FPV drone.</li>
+          <li>Huge fan of gaming, sketching/painting, and spending time with my cat, Remo.</li>
+        </ul>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <h2>My Projects</h2>
-        <div class="project-cards">
-            <div class="card">
-                <img src="images/project1-thumbnail.jpg" alt="Project 1">
-                <div class="card-info">
-                    <h3>Project Title</h3>
-                    <p>A brief description of the project. Built with Unity and C#.</p>
-                    <a href="#" class="project-btn">See More</a>
-                </div>
-            </div>
-            <div class="card">
-                <img src="images/project2-thumbnail.jpg" alt="Project 2">
-                <div class="card-info">
-                    <h3>Project Title</h3>
-                    <p>A brief description of the project. Built with Unity and C#.</p>
-                    <a href="#" class="project-btn">See More</a>
-                </div>
-            </div>
-            <!-- Add more projects as needed -->
-        </div>
-    </section>
+        <h3>Equipment Specs</h3>
+        <ul>
+          <li>Intel Core i7, 16GB RAM, NVIDIA GTX 1660 Ti</li>
+          <li>Arduino, ESP32, various sensors and motors for robotics projects</li>
+        </ul>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <h2>Contact Me</h2>
-        <form action="mailto:ryaanaqil3@gmail.com" method="post" enctype="text/plain">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
+        <h3>Work Experience</h3>
+        <ul>
+          <li>Game Development Intern at TekRevol (2024)</li>
+          <li>Robotics Club President and Mentor (2022-Present)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Ryaan Aaqil | Game Developer</p>
-    </footer>
+  <section id="portfolio" class="portfolio-section">
+    <h2>Portfolio</h2>
+    <div class="portfolio-categories">
+      <div class="category">
+        <h3>Robotics</h3>
+        <p>Projects related to robotics, including autonomous cars, line-following robots, and more.</p>
+        <button class="btn"><a href="#robotics">View Projects</a></button>
+      </div>
+      <div class="category">
+        <h3>Programming</h3>
+        <p>Projects related to software development, algorithms, and Python tools like FoodPanDDOS.</p>
+        <button class="btn"><a href="#programming">View Projects</a></button>
+      </div>
+      <div class="category">
+        <h3>Games</h3>
+        <p>Game development projects like "Gorilla Warfare" and other multiplayer games.</p>
+        <button class="btn"><a href="#games">View Projects</a></button>
+      </div>
+      <div class="category">
+        <h3>Art</h3>
+        <p>Creative works such as sketches and digital art.</p>
+        <button class="btn"><a href="#art">View Projects</a></button>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <section id="robotics" class="projects-section">
+    <h2>Robotics Projects</h2>
+    <p>Details about robotics projects, including descriptions and links to GitHub or project pages.</p>
+  </section>
+
+  <section id="programming" class="projects-section">
+    <h2>Programming Projects</h2>
+    <p>Details about programming projects, including code snippets and project links.</p>
+  </section>
+
+  <section id="games" class="projects-section">
+    <h2>Games Projects</h2>
+    <p>Details about your game development projects, with descriptions and playable versions if applicable.</p>
+  </section>
+
+  <section id="art" class="projects-section">
+    <h2>Art Projects</h2>
+    <p>Creative sketches, digital art, and other artistic endeavors.</p>
+  </section>
+
+  <footer>
+    <button class="btn"><a href="#about">Back to Top</a></button>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
