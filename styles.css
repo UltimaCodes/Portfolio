@@ -70,11 +70,11 @@ body {
   text-align: center;
 }
 .remo-image {
-  max-width: 300px;
-  height: auto;
-  margin-left: 20px;
-  margin-top: 20px;
+    width: 300px;
+    height: auto;
+    margin-left: 20px;
 }
+
 
 /* Skills Section */
 .skills-section {
