@@ -47,12 +47,14 @@ body {
   font-size: 1.2em;
   cursor: pointer;
   text-transform: uppercase;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
   letter-spacing: 1px;
+  border-radius: 5px;
 }
 .btn:hover {
   background-color: #00ff00;
   color: #0a0a0a;
+  transform: scale(1.1);
 }
 
 /* About Section */
@@ -75,33 +77,4 @@ body {
   border: 3px solid #00ff00;
 }
 .about-text h3 {
-  font-size: 1.8em;
-  margin-top: 20px;
-}
-.about-text ul {
-  list-style: none;
-  margin-top: 10px;
-}
-.about-text ul li {
-  font-size: 1.1em;
-  margin: 8px 0;
-}
-
-/* Portfolio Section */
-.portfolio-section {
-  padding: 50px 20px;
-  background-color: #141414;
-  border-bottom: 2px solid #00ff00;
-}
-.portfolio-categories {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin: 20px 0;
-}
-.category {
-  max-width: 250px;
-  margin: 20px;
-}
-.category h3 {
-  font-size: 2em;
+  font-size:
