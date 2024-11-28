@@ -39,22 +39,28 @@ body {
   font-size: 1.1em;
 }
 .btn {
-  background-color: transparent;
+  background-color: #00ff00;
   border: 2px solid #00ff00;
-  color: #00ff00;
+  color: #0a0a0a;
   padding: 10px 20px;
   margin-top: 20px;
-  font-size: 1.2em;
+  font-size: 1.1em;
   cursor: pointer;
   text-transform: uppercase;
-  transition: background-color 0.3s, transform 0.3s;
+  transition: background-color 0.3s, transform 0.3s, border-color 0.3s;
   letter-spacing: 1px;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-weight: 600;
 }
 .btn:hover {
-  background-color: #00ff00;
-  color: #0a0a0a;
-  transform: scale(1.1);
+  background-color: #0a0a0a;
+  color: #00ff00;
+  border-color: #00ff00;
+  transform: scale(1.05);
+}
+.btn a {
+  color: inherit;
+  text-decoration: none;
 }
 
 /* About Section */
@@ -77,4 +83,72 @@ body {
   border: 3px solid #00ff00;
 }
 .about-text h3 {
-  font-size:
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+.about-text ul {
+  list-style: none;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+.about-text ul li {
+  margin-bottom: 10px;
+}
+
+/* Portfolio Page */
+.portfolio-section {
+  padding: 50px;
+  background-color: #1a1a1a;
+  border-bottom: 2px solid #00ff00;
+}
+.portfolio-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+.category {
+  background-color: #2a2a2a;
+  border: 1px solid #00ff00;
+  padding: 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+.category:hover {
+  background-color: #00ff00;
+  color: #0a0a0a;
+}
+.category h3 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+.category p {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+.category button {
+  background-color: transparent;
+  border: 2px solid #00ff00;
+  color: #00ff00;
+  padding: 10px 20px;
+  font-size: 1.1em;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+.category button:hover {
+  background-color: #00ff00;
+  color: #0a0a0a;
+  border-color: #00ff00;
+}
+
+/* Footer */
+footer {
+  padding: 30px;
+  background-color: #0a0a0a;
+  text-align: center;
+  border-top: 2px solid #00ff00;
+}
+footer .btn {
+  margin-top: 20px;
+}
