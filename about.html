@@ -28,30 +28,6 @@
         header h1 {
             margin: 0;
             font-size: 2.5rem;
-            position: relative; /* For positioning the cursor inside the header */
-        }
-
-        /* Terminal Cursor Effect */
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 20px;
-            background-color: #00ff00;
-            animation: blink 1s steps(2, start) infinite;
-            position: absolute;
-            right: -15px;
-            bottom: 0;
-        }
-
-        @keyframes blink {
-            50% {
-                background-color: transparent;
-            }
-        }
-
-        /* Prevent underline on hover */
-        header h1:hover {
-            text-decoration: none;
         }
 
         .about-container {
@@ -138,12 +114,22 @@
         .btn:hover {
             background-color: #1e1e1e;
         }
+		.blink {
+			animation: blink 1s steps(2, start) infinite;
+		}
+
+		@keyframes blink {
+			50% {
+			opacity: 0;
+			}
+		}
+
     </style>
 </head>
 
 <body>
     <header>
-        <h1>About Me<span class="cursor"></span></h1>
+        <h1>About Me<span class="blink">_</span></h1>
     </header>
 
     <section class="about-container">
