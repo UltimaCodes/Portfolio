@@ -1,33 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me | Ryaan Aaqil</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Fira Code', monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #1e1e1e;
+            color: #00ff00;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #000000;
+            color: #00ff00;
+            padding: 1rem 2rem;
+            text-align: center;
+            border-bottom: 2px solid #00ff00;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .about-image {
+            flex: 1 1 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid #00ff00;
+            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.2);
+        }
+
+        .about-details {
+            flex: 2 1 500px;
+            background: #000000;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.2);
+            border: 2px solid #00ff00;
+        }
+
+        .about-details h2 {
+            margin-top: 0;
+            color: #00ff00;
+            border-bottom: 1px solid #00ff00;
+            padding-bottom: 0.5rem;
+        }
+
+        .about-details ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .about-details ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #000000;
+            color: #00ff00;
+            padding: 1rem 0;
+            margin-top: 2rem;
+            border-top: 2px solid #00ff00;
+        }
+
+        footer a {
+            color: #00ff00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #000000;
+            color: #00ff00;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 1rem;
+            border: 2px solid #00ff00;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #1e1e1e;
+        }
+
+        /* Terminal Cursor Effect */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #00ff00;
+            animation: blink 1s steps(2, start) infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                background-color: transparent;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <header class="header">
-        <h1>About Me</h1>
+    <header>
+        <h1>About Me<span class="cursor"></span></h1>
     </header>
 
     <section class="about-container">
         <div class="about-image">
-            <img src="/images/aaqil.png" alt="Ryaan Aaqil" class="aaqil-image">
+            <img src="/images/aaqil.png" alt="Ryaan Aaqil">
         </div>
 
         <div class="about-details">
-
             <h2>Info</h2>
-            <ul>
-                <p>Hi I'm Ryaan Aaqil, im a 16 year old who made this website to showcase my achievements</p>
-            </ul>
+            <p>Hi, I'm Ryaan Aaqil, a 16-year-old who made this website to showcase my achievements.</p>
 
             <h2>Education</h2>
-            <p>Karachi Public School (2013 – 2020) | Grade 1 – 7</p>
-            <p>BeaconHouse School System (2021 – 2022) | Grade 8</p>
-            <p>BeaconHouse School System (2022 – 2025) | IGCSE O1-O3</p>
-            <p>Nixor College (2025 – 2027) | GCSE A Levels</p>
+            <ul>
+                <li>Karachi Public School (2013–2020) | Grade 1–7</li>
+                <li>BeaconHouse School System (2021–2022) | Grade 8</li>
+                <li>BeaconHouse School System (2022–2025) | IGCSE O1–O3</li>
+                <li>Nixor College (2025–2027) | GCSE A Levels</li>
+            </ul>
 
             <h2>Extracurriculars</h2>
             <ul>
@@ -40,10 +165,12 @@
             </ul>
 
             <h2>Work Experience</h2>
-            <p><strong>Software Developer Intern</strong> | TekRevol | May 2024-Aug 2024</p>
-                <li>Worked alongside professional Mobile Game Developers to learn work ethics and practices.</li>
-                <li>Developed dynamic programming skills and created a Connect Four Board Game with adjustable board sizes.</li>
+            <p><strong>Software Developer Intern</strong> | TekRevol | May 2024 – Aug 2024</p>
+            <ul>
+                <li>Worked alongside professional mobile game developers to learn work ethics and practices.</li>
+                <li>Developed dynamic programming skills and created a Connect Four board game with adjustable board sizes.</li>
                 <li>Created a pathfinding algorithm for a TDS game.</li>
+            </ul>
 
             <h2>Professional Skills</h2>
             <ul>
@@ -64,8 +191,8 @@
                 <li>16GB DDR4 2666MHZ</li>
                 <li>GTX 1660</li>
                 <li>MSI H110M-Eco</li>
-                <li>512GB Sata SSD</li>
-                <li>128GB Sata SSD</li>
+                <li>512GB SATA SSD</li>
+                <li>128GB SATA SSD</li>
                 <li>1TB HDD</li>
             </ul>
 
@@ -75,7 +202,7 @@
                 <li>Razer DeathAdder Essential</li>
                 <li>RedDragon Scylla</li>
                 <li>Yanmai SF-777</li>
-                <li>SAMSUNG S22A330NHM 22in</li>
+                <li>SAMSUNG S22A330NHM 22-inch</li>
             </ul>
 
             <p><strong>Misc:</strong></p>
@@ -91,4 +218,5 @@
         <a href="index.html" class="btn">Go Back</a>
     </footer>
 </body>
+
 </html>
