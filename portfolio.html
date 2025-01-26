@@ -1,150 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ryaan Aaqil's Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Courier+New&display=swap" rel="stylesheet">
-    <style>
-        /* General Styling */
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #1a1a1a;
-            color: #00ff00;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RyaanOS</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ff00;
+      font-family: monospace;
+      margin: 0;
+      padding: 0;
+    }
 
-        h1 {
-            text-align: center;
-            margin: 50px 0;
-            font-size: 3em;
-            color: #00ff00;
-            text-shadow: 0px 0px 10px #00ff00;
-        }
+    #boot {
+      padding: 20px;
+    }
 
-        .section {
-            padding: 40px;
-            border-bottom: 2px solid #00ff00;
-        }
+    #terminal {
+      display: none;
+      padding: 20px;
+    }
 
-            .section h2 {
-                font-size: 2.5em;
-                cursor: pointer;
-                margin: 0;
-                color: #00ff00;
-                text-align: center;
-                text-shadow: 0px 0px 10px #00ff00;
-                transition: color 0.3s;
-            }
+    #input-line {
+      display: flex;
+    }
 
-                .section h2:hover {
-                    color: #4CAF50;
-                }
+    #input-line span {
+      margin-right: 5px;
+    }
 
-        /* Dropdown Content */
-        .content {
-            display: none;
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #ffffff;
-        }
-
-            .content img {
-                width: 100%;
-                max-width: 500px;
-                display: block;
-                margin: 10px auto;
-            }
-
-        /* Gallery for Art */
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-
-            .gallery img {
-                width: 200px;
-                height: 200px;
-                object-fit: cover;
-                border: 2px solid #00ff00;
-            }
-
-        /* Active State */
-        .active {
-            color: #4CAF50;
-        }
-    </style>
+    #input {
+      background: black;
+      color: #00ff00;
+      border: none;
+      outline: none;
+      flex-grow: 1;
+    }
+  </style>
 </head>
 <body>
-
-    <h1>Ryaan Aaqil's Portfolio</h1>
-
-    <!-- Robotics Section -->
-    <div class="section">
-        <h2 id="robotics" class="section-heading">Robotics</h2>
-        <div class="content" id="robotics-content">
-            <p>Robotics Stuff</p>
-            <ul>
-                <li>PID LFR Bot - A hyperoptimized line following robot that uses the PID algorithm.</li>
-                <li>Soccer Bot - A bluetooth-controlled robot that was used to play soccer in a competition</li>
-            </ul>
-        </div>
+  <div id="boot"></div>
+  <div id="terminal">
+    <div id="history"></div>
+    <div id="input-line">
+      <span>$</span>
+      <input id="input" type="text" autocomplete="off">
     </div>
+  </div>
 
-    <!-- Game Development Section -->
-    <div class="section">
-        <h2 id="game-dev" class="section-heading">Game Development</h2>
-        <div class="content" id="game-dev-content">
-            <p>This section showcases my game development projects, from simple shooters to strategy games.</p>
-            <ul>
-                <li>Gorilla Warfare - A multiplayer shooter game with unique mechanics.</li>
-                <li>Connect Infinity - A Connect four knock off that lets the user control how big the board is (can be as big as you want)</li>
-                <li>Jonkler Run - A backrooms knockoff game where you are chased by evil jonkler (custom AI) and you have to not get touched for as long as possible</li>
-            </ul>
-        </div>
-    </div>
+  <script>
+    const bootMessages = [
+      'Initializing system...',
+      'Loading kernel modules...',
+      'Starting network services...',
+      'Mounting file systems...',
+      'System ready. Press any key to continue.'
+    ];
 
-    <!-- Programming Section -->
-    <div class="section">
-        <h2 id="programming" class="section-heading">Programming</h2>
-        <div class="content" id="programming-content">
-            <p>This section showcases my programming skills, from algorithms to system design. I've worked on various projects using Python, C#, and more.</p>
-            <ul>
-                <li>FoodPanDDOS - An educational DDOS tool made in python</li>
-                <li>BrowserQT - A web browser made with pyQT</li>
-                <li>BruteForce - An optimized brute forcing algorithm</li>
-                <li>MonteCarloPi - A program that can estimate the value of pi of a 4D hypersphere</li>
-            </ul>
-        </div>
-    </div>
+    const bootDiv = document.getElementById('boot');
+    const terminalDiv = document.getElementById('terminal');
+    const historyDiv = document.getElementById('history');
+    const inputField = document.getElementById('input');
 
-    <!-- Art Section -->
-    <div class="section">
-        <h2 id="art" class="section-heading">Art</h2>
-        <div class="content" id="art-content">
-            <div class="gallery">
-                <img src="pxArt.png" alt="Art 1">
-                <img src="pxart1.png" alt="Art 2">
-                <img src="pxart2.png" alt="Art 3">
-            </div>
-        </div>
-    </div>
+    let bootIndex = 0;
 
-    <script>
-        // Toggle content visibility when clicking on section titles
-        const sections = document.querySelectorAll('.section-heading');
-        sections.forEach((section) => {
-            section.addEventListener('click', () => {
-                const content = document.getElementById(`${section.id}-content`);
-                content.style.display = content.style.display === 'block' ? 'none' : 'block';
-                section.classList.toggle('active');
-            });
-        });
-    </script>
+    function showBootMessages() {
+      if (bootIndex < bootMessages.length) {
+        const message = document.createElement('p');
+        message.textContent = bootMessages[bootIndex];
+        bootDiv.appendChild(message);
+        bootIndex++;
+        setTimeout(showBootMessages, 1000);
+      } else {
+        document.addEventListener('keydown', () => {
+          bootDiv.style.display = 'none';
+          terminalDiv.style.display = 'block';
+          inputField.focus();
+        }, { once: true });
+      }
+    }
 
+    showBootMessages();
+
+    function handleCommand(command) {
+      let output = '';
+      switch (command) {
+        case 'help':
+          output = 'Available commands: help, echo [text], clear';
+          break;
+        case 'clear':
+          historyDiv.innerHTML = '';
+          return;
+        default:
+          if (command.startsWith('echo ')) {
+            output = command.slice(5);
+          } else {
+            output = `Command not found: ${command}`;
+          }
+      }
+      const commandLine = document.createElement('p');
+      commandLine.textContent = `$ ${command}`;
+      historyDiv.appendChild(commandLine);
+
+      const outputLine = document.createElement('p');
+      outputLine.textContent = output;
+      historyDiv.appendChild(outputLine);
+      terminalDiv.scrollTop = terminalDiv.scrollHeight;
+    }
+
+    inputField.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const command = inputField.value.trim();
+        handleCommand(command);
+        inputField.value = '';
+      }
+    });
+  </script>
 </body>
 </html>
