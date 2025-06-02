@@ -1,216 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ryaan Aaqil</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="images/pxArt.png" type="image/png">
-    <style>
-        /* Global Styles */
-        body {
-            font-family: 'Fira Code', monospace;
-            margin: 0;
-            padding: 0;
-            background-color: #1e1e1e;
-            color: #00ff00;
-            line-height: 1.6;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ryaan Aaqil | Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-        .header {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem;
-            background-color: #000000;
-            border-bottom: 2px solid #00ff00;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .intro {
-            flex: 1 1 60%;
-            padding: 1rem;
-        }
+    body {
+      font-family: 'Press Start 2P', cursive;
+      background-color: #0b0c2a;
+      color: #fff;
+      background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+      background-size: cover;
+      overflow-x: hidden;
+      padding: 20px;
+    }
 
-        .intro h1 {
-            font-size: 3rem;
-            margin: 0 0 1rem;
-        }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      border: 2px solid #ffffff44;
+      margin-bottom: 30px;
+    }
 
-        .intro p {
-            margin: 1rem 0;
-        }
+    nav .left, nav .right {
+      display: flex;
+      gap: 20px;
+    }
 
-        .roles {
-            list-style-type: none;
-            padding: 0;
-            margin: 1rem 0;
-        }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 5px 10px;
+      background-color: #1a1b40;
+      border: 2px solid #fff;
+      transition: all 0.3s ease;
+    }
 
-        .roles li {
-            margin: 0.5rem 0;
-        }
+    nav a:hover {
+      background-color: #ff00aa;
+      color: #000;
+    }
 
-        .intro-image {
-            flex: 1 1 30%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
+    h1.title {
+      font-size: 3rem;
+      background: linear-gradient(180deg, #ffffff 0%, #ff00aa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      margin: 20px 0;
+    }
 
-        .intro-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            border: 2px solid #00ff00;
-            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.2);
-            position: absolute;
-            transition: opacity 1s ease-in-out;
-        }
+    .subtitle {
+      text-align: center;
+      font-size: 1rem;
+      color: #aaf;
+      margin-bottom: 20px;
+    }
 
-        .skills-section,
-        .contact-section {
-            padding: 2rem;
-            margin: 2rem 1rem;
-            background-color: #000000;
-            border-radius: 10px;
-            border: 2px solid #00ff00;
-            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.2);
-        }
+    .info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      margin-bottom: 30px;
+    }
 
-        .skills-section h2,
-        .contact-section h2 {
-            margin-top: 0;
-            color: #00ff00;
-            border-bottom: 1px solid #00ff00;
-            padding-bottom: 0.5rem;
-        }
+    .main-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
 
-        .skills-list,
-        .contact-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 1rem 0;
-        }
+    .bio {
+      flex: 1;
+      background-color: #1c1c40;
+      padding: 20px;
+      border: 2px solid #fff;
+      font-size: 0.75rem;
+      line-height: 1.5;
+    }
 
-        .skills-list li,
-        .contact-list li {
-            margin: 0.5rem 0;
-        }
+    .terminal {
+      flex: 1;
+      background-color: #000;
+      color: #33ff33;
+      padding: 20px;
+      border: 2px solid #fff;
+      font-family: monospace;
+    }
 
-        a {
-            color: #00ff00;
-            text-decoration: none;
-        }
+    .btn-pixel {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px 0;
+      background-color: #0b0c2a;
+      color: #fff;
+      border: 2px solid #fff;
+      box-shadow: 4px 4px 0 #ff00aa;
+      text-decoration: none;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.75rem;
+      transition: 0.2s ease;
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
+    .btn-pixel:hover {
+      background-color: #ff00aa;
+      color: #0b0c2a;
+      box-shadow: 0 0 0 #ff00aa;
+    }
 
-        .btn {
-            display: inline-block;
-            background-color: #000000;
-            color: #00ff00;
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 1rem;
-            border: 2px solid #00ff00;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #1e1e1e;
-        }
-
-        footer {
-            text-align: center;
-            background-color: #000000;
-            color: #00ff00;
-            padding: 1rem 0;
-            border-top: 2px solid #00ff00;
-        }
-
-        .blink {
-            animation: blink 1s steps(2, start) infinite;
-        }
-
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
-        }
-    </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const images = ["images/pxArt.png", "images/pxart1.png", "images/pxart2.png", "images/remoMain.png"];
-            let currentIndex = 0;
-            const imageElement = document.querySelector(".intro-image img");
-
-            function switchImage() {
-                imageElement.style.opacity = 0;
-                setTimeout(() => {
-                    currentIndex = (currentIndex + 1) % images.length;
-                    imageElement.src = images[currentIndex];
-                    imageElement.style.opacity = 1;
-                }, 1000);
-            }
-
-            setInterval(switchImage, 3000);
-        });
-    </script>
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      margin-top: 40px;
+      border-top: 2px solid #fff;
+      padding-top: 20px;
+      color: #aaa;
+    }
+  </style>
 </head>
-
 <body>
-    <!-- Header -->
-    <div class="header">
-        <div class="intro">
-            <h1>Ryaan Aaqil<span class="blink">_</span></h1>
-            <ul class="roles">
-                <li>&gt; Amateur Game Developer</li>
-                <li>&gt; O Levels Student</li>
-                <li>&gt; Robotics Enthusiast</li>
-                <li>&gt; Math Geek</li>
-            </ul>
-            <p>Welcome to my website! I'm Ryaan Aaqil, a game developer who also likes to make dumb robots and machines. I like cats :D</p>
-            <a href="about.html" class="btn">About Me</a>
-        </div>
-        <div class="intro-image">
-            <img src="images/pxArt.png" alt="Remo" class="remo-image">
-        </div>
+  <nav>
+    <div class="left">
+      <a href="#">Projects</a>
     </div>
-
-    <!-- Skills Section -->
-    <div class="skills-section">
-        <h2>Skills</h2>
-        <ul class="skills-list">
-            <li>&gt; Languages: C#, Python, C/C++, JavaScript, CSS3, HTML5</li>
-            <li>&gt; Game Engines: Unity, Unreal, GameMaker Studio</li>
-            <li>&gt; Tools: Arduino, Git, GitHub, AWS, Linux, Adobe Premiere</li>
-        </ul>
-        <a href="portfolio.html" class="btn">RyaanOS</a>
-        <p>A linux inspired portfolio section</p>
+    <div class="center">"wgat" (WORK IN PROGRESS BTW)</div>
+    <div class="right">
+      <a href="#">About</a>
+      <a href="#">Contact</a>
     </div>
+  </nav>
 
-    <!-- Contact Me Section -->
-    <div class="contact-section">
-        <h2>Contact Me</h2>
-        <p>Feel free to reach out to me on any of the following platforms:</p>
-        <ul class="contact-list">
-            <li>&gt; <a href="https://github.com/UltimaCodes" target="_blank">GitHub</a></li>
-            <li>&gt; <a href="https://www.instagram.com/not_ryaan_/" target="_blank">Instagram</a></li>
-            <li>&gt; <a href="https://www.linkedin.com/in/ryaan-aqil-a51b73237/" target="_blank">LinkedIn</a></li>
-            <li>&gt; Phone: 0326-5060151</li>
-            <li>&gt; Email: ryaanaqil3@gmail.com</li>
-        </ul>
+  <h1 class="title">RYAAN AAQIL</h1>
+  <p class="subtitle">Is he stupid?</p>
+
+  <div class="info">
+    <span>It might look bad</span>
+    <span>It's going to get worse</span>
+  </div>
+
+  <div class="main-content">
+    <div class="bio">
+      HELLO. I'M RYAAN, I MAKE DUMB MACHINES AND DUMBER GAMES. I WRITE CODE IN C#, C++ AND PYTHON. SOMETIMES IT WORKS, MOSTLY IT DOESN'T. I USE UNITY, ARDUINO AND A BIT OF WEB DEV (WE DON'T TALK ABOUT THAT). WHEN I'M NOT WORKING ON MY PROJECTS IM EITHER DOING SCHIZO MATH STUFF OR CHILLING WITH MY CATS WHO HATE ME :D
     </div>
+    <div class="terminal">
+      nryn:~$ echo "keep yourself safe"<br>
+      kys<br>
+      nryn:~$ wgat<br>
+      retard<br>
+    </div>
+  </div>
 
-    <footer>
-        <p>&copy; 2024 Ryaan Aaqil</p>
-    </footer>
+  <div style="text-align: center; margin-top: 40px;">
+    <a href="#" class="btn-pixel">My Projects</a>
+    <a href="#" class="btn-pixel">Resume</a>
+  </div>
+
+  <footer>
+    &copy; 2025 Ryaan Aaqil. All rights NOT reserved.
+  </footer>
 </body>
-
 </html>
