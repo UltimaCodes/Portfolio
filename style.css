@@ -45,6 +45,24 @@ nav .left, nav .right {
   gap: 20px;
 }
 
+.nav-home {
+  all: unset;
+  cursor: pointer;
+  display: inline-block;
+  color: white; /* or whatever your navbar text color is */
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.nav-home:visited {
+  color: white; /* override purple visited color */
+}
+
+.nav-home:hover {
+  transform: scale(1.5);
+}
+
+
 nav a {
   color: #fff;
   text-decoration: none;
@@ -60,19 +78,63 @@ nav a:hover {
 }
 
 h1.title {
-  font-size: 3rem;
+  position: relative;
+  font-size: 3.5rem;
   background: linear-gradient(180deg, #ffffff 0%, #ff00aa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
-  margin: 20px 0;
+  margin: 40px 0 10px;
+  letter-spacing: 2px;
+  overflow: hidden;
 }
+
+/* Glow Sweep Effect */
+h1.title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: sweep-glow 2.5s infinite;
+}
+
 
 .subtitle {
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #aaf;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeSlideIn 1s ease-out forwards;
+  animation-delay: 1s;
+}
+
+@keyframes sweep-glow {
+  0% {
+    left: -75%;
+  }
+  50% {
+    left: 125%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .info {
