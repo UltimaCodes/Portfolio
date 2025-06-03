@@ -2,142 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ryaan Aaqil | Portfolio</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Press Start 2P', cursive;
-      background-color: #0b0c2a;
-      color: #fff;
-      background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
-      background-size: cover;
-      overflow-x: hidden;
-      padding: 20px;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 30px;
-      border: 2px solid #ffffff44;
-      margin-bottom: 30px;
-    }
-
-    nav .left, nav .right {
-      display: flex;
-      gap: 20px;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      padding: 5px 10px;
-      background-color: #1a1b40;
-      border: 2px solid #fff;
-      transition: all 0.3s ease;
-    }
-
-    nav a:hover {
-      background-color: #ff00aa;
-      color: #000;
-    }
-
-    h1.title {
-      font-size: 3rem;
-      background: linear-gradient(180deg, #ffffff 0%, #ff00aa 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-align: center;
-      margin: 20px 0;
-    }
-
-    .subtitle {
-      text-align: center;
-      font-size: 1rem;
-      color: #aaf;
-      margin-bottom: 20px;
-    }
-
-    .info {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.75rem;
-      margin-bottom: 30px;
-    }
-
-    .main-content {
-      display: flex;
-      justify-content: space-between;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .bio {
-      flex: 1;
-      background-color: #1c1c40;
-      padding: 20px;
-      border: 2px solid #fff;
-      font-size: 0.75rem;
-      line-height: 1.5;
-    }
-
-    .terminal {
-      flex: 1;
-      background-color: #000;
-      color: #33ff33;
-      padding: 20px;
-      border: 2px solid #fff;
-      font-family: monospace;
-    }
-
-    .btn-pixel {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 10px 0;
-      background-color: #0b0c2a;
-      color: #fff;
-      border: 2px solid #fff;
-      box-shadow: 4px 4px 0 #ff00aa;
-      text-decoration: none;
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.75rem;
-      transition: 0.2s ease;
-    }
-
-    .btn-pixel:hover {
-      background-color: #ff00aa;
-      color: #0b0c2a;
-      box-shadow: 0 0 0 #ff00aa;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.75rem;
-      margin-top: 40px;
-      border-top: 2px solid #fff;
-      padding-top: 20px;
-      color: #aaa;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="images/logo.png" />
 </head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-74WXTDJ616"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-74WXTDJ616');
+</script>
 <body>
   <nav>
     <div class="left">
-      <a href="#">Projects</a>
+      <a href="projects.html" class="btn-pixel">Projects</a>
     </div>
     <div class="center">"wgat" (WORK IN PROGRESS BTW)</div>
     <div class="right">
-      <a href="#">About</a>
-      <a href="#">Contact</a>
+      <a href="about.html" class="btn-pixel">About</a>
     </div>
   </nav>
 
@@ -145,29 +30,122 @@
   <p class="subtitle">Is he stupid?</p>
 
   <div class="info">
-    <span>It might look bad</span>
-    <span>It's going to get worse</span>
+    <span class="glitch">Is this true</span>
+    <span class="glitch">Is this true</span>
   </div>
 
   <div class="main-content">
-    <div class="bio">
-      HELLO. I'M RYAAN, I MAKE DUMB MACHINES AND DUMBER GAMES. I WRITE CODE IN C#, C++ AND PYTHON. SOMETIMES IT WORKS, MOSTLY IT DOESN'T. I USE UNITY, ARDUINO AND A BIT OF WEB DEV (WE DON'T TALK ABOUT THAT). WHEN I'M NOT WORKING ON MY PROJECTS IM EITHER DOING SCHIZO MATH STUFF OR CHILLING WITH MY CATS WHO HATE ME :D
+    <div class="bio-centered">
+      HELLO. I'M RYAAN, I'M A GAME DEV AND A ROBOTICS ENTHUSIAST. I WRITE CODE IN C#, C++ AND PYTHON. SOMETIMES IT WORKS, MOSTLY IT DOESN'T. I USE UNITY, ARDUINO AND A BIT OF WEB DEV (WE DON'T TALK ABOUT THAT). WHEN I'M NOT WORKING ON MY PROJECTS IM EITHER GAMING OR CHILLING WITH MY CATS WHO HATE ME :D
     </div>
-    <div class="terminal">
-      nryn:~$ echo "keep yourself safe"<br>
-      kys<br>
-      nryn:~$ wgat<br>
-      retard<br>
+	
+	    <!-- Pixel cat image roulette -->
+    <div class="cat-roulette" aria-label="Pixel cat image carousel">
+      <img id="cat-img" src="images/cat1.png" alt="Pixel cat 1" />
     </div>
+	
   </div>
 
-  <div style="text-align: center; margin-top: 40px;">
-    <a href="#" class="btn-pixel">My Projects</a>
-    <a href="#" class="btn-pixel">Resume</a>
+  	<div class="bio-centered">
+	  	<section class="age-tracker">
+		<h2>My Current Age</h2>
+		<span class="glitch"><p id="age-display">Loading...</p></span>
+		</section>
+    </div>
+	
+  <div class="bio-centered">
+  <div class="boot-sequence sys-diag">
+Email: ryaanaqil3@gmail.com
+GitHub: <a href="https://github.com/UltimaCodes" style="color: #33ff33;">UltimaCodes</a>
+Phone Number: 03265969151
+Carrier pigeon also accepted
   </div>
 
+  <a href="res/resume.pdf" class="btn-pixel">Resume</a>
+  </div>
+  
+  <div class="terminal">
+	<section class="nerdy-metrics">
+      <p><strong>Total Visitors:</strong> <span id="total-visitors">Loading...</span></p>
+      <p><strong>Visitors This Month:</strong> <span id="monthly-visitors">Loading...</span></p>
+    </section>
+  </div>
+  
+  <script>
+    // Pixel cat roulette randomizer
+    const catImgs = [
+      "images/cat4.png",
+      "images/cat2.png",
+      "images/cat3.png",
+      "images/cat1.png",
+      "images/cat5.png"
+    ];
+    const catImgElement = document.getElementById("cat-img");
+    setInterval(() => {
+      const idx = Math.floor(Math.random() * catImgs.length);
+      catImgElement.src = catImgs[idx];
+      catImgElement.alt = `Pixel cat ${idx + 1}`;
+    }, 3000);
+  </script>
   <footer>
     &copy; 2025 Ryaan Aaqil. All rights NOT reserved.
   </footer>
+
+  <script>
+    // Simulate visitor stats (replace with real API or analytics integration later)
+    function updateVisitorStats() {
+      // These values can come from a backend API or Google Analytics (demo uses random)
+      const total = 295; // replace with real data
+      const month = 48;   // replace with real data
+
+      document.getElementById('total-visitors').textContent = total.toLocaleString();
+      document.getElementById('monthly-visitors').textContent = month.toLocaleString();
+    }
+
+    updateVisitorStats();
+  </script>
+  <script>
+    function updateAge() {
+      const birthDate = new Date('2008-08-15T00:00:00');
+      const now = new Date();
+
+      let years = now.getFullYear() - birthDate.getFullYear();
+      let months = now.getMonth() - birthDate.getMonth();
+      let days = now.getDate() - birthDate.getDate();
+      let hours = now.getHours() - birthDate.getHours();
+      let minutes = now.getMinutes() - birthDate.getMinutes();
+      let seconds = now.getSeconds() - birthDate.getSeconds();
+
+      if (seconds < 0) {
+        seconds += 60;
+        minutes--;
+      }
+      if (minutes < 0) {
+        minutes += 60;
+        hours--;
+      }
+      if (hours < 0) {
+        hours += 24;
+        days--;
+      }
+      if (days < 0) {
+        months--;
+        // Get number of days in the previous month
+        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += prevMonth.getDate();
+      }
+      if (months < 0) {
+        months += 12;
+        years--;
+      }
+
+      const ageText = `${years} years, ${months} months, ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+      document.getElementById('age-display').textContent = ageText;
+    }
+
+    setInterval(updateAge, 1000);
+    updateAge();
+  </script>
+
 </body>
 </html>
