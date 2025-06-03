@@ -46,25 +46,6 @@
     <div class="cat-roulette" aria-label="Pixel cat image carousel">
       <img id="cat-img" src="images/cat1.png" alt="Pixel cat 1" />
     </div>
-	
-  </div>
-
-  	<div class="bio-centered">
-	  	<section class="age-tracker">
-		<h2>My Current Age</h2>
-		<span class="glitch"><p id="age-display">Loading...</p></span>
-		</section>
-    </div>
-	
-  <div class="bio-centered">
-  <div class="boot-sequence sys-diag">
-Email: ryaanaqil3@gmail.com
-GitHub: <a href="https://github.com/UltimaCodes" style="color: #33ff33;">UltimaCodes</a>
-Phone Number: 03265969151
-Carrier pigeon also accepted
-  </div>
-
-  <a href="#" class="btn-pixel">Resume</a>
   </div>
   
   <div class="terminal">
@@ -107,48 +88,5 @@ Carrier pigeon also accepted
 
     updateVisitorStats();
   </script>
-  <script>
-    function updateAge() {
-      const birthDate = new Date('2008-08-15T00:00:00');
-      const now = new Date();
-
-      let years = now.getFullYear() - birthDate.getFullYear();
-      let months = now.getMonth() - birthDate.getMonth();
-      let days = now.getDate() - birthDate.getDate();
-      let hours = now.getHours() - birthDate.getHours();
-      let minutes = now.getMinutes() - birthDate.getMinutes();
-      let seconds = now.getSeconds() - birthDate.getSeconds();
-
-      if (seconds < 0) {
-        seconds += 60;
-        minutes--;
-      }
-      if (minutes < 0) {
-        minutes += 60;
-        hours--;
-      }
-      if (hours < 0) {
-        hours += 24;
-        days--;
-      }
-      if (days < 0) {
-        months--;
-        // Get number of days in the previous month
-        const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
-        days += prevMonth.getDate();
-      }
-      if (months < 0) {
-        months += 12;
-        years--;
-      }
-
-      const ageText = `${years} years, ${months} months, ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
-      document.getElementById('age-display').textContent = ageText;
-    }
-
-    setInterval(updateAge, 1000);
-    updateAge();
-  </script>
-
 </body>
 </html>
