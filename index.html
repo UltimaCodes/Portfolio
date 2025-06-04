@@ -7,26 +7,13 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="images/logo.png" />
 </head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-74WXTDJ616"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-74WXTDJ616');
-</script>
 <body>
-<div id="parallax-background"></div>
+  <div id="parallax-background"></div>
+
   <nav>
-    <div class="left">
-      <a href="projects.html" class="btn-pixel">Projects</a>
-    </div>
-    <div class="center">
-      <a href="index.html" class="nav-home">"wgat"</a>
-    </div>
-    <div class="right">
-      <a href="about.html" class="btn-pixel">About</a>
-    </div>
+    <div class="left"><a href="projects.html" class="btn-pixel">Projects</a></div>
+    <div class="center"><a href="index.html" class="nav-home">"wgat"</a></div>
+    <div class="right"><a href="about.html" class="btn-pixel">About</a></div>
   </nav>
 
   <h1 class="title">RYAAN AAQIL</h1>
@@ -41,52 +28,78 @@
     <div class="bio-centered">
       HELLO. I'M RYAAN, I'M A GAME DEV AND A ROBOTICS ENTHUSIAST. I WRITE CODE IN C#, C++ AND PYTHON. SOMETIMES IT WORKS, MOSTLY IT DOESN'T. I USE UNITY, ARDUINO AND A BIT OF WEB DEV (WE DON'T TALK ABOUT THAT). WHEN I'M NOT WORKING ON MY PROJECTS IM EITHER GAMING OR CHILLING WITH MY CATS WHO HATE ME :D
     </div>
-	
-	    <!-- Pixel cat image roulette -->
+
     <div class="cat-roulette" aria-label="Pixel cat image carousel">
       <img id="cat-img" src="images/cat1.png" alt="Pixel cat 1" />
     </div>
   </div>
-  
+
   <div class="terminal">
-	<section class="nerdy-metrics">
+    <section class="nerdy-metrics">
       <p><strong>Total Visitors:</strong> <span id="total-visitors">Loading...</span></p>
       <p><strong>Visitors This Month:</strong> <span id="monthly-visitors">Loading...</span></p>
     </section>
   </div>
-  
-  <script>
-    // Pixel cat roulette randomizer
-    const catImgs = [
-      "images/cat4.png",
-      "images/cat2.png",
-      "images/cat3.png",
-      "images/cat1.png",
-      "images/cat5.png"
-    ];
-    const catImgElement = document.getElementById("cat-img");
-    setInterval(() => {
-      const idx = Math.floor(Math.random() * catImgs.length);
-      catImgElement.src = catImgs[idx];
-      catImgElement.alt = `Pixel cat ${idx + 1}`;
-    }, 3000);
-  </script>
+
   <footer>
     &copy; 2025 Ryaan Aaqil. All rights NOT reserved.
   </footer>
 
+  <!-- Scripts -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-74WXTDJ616"></script>
   <script>
-    // Simulate visitor stats (replace with real API or analytics integration later)
-    function updateVisitorStats() {
-      // These values can come from a backend API or Google Analytics (demo uses random)
-      const total = 295; // replace with real data
-      const month = 48;   // replace with real data
-
-      document.getElementById('total-visitors').textContent = total.toLocaleString();
-      document.getElementById('monthly-visitors').textContent = month.toLocaleString();
-    }
-
-    updateVisitorStats();
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-74WXTDJ616');
   </script>
+
+<script>
+  // Visitor stats simulation
+  function updateVisitorStats() {
+    const total = 295;
+    const month = 48;
+    document.getElementById('total-visitors').textContent = total.toLocaleString();
+    document.getElementById('monthly-visitors').textContent = month.toLocaleString();
+  }
+
+  // Pixel cat randomizer
+  const catImgs = ["images/cat4.png", "images/cat2.png", "images/cat3.png", "images/cat1.png", "images/cat5.png"];
+  const catImgElement = document.getElementById("cat-img");
+  setInterval(() => {
+    const idx = Math.floor(Math.random() * catImgs.length);
+    catImgElement.src = catImgs[idx];
+    catImgElement.alt = `Pixel cat ${idx + 1}`;
+  }, 3000);
+
+  updateVisitorStats();
+
+  let typedBuffer = '';
+  let glitchTerminal = null;
+
+  document.addEventListener('keydown', (e) => {
+    const char = e.key.length === 1 ? e.key : '';
+    typedBuffer += char.toLowerCase();
+
+    if (typedBuffer.length > 10) typedBuffer = typedBuffer.slice(-10);
+
+    if (typedBuffer.includes('dogger')) {
+      if (!glitchTerminal) {
+        glitchTerminal = document.createElement('div');
+        glitchTerminal.className = 'left';
+        document.body.appendChild(glitchTerminal);
+      }
+
+      const glitchSpan = document.createElement('span');
+      glitchSpan.className = 'glitch';
+      glitchSpan.textContent = '#EXECUTEDOGGERISM';
+
+      glitchTerminal.appendChild(glitchSpan);
+      glitchTerminal.appendChild(document.createElement('br'));
+
+      typedBuffer = '';
+    }
+  });
+</script>
 </body>
 </html>
