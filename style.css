@@ -462,3 +462,46 @@ nav a.active {
   padding-left: 0; /* remove left padding */
   text-align: center; /* center text inside the div */
 }
+
+.music-player {
+  font-family: 'Press Start 2P', cursive;
+  background: #1a1b40;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 15px;
+  margin-top: 30px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.track-info {
+  margin-bottom: 10px;
+  font-size: 0.75rem;
+}
+
+.controls button {
+  font-size: 1rem;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+  background: #ff00aa;
+  border: 2px solid #fff;
+  color: #000;
+  transition: background 0.2s;
+}
+
+.controls button:hover {
+  background: #fff;
+  color: #ff00aa;
+}
+
+#seek-bar {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.time-display {
+  font-size: 0.6rem;
+}
