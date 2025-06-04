@@ -77,35 +77,62 @@ nav a:hover {
   color: #000;
 }
 
-h1.title {
+.title-container {
   position: relative;
+  text-align: center;
+  margin: 40px 0 10px;
+}
+
+h1.title {
   font-size: 3.5rem;
   background: linear-gradient(180deg, #ffffff 0%, #ff00aa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-align: center;
-  margin: 40px 0 10px;
   letter-spacing: 2px;
-  overflow: hidden;
+  transition: opacity 0.3s ease;
 }
 
-/* Glow Sweep Effect */
-h1.title::after {
-  content: "";
+h1.title.hidden {
+  opacity: 0;
+}
+
+.dog {
   position: absolute;
-  top: 0;
-  left: -75%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.4) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  animation: sweep-glow 2.5s infinite;
+  top: 50%;
+  left: -200px;
+  transform: translateY(-50%);
+  height: 100px;
+  width: 800px;
+  max-width: 80vw;
+  opacity: 0;
+  pointer-events: none;
 }
 
+.dog.animate {
+  animation: dog-eat 2.5s ease-in-out forwards;
+}
+
+@keyframes dog-eat {
+  0% {
+    left: -800px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    left: 100%;
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+h1.title.hidden {
+  visibility: hidden;
+}
 
 .subtitle {
   text-align: center;
