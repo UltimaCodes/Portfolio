@@ -63,8 +63,6 @@
       catImgElement.alt = `Pixel cat ${idx + 1}`;
     }, 3000);
 
-    updateVisitorStats();
-
 let typedBuffer = '';
 let glitchTerminal = null;
 let ultrakillTriggered = false;
@@ -162,7 +160,7 @@ function showUltrakillMessage() {
         currentChar = 0;
       }
 
-      setTimeout(typeNextChar, 60); // typing speed
+      setTimeout(typeNextChar, 50); // typing speed
     }
   }
 
