@@ -16,7 +16,10 @@
     <div class="right"><a href="about.html" class="btn-pixel">About</a></div>
   </nav>
 
-  <h1 class="title">RYAAN AAQIL</h1>
+  <div class="title-container">
+    <h1 class="title">RYAAN AAQIL</h1>
+    <img src="images/dog.png" alt="Devourer of Gods" class="dog" />
+  </div>
   <p class="subtitle">Is he stupid?</p>
 
   <div class="info">
@@ -54,52 +57,91 @@
     gtag('config', 'G-74WXTDJ616');
   </script>
 
-<script>
-  // Visitor stats simulation
-  function updateVisitorStats() {
-    const total = 295;
-    const month = 48;
-    document.getElementById('total-visitors').textContent = total.toLocaleString();
-    document.getElementById('monthly-visitors').textContent = month.toLocaleString();
+  <script>
+    // Visitor stats simulation
+    function updateVisitorStats() {
+      const total = 295;
+      const month = 48;
+      document.getElementById('total-visitors').textContent = total.toLocaleString();
+      document.getElementById('monthly-visitors').textContent = month.toLocaleString();
+    }
+
+    // Pixel cat randomizer
+    const catImgs = ["images/cat4.png", "images/cat2.png", "images/cat3.png", "images/cat1.png", "images/cat5.png"];
+    const catImgElement = document.getElementById("cat-img");
+    setInterval(() => {
+      const idx = Math.floor(Math.random() * catImgs.length);
+      catImgElement.src = catImgs[idx];
+      catImgElement.alt = `Pixel cat ${idx + 1}`;
+    }, 3000);
+
+    updateVisitorStats();
+
+    let typedBuffer = '';
+    let glitchTerminal = null;
+
+    document.addEventListener('keydown', (e) => {
+      const char = e.key.length === 1 ? e.key : '';
+      typedBuffer += char.toLowerCase();
+
+      if (typedBuffer.length > 10) typedBuffer = typedBuffer.slice(-10);
+
+      if (typedBuffer.includes('dogger')) {
+        if (!glitchTerminal) {
+          glitchTerminal = document.createElement('div');
+          glitchTerminal.className = 'left';
+          document.body.appendChild(glitchTerminal);
+        }
+
+        const glitchSpan = document.createElement('span');
+        glitchSpan.className = 'glitch';
+        glitchSpan.textContent = '#EXECUTEDOGGERISM';
+
+        glitchTerminal.appendChild(glitchSpan);
+        glitchTerminal.appendChild(document.createElement('br'));
+
+        typedBuffer = '';
+      }
+    });
+
+const dog = document.querySelector('.dog');
+const title = document.querySelector('.title');
+const devourerAudio = new Audio('/res/DevourerSpawn.mp3');
+let audioAllowed = false;
+
+// Wait for first user interaction to allow audio playback
+function enableAudio() {
+  audioAllowed = true;
+  window.removeEventListener('click', enableAudio);
+  window.removeEventListener('keydown', enableAudio);
+}
+
+window.addEventListener('click', enableAudio);
+window.addEventListener('keydown', enableAudio);
+
+function animateDog() {
+  dog.classList.add('animate');
+  title.classList.add('hidden');
+
+  if (audioAllowed) {
+    devourerAudio.currentTime = 0;
+    devourerAudio.play().catch(() => {
+      // Handle play failure silently
+    });
   }
 
-  // Pixel cat randomizer
-  const catImgs = ["images/cat4.png", "images/cat2.png", "images/cat3.png", "images/cat1.png", "images/cat5.png"];
-  const catImgElement = document.getElementById("cat-img");
-  setInterval(() => {
-    const idx = Math.floor(Math.random() * catImgs.length);
-    catImgElement.src = catImgs[idx];
-    catImgElement.alt = `Pixel cat ${idx + 1}`;
-  }, 3000);
+  setTimeout(() => {
+    dog.classList.remove('animate');
+    title.classList.remove('hidden');
+  }, 2500);
+}
 
-  updateVisitorStats();
+// Start animation cycle as before
+setTimeout(() => {
+  animateDog();
+  setInterval(animateDog, 45000);
+}, 5000);
 
-  let typedBuffer = '';
-  let glitchTerminal = null;
-
-  document.addEventListener('keydown', (e) => {
-    const char = e.key.length === 1 ? e.key : '';
-    typedBuffer += char.toLowerCase();
-
-    if (typedBuffer.length > 10) typedBuffer = typedBuffer.slice(-10);
-
-    if (typedBuffer.includes('dogger')) {
-      if (!glitchTerminal) {
-        glitchTerminal = document.createElement('div');
-        glitchTerminal.className = 'left';
-        document.body.appendChild(glitchTerminal);
-      }
-
-      const glitchSpan = document.createElement('span');
-      glitchSpan.className = 'glitch';
-      glitchSpan.textContent = '#EXECUTEDOGGERISM';
-
-      glitchTerminal.appendChild(glitchSpan);
-      glitchTerminal.appendChild(document.createElement('br'));
-
-      typedBuffer = '';
-    }
-  });
-</script>
+  </script>
 </body>
 </html>
