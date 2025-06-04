@@ -20,12 +20,15 @@
     <h1 class="title">RYAAN AAQIL</h1>
     <img src="images/dog.png" alt="Devourer of Gods" class="dog" />
   </div>
-  <p class="subtitle">Is he stupid?</p>
+  <p class="subtitle">We live in a society (Korangi)</p>
 
   <div class="info">
     <span class="glitch">Is this true</span>
-    <span class="glitch">Is this true</span>
+    <span>=======================================================</span>
+    <span class="glitch">Surely it is</span>
   </div>
+  
+  <div id="ultrakill-container"></div>
 
   <div class="main-content">
     <div class="bio-centered">
@@ -77,32 +80,39 @@
 
     updateVisitorStats();
 
-    let typedBuffer = '';
-    let glitchTerminal = null;
+let typedBuffer = '';
+let glitchTerminal = null;
+let ultrakillTriggered = false;
 
-    document.addEventListener('keydown', (e) => {
-      const char = e.key.length === 1 ? e.key : '';
-      typedBuffer += char.toLowerCase();
+document.addEventListener('keydown', (e) => {
+  const char = e.key.length === 1 ? e.key : '';
+  typedBuffer += char.toLowerCase();
 
-      if (typedBuffer.length > 10) typedBuffer = typedBuffer.slice(-10);
+  if (typedBuffer.length > 20) typedBuffer = typedBuffer.slice(-20);
 
-      if (typedBuffer.includes('dogger')) {
-        if (!glitchTerminal) {
-          glitchTerminal = document.createElement('div');
-          glitchTerminal.className = 'left';
-          document.body.appendChild(glitchTerminal);
-        }
+  // Handle DOGGER easter egg
+  if (typedBuffer.includes('dogger')) {
+    if (!glitchTerminal) {
+      glitchTerminal = document.createElement('div');
+      glitchTerminal.className = 'left';
+      document.body.appendChild(glitchTerminal);
+    }
 
-        const glitchSpan = document.createElement('span');
-        glitchSpan.className = 'glitch';
-        glitchSpan.textContent = '#EXECUTEDOGGERISM';
+    const glitchSpan = document.createElement('span');
+    glitchSpan.className = 'glitch';
+    glitchSpan.textContent = '#EXECUTEDOGGERISM';
 
-        glitchTerminal.appendChild(glitchSpan);
-        glitchTerminal.appendChild(document.createElement('br'));
+    glitchTerminal.appendChild(glitchSpan);
+    glitchTerminal.appendChild(document.createElement('br'));
+    typedBuffer = '';
+  }
 
-        typedBuffer = '';
-      }
-    });
+  // Handle ULTRAKILL easter egg
+  if (!ultrakillTriggered && typedBuffer.includes('ultrakill')) {
+    ultrakillTriggered = true;
+    showUltrakillMessage();
+  }
+});
 
 const dog = document.querySelector('.dog');
 const title = document.querySelector('.title');
@@ -141,6 +151,38 @@ setTimeout(() => {
   animateDog();
   setInterval(animateDog, 45000);
 }, 5000);
+
+function showUltrakillMessage() {
+  const lines = [
+    "MANKIND IS DEAD",
+    "BLOOD IS FUEL",
+    "HELL IS FULL"
+  ];
+  const container = document.getElementById("ultrakill-container");
+  const msg = document.createElement("div");
+  msg.id = "ultrakill-message";
+  container.appendChild(msg);
+
+  let currentLine = 0;
+  let currentChar = 0;
+
+  function typeNextChar() {
+    if (currentLine < lines.length) {
+      msg.textContent += lines[currentLine][currentChar] || '';
+      currentChar++;
+
+      if (currentChar >= lines[currentLine].length) {
+        msg.textContent += '\n';
+        currentLine++;
+        currentChar = 0;
+      }
+
+      setTimeout(typeNextChar, 60); // typing speed
+    }
+  }
+
+  typeNextChar();
+}
 
   </script>
 </body>

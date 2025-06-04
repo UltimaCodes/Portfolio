@@ -445,3 +445,20 @@ nav a.active {
   margin-top: 40px;
   flex-wrap: wrap;             /* Enables wrapping on small screens */
 }
+
+#ultrakill-container {
+  min-height: 5em;
+  display: flex;
+  justify-content: center;
+}
+
+#ultrakill-message {
+  font-family: 'Press Start 2P', monospace;
+  color: red;
+  white-space: pre-line;
+  font-size: 1rem;
+  line-height: 1.8rem;
+  text-shadow: 0 0 5px #f00;
+  padding-left: 0; /* remove left padding */
+  text-align: center; /* center text inside the div */
+}
