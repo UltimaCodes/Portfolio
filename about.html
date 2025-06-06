@@ -60,6 +60,24 @@ Carrier pigeon also accepted
   <a href="#" class="btn-pixel">Resume</a>
   </div>
   </div>
+  
+  <div class="music-player bio">
+    <span class="glitch">Some really good songs that I like</span>
+  <div class="track-info">
+    <span id="track-title">Track Title</span>
+  </div>
+  <audio id="audio" preload="metadata"></audio>
+  <div class="controls">
+    <button onclick="prevTrack()">⏮</button>
+    <button onclick="togglePlay()">▶️/⏸️</button>
+    <button onclick="nextTrack()">⏭</button>
+  </div>
+  <input type="range" id="seek-bar" value="0" step="1" />
+  <div class="time-display">
+    <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+  </div>
+</div>
+
     <footer>
     &copy; 2025 Ryaan Aaqil. All rights NOT reserved.
   </footer>
@@ -104,6 +122,69 @@ Carrier pigeon also accepted
 
     setInterval(updateAge, 1000);
     updateAge();
+	
+	const tracks = [
+  { title: "Cellar of Ghosts - Kardashev", src: "music/cog.mp3" },
+  { title: "Hymn For A Droid - Psychedelic Porn Crumpets", src: "music/hymnforadroid.mp3" },
+  { title: "Entombed - Deftones", src: "music/entombed.mp3" },
+  { title: "Snow Sleep - Kardashev", src: "music/snowsleep.mp3" }
+];
+
+let currentTrack = 0;
+const audio = document.getElementById("audio");
+const trackTitle = document.getElementById("track-title");
+const seekBar = document.getElementById("seek-bar");
+const currentTimeDisplay = document.getElementById("current-time");
+const durationDisplay = document.getElementById("duration");
+
+function loadTrack(index) {
+  const track = tracks[index];
+  audio.src = track.src;
+  trackTitle.textContent = track.title;
+  audio.load();
+}
+
+function togglePlay() {
+  if (audio.paused) {
+    audio.play();
+  } else {
+    audio.pause();
+  }
+}
+
+function nextTrack() {
+  currentTrack = (currentTrack + 1) % tracks.length;
+  loadTrack(currentTrack);
+  audio.play();
+}
+
+function prevTrack() {
+  currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+  loadTrack(currentTrack);
+  audio.play();
+}
+
+audio.addEventListener("loadedmetadata", () => {
+  seekBar.max = Math.floor(audio.duration);
+  durationDisplay.textContent = formatTime(audio.duration);
+});
+
+audio.addEventListener("timeupdate", () => {
+  seekBar.value = Math.floor(audio.currentTime);
+  currentTimeDisplay.textContent = formatTime(audio.currentTime);
+});
+
+seekBar.addEventListener("input", () => {
+  audio.currentTime = seekBar.value;
+});
+
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+  return `${mins}:${secs}`;
+}
+
+loadTrack(currentTrack);
   </script>
 </body>
 </html>
