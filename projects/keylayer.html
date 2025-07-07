@@ -28,63 +28,81 @@
     <div class="project-hero keylayer-design"></div>
 
     <p>
-        An advanced keyboard automation and macro system designed to enhance productivity
-        through intelligent hotkey management and custom automation scripts. KeyLayer provides
-        a powerful yet user-friendly interface for creating complex keyboard workflows.
+        KeyLayer is a keyboard automation tool for people who looked at their keyboard and thought,
+        “I could do less.” It turns your computer into a button-pressing machine that does all the
+        boring parts for you—like typing, clicking, or having patience.
     </p>
 
-    <h2>⌨️ Core Automation Features</h2>
+    <p>
+        It’s not a key remapper. It’s not just hotkeys. It’s more like:
+        “What if this random $12 keypad controlled your job, your browser, and possibly everything else?”
+    </p>
+
+    <h2>Core Features</h2>
     <ul>
-        <li>Custom macro recording and playback</li>
-        <li>Global hotkey management system</li>
-        <li>Text expansion and snippets</li>
-        <li>Application-specific key bindings</li>
-        <li>Conditional automation triggers</li>
+        <li><strong>Device Isolation:</strong> Pick any keyboard and make it invisible to Windows. It now answers only to you.</li>
+        <li><strong>Visual Macro Editor:</strong> Flowchart-style node editor. Connect boxes. Watch things happen. No coding. Mostly. (This may break on some pcs)</li>
+        <li><strong>Layer System:</strong> Multiple keymaps per device. Toggle them, hold them, switch contextually</li>
+        <li><strong>Macro Actions:</strong> Keypresses, app launching, screenshots, mouse control, file opening, HTTP requests, logic branches, loop</li>
+        <li><strong>Import/Export:</strong> JSON, XML, AutoHotkey, PowerShell (Might not work at all oops)/li>
+        <li><strong>Macro Recorder:</strong> Press record. Harass your keyboard. Mess up the buffer system that took me wayy too long to do :D</li>
     </ul>
 
-    <h2>🛠️ Technical Implementation</h2>
+    <h2>Technical Stack</h2>
     <p>
-        Built using Python with pynput for keyboard monitoring and automation.
-        Features a robust event system that can handle complex key combinations and timing.
+        KeyLayer uses HidSharp for USB/HID communication, Newtonsoft.Json for the only normal JSON parsing experience,
+        and WindowsAPICodePack to talk to Windows without completely offending it.
     </p>
 
     <div class="tech-used">
-        <strong>Technologies:</strong> Python, Pynput, Tkinter, Threading, JSON
+        <strong>Technologies:</strong> C#, .NET, WPF, HidSharp, Newtonsoft.Json, Windows API Code Pack
     </div>
 
-    <h2>🎯 Smart Automation</h2>
-    <p>
-        Includes intelligent features like context-aware macros, application detection,
-        and adaptive timing that learns from user behavior patterns.
-    </p>
-
-    <h2>🔧 Configuration System</h2>
+    <h2>Automation That Actually Does Stuff</h2>
     <ul>
-        <li>JSON-based configuration files</li>
-        <li>Import/export macro libraries</li>
-        <li>Profile switching for different workflows</li>
-        <li>Backup and restore functionality</li>
+        <li>Device-level control over which keyboard does what</li>
+        <li>Multi-layer macros for maximum overengineering</li>
+        <li>Live macro testing so you can break things in real time</li>
+        <li>Undo/redo support for when you immediately regret your entire layout</li>
+        <li>Encrypted profiles because I know what kind of person you are</li>
     </ul>
 
-    <h2>💼 Productivity Benefits</h2>
+    <h2>Example Use Cases</h2>
     <ul>
-        <li>Reduces repetitive typing tasks</li>
-        <li>Streamlines complex workflows</li>
-        <li>Customizable for any application</li>
-        <li>Saves hours of manual work daily</li>
+        <li><strong>Gaming:</strong> Fire off three cooldowns and launch Spotify—all with one button</li>
+        <li><strong>Productivity:</strong> Type “Hello, just following up…” without actually typing it ever again</li>
+        <li><strong>Development:</strong> Press one key, open your IDE, run a script</li>
+        <li><strong>QA/Enterprise:</strong> Automate form input until the form automates you</li>
     </ul>
 
-    <h2>🔒 Security Features</h2>
-    <p>
-        Includes password protection for sensitive macros, secure storage of automation scripts,
-        and optional encryption for configuration files.
-    </p>
+    <h2>Configuration Extras</h2>
+    <ul>
+        <li>Themes: light, dark, and “meh” (may not work)</li>
+        <li>Scan intervals and macro buffers for people who like sliders</li>
+        <li>Debug logs that will either help or bully you</li>
+        <li>Backups that mostly work (they don't)</li>
+    </ul>
+
+    <h2>Troubleshooting (Real Advice)</h2>
+    <ul>
+        <li><strong>Device not detected:</strong> Try plugging it in. Really plug it in. Mean it.</li>
+        <li><strong>Isolation fails:</strong> Probably another app being territorial. Close stuff until it works.</li>
+        <li><strong>Macro doesn’t trigger:</strong> Check bindings.</li>
+        <li><strong>Lag:</strong> Adjust config. Pretend you understand it.</li>
+    </ul>
+
+    <h2>Roadmap (Aspirational)</h2>
+    <ul>
+        <li>Plugin support</li>
+        <li>Lua or Python support</li>
+        <li>Linux/macOS support, eventually, probably, maybe</li>
+    </ul>
 
     <div style="text-align: center; margin-top: 30px;">
         <a href="https://github.com/UltimaCodes/KeyLayer" class="btn-pixel">View on GitHub</a>
-        <a href="#" class="btn-pixel">Download</a>
     </div>
 </div>
+
 
 <footer>
     &copy; 2025 Ryaan Aaqil. All rights NOT reserved.

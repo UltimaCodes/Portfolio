@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PID LFR Robot | Ryaan Aaqil</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="icon" type="image/png" href="../images/logo.png" />
+</head>
+<body>
+<div id="parallax-backsround"></div>
+
+<nav>
+    <div class="left">
+        <a href="../projects.html" class="btn-pixel">← Back to Projects</a>
+    </div>
+    <div class="center">
+        <a href="../index.html" class="nav-home">"wgat"</a>
+    </div>
+    <div class="right">
+        <a href="../about.html" class="btn-pixel">About</a>
+    </div>
+</nav>
+
+<div class="blog-post">
+    <h1>Sumo Robot (His name is pablo escrowbar)</h1>
+
+    <div class="project-hero robot-design"></div>
+
+    <p>
+        A Bluetooth-controlled sumo robot that weighs 3.5kg (How is it still working)
+        Built with an ESP32, a welded aluminum chassis, and a very funny 24V battery that almost set my 
+        schoolbag on fire (oops)
+    </p>
+
+    <h2>Hardware Summary</h2>
+    <ul>
+        <li>ESP32, because I like the unpredictable pairing issues</li>
+        <li>24V battery pack (probably too much, but it works)</li>
+        <li>Two buck converters:
+            <ul>
+                <li>12V → motor drivers</li>
+                <li>5V → ESP32 (the brain, allegedly)</li>
+            </ul>
+        </li>
+        <li>Two BTS7960 motor drivers, because if something’s going to catch fire, it might as well be powerful</li>
+        <li>Two high torque, low speed motors mounted with “custom” welded brackets</li>
+        <li>Chassis made of aluminum sheets (Might have gotten scammed)</li>
+        <li>Front scooper welded at a 40° angle. It does not flex.</li>
+    </ul>
+
+    <h2>Control System</h2>
+    <p>
+        Controlled via Bluetooth using a generic app (keypad that sends integers and updates booleans)
+        Range is adequate but it has pairing issues which make it a hassle to use competitively 
+        Also we might have ruined the battery like 4 times
+    </p>
+
+    <h2>Power Delivery</h2>
+    <p>
+        The 24V battery feeds into two buck converters.
+        One drops to 12V to feed the motor drivers. The other drops to 5V to keep the ESP32 awake long enough
+        to crash into things. No overcurrent protection. No fuse. Should have added something like that (oops).
+    </p>
+
+    <h2>Performance</h2>
+    <ul>
+        <li>Top speed: 3~ m/s</li>
+        <li>Pushing Force: 50N~</li>
+        <li>Bluetooth stability: works like 4 times out of 10</li>
+    </ul>
+
+    <h2>Testing Footage (Unreleased, for a reason)</h2>
+    <p>
+        Most testing consisted of ramming the robot into a box, a wall, and my own foot. Success was defined
+        by whether the robot still turned on afterward. The robot did, in fact, not turn on for the first 10 tries.
+        It took us a month and a funny loss in a competition due to battery failure to actually fix the robot.
+    </p>
+
+    <h2>Future Plans</h2>
+    <ul>
+        <li>Redesign the chassis with a heavier core in mind</li>
+        <li>Auto-targeting (read: guess and shove)</li>
+        <li>A flipper in the slope</li>
+        <li>A Battery that actually has a BMS</li>
+        <li>Custom App with commands (Like spinning cw or ccw, dashing, etc)</li>
+    </ul>
+</div>
+
+
+<footer>
+    &copy; 2025 Ryaan Aaqil. All rights NOT reserved.
+</footer>
+
+<script src="../js/shared.js"></script>
+</body>
+</html>

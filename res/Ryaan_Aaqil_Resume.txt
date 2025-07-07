@@ -1,0 +1,64 @@
+Ryaan Aaqil
+
+Karachi, 75300 Pakistan
++92 326 5969151
+ryaanaqil3@gmail.com
+
+Websites, Portfolios, Profiles
+
+linkedin.com/in/ryaanaaqil
+github.com/UltimaCodes
+ryaanaaqil.org
+
+Education and Training
+
+Expected in August 2025
+Beaconhouse School System Karachi, Pakistan
+O Levels Computer Science, Physics, Chemistry, Art & Design
+
+Nixor College Karachi, Pakistan
+A Levels Maths, Computer Science, Physics, Media Studies
+
+Languages
+
+Urdu
+First Language
+			
+
+English
+C2
+Proficient (C2)
+			
+
+Summary
+
+Aspiring game developer with a strong foundation in coding, beginning with text-based games in Bash at age 9. Proficient in Unity and C#, with experience in application development and a strong proficiency in solving complex mathematical problems. Demonstrates foundational skills in sound and 3D model design, alongside a talent for level and UI design. Committed to leveraging technical expertise to drive innovative solutions and enhance user engagement.
+
+Skills
+
+Game development
+C# programming
+Unity engine
+Game Prototyping
+
+Audio implementation
+Multitasking
+Math aptitude
+Game design
+
+Experience
+
+May 2024 - August 2024
+
+TekRevol - Karachi, Pakistan
+Intern    
+
+Developed customizable Connect Four game allowing adjustable board sizes.
+Created 2D MMORPG prototype featuring advanced enemy AI.
+Developed C# scripts to create game logic and mechanics in Unity.
+Optimized game performance by reducing draw calls and increasing frame rate.
+Debugged various issues related to gameplay, AI scripting, memory management.
+
+Accomplishments
+
+3 Best Delegate Awards and 3 Honorable Mentions in various Model United Nations conferences
