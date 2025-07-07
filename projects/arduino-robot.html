@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Arduino Robot | Ryaan Aaqil</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="icon" type="image/png" href="../images/logo.png" />
+</head>
+<body>
+<div id="parallax-background"></div>
+
+<nav>
+    <div class="left">
+        <a href="../projects.html" class="btn-pixel">← Back to Projects</a>
+    </div>
+    <div class="center">
+        <a href="../index.html" class="nav-home">"wgat"</a>
+    </div>
+    <div class="right">
+        <a href="../about.html" class="btn-pixel">About</a>
+    </div>
+</nav>
+
+<div class="blog-post">
+    <h1>Autonomous Arduino Robot</h1>
+
+    <img src="https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg" alt="Arduino Robot" />
+
+    <p>
+        A self-navigating robot built with Arduino Uno, featuring obstacle avoidance,
+        remote control capabilities, and various sensors for environmental awareness.
+        This project combines hardware engineering with intelligent software algorithms.
+    </p>
+
+    <h2>🤖 Hardware Components</h2>
+    <ul>
+        <li>Arduino Uno R3 microcontroller</li>
+        <li>HC-SR04 ultrasonic distance sensor</li>
+        <li>SG90 servo motor for sensor rotation</li>
+        <li>L298N motor driver module</li>
+        <li>4x DC gear motors with wheels</li>
+        <li>HC-05 Bluetooth module</li>
+        <li>9V battery pack with voltage regulator</li>
+    </ul>
+
+    <h2>🧠 Autonomous Navigation</h2>
+    <p>
+        The robot uses a combination of ultrasonic sensing and servo-controlled scanning
+        to map its environment. When an obstacle is detected, it stops, scans left and right,
+        then chooses the path with the most clearance.
+    </p>
+
+    <div class="tech-used">
+        <strong>Technologies:</strong> Arduino IDE, C++, Bluetooth Serial, PWM Control
+    </div>
+
+    <h2>📱 Remote Control Features</h2>
+    <ul>
+        <li>Bluetooth smartphone app control</li>
+        <li>Manual driving mode</li>
+        <li>Speed adjustment controls</li>
+        <li>Real-time sensor data display</li>
+        <li>Autonomous mode toggle</li>
+    </ul>
+
+    <div class="dev-log">
+        <h3>Build Process</h3>
+        <p><strong>Phase 1:</strong> Basic motor control and movement</p>
+        <p><strong>Phase 2:</strong> Ultrasonic sensor integration</p>
+        <p><strong>Phase 3:</strong> Servo-controlled scanning system</p>
+        <p><strong>Phase 4:</strong> Bluetooth communication setup</p>
+        <p><strong>Phase 5:</strong> Algorithm optimization and testing</p>
+    </div>
+
+    <h2>⚡ Key Algorithms</h2>
+    <p>
+        <strong>Obstacle Avoidance:</strong> Uses a simple but effective algorithm that
+        prioritizes forward movement, scans for alternatives when blocked, and implements
+        a basic memory system to avoid getting stuck in corners.
+    </p>
+
+    <p>
+        <strong>Path Planning:</strong> Implements a greedy approach that always chooses
+        the direction with maximum clearance, with fallback behaviors for complex scenarios.
+    </p>
+
+    <h2>🔧 Challenges & Solutions</h2>
+    <ul>
+        <li><strong>Power Management:</strong> Implemented sleep modes and efficient motor control</li>
+        <li><strong>Sensor Noise:</strong> Added filtering and multiple reading averaging</li>
+        <li><strong>Mechanical Stability:</strong> Redesigned chassis for better weight distribution</li>
+        <li><strong>Communication Range:</strong> Optimized Bluetooth antenna positioning</li>
+    </ul>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="#" class="btn-pixel">View Code</a>
+        <a href="#" class="btn-pixel">Build Guide</a>
+        <a href="#" class="btn-pixel">Demo Video</a>
+    </div>
+</div>
+
+<footer>
+    &copy; 2025 Ryaan Aaqil. All rights NOT reserved.
+</footer>
+
+<script src="../js/shared.js"></script>
+</body>
+</html>

@@ -6,166 +6,61 @@
   <title>Home | Ryaan Aaqil</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="images/logo.png" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-74WXTDJ616"></script>
 </head>
 <body>
-  <div id="parallax-background"></div>
+<div id="parallax-background"></div>
 
-  <nav>
-    <div class="left"><a href="projects.html" class="btn-pixel">Projects</a></div>
-    <div class="center"><a href="index.html" class="nav-home">"wgat"</a></div>
-    <div class="right"><a href="about.html" class="btn-pixel">About</a></div>
-  </nav>
+<nav>
+  <div class="left"><a href="projects.html" class="btn-pixel">Projects</a></div>
+  <div class="center"><a href="index.html" class="nav-home">"wgat"</a></div>
+  <div class="right"><a href="about.html" class="btn-pixel">About</a></div>
+</nav>
 
-  <div class="title-container">
-    <h1 class="title">RYAAN AAQIL</h1>
-    <img src="images/dog.png" alt="Devourer of Gods" class="dog" />
-  </div>
-  <p class="subtitle">We live in a society (Korangi)</p>
+<div class="title-container">
+  <h1 class="title">RYAAN AAQIL</h1>
+  <img src="images/dog.png" alt="Devourer of Gods" class="dog" />
+</div>
+<p class="subtitle">We live in a society (Korangi)</p>
 
-  <div class="info">
-    <span class="glitch">IS THIS TRUE</span>
-    <span>=======================================================</span>
-    <span class="glitch">SURELY IT IS</span>
-  </div>
-  
-  <div id="ultrakill-container"></div>
+<div class="info">
+  <span class="glitch">IS THIS TRUE</span>
+  <span class="separator" id="dynamic-separator"></span>
+  <span class="glitch">SURELY IT IS</span>
+</div>
 
-  <div class="main-content">
-    <div class="bio-centered">
-      HELLO. I'M RYAAN, I'M A GAME DEV AND A ROBOTICS ENTHUSIAST. I WRITE CODE IN C#, C++ AND PYTHON. SOMETIMES IT WORKS, MOSTLY IT DOESN'T. I USE UNITY, ARDUINO AND A BIT OF WEB DEV (WE DON'T TALK ABOUT THAT). WHEN I'M NOT WORKING ON MY PROJECTS IM EITHER GAMING OR CHILLING WITH MY CATS WHO HATE ME :D
+<div id="ultrakill-container"></div>
+
+<div class="analytics-section">
+  <h3>SITE ANALYTICS</h3>
+  <div class="analytics-grid">
+    <div class="analytics-item">
+      <div>TOTAL VISITORS</div>
+      <span class="analytics-number" id="total-visitors">Loading...</span>
     </div>
-
-    <div class="cat-roulette" aria-label="Pixel cat image carousel">
-      <img id="cat-img" src="images/cat1.png" alt="Pixel cat 1" />
+    <div class="analytics-item">
+      <div>THIS MONTH</div>
+      <span class="analytics-number" id="monthly-visitors">Loading...</span>
     </div>
   </div>
+</div>
 
-  <footer>
-    &copy; 2025 Ryaan Aaqil. All rights NOT reserved.
-  </footer>
+<div class="main-content">
+  <div class="bio-centered">
+    HELLO. I'M RYAAN, I'M A GAME DEV AND A ROBOTICS ENTHUSIAST. I WRITE CODE IN C#, C++ AND PYTHON. SOMETIMES IT WORKS, MOSTLY IT DOESN'T. I USE UNITY, ARDUINO AND A BIT OF WEB DEV (WE DON'T TALK ABOUT THAT). WHEN I'M NOT WORKING ON MY PROJECTS IM EITHER GAMING OR CHILLING WITH MY CATS WHO HATE ME :D
+  </div>
 
-  <!-- Scripts -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-74WXTDJ616"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-74WXTDJ616');
-  </script>
+  <div class="cat-roulette" aria-label="Pixel cat image carousel">
+    <img id="cat-img" src="images/cat1.png" alt="Pixel cat 1" />
+  </div>
+</div>
 
-  <script>
-    // Pixel cat randomizer
-    const catImgs = ["images/cat4.png", "images/cat2.png", "images/cat3.png", "images/cat1.png", "images/cat5.png"];
-    const catImgElement = document.getElementById("cat-img");
-    setInterval(() => {
-      const idx = Math.floor(Math.random() * catImgs.length);
-      catImgElement.src = catImgs[idx];
-      catImgElement.alt = `Pixel cat ${idx + 1}`;
-    }, 3000);
+<footer>
+  &copy; 2025 Ryaan Aaqil. All rights NOT reserved.
+</footer>
 
-let typedBuffer = '';
-let glitchTerminal = null;
-let ultrakillTriggered = false;
-
-document.addEventListener('keydown', (e) => {
-  const char = e.key.length === 1 ? e.key : '';
-  typedBuffer += char.toLowerCase();
-
-  if (typedBuffer.length > 20) typedBuffer = typedBuffer.slice(-20);
-
-  // Handle DOGGER easter egg
-  if (typedBuffer.includes('dogger')) {
-    if (!glitchTerminal) {
-      glitchTerminal = document.createElement('div');
-      glitchTerminal.className = 'left';
-      document.body.appendChild(glitchTerminal);
-    }
-
-    const glitchSpan = document.createElement('span');
-    glitchSpan.className = 'glitch';
-    glitchSpan.textContent = '#EXECUTEDOGGERISM';
-
-    glitchTerminal.appendChild(glitchSpan);
-    glitchTerminal.appendChild(document.createElement('br'));
-    typedBuffer = '';
-  }
-
-  // Handle ULTRAKILL easter egg
-  if (!ultrakillTriggered && typedBuffer.includes('ultrakill')) {
-    ultrakillTriggered = true;
-    showUltrakillMessage();
-  }
-});
-
-const dog = document.querySelector('.dog');
-const title = document.querySelector('.title');
-const devourerAudio = new Audio('/res/DevourerSpawn.mp3');
-let audioAllowed = false;
-
-// Wait for first user interaction to allow audio playback
-function enableAudio() {
-  audioAllowed = true;
-  window.removeEventListener('click', enableAudio);
-  window.removeEventListener('keydown', enableAudio);
-}
-
-window.addEventListener('click', enableAudio);
-window.addEventListener('keydown', enableAudio);
-
-function animateDog() {
-  dog.classList.add('animate');
-  title.classList.add('hidden');
-
-  if (audioAllowed) {
-    devourerAudio.currentTime = 0;
-    devourerAudio.play().catch(() => {
-      // Handle play failure silently
-    });
-  }
-
-  setTimeout(() => {
-    dog.classList.remove('animate');
-    title.classList.remove('hidden');
-  }, 2500);
-}
-
-// Start animation cycle as before
-setTimeout(() => {
-  animateDog();
-  setInterval(animateDog, 45000);
-}, 5000);
-
-function showUltrakillMessage() {
-  const lines = [
-    "MANKIND IS DEAD",
-    "BLOOD IS FUEL",
-    "HELL IS FULL"
-  ];
-  const container = document.getElementById("ultrakill-container");
-  const msg = document.createElement("div");
-  msg.id = "ultrakill-message";
-  container.appendChild(msg);
-
-  let currentLine = 0;
-  let currentChar = 0;
-
-  function typeNextChar() {
-    if (currentLine < lines.length) {
-      msg.textContent += lines[currentLine][currentChar] || '';
-      currentChar++;
-
-      if (currentChar >= lines[currentLine].length) {
-        msg.textContent += '\n';
-        currentLine++;
-        currentChar = 0;
-      }
-
-      setTimeout(typeNextChar, 50); // typing speed
-    }
-  }
-
-  typeNextChar();
-}
-  </script>
+<!-- Scripts -->
+<script src="js/shared.js"></script>
+<script src="js/homepage-effects.js"></script>
 </body>
 </html>
