@@ -28,57 +28,90 @@
     <div class="project-hero graphorama-design"></div>
 
     <p>
-        A powerful data visualization and graphing tool that transforms complex datasets into
-        beautiful, interactive charts and graphs. Graphorama supports multiple chart types
-        and provides advanced customization options for professional presentations.
+        Graphorama is a WPF-based function plotting application written in C#. It uses the OxyPlot library
+        to graph mathematical expressions in real-time, with support for multiple simultaneous plots, axis adjustments, and basic input validation.
+        It does exactly what you think it does... it draws lines based on equations. Not much more, not much less.
     </p>
 
-    <h2>📊 Visualization Types</h2>
+    <h2>Functionality Overview</h2>
     <ul>
-        <li>Line graphs with multiple data series</li>
-        <li>Bar charts and histograms</li>
-        <li>Scatter plots with trend lines</li>
-        <li>Pie charts and donut charts</li>
-        <li>3D surface plots and heatmaps</li>
+        <li>Plots mathematical functions using OxyPlot</li>
+        <li>Supports basic arithmetic, trig, logs, and exponentials</li>
+        <li>Multiple expressions can be plotted at once</li>
+        <li>Adjustable axis limits with live updates</li>
+        <li>Real-time graphing toggle with user-defined speed control</li>
+        <li>Input validation for malformed expressions</li>
     </ul>
 
-    <h2>🛠️ Technical Features</h2>
+    <h2>Technical Architecture</h2>
     <p>
-        Built with Python using matplotlib and seaborn for high-quality visualizations.
-        Features a modular architecture that allows for easy extension and customization.
+        The application is built in C# using WPF for the user interface and OxyPlot for rendering.
+        Expression parsing is handled internally, with basic safeguards to avoid runtime crashes when someone inevitably types "log()" with no arguments.
+        The structure is straightforward: a text box, a graph, and some buttons. It does what it needs to.
     </p>
 
     <div class="tech-used">
-        <strong>Technologies:</strong> Python, Matplotlib, Seaborn, Pandas, Tkinter
+        <strong>Technologies:</strong> C#, WPF, OxyPlot, .NET 8.0
     </div>
 
-    <h2>💾 Data Management</h2>
+    <h2>Real-Time Plotting</h2>
     <p>
-        Supports multiple data formats including CSV, Excel, JSON, and direct database connections.
-        Features real-time data updates and automatic chart refreshing capabilities.
+        When real-time mode is enabled, functions are plotted progressively over time.
+        This feature exists mostly to make the plotting experience feel more dynamic.
+        Speed can be adjusted within a reasonable range. Values outside that range may break things.
+        That's on you.
     </p>
 
-    <h2>🎨 Customization Options</h2>
+    <h2>Input Format</h2>
+    <p>
+        Function inputs accept typical math expressions. Example syntax:
+    </p>
     <ul>
-        <li>Custom color schemes and themes</li>
-        <li>Font and styling controls</li>
-        <li>Interactive legends and annotations</li>
-        <li>Animation and transition effects</li>
+        <li><code>2x + 3</code> - Linear</li>
+        <li><code>sin(x)</code> - Trig</li>
+        <li><code>log(x)</code> - Logarithmic</li>
+        <li><code>ArcTan(x)</code> - Inverse trig (case-sensitive)</li>
+        <li><code>sqrt(x)</code> - Square root</li>
+    </ul>
+    <p>
+        Syntax errors will prompt a warning message. Some functions are case-sensitive by design, which is either a technical limitation or a test of patience.
+    </p>
+
+    <h2>Graph Management</h2>
+    <ul>
+        <li>Update axis limits manually using X Min and X Max fields</li>
+        <li>Clear the graph with one button click</li>
+        <li>Select plotted functions from the list to delete</li>
+        <li>Zoom and pan with mouse input (assuming OxyPlot doesn’t crash)</li>
     </ul>
 
-    <h2>📈 Use Cases</h2>
+    <h2>Installation</h2>
+    <p>
+        Download the zip file from the releases tab in the repo<br>
+        Extract it, and run Graphorama.exe
+        If that doesn’t work, ionno
+    </p>
+
+    <h2>Demo</h2>
+    <p>
+        Here’s a short video showing what the application looks like in motion:
+        <br>
+        <a href="https://cloud-1ssjxizmq-hack-club-bot.vercel.app/02025-01-01_01-32-43.mp4" target="_blank">Watch the demo</a>
+    </p>
+
+    <h2>Use Cases</h2>
     <ul>
-        <li>Academic research presentations</li>
-        <li>Business analytics and reporting</li>
-        <li>Scientific data visualization</li>
-        <li>Educational demonstrations</li>
+        <li>Quick function sketching</li>
+        <li>Visualizing math homework answers</li>
+        <li>Testing function behavior across intervals</li>
+        <li>Making your screen look vaguely educational</li>
     </ul>
 
     <div style="text-align: center; margin-top: 30px;">
         <a href="https://github.com/UltimaCodes/Graphorama" class="btn-pixel">View on GitHub</a>
-        <a href="#" class="btn-pixel">Download</a>
     </div>
 </div>
+
 
 <footer>
     &copy; 2025 Ryaan Aaqil. All rights NOT reserved.

@@ -28,46 +28,57 @@
     <div class="project-hero gorilla-design"></div>
 
     <p>
-        An intense action game featuring gorilla combat mechanics, dynamic environments, and strategic gameplay.
-        Players control a powerful gorilla warrior navigating through challenging levels with unique combat abilities.
+        A multiplayer FPS where everyone plays as a gorilla. It’s technically functional and very low effort.
+        Built in Unity over the course of a week, mostly to refresh my knowledge on Photon PUN networking.
     </p>
 
-    <h2>🎮 Gameplay Features</h2>
+    <h2>Gameplay Summary</h2>
     <ul>
-        <li>Intuitive combat system with combo attacks</li>
-        <li>Environmental destruction mechanics</li>
-        <li>AI-driven enemy behavior</li>
-        <li>Progressive difficulty scaling</li>
-        <li>Multiple weapon types and abilities</li>
+        <li>Multiplayer lobby system using Photon PUN</li>
+        <li>Host-controlled match starting</li>
+        <li>Custom room names and usernames</li>
+        <li>Basic FPS movement: WASD, Jump, Sprint, Shoot</li>
+        <li>Scoreboard tracking kills and deaths</li>
+        <li>Red bullet impact squares that vanish after 30 seconds, for realism</li>
+        <li>Gravity-enabled death via falling into the void</li>
+        <li>Permanent T-posing gorilla player models, for atmosphere</li>
     </ul>
 
-    <h2>🛠️ Technical Implementation</h2>
+    <h2>Technical Implementation</h2>
     <p>
-        Built using Unity's 3D system with custom physics for realistic gorilla movement.
-        Implemented advanced AI systems for enemy behavior and dynamic environment interactions.
+        Created in Unity using Photon PUN for networked multiplayer. The lobby system supports room listing,
+        joining, naming, and host-based game control. A somehwat goofy FPS controller manages player input and shooting.
+        Enemies do not exist. Everyone is the same gorilla. There are no teams. No win condition. Only meaningless violence.
     </p>
 
     <div class="tech-used">
-        <strong>Technologies:</strong> Unity 2022.3, C#, NavMesh AI, Physics System
+        <strong>Technologies:</strong> Unity 2022.3, C#, Photon PUN 2, Unity Input System
     </div>
 
-    <h2>🎨 Design & Mechanics</h2>
+    <h2>Design Notes</h2>
     <p>
-        Features realistic gorilla animations with motion capture data, destructible environments,
-        and a dynamic combat system that rewards strategic thinking and timing.
+        The map consists of ramps and walls. There is a gun. It makes no sound, but you’ll know it fired because
+        a red square will appear briefly where the bullet hit. The T-posing gorillas are not placeholders. They are the vision.
     </p>
 
-    <h2>🚀 Future Plans</h2>
+    <h2>Audio</h2>
+    <p>
+        There is one song, which plays in the main menu. That’s it. No sound effects.
+        Credit to Dave Gunning for the track:
+        <a href="https://www.youtube.com/watch?v=TNW4Kgk7bvY" target="_blank">[link]</a>
+    </p>
+
+    <h2>Future Plans (Surely I actually do something)</h2>
     <ul>
-        <li>Multiplayer combat modes</li>
-        <li>Additional character abilities</li>
-        <li>More diverse environments</li>
-        <li>Boss battle mechanics</li>
+        <li>Boss fights (unclear what against)</li>
+        <li>Multiplayer modes that go beyond “everyone shoots everyone”</li>
+        <li>New maps, maybe ones that aren’t just ramps and voids</li>
+        <li>SFX, probably</li>
+        <li>Gorillas that don’t T-pose (low priority)</li>
     </ul>
 
     <div style="text-align: center; margin-top: 30px;">
         <a href="https://github.com/UltimaCodes/GorillaWarfare" class="btn-pixel">View on GitHub</a>
-        <a href="#" class="btn-pixel">Play Demo</a>
     </div>
 </div>
 

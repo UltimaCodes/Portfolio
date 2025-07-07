@@ -7,7 +7,7 @@
     let ultrakillTriggered = false;
     let audioAllowed = false;
     let dog, title, devourerAudio, catImgElement;
-    let ultrakillAudio, doggerCount = 0;
+    let jonklerAudio, ultrakillAudio, undertaleAudio, spamtonAudio, matrixAudio, mgrrAudio, doggerCount = 0;
 
     function initHomepageEffects() {
         // Only run on homepage
@@ -27,7 +27,12 @@
         title = utils.getElement('.title');
         catImgElement = utils.getElement('#cat-img');
         devourerAudio = new Audio('/res/DevourerSpawn.mp3');
-        ultrakillAudio = new Audio('/music/ultrakillsfx.mp3');
+        ultrakillAudio = new Audio('/res/ultrakillsfx.mp3');
+        undertaleAudio = new Audio('/res/utale.mp3');
+        spamtonAudio = new Audio('/res/spamt.mp3');
+        matrixAudio = new Audio('/res/mtrx.mp3');
+        mgrrAudio = new Audio('/res/nanomachines.mp3');
+        jonklerAudio = new Audio('/res/jonker.mp3');
     }
 
     function setupEventListeners() {
@@ -157,31 +162,19 @@
 
         // Metal Gear Rising easter egg - Enhanced
         if (typedBuffer.includes('nanomachines')) {
-            showEnhancedMGREasterEgg();
-            clearTypedBuffer();
-        }
-
-        // NieR Automata easter egg - Completely redesigned
-        if (typedBuffer.includes('2b') || typedBuffer.includes('android')) {
-            showEnhancedNierEasterEgg();
+            showMGREasterEgg();
             clearTypedBuffer();
         }
 
         // Undertale easter egg - Enhanced with better visuals
         if (typedBuffer.includes('determination')) {
-            showEnhancedUndertaleEasterEgg();
+            showUndertaleEasterEgg();
             clearTypedBuffer();
         }
 
         // Deltarune easter egg
         if (typedBuffer.includes('spamton')) {
             showDeltaruneEasterEgg();
-            clearTypedBuffer();
-        }
-
-        // Minecraft easter egg
-        if (typedBuffer.includes('creeper')) {
-            showMinecraftEasterEgg();
             clearTypedBuffer();
         }
 
@@ -194,12 +187,6 @@
         // Matrix easter egg
         if (typedBuffer.includes('matrix')) {
             triggerMatrixEffect();
-            clearTypedBuffer();
-        }
-
-        // New Terraria easter egg
-        if (typedBuffer.includes('terraria')) {
-            showTerrariaEasterEgg();
             clearTypedBuffer();
         }
     }
@@ -232,7 +219,7 @@
 
         commands.forEach((command, index) => {
             setTimeout(() => {
-                const line = utils.createElement('div', 'dogger-line glitch', command);
+                const line = utils.createElement('div', 'glitch', command);
                 line.style.animationDelay = `${index * 0.1}s`;
                 glitchTerminal.appendChild(line);
             }, index * 300);
@@ -252,30 +239,29 @@
         }, 5000);
     }
 
-    function showEnhancedMGREasterEgg() {
+    function showMGREasterEgg() {
         // Create full-screen overlay
         const overlay = utils.createElement('div');
         overlay.style.cssText = `
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: linear-gradient(45deg, #000, #330000);
-            z-index: 1000; display: flex; align-items: center; justify-content: center;
-            animation: mgr-entrance 0.5s ease-out;
-        `;
+                position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+                background: linear-gradient(45deg, #000, #330000);
+                z-index: 1000; display: flex; align-items: center; justify-content: center;
+                animation: mgr-entrance 0.5s ease-out;
+            `;
 
         const terminal = utils.createElement('div');
         terminal.style.cssText = `
-            background: #000; border: 3px solid #ff0000; padding: 30px;
-            font-family: 'Press Start 2P', monospace; text-align: center;
-            box-shadow: 0 0 50px rgba(255, 0, 0, 0.8);
-            animation: mgr-pulse 2s ease-in-out infinite;
-        `;
+                background: #000; border: 3px solid #ff0000; padding: 30px;
+                font-family: 'Press Start 2P', monospace; text-align: center;
+                box-shadow: 0 0 50px rgba(255, 0, 0, 0.8);
+                animation: mgr-pulse 2s ease-in-out infinite;
+            `;
 
         terminal.innerHTML = `
-            <div style="color: #ff0000; font-size: 1.5rem; margin-bottom: 20px;">NANOMACHINES, SON!</div>
-            <div style="color: #ffff00; margin: 15px 0;">They harden in response to physical trauma!</div>
-            <div style="color: #ff0000; font-size: 1.2rem;">You can't hurt me, Jack!</div>
-            <div style="color: #ffffff; margin-top: 20px; font-size: 0.8rem;">Standing here, I realize...</div>
-        `;
+                <div style="color: #ff0000; font-size: 1.5rem; margin-bottom: 20px;">NANOMACHINES, SON!</div>
+                <div style="color: #ffff00; margin: 15px 0;">They harden in response to physical trauma!</div>
+                <div style="color: #ff0000; font-size: 1.2rem;">We're making the mother of all omelettes, Jack!</div>
+            `;
 
         overlay.appendChild(terminal);
         document.body.appendChild(overlay);
@@ -299,99 +285,37 @@
             }, 500);
         }, 4000);
     }
-
-    function showEnhancedNierEasterEgg() {
-        // Create white flash effect
-        const flash = utils.createElement('div');
-        flash.style.cssText = `
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: white; z-index: 1000; opacity: 1;
-            transition: opacity 0.3s ease-out;
-        `;
-        document.body.appendChild(flash);
-
-        setTimeout(() => {
-            flash.style.opacity = '0';
-        }, 200);
-
-        // Create android UI panel
-        setTimeout(() => {
-            const androidPanel = utils.createElement('div');
-            androidPanel.style.cssText = `
-                position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-                background: #000; border: 2px solid #ffffff; padding: 30px;
-                font-family: 'Press Start 2P', monospace; color: white;
-                z-index: 1001; text-align: center; min-width: 400px;
-                box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-            `;
-
-            androidPanel.innerHTML = `
-                <div style="color: #00ffff; margin-bottom: 15px;">ANDROID UNIT: 2B</div>
-                <div style="margin: 10px 0;">STATUS: OPERATIONAL</div>
-                <div style="margin: 10px 0;">MISSION: DESTROY MACHINE LIFEFORMS</div>
-                <div style="color: #ff6666; margin: 15px 0;">EMOTIONS ARE PROHIBITED</div>
-                <div style="font-size: 0.6rem; margin-top: 20px; color: #888;">
-                    [ACCESSING MEMORY BANK...]<br/>
-                    [GLORY TO MANKIND]
-                </div>
-            `;
-
-            document.body.appendChild(androidPanel);
-
-            // Add typing sound effect simulation
-            const lines = androidPanel.querySelectorAll('div');
-            lines.forEach((line, index) => {
-                line.style.opacity = '0';
-                setTimeout(() => {
-                    line.style.opacity = '1';
-                    line.style.transition = 'opacity 0.3s ease';
-                }, index * 500);
-            });
-
-            setTimeout(() => {
-                androidPanel.style.opacity = '0';
-                androidPanel.style.transition = 'opacity 0.5s ease-out';
-                setTimeout(() => {
-                    if (androidPanel.parentNode) androidPanel.parentNode.removeChild(androidPanel);
-                    if (flash.parentNode) flash.parentNode.removeChild(flash);
-                }, 500);
-            }, 4000);
-        }, 300);
-    }
-
-    function showEnhancedUndertaleEasterEgg() {
-        // Create battle-like UI
+    
+    function showUndertaleEasterEgg() {
         const battleBox = utils.createElement('div');
         battleBox.style.cssText = `
-            position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%);
-            width: 600px; height: 150px; background: #000;
-            border: 4px solid #fff; z-index: 1000;
-            font-family: 'Press Start 2P', monospace;
-        `;
+        position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%);
+        width: 600px; height: 150px; background: #000;
+        border: 4px solid #fff; z-index: 1000;
+        font-family: 'Press Start 2P', monospace;
+    `;
 
         const textBox = utils.createElement('div');
         textBox.style.cssText = `
-            padding: 20px; color: #fff; font-size: 0.8rem;
-            line-height: 1.5; height: 100%;
-        `;
+        padding: 20px; color: #fff; font-size: 0.8rem;
+        line-height: 1.5; height: 100%;
+    `;
 
         battleBox.appendChild(textBox);
         document.body.appendChild(battleBox);
 
-        // Create soul (heart)
-        const soul = utils.createElement('div');
+        const soul = utils.createElement('img');
+        soul.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Undertale.png/1200px-Undertale.png';
         soul.style.cssText = `
-            position: fixed; bottom: 220px; left: 50%; transform: translateX(-50%);
-            width: 20px; height: 20px; background: #ff0000;
-            z-index: 1001; animation: soul-pulse 1s ease-in-out infinite;
-        `;
+        position: fixed; bottom: 220px; left: 50%; transform: translateX(-50%);
+        width: 20px; height: 20px;
+        z-index: 1001; animation: soul-pulse 1s ease-in-out infinite;
+    `;
         document.body.appendChild(soul);
 
-        // Type out text
         const messages = [
-            "* You are filled with DETERMINATION.",
-            "* The power of fluffy boys shines within you.",
-            "* You feel like you're going to have a bad time."
+            "* Despite everything, it's still you.",
+            "* You are filled with DETERMINATION."
         ];
 
         let currentMessage = 0;
@@ -408,116 +332,42 @@
                         textBox.textContent = '';
                         currentMessage++;
                         currentChar = 0;
-                        if (currentMessage < messages.length) {
-                            typeMessage();
-                        }
+                        typeMessage();
                     }, 1500);
                 }
             } else {
-                setTimeout(() => {
-                    battleBox.style.opacity = '0';
-                    soul.style.opacity = '0';
-                    battleBox.style.transition = 'opacity 0.5s ease-out';
-                    soul.style.transition = 'opacity 0.5s ease-out';
-                    setTimeout(() => {
-                        if (battleBox.parentNode) battleBox.parentNode.removeChild(battleBox);
-                        if (soul.parentNode) soul.parentNode.removeChild(soul);
-                    }, 500);
-                }, 2000);
+                hideElements();
             }
+        }
+
+        function hideElements() {
+            battleBox.style.transition = 'opacity 0.5s ease-out';
+            soul.style.transition = 'opacity 0.5s ease-out';
+            battleBox.style.opacity = '0';
+            soul.style.opacity = '0';
+            setTimeout(() => {
+                battleBox.remove();
+                soul.remove();
+            }, 500);
         }
 
         typeMessage();
     }
 
-    function showTerrariaEasterEgg() {
-        const notification = utils.createElement('div');
-        notification.style.cssText = `
-            position: fixed; top: 20px; right: 20px;
-            background: linear-gradient(45deg, #4a0e4e, #81007f);
-            border: 2px solid #ff00ff; padding: 15px;
-            font-family: 'Press Start 2P', monospace; color: #fff;
-            z-index: 1000; min-width: 300px; text-align: center;
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
-            animation: terraria-slide 0.5s ease-out;
-        `;
-
-        notification.innerHTML = `
-            <div style="color: #ff00ff; margin-bottom: 10px;">TERRARIA</div>
-            <div style="font-size: 0.6rem; margin: 5px 0;">The Devourer of Gods has awoken!</div>
-            <div style="font-size: 0.5rem; color: #ffaaff;">Infernum Mode Active</div>
-        `;
-
-        document.body.appendChild(notification);
-
-        // Create particle effects
-        for (let i = 0; i < 10; i++) {
-            setTimeout(() => {
-                const particle = utils.createElement('div');
-                particle.style.cssText = `
-                    position: fixed; top: ${Math.random() * window.innerHeight}px;
-                    left: ${Math.random() * window.innerWidth}px;
-                    width: 4px; height: 4px; background: #ff00ff;
-                    z-index: 999; border-radius: 50%;
-                    animation: particle-float 3s ease-out forwards;
-                `;
-                document.body.appendChild(particle);
-
-                setTimeout(() => {
-                    if (particle.parentNode) particle.parentNode.removeChild(particle);
-                }, 3000);
-            }, i * 100);
-        }
-
-        setTimeout(() => {
-            notification.style.opacity = '0';
-            notification.style.transition = 'opacity 0.5s ease-out';
-            setTimeout(() => {
-                if (notification.parentNode) notification.parentNode.removeChild(notification);
-            }, 500);
-        }, 4000);
-    }
-
     function showDeltaruneEasterEgg() {
         const text = utils.createElement('div');
         text.style.cssText = `
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            color: #ffff00; font-family: 'Press Start 2P', monospace; font-size: 1rem;
-            z-index: 1000; text-align: center; background: rgba(0,0,0,0.8);
-            padding: 20px; border: 2px solid #ffff00;
-        `;
+                position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                color: #ffff00; font-family: 'Press Start 2P', monospace; font-size: 1rem;
+                z-index: 1000; text-align: center; background: rgba(0,0,0,0.8);
+                padding: 20px; border: 2px solid #ffff00;
+            `;
         text.innerHTML = `
-            <div>[BIG SHOT]</div>
-            <div style="margin: 10px 0;">NOW'S YOUR CHANCE TO BE A</div>
-            <div style="color: #ff00ff;">[BIG SHOT]</div>
-        `;
+                <div>HEY [HYPERLINK BLOCKED]</div>
+                <div style="margin: 10px 0;">NOW'S YOUR CHANCE TO BE A</div>
+                <div style="color: #ff00ff;">[BIG SHOT]</div>
+            `;
         document.body.appendChild(text);
-
-        setTimeout(() => {
-            if (text.parentNode) text.parentNode.removeChild(text);
-        }, 3000);
-    }
-
-    function showMinecraftEasterEgg() {
-        const text = utils.createElement('div');
-        text.style.cssText = `
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            color: #00ff00; font-family: monospace; font-size: 1.2rem;
-            z-index: 1000; text-align: center; background: rgba(0,0,0,0.9);
-            padding: 20px; border: 2px solid #00ff00;
-        `;
-        text.textContent = 'Aww man... So we back in the mine';
-        document.body.appendChild(text);
-
-        let shakeCount = 0;
-        const shakeInterval = setInterval(() => {
-            document.body.style.transform = `translate(${Math.random() * 10 - 5}px, ${Math.random() * 10 - 5}px)`;
-            shakeCount++;
-            if (shakeCount > 10) {
-                clearInterval(shakeInterval);
-                document.body.style.transform = 'translate(0, 0)';
-            }
-        }, 100);
 
         setTimeout(() => {
             if (text.parentNode) text.parentNode.removeChild(text);
@@ -525,33 +375,55 @@
     }
 
     function showJonklerEasterEgg() {
-        const text = utils.createElement('div');
-        text.style.cssText = `
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            color: #800080; font-family: 'Press Start 2P', monospace; font-size: 1rem;
-            z-index: 1000; text-align: center; background: rgba(0,0,0,0.9);
-            padding: 20px; border: 2px solid #800080; animation: glitch-anim 0.5s infinite;
+
+        const jonklerTexts = [
+            "WHY SO SERIOUS?", "YOU WANNA KNOW HOW I GOT THESE SCARS", "WE LIVE IN A SOCIETY", "JONKLERISM RISES", "BUY TIMESHARES",
+            "EVERYTHING BURNS", "NO ESCAPE", "ONE QUESTION"
+        ];
+
+        const spamElements = [];
+
+        const interval = setInterval(() => {
+            const popup = utils.createElement('div');
+            popup.textContent = jonklerTexts[Math.floor(Math.random() * jonklerTexts.length)];
+            popup.style.cssText = `
+            position: fixed;
+            top: ${Math.random() * 90}vh;
+            left: ${Math.random() * 90}vw;
+            background: #000;
+            color: #ff00ff;
+            padding: 10px;
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.6rem;
+            border: 2px solid #ff0000;
+            z-index: 9999;
+            opacity: 1;
+            animation: glitch-anim 0.3s infinite alternate;
         `;
-        text.innerHTML = `
-            <div style="color: #ff00ff;">WHY SO SERIOUS?</div>
-            <div style="margin: 10px 0; color: #ffff00;">Let's put a smile on that face!</div>
-            <div style="color: #ff0000;">HAHAHAHAHA</div>
-        `;
-        document.body.appendChild(text);
+            document.body.appendChild(popup);
+            spamElements.push(popup);
+        }, 100);
 
         setTimeout(() => {
-            if (text.parentNode) text.parentNode.removeChild(text);
-        }, 4000);
+            clearInterval(interval);
+            spamElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transition = 'opacity 0.5s ease-out';
+                setTimeout(() => {
+                    if (el.parentNode) el.parentNode.removeChild(el);
+                }, 500);
+            });
+        }, 5000);
     }
 
     function initMatrixRain() {
         const canvas = utils.createElement('canvas');
         canvas.id = 'matrix-canvas';
         canvas.style.cssText = `
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -2; opacity: 0; pointer-events: none;
-            transition: opacity 1s ease;
-        `;
+                position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+                z-index: -2; opacity: 0; pointer-events: none;
+                transition: opacity 1s ease;
+            `;
         document.body.appendChild(canvas);
     }
 
@@ -610,11 +482,11 @@
         // Add screen effects during animation
         const screenEffect = utils.createElement('div');
         screenEffect.style.cssText = `
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: radial-gradient(circle, transparent 30%, rgba(255, 0, 170, 0.1) 70%);
-            z-index: 5; pointer-events: none; opacity: 0;
-            transition: opacity 0.3s ease;
-        `;
+                position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+                background: radial-gradient(circle, transparent 30%, rgba(255, 0, 170, 0.1) 70%);
+                z-index: 5; pointer-events: none; opacity: 0;
+                transition: opacity 0.3s ease;
+            `;
         document.body.appendChild(screenEffect);
 
         setTimeout(() => {
@@ -625,11 +497,11 @@
         const particleInterval = setInterval(() => {
             const particle = utils.createElement('div');
             particle.style.cssText = `
-                position: fixed; top: 50%; left: ${Math.random() * window.innerWidth}px;
-                width: 6px; height: 6px; background: #ff00aa;
-                border-radius: 50%; z-index: 4; pointer-events: none;
-                animation: devourer-particle 1s ease-out forwards;
-            `;
+                    position: fixed; top: 50%; left: ${Math.random() * window.innerWidth}px;
+                    width: 6px; height: 6px; background: #ff00aa;
+                    border-radius: 50%; z-index: 4; pointer-events: none;
+                    animation: devourer-particle 1s ease-out forwards;
+                `;
             document.body.appendChild(particle);
 
             setTimeout(() => {
