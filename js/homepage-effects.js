@@ -32,7 +32,16 @@
         spamtonAudio = new Audio('/res/spamt.mp3');
         matrixAudio = new Audio('/res/mtrx.mp3');
         mgrrAudio = new Audio('/res/nanomachines.mp3');
-        jonklerAudio = new Audio('/res/jonker.mp3');
+        jonklerAudio = new Audio('/res/jonkler.mp3');
+        
+        // Set volumes for easter egg sounds
+        if (devourerAudio) devourerAudio.volume = 0.4;
+        if (ultrakillAudio) ultrakillAudio.volume = 0.5;
+        if (undertaleAudio) undertaleAudio.volume = 0.4;
+        if (spamtonAudio) spamtonAudio.volume = 0.4;
+        if (matrixAudio) matrixAudio.volume = 0.3;
+        if (mgrrAudio) mgrrAudio.volume = 0.5;
+        if (jonklerAudio) jonklerAudio.volume = 0.4;
     }
 
     function setupEventListeners() {
@@ -266,6 +275,12 @@
         overlay.appendChild(terminal);
         document.body.appendChild(overlay);
 
+        // Play MGR sound effect
+        if (audioAllowed && mgrrAudio) {
+            mgrrAudio.currentTime = 0;
+            mgrrAudio.play().catch(() => {});
+        }
+
         // Add screen shake
         let shakeCount = 0;
         const shakeInterval = setInterval(() => {
@@ -283,7 +298,7 @@
             setTimeout(() => {
                 if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
             }, 500);
-        }, 4000);
+        }, 6000);
     }
     
     function showUndertaleEasterEgg() {
@@ -303,6 +318,12 @@
 
         battleBox.appendChild(textBox);
         document.body.appendChild(battleBox);
+
+        // Play Undertale sound effect
+        if (audioAllowed && undertaleAudio) {
+            undertaleAudio.currentTime = 0;
+            undertaleAudio.play().catch(() => {});
+        }
 
         const soul = utils.createElement('img');
         soul.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Undertale.png/1200px-Undertale.png';
@@ -326,14 +347,14 @@
                 if (currentChar < messages[currentMessage].length) {
                     textBox.textContent += messages[currentMessage][currentChar];
                     currentChar++;
-                    setTimeout(typeMessage, 50);
+                    setTimeout(typeMessage, 115);
                 } else {
                     setTimeout(() => {
                         textBox.textContent = '';
                         currentMessage++;
                         currentChar = 0;
                         typeMessage();
-                    }, 1500);
+                    }, 3100);
                 }
             } else {
                 hideElements();
@@ -369,12 +390,24 @@
             `;
         document.body.appendChild(text);
 
+        // Play Spamton sound effect
+        if (audioAllowed && spamtonAudio) {
+            spamtonAudio.currentTime = 0;
+            spamtonAudio.play().catch(() => {});
+        }
+
         setTimeout(() => {
             if (text.parentNode) text.parentNode.removeChild(text);
         }, 3000);
     }
 
     function showJonklerEasterEgg() {
+
+        // Play Jonkler sound effect
+        if (audioAllowed && jonklerAudio) {
+            jonklerAudio.currentTime = 0;
+            jonklerAudio.play().catch(() => {});
+        }
 
         const jonklerTexts = [
             "WHY SO SERIOUS?", "YOU WANNA KNOW HOW I GOT THESE SCARS", "WE LIVE IN A SOCIETY", "JONKLERISM RISES", "BUY TIMESHARES",
@@ -413,7 +446,7 @@
                     if (el.parentNode) el.parentNode.removeChild(el);
                 }, 500);
             });
-        }, 5000);
+        }, 10000);
     }
 
     function initMatrixRain() {
@@ -441,6 +474,12 @@
         const drops = Array(Math.floor(columns)).fill(1);
 
         canvas.style.opacity = '0.3';
+
+        // Play Matrix sound effect
+        if (audioAllowed && matrixAudio) {
+            matrixAudio.currentTime = 0;
+            matrixAudio.play().catch(() => {});
+        }
 
         function draw() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';

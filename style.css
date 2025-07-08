@@ -45,6 +45,12 @@ nav .left, nav .right {
   gap: 20px;
 }
 
+nav .center {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
 .nav-home {
   all: unset;
   cursor: pointer;
