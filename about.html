@@ -38,31 +38,33 @@
   <button class="about-jumptab" role="tab" data-tab="education">Education</button>
   <button class="about-jumptab" role="tab" data-tab="skills">Skills</button>
   <button class="about-jumptab" role="tab" data-tab="hobbies">Hobbies</button>
-  <button class="about-jumptab" role="tab" data-tab="mun">MUN</button>
   <button class="about-jumptab" role="tab" data-tab="goals">Goals</button>
   <button class="about-jumptab" role="tab" data-tab="contact">Contact</button>
 </nav>
 
 <!-- Profile -->
-<section id="about-profile" class="about-section about-panel active" style="max-width: 700px;">
+<section class="about-section about-panel active" data-panel="profile" style="max-width: 700px;">
   <h2>Introduction</h2>
   <div class="about-quote">
-    Hi, I'm Ryaan — a developer, game designer, and robotics enthusiast who's been writing code since I was 9.
-    I started out with Bash scripts and moved on to Python, Pygame, and eventually Unity with C#, where I found
-    my love for building interactive experiences (and occasionally uncovering the weirdest bugs imaginable). I've
-    built everything from text games to experimental prototypes, each one teaching me something new and pushing me
-    to do better. These days, I split my time between leisurely playing games, somewhat cool coding projects, and worrying about my A Levels.
-    I'm proud of how far I've come, and even more excited for what's next.
+    Hi, I'm Ryaan. I've been writing code since I was 9, which either makes me a prodigy or just means I've
+    had nine extra years to accumulate bad habits — the jury's still out. Started with Bash scripts because
+    I didn't know any better, graduated to Python and Pygame, and eventually landed in Unity with C#, where
+    I discovered my two true callings: building interactive experiences, and generating bugs so specific they
+    deserve their own Wikipedia page. I've shipped everything from text games nobody played to robots that
+    have, on at least one occasion, tried to set themselves on fire (ask Setup about the battery incidents).
+    These days I split my time between playing games, building things that mostly work, and quietly panicking
+    about my A Levels. Certified early achiever, undiagnosed chaos engineer.
   </div>
 
   <h3 style="margin-top: 20px;">Real-Time Age Tracker</h3>
+  <p style="font-family: var(--font-body); color: var(--text-dim); font-size: 0.95rem; margin-bottom: 8px;">Precisely how long I've been doing this to myself:</p>
   <section class="age-tracker">
     <span class="glitch"><p id="age-display">Loading...</p></span>
   </section>
 </section>
 
 <!-- Education -->
-<section id="about-education" class="about-section about-panel" style="max-width: 480px;">
+<section class="about-section about-panel" data-panel="education" style="max-width: 480px;">
   <h2>Education</h2>
   <h3>Current Studies</h3>
   <ul>
@@ -72,7 +74,7 @@
 </section>
 
 <!-- Skills -->
-<section id="about-skills" class="about-section about-panel" style="max-width: 720px;">
+<section class="about-section about-panel" data-panel="skills" style="max-width: 720px;">
   <h2>Skills &amp; Technologies</h2>
   <div class="about-skills-grid">
     <div class="about-skill-card">
@@ -122,9 +124,9 @@
 </section>
 
 <!-- Hobbies -->
-<section id="about-hobbies" class="about-section about-panel" style="max-width: 600px;">
+<section class="about-section about-panel" data-panel="hobbies" style="max-width: 600px;">
   <h2>Hobbies &amp; Interests</h2>
-  <h3>Gaming</h3>
+  <h3>Gaming (a load-bearing personality trait)</h3>
   <ul>
     <li>Indie Games (Cuphead, Deltarune, Ultrakill)</li>
     <li>RPG Games (Terraria, Witcher, Dishonoured)</li>
@@ -135,30 +137,14 @@
 
   <h3>Tech &amp; Learning</h3>
   <ul>
-    <li>Electronics &amp; Circuit Building</li>
+    <li>Electronics &amp; Circuit Building (see: things that have caught fire)</li>
     <li>Open Source Contributions</li>
     <li>Casual Game Dev</li>
   </ul>
 </section>
 
-<!-- MUN Experience -->
-<section id="about-mun" class="about-section about-panel">
-  <h2>MUNS</h2>
-  <div class="about-table">
-    <div class="about-row about-row-head"><span>Event</span><span>Committee</span><span>Result</span></div>
-    <div class="about-row"><span>BeaconMun 2024</span><span>SOCHUM — DPRK</span><span>—</span></div>
-    <div class="about-row"><span>FDMUN III</span><span>DISEC — DPRK</span><span class="alert">Best Delegate</span></div>
-    <div class="about-row"><span>HCMUN III</span><span>ODC</span><span class="alert">Hon. Mention</span></div>
-    <div class="about-row"><span>HCMUN III</span><span>BDCC — UAE</span><span class="alert">Best Delegate</span></div>
-    <div class="about-row"><span>MUNIK XV</span><span>MvD</span><span class="alert">Hon. Mention</span></div>
-    <div class="about-row"><span>JCMUN VI</span><span>HCC</span><span class="alert">Best Delegate</span></div>
-    <div class="about-row"><span>BeaconMun 2025</span><span>HCC</span><span>—</span></div>
-    <div class="about-row"><span>CBMUN XII</span><span>CHESG</span><span>—</span></div>
-  </div>
-</section>
-
 <!-- Goals & Ambitions -->
-<section id="about-goals" class="about-section about-panel" style="max-width: 480px;">
+<section class="about-section about-panel" data-panel="goals" style="max-width: 480px;">
   <h2>Goals &amp; Ambitions</h2>
   <div class="goals-checklist">
     <div class="goal-item">
@@ -193,7 +179,7 @@
 </section>
 
 <!-- Contact & Resume -->
-<section id="about-contact" class="about-section about-panel" style="max-width: 560px;">
+<section class="about-section about-panel" data-panel="contact" style="max-width: 560px;">
   <h2>Contact &amp; Resume</h2>
   <div class="about-terminal">
     <div><span class="dim">email:</span> ryaanaqil3@gmail.com</div>
@@ -232,7 +218,7 @@
 <script src="js/shared.js"></script>
 <script src="js/age-tracker.js"></script>
 <script src="js/music-player.js"></script>
-<script src="js/about-tabs.js"></script>
+<script src="js/tabs.js"></script>
 <script src="js/easter-eggs.js"></script>
 </body>
 </html>

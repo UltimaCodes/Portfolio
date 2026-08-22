@@ -26,47 +26,85 @@
 
 <div class="about-header">
   <h1>SETUP</h1>
-  <p class="about-tagline">What I actually build on</p>
+  <p class="about-tagline">What I actually build on (and occasionally set fire to)</p>
 </div>
 
-<div class="about-section">
-  <h2>Hardware</h2>
+<nav class="about-jumpnav" role="tablist">
+  <button class="about-jumptab active" role="tab" data-tab="pc">PC Build</button>
+  <button class="about-jumptab" role="tab" data-tab="displays">Displays</button>
+  <button class="about-jumptab" role="tab" data-tab="peripherals">Peripherals</button>
+  <button class="about-jumptab" role="tab" data-tab="mobile">Mobile</button>
+  <button class="about-jumptab" role="tab" data-tab="audio">Audio</button>
+</nav>
+
+<!-- PC Build -->
+<section class="about-section about-panel active" data-panel="pc" style="max-width: 560px;">
+  <h2>PC Build</h2>
   <div class="about-table cols-2">
     <div class="about-row about-row-head"><span>Component</span><span>Spec</span></div>
     <div class="about-row"><span>CPU</span><span>Ryzen 5 5600</span></div>
-    <div class="about-row"><span>GPU</span><span>RTX 2070 Super</span></div>
-    <div class="about-row"><span>RAM</span><span>32GB DDR4</span></div>
-    <div class="about-row"><span>OS</span><span>Windows 11</span></div>
+    <div class="about-row"><span>GPU</span><span>Gigabyte RTX 2070 Super OC</span></div>
+    <div class="about-row"><span>Motherboard</span><span>MAXSUN B450M Battle-AX</span></div>
+    <div class="about-row"><span>RAM</span><span>32GB DDR4 3200MHz</span></div>
+    <div class="about-row"><span>Storage</span><span>1TB NVMe + 1TB SATA</span></div>
+    <div class="about-row"><span>PSU</span><span>XPG Pylon 750W, 80+ Bronze</span></div>
+    <div class="about-row"><span class="alert">Cooler</span><span class="alert">8-pipe air cooler, brand unknown</span></div>
+    <div class="about-row"><span class="alert">Case</span><span class="alert">Unbranded fishtank chassis</span></div>
+    <div class="about-row"><span class="alert">Fans</span><span class="alert">3x RGB (function: looking cool)</span></div>
   </div>
-</div>
+  <p style="font-family: var(--font-body); color: var(--text-dim); font-size: 0.95rem; margin-top: 14px; max-width: 480px;">
+    The case is a fishtank. Not fishtank-<em>style</em> — an actual glass-panel case that exists because it looked
+    cooler than explaining what's inside it. The cooler is 8 heatpipes of pure faith; I genuinely do not know
+    what brand it is and at this point I've made peace with that.
+  </p>
+</section>
 
-<div class="about-section">
-  <h2>Software</h2>
-  <div class="about-skills-grid" style="max-width: 640px; margin: 15px auto 0;">
-    <div class="about-skill-card">
-      <h4>Code</h4>
-      <div class="about-chip-row">
-        <span class="about-skill-chip">JetBrains Rider</span>
-        <span class="about-skill-chip">Git / GitHub</span>
-        <span class="about-skill-chip">Unity Engine</span>
-      </div>
-    </div>
-    <div class="about-skill-card">
-      <h4>Robotics</h4>
-      <div class="about-chip-row">
-        <span class="about-skill-chip">Arduino IDE</span>
-        <span class="about-skill-chip">ESP32 toolchain</span>
-      </div>
-    </div>
-    <div class="about-skill-card">
-      <h4>Creative</h4>
-      <div class="about-chip-row">
-        <span class="about-skill-chip">Photoshop</span>
-        <span class="about-skill-chip">Premiere Pro</span>
-      </div>
-    </div>
+<!-- Displays -->
+<section class="about-section about-panel" data-panel="displays" style="max-width: 560px;">
+  <h2>Displays</h2>
+  <div class="about-table cols-2">
+    <div class="about-row about-row-head"><span>Role</span><span>Display</span></div>
+    <div class="about-row"><span>Main</span><span>MSI MAG 256F, 200Hz</span></div>
+    <div class="about-row"><span>Secondary</span><span>Samsung, 1050p, 60Hz</span></div>
+    <div class="about-row"><span class="alert">Tertiary</span><span class="alert">Redmi A5 (yes, the phone)</span></div>
   </div>
-</div>
+  <p style="font-family: var(--font-body); color: var(--text-dim); font-size: 0.95rem; margin-top: 14px; max-width: 480px;">
+    Monitor #3 is a Redmi A5 propped up next to the other two, doing its best impression of a display via a
+    remote-desktop app. It works. That's the whole justification.
+  </p>
+</section>
+
+<!-- Peripherals -->
+<section class="about-section about-panel" data-panel="peripherals" style="max-width: 560px;">
+  <h2>Peripherals</h2>
+  <div class="about-table cols-2">
+    <div class="about-row about-row-head"><span>Item</span><span>Model</span></div>
+    <div class="about-row"><span>Mouse</span><span>AttackShark X3</span></div>
+    <div class="about-row"><span>Keyboard</span><span>AttackShark X65HE</span></div>
+    <div class="about-row"><span>Mic</span><span>Yanmai USB Mic</span></div>
+    <div class="about-row"><span>Webcam</span><span>Unbranded, 1080p60</span></div>
+  </div>
+</section>
+
+<!-- Mobile -->
+<section class="about-section about-panel" data-panel="mobile" style="max-width: 480px;">
+  <h2>Mobile</h2>
+  <div class="about-table cols-2">
+    <div class="about-row about-row-head"><span>Role</span><span>Device</span></div>
+    <div class="about-row"><span>Phone</span><span>CMF Phone 2 Pro</span></div>
+    <div class="about-row"><span>Tablet</span><span>Samsung Galaxy Tab S10 Lite</span></div>
+  </div>
+</section>
+
+<!-- Audio -->
+<section class="about-section about-panel" data-panel="audio" style="max-width: 480px;">
+  <h2>Audio</h2>
+  <div class="about-table cols-2">
+    <div class="about-row about-row-head"><span>Item</span><span>Model</span></div>
+    <div class="about-row"><span>IEMs</span><span>SIMGOT EW200</span></div>
+    <div class="about-row"><span>DAC</span><span>KZ AMQ 02</span></div>
+  </div>
+</section>
 
 <footer>
   &copy; 2025 Ryaan Aaqil. All rights NOT reserved.
@@ -74,6 +112,7 @@
 
 <!-- Scripts -->
 <script src="js/shared.js"></script>
+<script src="js/tabs.js"></script>
 <script src="js/easter-eggs.js"></script>
 </body>
 </html>
