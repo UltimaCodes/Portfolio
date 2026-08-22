@@ -241,13 +241,7 @@
                 animation: mgr-entrance 0.5s ease-out;
             `;
 
-        const terminal = utils.createElement('div');
-        terminal.style.cssText = `
-                background: #000; border: 3px solid #ff0000; padding: 30px;
-                font-family: 'Press Start 2P', monospace; text-align: center;
-                box-shadow: 0 0 50px rgba(255, 0, 0, 0.8);
-                animation: mgr-pulse 2s ease-in-out infinite;
-            `;
+        const terminal = utils.createElement('div', 'mgr-terminal');
 
         terminal.innerHTML = `
                 <div style="color: #ff0000; font-size: 1.5rem; margin-bottom: 20px;">NANOMACHINES, SON!</div>
@@ -291,7 +285,7 @@
         position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%);
         width: 600px; height: 150px; background: #000;
         border: 4px solid #fff; z-index: 1000;
-        font-family: 'Press Start 2P', monospace;
+        font-family: var(--font-head);
     `;
 
         const textBox = utils.createElement('div');
@@ -364,7 +358,7 @@
         const text = utils.createElement('div');
         text.style.cssText = `
                 position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-                color: #ffff00; font-family: 'Press Start 2P', monospace; font-size: 1rem;
+                color: #ffff00; font-family: var(--font-head); font-size: 1rem;
                 z-index: 1000; text-align: center; background: rgba(0,0,0,0.8);
                 padding: 20px; border: 2px solid #ffff00;
             `;
@@ -413,7 +407,7 @@
             background: #000;
             color: #ff00ff;
             padding: 10px;
-            font-family: 'Press Start 2P', monospace;
+            font-family: var(--font-head);
             font-size: 0.6rem;
             border: 2px solid #ff0000;
             z-index: 9999;
@@ -585,7 +579,6 @@
 
         const msg = utils.createElement("div");
         msg.id = "ultrakill-message";
-        msg.style.textShadow = "0 0 10px #f00, 0 0 20px #f00, 0 0 30px #f00";
         container.appendChild(msg);
 
         let currentLine = 0;
@@ -621,6 +614,10 @@
 
         typeNextChar();
     }
+
+    // Exposed so js/easter-eggs.js can trigger the same sequence on demand
+    // (e.g. dragging the dog onto the title), not just on the 45s interval.
+    window.triggerDevourerSequence = animateDog;
 
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initHomepageEffects);

@@ -344,7 +344,7 @@ h1.title.hidden {
   z-index: 1000;
   max-width: 300px;
   border-radius: 4px;
-  box-shadow: 0 0 20px rgba(51, 255, 51, 0.3);
+  box-shadow: 4px 4px 0 rgba(51, 255, 51, 0.35);
   animation: dogger-appear 0.5s ease-in forwards;
 }
 
@@ -357,14 +357,6 @@ h1.title.hidden {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.dogger-line {
-  margin: 2px 0;
-  opacity: 0;
-  animation: fadeInLine 0.5s ease-in forwards;
-  font-family: var(--font-body);
-  color: #33ff33;
 }
 
 @keyframes fadeInLine {
@@ -1188,38 +1180,6 @@ body:not(.homepage) .centered-container {
   animation: mgr-pulse 2s ease-in-out infinite;
 }
 
-.nier-glitch {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(255, 255, 255, 0.1);
-  z-index: 999;
-  pointer-events: none;
-  animation: nier-static 0.1s infinite;
-}
-
-@keyframes nier-static {
-  0% { opacity: 0; }
-  50% { opacity: 0.1; }
-  100% { opacity: 0; }
-}
-
-.undertale-heart {
-  position: fixed;
-  color: #ff0000;
-  font-size: 2rem;
-  z-index: 1000;
-  animation: heart-float 3s ease-in-out;
-  pointer-events: none;
-}
-
-@keyframes heart-float {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  50% { transform: translateY(-50px) scale(1.2); }
-  100% { transform: translateY(-100px) scale(0.8); opacity: 0; }
-}
 
 /* ===== Shared design-system components (Refined Classic) ===== */
 /* "Hard-Shadow Sticker" card shell — used by later page-specific rebuilds */
@@ -1270,6 +1230,38 @@ body:not(.homepage) .centered-container {
 }
 .hp-val.alert {
   color: var(--accent-alert);
+}
+
+/* ===== Interactive easter-egg styles ===== */
+body.konami-active {
+  animation: konami-shake 0.15s linear infinite;
+}
+@keyframes konami-shake {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, 2px); }
+  50% { transform: translate(2px, -2px); }
+  75% { transform: translate(-2px, -2px); }
+}
+
+#cat-img.cat-frenzy-spin {
+  animation: cat-spin 0.4s linear infinite;
+}
+@keyframes cat-spin {
+  to { transform: rotate(360deg); }
+}
+
+#hidden-secret {
+  display: inline-block;
+  margin-left: 8px;
+  opacity: 0.03;
+  cursor: default;
+  user-select: none;
+  transition: opacity 0.3s ease;
+}
+#hidden-secret.found {
+  opacity: 1;
+  color: var(--accent);
+  cursor: default;
 }
 
 /* ===== Consolidated responsive rules (was 6 separate max-width:768px blocks) ===== */
