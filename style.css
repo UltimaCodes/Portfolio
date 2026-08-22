@@ -308,77 +308,6 @@ h1.title.hidden {
   order: 2;
 }
 
-/* Enhanced Status Grid */
-.status-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 30px auto;
-}
-
-.status-box {
-  background-color: #000;
-  border: 2px solid #33ff33;
-  padding: 15px;
-  font-family: var(--font-body);
-  color: #33ff33;
-  border-radius: 4px;
-  box-shadow: 0 0 10px rgba(51, 255, 51, 0.2);
-}
-
-.status-header {
-  color: #ff00aa;
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-align: center;
-  font-size: 0.8rem;
-  border-bottom: 1px solid #33ff33;
-  padding-bottom: 5px;
-}
-
-.status-content {
-  font-size: 0.7rem;
-}
-
-.status-line {
-  margin: 5px 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-.status-value {
-  color: #ffffff;
-}
-
-/* Code Matrix Display */
-.code-matrix {
-  background-color: #000;
-  border: 2px solid #33ff33;
-  padding: 20px;
-  margin: 30px auto;
-  max-width: 800px;
-  font-family: var(--font-body);
-  color: #33ff33;
-  border-radius: 4px;
-  box-shadow: 0 0 15px rgba(51, 255, 51, 0.3);
-}
-
-.matrix-header {
-  color: #ff00aa;
-  font-weight: bold;
-  margin-bottom: 15px;
-  text-align: center;
-  font-size: 0.9rem;
-  border-bottom: 1px solid #33ff33;
-  padding-bottom: 8px;
-}
-
-.matrix-content {
-  font-size: 0.75rem;
-  line-height: 1.4;
-}
-
 .commit-line {
   margin: 3px 0;
   opacity: 0;
@@ -558,17 +487,22 @@ footer {
 
 /* Centered container for other pages */
 .bio-centered {
-  background-color: #1c1c40;
+  background-color: var(--panel);
   padding: 40px 50px;
-  border: 2px solid #fff;
-  font-size: 1rem;
+  border: 1px solid var(--border);
+  font-size: 1.1rem;
   line-height: 1.7;
   max-width: 1200px;
   margin: 40px auto;
   border-radius: 8px;
+  font-family: var(--font-body);
+  color: var(--text);
+  text-align: center;
+}
+
+.bio-centered h1 {
   font-family: var(--font-head);
   color: #fff;
-  text-align: center;
 }
 
 body:not(.homepage) .terminal,
@@ -1299,6 +1233,30 @@ body:not(.homepage) .centered-container {
   gap: 5px 16px;
 }
 
+/* Homepage status cards — row hugs its own content and centers,
+   does not stretch across the page (see no-dead-space rule in the spec) */
+.hp-cards {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin: 30px auto;
+}
+.hp-card {
+  width: 230px;
+  flex-shrink: 0;
+}
+.hp-label {
+  color: var(--text-dim-2);
+  white-space: nowrap;
+}
+.hp-val {
+  white-space: nowrap;
+}
+.hp-val.alert {
+  color: var(--accent-alert);
+}
+
 /* ===== Consolidated responsive rules (was 6 separate max-width:768px blocks) ===== */
 @media (max-width: 768px) {
   .info {
@@ -1329,25 +1287,6 @@ body:not(.homepage) .centered-container {
     padding: 20px 25px;
     font-size: 0.8rem;
     order: 2;
-  }
-
-  .status-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    margin: 20px;
-  }
-
-  .status-box, .code-matrix {
-    padding: 15px;
-    margin: 15px;
-  }
-
-  .status-content, .matrix-content {
-    font-size: 0.65rem;
-  }
-
-  .status-header, .matrix-header {
-    font-size: 0.75rem;
   }
 
   .project-card {

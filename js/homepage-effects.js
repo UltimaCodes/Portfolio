@@ -93,13 +93,13 @@
     }
 
     function initStatusAnimations() {
-        // Animate status values
-        const statusValues = document.querySelectorAll('.status-value');
+        // Animate status card values
+        const statusValues = document.querySelectorAll('.hp-val');
         statusValues.forEach((value, index) => {
             setTimeout(() => {
                 value.style.opacity = '0';
                 value.style.transform = 'translateY(10px)';
-                value.style.transition = 'all 0.5s ease';
+                value.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
 
                 setTimeout(() => {
                     value.style.opacity = '1';
