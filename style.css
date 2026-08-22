@@ -809,32 +809,33 @@ body:not(.homepage) .centered-container {
 }
 
 .about-section {
-  background-color: #1c1c40;
+  background-color: var(--panel);
   padding: 30px;
-  border: 2px solid #fff;
+  border: 1px solid var(--border);
   margin: 20px auto;
   max-width: 1200px;
   border-radius: 8px;
-  font-family: var(--font-head);
-  color: #fff;
+  scroll-margin-top: 20px;
 }
 
 .about-section h2 {
-  color: #ff00aa;
+  font-family: var(--font-head);
+  color: #fff;
   font-size: 1.2rem;
   margin-bottom: 20px;
   text-align: center;
-  text-shadow: 0 0 5px #ff00aa;
 }
 
 .about-section h3 {
-  color: #33ff33;
+  font-family: var(--font-head);
+  color: var(--accent);
   font-size: 0.9rem;
   margin: 15px 0 10px 0;
 }
 
 .about-section p, .about-section li {
-  font-size: 0.7rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 10px;
 }
@@ -852,10 +853,157 @@ body:not(.homepage) .centered-container {
 
 .about-section li:before {
   content: ">";
-  color: #ff00aa;
+  color: var(--accent);
   position: absolute;
   left: 0;
 }
+
+/* Header */
+.about-header {
+  text-align: center;
+  margin: 40px 0 20px;
+}
+.about-header h1 {
+  font-family: var(--font-head);
+  color: #fff;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 var(--accent-alert-shadow);
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.about-tagline {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.about-chips {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.about-chip {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-dim-2);
+  border: 1px solid var(--border);
+  background: var(--panel);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* Quick-jump pills — scroll anchors, not hide/show panels */
+.about-jumpnav {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 0 auto 30px;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0;
+}
+.about-jumptab {
+  font-family: var(--font-head);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-bottom: 2px solid transparent;
+}
+.about-jumptab:hover,
+.about-jumptab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Introduction pull-quote */
+.about-quote {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--text);
+  border-left: 3px solid var(--accent-alert-shadow);
+  padding-left: 16px;
+  margin-bottom: 15px;
+}
+
+/* Skills: bounded cards with wrapping chips — scales to any item count */
+.about-skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 15px;
+}
+.about-skill-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 14px;
+  background: var(--bg);
+}
+.about-skill-card h4 {
+  font-family: var(--font-head);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+.about-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.about-skill-chip {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--accent);
+  background: rgba(51, 255, 51, 0.08);
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+/* MUN table — capped width so it doesn't stretch into dead space */
+.about-table {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.about-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.about-row:last-child { border-bottom: none; }
+.about-row:nth-child(even) { background: var(--panel); }
+.about-row .alert { color: var(--accent-alert); }
+.about-row-head {
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+/* Contact terminal readout — sized to its own content, not full width */
+.about-terminal {
+  background: #050611;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--accent);
+  display: inline-block;
+  min-width: 260px;
+  margin: 0 auto;
+}
+.about-terminal .dim { color: var(--text-dim); }
+.about-terminal a { color: var(--accent); }
+.about-terminal div { padding: 2px 0; }
 
 .skills-grid {
   display: grid;
@@ -894,22 +1042,23 @@ body:not(.homepage) .centered-container {
 .goal-checkbox {
   width: 15px;
   height: 15px;
-  border: 2px solid #fff;
+  border: 2px solid var(--text);
   margin-right: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.6rem;
-  color: #33ff33;
+  color: var(--accent);
 }
 
 .goal-checkbox.completed {
-  background-color: #33ff33;
-  color: #000;
+  background-color: var(--accent);
+  color: var(--bg);
 }
 
 .goal-text {
-  font-size: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
   flex: 1;
 }
 
