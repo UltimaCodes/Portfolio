@@ -2,52 +2,8 @@
 (function() {
     'use strict';
 
-    let galleryIntervals = new Map();
-
     function initProjectsPage() {
-        setupProjectGalleries();
         setupProjectHoverEffects();
-    }
-
-    function setupProjectGalleries() {
-        const galleries = document.querySelectorAll('.project-gallery');
-
-        galleries.forEach(gallery => {
-            const images = gallery.querySelectorAll('img');
-            if (images.length <= 1) return;
-
-            let currentIndex = 0;
-
-            const rotateImages = () => {
-                images[currentIndex].classList.remove('active');
-                currentIndex = (currentIndex + 1) % images.length;
-                images[currentIndex].classList.add('active');
-            };
-
-            // Start rotation when project card is hovered
-            const projectCard = gallery.closest('.project-card');
-            if (projectCard) {
-                projectCard.addEventListener('mouseenter', () => {
-                    if (!galleryIntervals.has(gallery)) {
-                        const interval = setInterval(rotateImages, 1000);
-                        galleryIntervals.set(gallery, interval);
-                    }
-                });
-
-                projectCard.addEventListener('mouseleave', () => {
-                    const interval = galleryIntervals.get(gallery);
-                    if (interval) {
-                        clearInterval(interval);
-                        galleryIntervals.delete(gallery);
-
-                        // Reset to first image
-                        images.forEach(img => img.classList.remove('active'));
-                        images[0].classList.add('active');
-                        currentIndex = 0;
-                    }
-                });
-            }
-        });
     }
 
     function setupProjectHoverEffects() {

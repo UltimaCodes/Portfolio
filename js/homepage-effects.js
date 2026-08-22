@@ -17,7 +17,6 @@
         setupEventListeners();
         startAnimations();
         initDynamicSeparator();
-        initAnalytics();
         initMatrixRain();
         initStatusAnimations();
     }
@@ -26,22 +25,38 @@
         dog = utils.getElement('.dog');
         title = utils.getElement('.title');
         catImgElement = utils.getElement('#cat-img');
-        devourerAudio = new Audio('/res/DevourerSpawn.mp3');
-        ultrakillAudio = new Audio('/res/ultrakillsfx.mp3');
-        undertaleAudio = new Audio('/res/utale.mp3');
-        spamtonAudio = new Audio('/res/spamt.mp3');
-        matrixAudio = new Audio('/res/mtrx.mp3');
-        mgrrAudio = new Audio('/res/nanomachines.mp3');
-        jonklerAudio = new Audio('/res/jonkler.mp3');
-        
-        // Set volumes for easter egg sounds
-        if (devourerAudio) devourerAudio.volume = 0.4;
-        if (ultrakillAudio) ultrakillAudio.volume = 0.5;
-        if (undertaleAudio) undertaleAudio.volume = 0.4;
-        if (spamtonAudio) spamtonAudio.volume = 0.4;
-        if (matrixAudio) matrixAudio.volume = 0.3;
-        if (mgrrAudio) mgrrAudio.volume = 0.5;
-        if (jonklerAudio) jonklerAudio.volume = 0.4;
+        // Easter-egg audio is lazy-loaded on first trigger instead of here —
+        // see the getXAudio() helpers below. Loading all 7 files upfront cost
+        // ~750KB on every homepage visit regardless of whether any egg fires.
+    }
+
+    function getDevourerAudio() {
+        if (!devourerAudio) { devourerAudio = new Audio('/res/DevourerSpawn.mp3'); devourerAudio.volume = 0.4; }
+        return devourerAudio;
+    }
+    function getUltrakillAudio() {
+        if (!ultrakillAudio) { ultrakillAudio = new Audio('/res/ultrakillsfx.mp3'); ultrakillAudio.volume = 0.5; }
+        return ultrakillAudio;
+    }
+    function getUndertaleAudio() {
+        if (!undertaleAudio) { undertaleAudio = new Audio('/res/utale.mp3'); undertaleAudio.volume = 0.4; }
+        return undertaleAudio;
+    }
+    function getSpamtonAudio() {
+        if (!spamtonAudio) { spamtonAudio = new Audio('/res/spamt.mp3'); spamtonAudio.volume = 0.4; }
+        return spamtonAudio;
+    }
+    function getMatrixAudio() {
+        if (!matrixAudio) { matrixAudio = new Audio('/res/mtrx.mp3'); matrixAudio.volume = 0.3; }
+        return matrixAudio;
+    }
+    function getMgrrAudio() {
+        if (!mgrrAudio) { mgrrAudio = new Audio('/res/nanomachines.mp3'); mgrrAudio.volume = 0.5; }
+        return mgrrAudio;
+    }
+    function getJonklerAudio() {
+        if (!jonklerAudio) { jonklerAudio = new Audio('/res/jonkler.mp3'); jonklerAudio.volume = 0.4; }
+        return jonklerAudio;
     }
 
     function setupEventListeners() {
@@ -77,18 +92,6 @@
         separator.textContent = '='.repeat(separatorLength);
     }
 
-    function initAnalytics() {
-        const totalVisitors = utils.getElement('#total-visitors');
-        const monthlyVisitors = utils.getElement('#monthly-visitors');
-
-        if (!totalVisitors || !monthlyVisitors) return;
-
-        setTimeout(() => {
-            animateCounter(totalVisitors, 0, 218, 2000);
-            animateCounter(monthlyVisitors, 0, 12, 1500);
-        }, 500);
-    }
-
     function initStatusAnimations() {
         // Animate status values
         const statusValues = document.querySelectorAll('.status-value');
@@ -116,26 +119,6 @@
                 }, index * 400 + 1000);
             }
         });
-    }
-
-    function animateCounter(element, start, end, duration) {
-        const startTime = performance.now();
-
-        function updateCounter(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-
-            const easeOut = 1 - Math.pow(1 - progress, 3);
-            const current = Math.floor(start + (end - start) * easeOut);
-
-            element.textContent = current.toLocaleString();
-
-            if (progress < 1) {
-                requestAnimationFrame(updateCounter);
-            }
-        }
-
-        requestAnimationFrame(updateCounter);
     }
 
     function handleKeydown(e) {
@@ -276,9 +259,10 @@
         document.body.appendChild(overlay);
 
         // Play MGR sound effect
-        if (audioAllowed && mgrrAudio) {
-            mgrrAudio.currentTime = 0;
-            mgrrAudio.play().catch(() => {});
+        if (audioAllowed) {
+            const audio = getMgrrAudio();
+            audio.currentTime = 0;
+            audio.play().catch(() => {});
         }
 
         // Add screen shake
@@ -320,9 +304,10 @@
         document.body.appendChild(battleBox);
 
         // Play Undertale sound effect
-        if (audioAllowed && undertaleAudio) {
-            undertaleAudio.currentTime = 0;
-            undertaleAudio.play().catch(() => {});
+        if (audioAllowed) {
+            const audio = getUndertaleAudio();
+            audio.currentTime = 0;
+            audio.play().catch(() => {});
         }
 
         const soul = utils.createElement('img');
@@ -391,9 +376,10 @@
         document.body.appendChild(text);
 
         // Play Spamton sound effect
-        if (audioAllowed && spamtonAudio) {
-            spamtonAudio.currentTime = 0;
-            spamtonAudio.play().catch(() => {});
+        if (audioAllowed) {
+            const audio = getSpamtonAudio();
+            audio.currentTime = 0;
+            audio.play().catch(() => {});
         }
 
         setTimeout(() => {
@@ -404,9 +390,10 @@
     function showJonklerEasterEgg() {
 
         // Play Jonkler sound effect
-        if (audioAllowed && jonklerAudio) {
-            jonklerAudio.currentTime = 0;
-            jonklerAudio.play().catch(() => {});
+        if (audioAllowed) {
+            const audio = getJonklerAudio();
+            audio.currentTime = 0;
+            audio.play().catch(() => {});
         }
 
         const jonklerTexts = [
@@ -476,9 +463,10 @@
         canvas.style.opacity = '0.3';
 
         // Play Matrix sound effect
-        if (audioAllowed && matrixAudio) {
-            matrixAudio.currentTime = 0;
-            matrixAudio.play().catch(() => {});
+        if (audioAllowed) {
+            const audio = getMatrixAudio();
+            audio.currentTime = 0;
+            audio.play().catch(() => {});
         }
 
         function draw() {
@@ -549,8 +537,9 @@
         }, 100);
 
         if (audioAllowed) {
-            devourerAudio.currentTime = 0;
-            devourerAudio.play().catch(() => {});
+            const audio = getDevourerAudio();
+            audio.currentTime = 0;
+            audio.play().catch(() => {});
         }
 
         setTimeout(() => {
@@ -571,8 +560,9 @@
 
             setInterval(() => {
                 const idx = Math.floor(Math.random() * catImgs.length);
-                catImgElement.src = catImgs[idx];
-                catImgElement.alt = `Pixel cat ${idx + 1}`;
+                const src = catImgs[idx];
+                catImgElement.src = src;
+                catImgElement.alt = `Pixel cat ${src.match(/\d+/)[0]}`;
             }, 3000);
         }
 
@@ -587,9 +577,10 @@
         const container = utils.getElement("#ultrakill-container");
         if (!container) return;
 
-        if (audioAllowed && ultrakillAudio) {
-            ultrakillAudio.currentTime = 0;
-            ultrakillAudio.play().catch(() => {});
+        if (audioAllowed) {
+            const audio = getUltrakillAudio();
+            audio.currentTime = 0;
+            audio.play().catch(() => {});
         }
 
         const msg = utils.createElement("div");
