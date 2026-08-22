@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Legacy Archive | Ryaan Aaqil</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-74WXTDJ616"></script>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #0b0c2a;
+  color: #fff;
+  overflow-x: hidden;
+  padding: 20px;
+}
+
+.parallax-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 150vh;
+  background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+  background-repeat: repeat;
+  background-size: cover;
+  transform: translateZ(0);
+  z-index: -1;
+  will-change: transform;
+  pointer-events: none;
+  opacity: 1;
+  transition: transform 0.1s ease-out;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  border: 2px solid #ffffff44;
+  margin-bottom: 30px;
+}
+
+nav .left, nav .right {
+  display: flex;
+  gap: 20px;
+}
+
+nav .center {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-home {
+  all: unset;
+  cursor: pointer;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.nav-home:visited {
+  color: white;
+}
+
+.nav-home:hover {
+  transform: scale(1.5);
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  background-color: #1a1b40;
+  border: 2px solid #fff;
+  transition: all 0.3s ease;
+}
+
+.title-container {
+  position: relative;
+  text-align: center;
+  margin: 40px 0 10px;
+}
+
+h1.title {
+  font-size: 3.5rem;
+  background: linear-gradient(180deg, #ffffff 0%, #ff00aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  transition: opacity 0.3s ease;
+}
+
+h1.title.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dog {
+  position: absolute;
+  top: 50%;
+  left: -200px;
+  transform: translateY(-50%);
+  height: 100px;
+  width: 800px;
+  max-width: 80vw;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dog.animate {
+  animation: dog-eat 2.5s ease-in-out forwards;
+}
+
+@keyframes dog-eat {
+  0% { left: -800px; opacity: 0; filter: hue-rotate(0deg) brightness(1); }
+  5% { opacity: 1; filter: hue-rotate(0deg) brightness(1.2); }
+  15% { opacity: 1; filter: hue-rotate(45deg) brightness(1.5); transform: translateY(-50%) scale(1.1); }
+  50% { filter: hue-rotate(180deg) brightness(1.8); transform: translateY(-50%) scale(1.2); }
+  85% { left: 100%; opacity: 1; filter: hue-rotate(270deg) brightness(1.5); transform: translateY(-50%) scale(1.1); }
+  95% { left: 100%; opacity: 1; filter: hue-rotate(360deg) brightness(1.2); }
+  100% { left: 100%; opacity: 0; filter: hue-rotate(360deg) brightness(1); }
+}
+
+@keyframes devourer-particle {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-100px) scale(0.5); }
+}
+
+@keyframes soul-pulse {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.2); }
+}
+
+@keyframes mgr-entrance {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes mgr-pulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.5); }
+  50% { box-shadow: 0 0 50px rgba(255, 0, 0, 0.8); }
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #aaf;
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeSlideIn 1s ease-out forwards;
+  animation-delay: 1s;
+}
+
+@keyframes fadeSlideIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.info .separator {
+  flex: 1;
+  min-width: 200px;
+  text-align: center;
+  font-family: monospace;
+  letter-spacing: 2px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .info { flex-direction: column; text-align: center; gap: 15px; }
+  .info .separator { min-width: auto; font-size: 0.6rem; }
+}
+
+@media (min-width: 1440px) {
+  .info .separator { letter-spacing: 4px; font-size: 0.8rem; }
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+}
+
+.cat-roulette {
+  width: 320px;
+  height: 320px;
+  margin: 0;
+  border: 2px solid #fff;
+  background-color: #1c1c40;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  order: 1;
+}
+
+.bio-centered {
+  flex: 1;
+  min-width: 300px;
+  order: 2;
+}
+
+@media (max-width: 768px) {
+  .main-content { flex-direction: column; align-items: center; }
+  .cat-roulette { width: 100%; max-width: 300px; height: 300px; margin: 0 auto 20px auto; order: 1; }
+  .bio-centered { padding: 20px 25px; font-size: 0.8rem; order: 2; }
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 30px auto;
+}
+
+.status-box {
+  background-color: #000;
+  border: 2px solid #33ff33;
+  padding: 15px;
+  font-family: monospace;
+  color: #33ff33;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(51, 255, 51, 0.2);
+}
+
+.status-header {
+  color: #ff00aa;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 0.8rem;
+  border-bottom: 1px solid #33ff33;
+  padding-bottom: 5px;
+}
+
+.status-content { font-size: 0.7rem; }
+.status-line { margin: 5px 0; display: flex; justify-content: space-between; }
+.status-value { color: #ffffff; }
+
+.code-matrix {
+  background-color: #000;
+  border: 2px solid #33ff33;
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 800px;
+  font-family: monospace;
+  color: #33ff33;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(51, 255, 51, 0.3);
+}
+
+.matrix-header {
+  color: #ff00aa;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #33ff33;
+  padding-bottom: 8px;
+}
+
+.matrix-content { font-size: 0.75rem; line-height: 1.4; }
+
+.commit-line { margin: 3px 0; opacity: 0; animation: fadeInLine 0.5s ease-in forwards; }
+.commit-line:nth-child(1) { animation-delay: 0.5s; }
+.commit-line:nth-child(2) { animation-delay: 1s; }
+.commit-line:nth-child(3) { animation-delay: 1.5s; }
+.commit-line:nth-child(4) { animation-delay: 2s; }
+.commit-line:nth-child(5) { animation-delay: 2.5s; }
+.commit-line:nth-child(6) { animation-delay: 3s; }
+.commit-line:nth-child(7) { animation-delay: 3.5s; }
+
+.cursor { animation: blink 1s steps(2, start) infinite, fadeInLine 0.5s ease-in forwards; }
+
+@keyframes blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+
+@media (max-width: 768px) {
+  .status-grid { grid-template-columns: 1fr; gap: 15px; margin: 20px; }
+  .status-box, .code-matrix { padding: 15px; margin: 15px; }
+  .status-content, .matrix-content { font-size: 0.65rem; }
+  .status-header, .matrix-header { font-size: 0.75rem; }
+}
+
+.analytics-section {
+  background-color: #1c1c40;
+  border: 2px solid #33ff33;
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 600px;
+  text-align: center;
+  font-family: monospace;
+  color: #33ff33;
+  border-radius: 8px;
+}
+
+.analytics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }
+.analytics-item { background-color: #000; border: 1px solid #33ff33; padding: 15px; border-radius: 4px; }
+.analytics-number { font-size: 1.5rem; color: #ff00aa; display: block; margin-top: 5px; text-shadow: 0 0 5px #ff00aa; }
+
+@media (max-width: 768px) {
+  .analytics-grid { grid-template-columns: 1fr; gap: 15px; }
+  .analytics-section { padding: 15px; font-size: 0.7rem; }
+  .analytics-number { font-size: 1.2rem; }
+}
+
+.dogger-terminal {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #000;
+  color: #33ff33;
+  border: 2px solid #33ff33;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 0.8rem;
+  z-index: 1000;
+  max-width: 300px;
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(51, 255, 51, 0.3);
+  animation: dogger-appear 0.5s ease-in forwards;
+}
+
+@keyframes dogger-appear { 0% { opacity: 0; transform: translateY(-20px); } 100% { opacity: 1; transform: translateY(0); } }
+
+.dogger-line { margin: 2px 0; opacity: 0; animation: fadeInLine 0.5s ease-in forwards; font-family: monospace; color: #33ff33; }
+
+@keyframes fadeInLine { to { opacity: 1; } }
+
+.bio { flex: 1; background-color: #1c1c40; padding: 20px; border: 2px solid #fff; font-size: 0.75rem; line-height: 1.5; }
+
+.terminal {
+  display: table;
+  margin: 20px auto;
+  background-color: #000;
+  color: #33ff33;
+  padding: 20px;
+  border: 2px solid #fff;
+  font-family: monospace;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.btn-pixel {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px 0;
+  background-color: #0b0c2a;
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 4px 4px 0 #ff00aa;
+  text-decoration: none;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.75rem;
+  transition: 0.2s ease;
+}
+
+.btn-pixel:hover { background-color: #ff00aa; color: #0b0c2a; box-shadow: 0 0 0 #ff00aa; }
+
+footer { text-align: center; font-size: 0.75rem; margin-top: 40px; border-top: 2px solid #fff; padding-top: 20px; color: #aaa; font-family: 'Press Start 2P', cursive; }
+
+nav a { position: relative; transition: color 0.3s ease, text-shadow 0.3s ease; }
+nav a:hover {
+  color: #ff66cc;
+  text-shadow: 0 0 5px #ff66cc, 0 0 10px #ff33aa, 0 0 15px #ff0088, 0 0 20px #ff0088;
+  animation: flicker 1.5s infinite alternate;
+  background-color: #ff00aa;
+}
+@keyframes flicker {
+  0%, 100% { text-shadow: 0 0 10px #ff33aa; }
+  50% { text-shadow: 0 0 20px #ff66cc, 0 0 30px #ff00aa; }
+}
+
+.terminal .cursor { display: inline-block; width: 10px; background-color: #33ff33; margin-left: 2px; animation: blink 1s steps(2, start) infinite; vertical-align: bottom; }
+
+.glitch { color: #33ff33; position: relative; animation: glitch-anim 2s infinite; }
+@keyframes glitch-anim {
+  0% { text-shadow: 1px 0 red; }
+  20% { text-shadow: -1px 0 cyan; }
+  40% { text-shadow: 1px 1px lime; }
+  60% { text-shadow: -1px -1px magenta; }
+  80% { text-shadow: 2px 0 yellow; }
+  100% { text-shadow: 0 0 transparent; }
+}
+
+.boot-sequence {
+  font-family: monospace;
+  color: #33ff33;
+  background-color: #000;
+  border: 2px solid #fff;
+  padding: 15px;
+  font-size: 0.75rem;
+  max-width: 600px;
+  margin: 20px auto;
+  white-space: pre-line;
+  user-select: none;
+  animation: flicker 2s infinite alternate;
+}
+
+.sys-diag {
+  font-family: monospace;
+  background-color: #000;
+  border: 2px solid #33ff33;
+  color: #33ff33;
+  padding: 10px;
+  max-width: 400px;
+  margin: 20px auto;
+  font-size: 0.75rem;
+  line-height: 1.3;
+}
+
+.cat-roulette img { width: 300px; height: 300px; image-rendering: pixelated; object-fit: fill; border: 1px solid #fff; }
+
+.bio-centered {
+  background-color: #1c1c40;
+  padding: 40px 50px;
+  border: 2px solid #fff;
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 1200px;
+  margin: 40px auto;
+  border-radius: 8px;
+  font-family: 'Press Start 2P', cursive;
+  color: #fff;
+  text-align: center;
+}
+
+.project-card {
+  border: 2px solid #fff;
+  background-color: #1c1c40;
+  padding: 15px;
+  margin: 15px;
+  display: block;
+  width: 300px;
+  border-radius: 8px;
+  font-family: 'Press Start 2P', cursive;
+  color: #fff;
+  box-shadow: 4px 4px 0 #ff00aa;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover { transform: scale(1.05); background-color: #252560; box-shadow: 0 0 20px #ff00aa, 4px 4px 0 #ff00aa; z-index: 10; }
+
+.geometric-design { width: 100%; height: 150px; border: 2px solid #fff; margin-bottom: 10px; position: relative; overflow: hidden; background: linear-gradient(45deg, #1c1c40, #2c2c60); }
+
+.gorilla-design { background: linear-gradient(45deg, #ff4444, #ff6666); position: relative; }
+.gorilla-design::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(circle at 25% 25%, #ff0000 2px, transparent 2px), radial-gradient(circle at 75% 75%, #ff0000 2px, transparent 2px);
+  background-size: 20px 20px; opacity: 0.6;
+}
+.gorilla-design::after {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 60px; height: 60px; border: 3px solid #fff; border-radius: 50%; background: rgba(255, 255, 255, 0.1);
+}
+
+.atomica-design { background: linear-gradient(45deg, #0066ff, #0088ff); position: relative; }
+.atomica-design::before {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 80px; height: 80px; border: 2px solid #fff; border-radius: 50%; background: transparent;
+}
+.atomica-design::after {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(45deg);
+  width: 100px; height: 100px; border: 1px solid #fff; border-radius: 50%; background: transparent;
+}
+
+.graphorama-design { background: linear-gradient(45deg, #00ff88, #00cc66); position: relative; }
+.graphorama-design::before { content: ''; position: absolute; bottom: 10px; left: 10px; right: 10px; height: 2px; background: #fff; }
+.graphorama-design::after { content: ''; position: absolute; left: 10px; top: 10px; bottom: 10px; width: 2px; background: #fff; }
+
+.robot-design { background: linear-gradient(45deg, #8800ff, #aa00ff); position: relative; }
+.robot-design::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: linear-gradient(90deg, #fff 1px, transparent 1px), linear-gradient(0deg, #fff 1px, transparent 1px);
+  background-size: 10px 10px; opacity: 0.2;
+}
+.robot-design::after {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 40px; height: 40px; border: 2px solid #fff; background: rgba(255, 255, 255, 0.1); border-radius: 4px;
+}
+
+.project-card .project-info h2 { color: #ff00aa; font-size: 0.9rem; margin-bottom: 8px; text-align: center; }
+.project-card .project-info p { font-size: 0.6rem; text-align: center; margin-bottom: 10px; }
+
+.project-summary {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(28, 28, 64, 0.95); padding: 15px; opacity: 0; transform: translateY(20px);
+  transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: center; text-align: center;
+}
+
+.project-card:hover .project-summary { opacity: 1; transform: translateY(0); }
+
+.project-summary h3 { color: #ff00aa; font-size: 0.8rem; margin-bottom: 10px; }
+.project-summary p { font-size: 0.6rem; line-height: 1.4; margin-bottom: 10px; }
+
+.projects-container { max-width: 1400px; margin: 0 auto; }
+.projects-section { margin-bottom: 50px; }
+.projects-section h2 { color: #ff00aa; font-size: 1.5rem; text-align: center; margin-bottom: 30px; text-shadow: 0 0 10px #ff00aa; }
+.projects-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+
+@media (max-width: 768px) {
+  .project-card { width: 280px; margin: 10px; }
+  .projects-grid { gap: 15px; }
+  .projects-section h2 { font-size: 1.2rem; }
+}
+
+.about-section {
+  background-color: #1c1c40; padding: 30px; border: 2px solid #fff; margin: 20px auto;
+  max-width: 1200px; border-radius: 8px; font-family: 'Press Start 2P', cursive; color: #fff;
+}
+
+.about-section h2 { color: #ff00aa; font-size: 1.2rem; margin-bottom: 20px; text-align: center; text-shadow: 0 0 5px #ff00aa; }
+.about-section h3 { color: #33ff33; font-size: 0.9rem; margin: 15px 0 10px 0; }
+.about-section p, .about-section li { font-size: 0.7rem; line-height: 1.6; margin-bottom: 10px; }
+.about-section ul { list-style: none; padding-left: 0; }
+.about-section li { position: relative; padding-left: 20px; margin-bottom: 8px; }
+.about-section li:before { content: ">"; color: #ff00aa; position: absolute; left: 0; }
+
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 15px; }
+.skill-category { background-color: #0b0c2a; border: 1px solid #33ff33; padding: 15px; border-radius: 4px; }
+.skill-category h4 { color: #33ff33; font-size: 0.7rem; margin-bottom: 10px; text-align: center; }
+
+.goals-checklist { margin-top: 15px; }
+.goal-item { display: flex; align-items: center; margin-bottom: 10px; padding: 8px; background-color: #0b0c2a; border-radius: 4px; }
+.goal-checkbox { width: 15px; height: 15px; border: 2px solid #fff; margin-right: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; color: #33ff33; }
+.goal-checkbox.completed { background-color: #33ff33; color: #000; }
+.goal-text { font-size: 0.6rem; flex: 1; }
+.goal-text.completed { text-decoration: line-through; opacity: 0.7; }
+
+.resume-buttons { display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+
+@media (max-width: 768px) {
+  .about-section { padding: 20px; margin: 15px; }
+  .skills-grid { grid-template-columns: 1fr; gap: 15px; }
+  .resume-buttons { flex-direction: column; align-items: center; }
+}
+
+.blog-post {
+  max-width: 1200px; margin: 40px auto; border: 2px solid #fff; background-color: #1c1c40;
+  padding: 40px; font-family: 'Press Start 2P', cursive; color: #fff; border-radius: 8px;
+  line-height: 1.8; box-shadow: 4px 4px 0 #ff00aa;
+}
+
+.blog-post h1 {
+  font-size: 2rem; margin-bottom: 20px;
+  background: linear-gradient(180deg, #ffffff 0%, #ff00aa 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center;
+}
+
+.project-hero { max-width: 100%; height: 200px; margin: 20px 0; border: 2px solid #fff; border-radius: 8px; }
+.blog-post img, .blog-post video { max-width: 100%; margin: 20px 0; border: 2px solid #fff; border-radius: 4px; }
+
+.blog-post .tech-used {
+  margin-top: 20px; padding: 15px; background-color: #0b0c2a; border: 1px solid #33ff33;
+  border-radius: 4px; font-style: italic; color: #aaf; text-align: center;
+}
+
+.blog-post h2 { color: #ff00aa; margin-top: 30px; margin-bottom: 15px; text-shadow: 0 0 5px #ff00aa; }
+.blog-post ul { margin-left: 20px; }
+.blog-post li { margin-bottom: 8px; line-height: 1.6; }
+.blog-post p { margin-bottom: 15px; line-height: 1.7; }
+
+@media (max-width: 768px) {
+  .blog-post { margin: 20px; padding: 25px; }
+  .blog-post h1 { font-size: 1.5rem; }
+  .project-hero { height: 150px; }
+}
+
+.status-row { display: flex; justify-content: flex-start; align-items: flex-start; gap: 30px; margin-top: 40px; flex-wrap: wrap; }
+
+#ultrakill-container { min-height: 2em; display: flex; justify-content: center; margin-bottom: 20px; }
+
+#ultrakill-message {
+  font-family: 'Press Start 2P', monospace; color: red; white-space: pre-line; font-size: 0.8rem;
+  line-height: 1.2rem; text-shadow: 0 0 5px #f00; padding-left: 0; text-align: center;
+  animation: ultrakill-fade 3s ease-in-out forwards;
+}
+
+@keyframes ultrakill-fade { 0% { opacity: 1; } 70% { opacity: 1; } 100% { opacity: 0; } }
+
+.music-player {
+  font-family: 'Press Start 2P', cursive; background: #1a1b40; color: #fff; border: 2px solid #fff;
+  padding: 15px; margin-top: 30px; max-width: 500px; margin-left: auto; margin-right: auto; text-align: center;
+}
+
+.track-info { margin-bottom: 10px; font-size: 0.75rem; }
+.controls button { font-size: 1rem; padding: 5px 10px; margin: 5px; cursor: pointer; background: #ff00aa; border: 2px solid #fff; color: #000; transition: background 0.2s; }
+.controls button:hover { background: #fff; color: #ff00aa; }
+#seek-bar { width: 100%; margin: 10px 0; }
+.time-display { font-size: 0.6rem; }
+
+.mgr-terminal {
+  position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background-color: #000; color: #ff0000; border: 3px solid #ff0000; padding: 20px;
+  font-family: monospace; font-size: 1rem; z-index: 1000; text-align: center;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.5); animation: mgr-pulse 2s ease-in-out infinite;
+}
+
+.nier-glitch {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(255, 255, 255, 0.1); z-index: 999; pointer-events: none; animation: nier-static 0.1s infinite;
+}
+@keyframes nier-static { 0% { opacity: 0; } 50% { opacity: 0.1; } 100% { opacity: 0; } }
+
+.undertale-heart { position: fixed; color: #ff0000; font-size: 2rem; z-index: 1000; animation: heart-float 3s ease-in-out; pointer-events: none; }
+@keyframes heart-float { 0% { transform: translateY(0) scale(1); opacity: 1; } 50% { transform: translateY(-50px) scale(1.2); } 100% { transform: translateY(-100px) scale(0.8); opacity: 0; } }
+
+/* Legacy archive chrome — not part of the original site */
+.legacy-banner {
+  background: #ff00aa; color: #000; text-align: center; padding: 12px; font-family: monospace;
+  font-weight: bold; font-size: 0.8rem; margin: -20px -20px 20px -20px;
+}
+.legacy-banner a { color: #000; text-decoration: underline; margin-left: 12px; }
+.legacy-nav {
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; padding: 15px;
+  border: 2px solid #ffffff44; margin-bottom: 40px; font-family: monospace;
+}
+.legacy-nav a { color: #33ff33; text-decoration: none; padding: 5px 10px; border: 1px solid #33ff33; font-size: 0.75rem; }
+.legacy-nav a:hover { background: #33ff33; color: #000; }
+.legacy-section { border-top: 4px dashed #ffffff44; padding-top: 40px; margin-top: 40px; scroll-margin-top: 20px; }
+.legacy-section:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
+.legacy-section-label { text-align: center; font-family: monospace; color: #6d71a8; font-size: 0.7rem; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+
+<div class="legacy-banner">📼 LEGACY ARCHIVE — this is a snapshot of the site as it looked before the redesign. Not the live site. <a href="index.html">Back to live site →</a></div>
+
+<nav class="legacy-nav">
+  <a href="#legacy-home">Home</a>
+  <a href="#legacy-about">About</a>
+  <a href="#legacy-projects">Projects</a>
+  <a href="#legacy-atomica">Atomica</a>
+  <a href="#legacy-gorilla">Gorilla Warfare</a>
+  <a href="#legacy-graphorama">Graphorama</a>
+  <a href="#legacy-shitbox">Sumo Robot</a>
+</nav>
+
+<section id="legacy-home" class="legacy-section">
+  <div class="legacy-section-label">// HOME (index.html)</div>
+  <div class="parallax-background"></div>
+
+  <div class="title-container">
+    <h1 class="title">RYAAN AAQIL</h1>
+    <img src="images/dog.png" alt="Devourer of Gods" class="dog" />
+  </div>
+  <p class="subtitle">We live in a society (Korangi)</p>
+
+  <div class="info">
+    <span class="glitch">IS THIS TRUE</span>
+    <span class="separator" id="dynamic-separator"></span>
+    <span class="glitch">SURELY IT IS</span>
+  </div>
+
+  <div id="ultrakill-container"></div>
+
+  <div class="main-content">
+    <div class="cat-roulette" aria-label="Pixel cat image carousel">
+      <img id="cat-img" src="images/cat1.png" alt="Pixel cat 1" />
+    </div>
+
+    <div class="bio-centered">
+      HELLO. I'M RYAAN, I'M A GAME DEV AND A ROBOTICS ENTHUSIAST. I WRITE CODE IN C#, C++ AND PYTHON. SOMETIMES IT WORKS, MOSTLY IT DOESN'T. I USE UNITY, ARDUINO AND DO A BIT OF WEB DEV (WE DON'T TALK ABOUT THAT). WHEN I'M NOT WORKING ON MY PROJECTS IM EITHER GAMING OR CHILLING WITH MY CATS WHO HATE ME :D
+    </div>
+  </div>
+
+  <div class="status-grid">
+    <div class="status-box">
+      <div class="status-header">SYSTEM STATUS</div>
+      <div class="status-content">
+        <div class="status-line">CPU: <span class="status-value">Ryzen 5 5600</span></div>
+        <div class="status-line">RAM: <span class="status-value">32GB DDR4</span></div>
+        <div class="status-line">GPU: <span class="status-value">RTX 2070 Super</span></div>
+        <div class="status-line">STATUS: <span class="status-value glitch">LIFE SUPPORT</span></div>
+      </div>
+    </div>
+
+    <div class="status-box">
+      <div class="status-header">PROJECT STATUS</div>
+      <div class="status-content">
+        <div class="status-line">GORILLA WARFARE: <span class="status-value">Maaf karo</span></div>
+        <div class="status-line">KEYLAYER: <span class="status-value">i am not doing ts</span></div>
+        <div class="status-line">ATOMICA: <span class="status-value">COMPLETE</span></div>
+        <div class="status-line">WEBSITE: <span class="status-value glitch">LIVE (WIP)</span></div>
+      </div>
+    </div>
+
+    <div class="status-box">
+      <div class="status-header">YES</div>
+      <div class="status-content">
+        <div class="status-line">RED BULLS: <span class="status-value">251</span></div>
+        <div class="status-line">SCREEN TIME: <span class="status-value">67hr</span></div>
+        <div class="status-line">HOW OLD ARE YOU: <span class="status-value">4 Years old</span></div>
+        <div class="status-line">SANITY: <span class="status-value glitch">we do not live in a society</span></div>
+      </div>
+    </div>
+
+    <div class="status-box">
+      <div class="status-header">ENVIRONMENT</div>
+      <div class="status-content">
+        <div class="status-line">OS: <span class="status-value">WINDOWS 1998</span></div>
+        <div class="status-line">IDE: <span class="status-value">JETBRAINS RIDER</span></div>
+        <div class="status-line">BALLING? <span class="status-value">Mayhaps</span></div>
+        <div class="status-line">CATS: <span class="status-value glitch">ABUSIVE</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="analytics-section">
+    <h3>SITE ANALYTICS</h3>
+    <div class="analytics-grid">
+      <div class="analytics-item">
+        <div>TOTAL VISITORS</div>
+        <span class="analytics-number" id="total-visitors">Loading...</span>
+      </div>
+      <div class="analytics-item">
+        <div>THIS MONTH</div>
+        <span class="analytics-number" id="monthly-visitors">Loading...</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="code-matrix">
+    <div class="matrix-header">THIS MIGHT BE TRUE</div>
+    <div class="matrix-content">
+      <div class="commit-line">&gt; All watermelons have an even number of stripes</div>
+      <div class="commit-line">&gt; Every odd number contains the letter 'e'</div>
+      <div class="commit-line">&gt; Australia is wider than the moon</div>
+      <div class="commit-line">&gt; Scotland's national animal is the unicorn</div>
+      <div class="commit-line">&gt; Bananas are botanically classified as berries, but strawberries are not</div>
+      <div class="commit-line">&gt; Crocodiles can gallop like horses</div>
+      <div class="commit-line">&gt; There are like 8 text-based easter eggs hidden on this page (actually real)</div>
+      <div class="commit-line cursor">_</div>
+    </div>
+  </div>
+</section>
+
+<section id="legacy-about" class="legacy-section">
+  <div class="legacy-section-label">// ABOUT (about.html)</div>
+
+  <div class="bio-centered">
+    <h1>About Me</h1>
+  </div>
+
+  <div class="about-section">
+    <h2>Introduction</h2>
+    <p>
+      Hi, I'm Ryaan — a developer, game designer, and robotics enthusiast who's been writing code since I was 9.
+      I started out with Bash scripts and moved on to Python, Pygame, and eventually Unity with C#, where I found
+      my love for building interactive experiences (and occasionally uncovering the weirdest bugs imaginable). I've
+      built everything from text games to experimental prototypes, each one teaching me something new and pushing me
+      to do better. These days, I split my time between leisurely playing games, somewhat cool coding projects, and worrying about my A Levels.
+      I'm proud of how far I've come, and even more excited for what's next.
+    </p>
+  </div>
+
+  <div class="about-section">
+    <h2>Education</h2>
+    <h3>Current Studies</h3>
+    <ul>
+      <li>A Levels @ Nixor College (Class of 2027)</li>
+      <li>O Levels @ Beaconhouse (2022-2025)</li>
+    </ul>
+  </div>
+
+  <div class="about-section">
+    <h2>Skills &amp; Technologies</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4>Programming Languages</h4>
+        <ul>
+          <li>C# (Advanced)</li>
+          <li>C++ (Intermediate)</li>
+          <li>Python (Intermediate)</li>
+          <li>JavaScript (Beginner)</li>
+          <li>HTML/CSS (Intermediate)</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h4>Game Development</h4>
+        <ul>
+          <li>Unity Engine</li>
+          <li>Game Design</li>
+          <li>2D/3D Graphics</li>
+          <li>Physics Systems</li>
+          <li>Audio Management</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h4>Robotics &amp; Hardware</h4>
+        <ul>
+          <li>Arduino Programming</li>
+          <li>Sensor Integration</li>
+          <li>Motor Control</li>
+          <li>Circuit Design</li>
+          <li>Chassis Design</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <h4>Tools &amp; Software</h4>
+        <ul>
+          <li>JetBrains Rider</li>
+          <li>Arduino IDE</li>
+          <li>Photoshop</li>
+          <li>Premiere Pro</li>
+          <li>Git/GitHub</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-section">
+    <h2>🎮 Hobbies &amp; Interests</h2>
+    <h3>Gaming</h3>
+    <ul>
+      <li>Indie Games (Cuphead, Deltarune, Ultrakill)</li>
+      <li>RPG Games (Terraria, Witcher, Dishonoured)</li>
+      <li>Story-Based Games (Batman Arkham Games, Assassin's Creed, Marvel's Spiderman)</li>
+      <li>Multiplayer Games (Ready or Not, Lethal Company, Counter Strike, Marvel Rivals)</li>
+      <li>Puzzle Games (Stray, Portal)</li>
+    </ul>
+    <h3>Tech &amp; Learning</h3>
+    <ul>
+      <li>Electronics &amp; Circuit Building</li>
+      <li>Open Source Contributions</li>
+      <li>Casual Game Dev</li>
+    </ul>
+  </div>
+
+  <div class="about-section">
+    <h2>MUNS</h2>
+    <h3>Experience</h3>
+    <ul>
+      <li>BeaconMun 2024 - SOCHUM - DPRK</li>
+      <li>FDMUN III - DISEC - DPRK - Best Delegate</li>
+      <li>HCMUN III - ODC - Honourable Mention</li>
+      <li>HCMUN III - BDCC - UAE - Best Delegate</li>
+      <li>MUNIK XV - MvD - Honurable Mention</li>
+      <li>JCMUN VI - HCC - Best Delegate</li>
+      <li>BeaconMun 2025 - HCC</li>
+      <li>CBMUN XII - CHESG</li>
+    </ul>
+  </div>
+
+  <div class="about-section">
+    <h2>Goals &amp; Ambitions</h2>
+    <div class="goals-checklist">
+      <div class="goal-item">
+        <div class="goal-checkbox completed">✓</div>
+        <div class="goal-text completed">ReLearn Unity and Game Dev</div>
+      </div>
+      <div class="goal-item">
+        <div class="goal-checkbox completed">✓</div>
+        <div class="goal-text completed">Learn Arduino and Mechatronics (Gist of it)</div>
+      </div>
+      <div class="goal-item">
+        <div class="goal-checkbox completed">✓</div>
+        <div class="goal-text completed">Create personal portfolio website</div>
+      </div>
+      <div class="goal-item">
+        <div class="goal-checkbox">☐</div>
+        <div class="goal-text">Release a commercial indie game</div>
+      </div>
+      <div class="goal-item">
+        <div class="goal-checkbox">☐</div>
+        <div class="goal-text">Not get cooked by A Levels</div>
+      </div>
+      <div class="goal-item">
+        <div class="goal-checkbox">☐</div>
+        <div class="goal-text">Create a good portfolio</div>
+      </div>
+      <div class="goal-item">
+        <div class="goal-checkbox">☐</div>
+        <div class="goal-text">Get accepted to a good uni</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-section">
+    <h2>Real-Time Age Tracker</h2>
+    <section class="age-tracker">
+      <span class="glitch"><p id="age-display">Loading...</p></span>
+    </section>
+  </div>
+
+  <div class="about-section">
+    <h2>Contact &amp; Resume</h2>
+    <div class="boot-sequence sys-diag">
+      Email: ryaanaqil3@gmail.com
+      GitHub: <a href="https://github.com/UltimaCodes" style="color: #33ff33;">UltimaCodes</a>
+      Phone Number: [removed]
+      Carrier pigeon also accepted
+    </div>
+
+    <div class="resume-buttons">
+      <a href="res/Ryaan_Aaqil_Resume.txt" class="btn-pixel">Download Resume</a>
+      <a href="res/Resume.pdf" class="btn-pixel">MUN Portfolio</a>
+    </div>
+  </div>
+
+  <div class="music-player bio">
+    <span class="glitch">Some really good songs that I like</span>
+    <div class="track-info">
+      <span id="track-title">Track Title</span>
+    </div>
+    <audio id="audio" preload="metadata"></audio>
+    <div class="controls">
+      <button onclick="prevTrack()">⏮</button>
+      <button onclick="togglePlay()">▶️/⏸️</button>
+      <button onclick="nextTrack()">⏭</button>
+    </div>
+    <input type="range" id="seek-bar" value="0" step="1" />
+    <div class="time-display">
+      <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+    </div>
+  </div>
+</section>
+
+<section id="legacy-projects" class="legacy-section">
+  <div class="legacy-section-label">// PROJECTS (projects.html)</div>
+
+  <div class="bio-centered">
+    <h1>My Projects</h1>
+    <p>Hover over projects to see details and click to explore!</p>
+    <p>Alot of yapping tho</p>
+  </div>
+
+  <div class="projects-container">
+    <div class="projects-section">
+      <h2>🎮 Game Development</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="geometric-design gorilla-design"></div>
+          <div class="project-info">
+            <h2>Gorilla Warfare</h2>
+            <p>Unity • C#</p>
+          </div>
+          <div class="project-summary">
+            <h3>Gorilla Warfare</h3>
+            <p>An intense multiplayer fps game featuring gorillas</p>
+            <p>Features: Fleshed out Multiplayer system, Lobby creation and management, did I mention gorillas?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="projects-section">
+      <h2>💻 Programming</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="geometric-design atomica-design"></div>
+          <div class="project-info">
+            <h2>Atomica</h2>
+            <p>C# • Monogame</p>
+          </div>
+          <div class="project-summary">
+            <h3>Atomica</h3>
+            <p>A newtonian particle simulator</p>
+            <p>Features: Gravity control, Cursor Movement following, Custom Physics System</p>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="geometric-design graphorama-design"></div>
+          <div class="project-info">
+            <h2>Graphorama</h2>
+            <p>C# • Oxyplot</p>
+          </div>
+          <div class="project-summary">
+            <h3>Graphorama</h3>
+            <p>Graphing and data visualization tool</p>
+            <p>Features: Multiple function types, Animated Lines, Multi-Line Support</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="projects-section">
+      <h2>🤖 Robotics</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="geometric-design robot-design"></div>
+          <div class="project-info">
+            <h2>Sumo Robot</h2>
+            <p>Arduino • C++</p>
+          </div>
+          <div class="project-summary">
+            <h3>LightWeight Sumo Robot</h3>
+            <p>High Torque, bluetooth controlled bot for competitions (we got 2nd place one time)</p>
+            <p>Features: ESP32 BT Interface, Speed Control Optimization, Custom Welded Chasis</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="legacy-atomica" class="legacy-section">
+  <div class="legacy-section-label">// PROJECT (projects/atomica.html)</div>
+  <div class="blog-post">
+    <h1>Atomica</h1>
+    <div class="project-hero atomica-design"></div>
+    <p>
+      A 2D particle simulator built in C# using MonoGame, because nothing screams "productive weekend" like simulating virtual dust specks being harassed around by gravity.
+      Atomica lets you visualize basic Newtonian physics in real-time, with very intuitive controls (trust).
+    </p>
+    <h2>Features That Definitely Exist</h2>
+    <ul>
+      <li>Real-time 2D particle simulation (yep, things move)</li>
+      <li>Change gravity direction with the arrow keys (truly groundbreaking)</li>
+      <li>Toggle cursor-following mode, if you want the particles to chase your mouse like needy toddlers</li>
+      <li>Resizable window support (unless your machine says "no")</li>
+      <li>Built-in instructions rendered with System.Drawing because why not</li>
+    </ul>
+    <h2>How It Works</h2>
+    <p>
+      Atomica is powered by MonoGame, the framework of choice for people who enjoy writing their own physics engine instead of using Unity like a normal person.
+      The particles follow basic Newtonian physics, meaning they accelerate due to gravity, bounce off walls, and sometimes just decide to ignore the laws of physics if your code is bad (oops).
+    </p>
+    <div class="tech-used"><strong>Technologies:</strong> C#, MonoGame, System.Drawing</div>
+    <h2>Controls</h2>
+    <ul>
+      <li><strong>Arrow Keys:</strong> Change gravity direction. North? South? Your call.</li>
+      <li><strong>Spacebar:</strong> Toggle whether the particles follow your cursor. It's like being a wizard, but with fewer consequences.</li>
+      <li><strong>Esc:</strong> Quits the application (What more do you want).</li>
+    </ul>
+    <h2>Installation (No, It's Not On Steam)</h2>
+    <p>Download the installation package from the repo's releases tab</p>
+    <p>Then run the .exe inside (If it doesn't work then please hesitate to contact me)</p>
+    <h2>Why This Exists</h2>
+    <ul>
+      <li>It's fun to watch particles bounce around and pretend you're doing science.</li>
+      <li>You'll learn about MonoGame, physics</li>
+      <li>Makes a decent screensaver if you leave it running long enough (it doesn't).</li>
+    </ul>
+    <h2>🙏 Thanks, I Guess</h2>
+    <p>GameDev Quickie for tutorials that made me realize I could done everything much quicker if I actually knew what I was doing (surely).</p>
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="https://github.com/your-username/Atomica" class="btn-pixel">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section id="legacy-gorilla" class="legacy-section">
+  <div class="legacy-section-label">// PROJECT (projects/gorilla-warfare.html)</div>
+  <div class="blog-post">
+    <h1>Gorilla Warfare</h1>
+    <div class="project-hero gorilla-design"></div>
+    <p>
+      A multiplayer FPS where everyone plays as a gorilla. It's technically functional and very low effort.
+      Built in Unity over the course of a week, mostly to refresh my knowledge on Photon PUN networking.
+    </p>
+    <h2>Gameplay Summary</h2>
+    <ul>
+      <li>Multiplayer lobby system using Photon PUN</li>
+      <li>Host-controlled match starting</li>
+      <li>Custom room names and usernames</li>
+      <li>Basic FPS movement: WASD, Jump, Sprint, Shoot</li>
+      <li>Scoreboard tracking kills and deaths</li>
+      <li>Red bullet impact squares that vanish after 30 seconds, for realism</li>
+      <li>Gravity-enabled death via falling into the void</li>
+      <li>Permanent T-posing gorilla player models, for atmosphere</li>
+    </ul>
+    <h2>Technical Implementation</h2>
+    <p>
+      Created in Unity using Photon PUN for networked multiplayer. The lobby system supports room listing,
+      joining, naming, and host-based game control. A somehwat goofy FPS controller manages player input and shooting.
+      Enemies do not exist. Everyone is the same gorilla. There are no teams. No win condition. Only meaningless violence.
+    </p>
+    <div class="tech-used"><strong>Technologies:</strong> Unity 2022.3, C#, Photon PUN 2, Unity Input System</div>
+    <h2>Design Notes</h2>
+    <p>
+      The map consists of ramps and walls. There is a gun. It makes no sound, but you'll know it fired because
+      a red square will appear briefly where the bullet hit. The T-posing gorillas are not placeholders. They are the vision.
+    </p>
+    <h2>Audio</h2>
+    <p>
+      There is one song, which plays in the main menu. That's it. No sound effects.
+      Credit to Dave Gunning for the track:
+      <a href="https://www.youtube.com/watch?v=TNW4Kgk7bvY" target="_blank">[link]</a>
+    </p>
+    <h2>Future Plans (Surely I actually do something)</h2>
+    <ul>
+      <li>Boss fights (unclear what against)</li>
+      <li>Multiplayer modes that go beyond "everyone shoots everyone"</li>
+      <li>New maps, maybe ones that aren't just ramps and voids</li>
+      <li>SFX, probably</li>
+      <li>Gorillas that don't T-pose (low priority)</li>
+    </ul>
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="https://github.com/UltimaCodes/GorillaWarfare" class="btn-pixel">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section id="legacy-graphorama" class="legacy-section">
+  <div class="legacy-section-label">// PROJECT (projects/graphorama.html)</div>
+  <div class="blog-post">
+    <h1>Graphorama</h1>
+    <div class="project-hero graphorama-design"></div>
+    <p>
+      Graphorama is a WPF-based function plotting application written in C#. It uses the OxyPlot library
+      to graph mathematical expressions in real-time, with support for multiple simultaneous plots, axis adjustments, and basic input validation.
+      It does exactly what you think it does... it draws lines based on equations. Not much more, not much less.
+    </p>
+    <h2>Functionality Overview</h2>
+    <ul>
+      <li>Plots mathematical functions using OxyPlot</li>
+      <li>Supports basic arithmetic, trig, logs, and exponentials</li>
+      <li>Multiple expressions can be plotted at once</li>
+      <li>Adjustable axis limits with live updates</li>
+      <li>Real-time graphing toggle with user-defined speed control</li>
+      <li>Input validation for malformed expressions</li>
+    </ul>
+    <h2>Technical Architecture</h2>
+    <p>
+      The application is built in C# using WPF for the user interface and OxyPlot for rendering.
+      Expression parsing is handled internally, with basic safeguards to avoid runtime crashes when someone inevitably types "log()" with no arguments.
+      The structure is straightforward: a text box, a graph, and some buttons. It does what it needs to.
+    </p>
+    <div class="tech-used"><strong>Technologies:</strong> C#, WPF, OxyPlot, .NET 8.0</div>
+    <h2>Real-Time Plotting</h2>
+    <p>
+      When real-time mode is enabled, functions are plotted progressively over time.
+      This feature exists mostly to make the plotting experience feel more dynamic.
+      Speed can be adjusted within a reasonable range. Values outside that range may break things.
+      That's on you.
+    </p>
+    <h2>Input Format</h2>
+    <p>Function inputs accept typical math expressions. Example syntax:</p>
+    <ul>
+      <li><code>2x + 3</code> - Linear</li>
+      <li><code>sin(x)</code> - Trig</li>
+      <li><code>log(x)</code> - Logarithmic</li>
+      <li><code>ArcTan(x)</code> - Inverse trig (case-sensitive)</li>
+      <li><code>sqrt(x)</code> - Square root</li>
+    </ul>
+    <p>Syntax errors will prompt a warning message. Some functions are case-sensitive by design, which is either a technical limitation or a test of patience.</p>
+    <h2>Graph Management</h2>
+    <ul>
+      <li>Update axis limits manually using X Min and X Max fields</li>
+      <li>Clear the graph with one button click</li>
+      <li>Select plotted functions from the list to delete</li>
+      <li>Zoom and pan with mouse input (assuming OxyPlot doesn't crash)</li>
+    </ul>
+    <h2>Installation</h2>
+    <p>
+      Download the zip file from the releases tab in the repo<br>
+      Extract it, and run Graphorama.exe
+      If that doesn't work, ionno
+    </p>
+    <h2>Demo</h2>
+    <p>
+      Here's a short video showing what the application looks like in motion:
+      <br>
+      <a href="https://cloud-1ssjxizmq-hack-club-bot.vercel.app/02025-01-01_01-32-43.mp4" target="_blank">Watch the demo</a>
+    </p>
+    <h2>Use Cases</h2>
+    <ul>
+      <li>Quick function sketching</li>
+      <li>Visualizing math homework answers</li>
+      <li>Testing function behavior across intervals</li>
+      <li>Making your screen look vaguely educational</li>
+    </ul>
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="https://github.com/UltimaCodes/Graphorama" class="btn-pixel">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section id="legacy-shitbox" class="legacy-section">
+  <div class="legacy-section-label">// PROJECT (projects/shitbox.html)</div>
+  <div class="blog-post">
+    <h1>Sumo Robot (His name is pablo escrowbar)</h1>
+    <div class="project-hero robot-design"></div>
+    <p>
+      A Bluetooth-controlled sumo robot that weighs 3.5kg (How is it still working)
+      Built with an ESP32, a welded aluminum chassis, and a very funny 24V battery that almost set my
+      schoolbag on fire (oops)
+    </p>
+    <h2>Hardware Summary</h2>
+    <ul>
+      <li>ESP32, because I like the unpredictable pairing issues</li>
+      <li>24V battery pack (probably too much, but it works)</li>
+      <li>Two buck converters:
+        <ul>
+          <li>12V → motor drivers</li>
+          <li>5V → ESP32 (the brain, allegedly)</li>
+        </ul>
+      </li>
+      <li>Two BTS7960 motor drivers, because if something's going to catch fire, it might as well be powerful</li>
+      <li>Two high torque, low speed motors mounted with "custom" welded brackets</li>
+      <li>Chassis made of aluminum sheets (Might have gotten scammed)</li>
+      <li>Front scooper welded at a 40° angle. It does not flex.</li>
+    </ul>
+    <h2>Control System</h2>
+    <p>
+      Controlled via Bluetooth using a generic app (keypad that sends integers and updates booleans)
+      Range is adequate but it has pairing issues which make it a hassle to use competitively
+      Also we might have ruined the battery like 4 times
+    </p>
+    <h2>Power Delivery</h2>
+    <p>
+      The 24V battery feeds into two buck converters.
+      One drops to 12V to feed the motor drivers. The other drops to 5V to keep the ESP32 awake long enough
+      to crash into things. No overcurrent protection. No fuse. Should have added something like that (oops).
+    </p>
+    <h2>Performance</h2>
+    <ul>
+      <li>Top speed: 3~ m/s</li>
+      <li>Pushing Force: 50N~</li>
+      <li>Bluetooth stability: works like 4 times out of 10</li>
+    </ul>
+    <h2>Testing Footage (Unreleased, for a reason)</h2>
+    <p>
+      Most testing consisted of ramming the robot into a box, a wall, and my own foot. Success was defined
+      by whether the robot still turned on afterward. The robot did, in fact, not turn on for the first 10 tries.
+      It took us a month and a funny loss in a competition due to battery failure to actually fix the robot.
+    </p>
+    <h2>Future Plans</h2>
+    <ul>
+      <li>Redesign the chassis with a heavier core in mind</li>
+      <li>Auto-targeting (read: guess and shove)</li>
+      <li>A flipper in the slope</li>
+      <li>A Battery that actually has a BMS</li>
+      <li>Custom App with commands (Like spinning cw or ccw, dashing, etc)</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Ryaan Aaqil. All rights NOT reserved. (Legacy archive snapshot)
+</footer>
+
+<script>
+// ===== js/shared.js =====
+(function() {
+    'use strict';
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-74WXTDJ616');
+
+    window.utils = {
+        debounce: function(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => { clearTimeout(timeout); func(...args); };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        },
+        getElement: function(selector) { return document.querySelector(selector); },
+        createElement: function(tag, className, textContent) {
+            const element = document.createElement(tag);
+            if (className) element.className = className;
+            if (textContent) element.textContent = textContent;
+            return element;
+        },
+        isMobile: function() { return window.innerWidth <= 768; },
+        smoothScroll: function(target, duration = 800) {
+            const targetElement = typeof target === 'string' ? this.getElement(target) : target;
+            if (!targetElement) return;
+            const targetPosition = targetElement.offsetTop;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const run = ease(timeElapsed, startPosition, distance, duration);
+                window.scrollTo(0, run);
+                if (timeElapsed < duration) requestAnimationFrame(animation);
+            }
+            function ease(t, b, c, d) {
+                t /= d / 2;
+                if (t < 1) return c / 2 * t * t + b;
+                t--;
+                return -c / 2 * (t * (t - 2) - 1) + b;
+            }
+            requestAnimationFrame(animation);
+        }
+    };
+})();
+</script>
+
+<script>
+// ===== js/homepage-effects.js =====
+(function() {
+    'use strict';
+    let typedBuffer = '';
+    let glitchTerminal = null;
+    let ultrakillTriggered = false;
+    let audioAllowed = false;
+    let dog, title, devourerAudio, catImgElement;
+    let jonklerAudio, ultrakillAudio, undertaleAudio, spamtonAudio, matrixAudio, mgrrAudio, doggerCount = 0;
+
+    function initHomepageEffects() {
+        if (!utils.getElement('.title-container')) return;
+        initElements();
+        setupEventListeners();
+        startAnimations();
+        initDynamicSeparator();
+        initAnalytics();
+        initMatrixRain();
+        initStatusAnimations();
+    }
+
+    function initElements() {
+        dog = utils.getElement('.dog');
+        title = utils.getElement('.title');
+        catImgElement = utils.getElement('#cat-img');
+        devourerAudio = new Audio('res/DevourerSpawn.mp3');
+        ultrakillAudio = new Audio('res/ultrakillsfx.mp3');
+        undertaleAudio = new Audio('res/utale.mp3');
+        spamtonAudio = new Audio('res/spamt.mp3');
+        matrixAudio = new Audio('res/mtrx.mp3');
+        mgrrAudio = new Audio('res/nanomachines.mp3');
+        jonklerAudio = new Audio('res/jonkler.mp3');
+        if (devourerAudio) devourerAudio.volume = 0.4;
+        if (ultrakillAudio) ultrakillAudio.volume = 0.5;
+        if (undertaleAudio) undertaleAudio.volume = 0.4;
+        if (spamtonAudio) spamtonAudio.volume = 0.4;
+        if (matrixAudio) matrixAudio.volume = 0.3;
+        if (mgrrAudio) mgrrAudio.volume = 0.5;
+        if (jonklerAudio) jonklerAudio.volume = 0.4;
+    }
+
+    function setupEventListeners() {
+        document.addEventListener('keydown', handleKeydown);
+        document.addEventListener('click', enableAudio, { once: true });
+        document.addEventListener('keydown', enableAudio, { once: true });
+        window.addEventListener('resize', utils.debounce(updateDynamicSeparator, 250));
+    }
+
+    function initDynamicSeparator() { updateDynamicSeparator(); }
+
+    function updateDynamicSeparator() {
+        const separator = utils.getElement('#dynamic-separator');
+        if (!separator) return;
+        const screenWidth = window.innerWidth;
+        let separatorLength;
+        if (screenWidth <= 480) separatorLength = 20;
+        else if (screenWidth <= 768) separatorLength = 30;
+        else if (screenWidth <= 1024) separatorLength = 40;
+        else if (screenWidth <= 1440) separatorLength = 55;
+        else separatorLength = 70;
+        separator.textContent = '='.repeat(separatorLength);
+    }
+
+    function initAnalytics() {
+        const totalVisitors = utils.getElement('#total-visitors');
+        const monthlyVisitors = utils.getElement('#monthly-visitors');
+        if (!totalVisitors || !monthlyVisitors) return;
+        setTimeout(() => {
+            animateCounter(totalVisitors, 0, 218, 2000);
+            animateCounter(monthlyVisitors, 0, 12, 1500);
+        }, 500);
+    }
+
+    function initStatusAnimations() {
+        const statusValues = document.querySelectorAll('.status-value');
+        statusValues.forEach((value, index) => {
+            setTimeout(() => {
+                value.style.opacity = '0';
+                value.style.transform = 'translateY(10px)';
+                value.style.transition = 'all 0.5s ease';
+                setTimeout(() => {
+                    value.style.opacity = '1';
+                    value.style.transform = 'translateY(0)';
+                }, 100);
+            }, index * 200);
+        });
+        const commitLines = document.querySelectorAll('.commit-line');
+        commitLines.forEach((line, index) => {
+            if (!line.classList.contains('cursor')) {
+                line.style.opacity = '0';
+                setTimeout(() => {
+                    line.style.opacity = '1';
+                    line.style.transition = 'opacity 0.3s ease';
+                }, index * 400 + 1000);
+            }
+        });
+    }
+
+    function animateCounter(element, start, end, duration) {
+        const startTime = performance.now();
+        function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easeOut = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(start + (end - start) * easeOut);
+            element.textContent = current.toLocaleString();
+            if (progress < 1) requestAnimationFrame(updateCounter);
+        }
+        requestAnimationFrame(updateCounter);
+    }
+
+    function handleKeydown(e) {
+        const char = e.key.length === 1 ? e.key.toLowerCase() : '';
+        typedBuffer += char;
+        if (typedBuffer.length > 30) typedBuffer = typedBuffer.slice(-30);
+        checkEasterEggs();
+    }
+
+    function checkEasterEggs() {
+        if (!typedBuffer.includes('ultrakill')) ultrakillTriggered = false;
+        if (typedBuffer.includes('dogger')) { triggerDoggerEasterEgg(); clearTypedBuffer(); }
+        if (!ultrakillTriggered && typedBuffer.includes('ultrakill')) { ultrakillTriggered = true; showUltrakillMessage(); clearTypedBuffer(); }
+        if (typedBuffer.includes('nanomachines')) { showMGREasterEgg(); clearTypedBuffer(); }
+        if (typedBuffer.includes('determination')) { showUndertaleEasterEgg(); clearTypedBuffer(); }
+        if (typedBuffer.includes('spamton')) { showDeltaruneEasterEgg(); clearTypedBuffer(); }
+        if (typedBuffer.includes('jonkler')) { showJonklerEasterEgg(); clearTypedBuffer(); }
+        if (typedBuffer.includes('matrix')) { triggerMatrixEffect(); clearTypedBuffer(); }
+    }
+
+    function clearTypedBuffer() { typedBuffer = ''; }
+
+    function triggerDoggerEasterEgg() {
+        doggerCount++;
+        if (glitchTerminal && glitchTerminal.parentNode) glitchTerminal.parentNode.removeChild(glitchTerminal);
+        glitchTerminal = utils.createElement('div', 'dogger-terminal');
+        document.body.appendChild(glitchTerminal);
+        const commands = [
+            `> DOGGER PROTOCOL ACTIVATED [${doggerCount}]`, '> ACCESSING FORGES...', '> NUKING OSUPK...',
+            '> #EXECUTEDOGGERISM', '> GOON.EXE RUNNING...', '> HAMZA FOUND', '> IS THIS TRUE'
+        ];
+        glitchTerminal.innerHTML = '';
+        commands.forEach((command, index) => {
+            setTimeout(() => {
+                const line = utils.createElement('div', 'glitch', command);
+                line.style.animationDelay = `${index * 0.1}s`;
+                glitchTerminal.appendChild(line);
+            }, index * 300);
+        });
+        setTimeout(() => {
+            if (glitchTerminal && glitchTerminal.parentNode) {
+                glitchTerminal.style.opacity = '0';
+                glitchTerminal.style.transition = 'opacity 0.5s ease-out';
+                setTimeout(() => {
+                    if (glitchTerminal && glitchTerminal.parentNode) {
+                        glitchTerminal.parentNode.removeChild(glitchTerminal);
+                        glitchTerminal = null;
+                    }
+                }, 500);
+            }
+        }, 5000);
+    }
+
+    function showMGREasterEgg() {
+        const overlay = utils.createElement('div');
+        overlay.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(45deg, #000, #330000); z-index: 1000; display: flex; align-items: center; justify-content: center; animation: mgr-entrance 0.5s ease-out;`;
+        const terminal = utils.createElement('div');
+        terminal.style.cssText = `background: #000; border: 3px solid #ff0000; padding: 30px; font-family: 'Press Start 2P', monospace; text-align: center; box-shadow: 0 0 50px rgba(255, 0, 0, 0.8); animation: mgr-pulse 2s ease-in-out infinite;`;
+        terminal.innerHTML = `<div style="color: #ff0000; font-size: 1.5rem; margin-bottom: 20px;">NANOMACHINES, SON!</div><div style="color: #ffff00; margin: 15px 0;">They harden in response to physical trauma!</div><div style="color: #ff0000; font-size: 1.2rem;">We're making the mother of all omelettes, Jack!</div>`;
+        overlay.appendChild(terminal);
+        document.body.appendChild(overlay);
+        if (audioAllowed && mgrrAudio) { mgrrAudio.currentTime = 0; mgrrAudio.play().catch(() => {}); }
+        let shakeCount = 0;
+        const shakeInterval = setInterval(() => {
+            document.body.style.transform = `translate(${Math.random() * 6 - 3}px, ${Math.random() * 6 - 3}px)`;
+            shakeCount++;
+            if (shakeCount > 20) { clearInterval(shakeInterval); document.body.style.transform = 'translate(0, 0)'; }
+        }, 100);
+        setTimeout(() => {
+            overlay.style.opacity = '0';
+            overlay.style.transition = 'opacity 0.5s ease-out';
+            setTimeout(() => { if (overlay.parentNode) overlay.parentNode.removeChild(overlay); }, 500);
+        }, 6000);
+    }
+
+    function showUndertaleEasterEgg() {
+        const battleBox = utils.createElement('div');
+        battleBox.style.cssText = `position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%); width: 600px; height: 150px; background: #000; border: 4px solid #fff; z-index: 1000; font-family: 'Press Start 2P', monospace;`;
+        const textBox = utils.createElement('div');
+        textBox.style.cssText = `padding: 20px; color: #fff; font-size: 0.8rem; line-height: 1.5; height: 100%;`;
+        battleBox.appendChild(textBox);
+        document.body.appendChild(battleBox);
+        if (audioAllowed && undertaleAudio) { undertaleAudio.currentTime = 0; undertaleAudio.play().catch(() => {}); }
+        const soul = utils.createElement('img');
+        soul.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Undertale.png/1200px-Undertale.png';
+        soul.style.cssText = `position: fixed; bottom: 220px; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; z-index: 1001; animation: soul-pulse 1s ease-in-out infinite;`;
+        document.body.appendChild(soul);
+        const messages = ["* Despite everything, it's still you.", "* You are filled with DETERMINATION."];
+        let currentMessage = 0;
+        let currentChar = 0;
+        function typeMessage() {
+            if (currentMessage < messages.length) {
+                if (currentChar < messages[currentMessage].length) {
+                    textBox.textContent += messages[currentMessage][currentChar];
+                    currentChar++;
+                    setTimeout(typeMessage, 115);
+                } else {
+                    setTimeout(() => { textBox.textContent = ''; currentMessage++; currentChar = 0; typeMessage(); }, 3100);
+                }
+            } else {
+                hideElements();
+            }
+        }
+        function hideElements() {
+            battleBox.style.transition = 'opacity 0.5s ease-out';
+            soul.style.transition = 'opacity 0.5s ease-out';
+            battleBox.style.opacity = '0';
+            soul.style.opacity = '0';
+            setTimeout(() => { battleBox.remove(); soul.remove(); }, 500);
+        }
+        typeMessage();
+    }
+
+    function showDeltaruneEasterEgg() {
+        const text = utils.createElement('div');
+        text.style.cssText = `position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #ffff00; font-family: 'Press Start 2P', monospace; font-size: 1rem; z-index: 1000; text-align: center; background: rgba(0,0,0,0.8); padding: 20px; border: 2px solid #ffff00;`;
+        text.innerHTML = `<div>HEY [HYPERLINK BLOCKED]</div><div style="margin: 10px 0;">NOW'S YOUR CHANCE TO BE A</div><div style="color: #ff00ff;">[BIG SHOT]</div>`;
+        document.body.appendChild(text);
+        if (audioAllowed && spamtonAudio) { spamtonAudio.currentTime = 0; spamtonAudio.play().catch(() => {}); }
+        setTimeout(() => { if (text.parentNode) text.parentNode.removeChild(text); }, 3000);
+    }
+
+    function showJonklerEasterEgg() {
+        if (audioAllowed && jonklerAudio) { jonklerAudio.currentTime = 0; jonklerAudio.play().catch(() => {}); }
+        const jonklerTexts = ["WHY SO SERIOUS?", "YOU WANNA KNOW HOW I GOT THESE SCARS", "WE LIVE IN A SOCIETY", "JONKLERISM RISES", "BUY TIMESHARES", "EVERYTHING BURNS", "NO ESCAPE", "ONE QUESTION"];
+        const spamElements = [];
+        const interval = setInterval(() => {
+            const popup = utils.createElement('div');
+            popup.textContent = jonklerTexts[Math.floor(Math.random() * jonklerTexts.length)];
+            popup.style.cssText = `position: fixed; top: ${Math.random() * 90}vh; left: ${Math.random() * 90}vw; background: #000; color: #ff00ff; padding: 10px; font-family: 'Press Start 2P', monospace; font-size: 0.6rem; border: 2px solid #ff0000; z-index: 9999; opacity: 1; animation: glitch-anim 0.3s infinite alternate;`;
+            document.body.appendChild(popup);
+            spamElements.push(popup);
+        }, 100);
+        setTimeout(() => {
+            clearInterval(interval);
+            spamElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transition = 'opacity 0.5s ease-out';
+                setTimeout(() => { if (el.parentNode) el.parentNode.removeChild(el); }, 500);
+            });
+        }, 10000);
+    }
+
+    function initMatrixRain() {
+        const canvas = utils.createElement('canvas');
+        canvas.id = 'matrix-canvas';
+        canvas.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; opacity: 0; pointer-events: none; transition: opacity 1s ease;`;
+        document.body.appendChild(canvas);
+    }
+
+    function triggerMatrixEffect() {
+        const canvas = utils.getElement('#matrix-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+        canvas.style.opacity = '0.3';
+        if (audioAllowed && matrixAudio) { matrixAudio.currentTime = 0; matrixAudio.play().catch(() => {}); }
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#00ff00';
+            ctx.font = fontSize + 'px monospace';
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        const interval = setInterval(draw, 33);
+        setTimeout(() => { clearInterval(interval); canvas.style.opacity = '0'; }, 5000);
+    }
+
+    function enableAudio() { audioAllowed = true; }
+
+    function animateDog() {
+        if (!dog || !title) return;
+        dog.classList.add('animate');
+        title.classList.add('hidden');
+        const screenEffect = utils.createElement('div');
+        screenEffect.style.cssText = `position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: radial-gradient(circle, transparent 30%, rgba(255, 0, 170, 0.1) 70%); z-index: 5; pointer-events: none; opacity: 0; transition: opacity 0.3s ease;`;
+        document.body.appendChild(screenEffect);
+        setTimeout(() => { screenEffect.style.opacity = '1'; }, 500);
+        const particleInterval = setInterval(() => {
+            const particle = utils.createElement('div');
+            particle.style.cssText = `position: fixed; top: 50%; left: ${Math.random() * window.innerWidth}px; width: 6px; height: 6px; background: #ff00aa; border-radius: 50%; z-index: 4; pointer-events: none; animation: devourer-particle 1s ease-out forwards;`;
+            document.body.appendChild(particle);
+            setTimeout(() => { if (particle.parentNode) particle.parentNode.removeChild(particle); }, 1000);
+        }, 100);
+        if (audioAllowed) { devourerAudio.currentTime = 0; devourerAudio.play().catch(() => {}); }
+        setTimeout(() => {
+            clearInterval(particleInterval);
+            dog.classList.remove('animate');
+            title.classList.remove('hidden');
+            screenEffect.style.opacity = '0';
+            setTimeout(() => { if (screenEffect.parentNode) screenEffect.parentNode.removeChild(screenEffect); }, 300);
+        }, 2500);
+    }
+
+    function startAnimations() {
+        if (catImgElement) {
+            const catImgs = ["images/cat4.png", "images/cat2.png", "images/cat3.png", "images/cat1.png", "images/cat5.png"];
+            setInterval(() => {
+                const idx = Math.floor(Math.random() * catImgs.length);
+                catImgElement.src = catImgs[idx];
+                catImgElement.alt = `Pixel cat ${idx + 1}`;
+            }, 3000);
+        }
+        setTimeout(() => { animateDog(); setInterval(animateDog, 45000); }, 5000);
+    }
+
+    function showUltrakillMessage() {
+        const lines = ["MANKIND IS DEAD", "BLOOD IS FUEL", "HELL IS FULL"];
+        const container = utils.getElement("#ultrakill-container");
+        if (!container) return;
+        if (audioAllowed && ultrakillAudio) { ultrakillAudio.currentTime = 0; ultrakillAudio.play().catch(() => {}); }
+        const msg = utils.createElement("div");
+        msg.id = "ultrakill-message";
+        msg.style.textShadow = "0 0 10px #f00, 0 0 20px #f00, 0 0 30px #f00";
+        container.appendChild(msg);
+        let currentLine = 0;
+        let currentChar = 0;
+        function typeNextChar() {
+            if (currentLine < lines.length) {
+                msg.textContent += lines[currentLine][currentChar] || '';
+                currentChar++;
+                if (Math.random() > 0.7) {
+                    document.body.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
+                    setTimeout(() => { document.body.style.transform = 'translate(0, 0)'; }, 50);
+                }
+                if (currentChar >= lines[currentLine].length) { msg.textContent += '\n'; currentLine++; currentChar = 0; }
+                setTimeout(typeNextChar, 50);
+            } else {
+                setTimeout(() => { if (msg.parentNode) msg.parentNode.removeChild(msg); }, 2000);
+            }
+        }
+        typeNextChar();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initHomepageEffects);
+    } else {
+        initHomepageEffects();
+    }
+})();
+</script>
+
+<script>
+// ===== js/age-tracker.js =====
+(function() {
+    'use strict';
+    const birthDate = new Date('2008-08-15T00:00:00');
+    let ageDisplay;
+    function initAgeTracker() {
+        ageDisplay = utils.getElement('#age-display');
+        if (!ageDisplay) return;
+        updateAge();
+        setInterval(updateAge, 1000);
+    }
+    function updateAge() {
+        const now = new Date();
+        const timeDiff = calculateTimeDifference(birthDate, now);
+        const ageText = `${timeDiff.years} years, ${timeDiff.months} months, ${timeDiff.days} days, ${timeDiff.hours} hours, ${timeDiff.minutes} minutes, ${timeDiff.seconds} seconds`;
+        ageDisplay.textContent = ageText;
+    }
+    function calculateTimeDifference(start, end) {
+        let years = end.getFullYear() - start.getFullYear();
+        let months = end.getMonth() - start.getMonth();
+        let days = end.getDate() - start.getDate();
+        let hours = end.getHours() - start.getHours();
+        let minutes = end.getMinutes() - start.getMinutes();
+        let seconds = end.getSeconds() - start.getSeconds();
+        if (seconds < 0) { seconds += 60; minutes--; }
+        if (minutes < 0) { minutes += 60; hours--; }
+        if (hours < 0) { hours += 24; days--; }
+        if (days < 0) { months--; const prevMonth = new Date(end.getFullYear(), end.getMonth(), 0); days += prevMonth.getDate(); }
+        if (months < 0) { months += 12; years--; }
+        return { years, months, days, hours, minutes, seconds };
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAgeTracker);
+    } else {
+        initAgeTracker();
+    }
+})();
+</script>
+
+<script>
+// ===== js/music-player.js =====
+(function() {
+    'use strict';
+    const tracks = [
+        { title: "Cellar of Ghosts - Kardashev", src: "music/cog.mp3" },
+        { title: "Hymn For A Droid - Psychedelic Porn Crumpets", src: "music/hymnforadroid.mp3" },
+        { title: "Entombed - Deftones", src: "music/entombed.mp3" },
+        { title: "Snow Sleep - Kardashev", src: "music/snowsleep.mp3" }
+    ];
+    let currentTrack = 0;
+    let audio, trackTitle, seekBar, currentTimeDisplay, durationDisplay;
+    function initMusicPlayer() {
+        audio = utils.getElement("#audio");
+        trackTitle = utils.getElement("#track-title");
+        seekBar = utils.getElement("#seek-bar");
+        currentTimeDisplay = utils.getElement("#current-time");
+        durationDisplay = utils.getElement("#duration");
+        if (!audio) return;
+        setupEventListeners();
+        loadTrack(currentTrack);
+    }
+    function setupEventListeners() {
+        audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+        audio.addEventListener("timeupdate", handleTimeUpdate);
+        seekBar.addEventListener("input", handleSeekBarInput);
+    }
+    function loadTrack(index) {
+        const track = tracks[index];
+        audio.src = track.src;
+        trackTitle.textContent = track.title;
+        audio.load();
+    }
+    function togglePlay() {
+        if (audio.paused) { audio.play().catch(() => {}); } else { audio.pause(); }
+    }
+    function nextTrack() {
+        currentTrack = (currentTrack + 1) % tracks.length;
+        loadTrack(currentTrack);
+        audio.play().catch(() => {});
+    }
+    function prevTrack() {
+        currentTrack = (currentTrack - 1 + tracks.length) % tracks.length;
+        loadTrack(currentTrack);
+        audio.play().catch(() => {});
+    }
+    function handleLoadedMetadata() {
+        seekBar.max = Math.floor(audio.duration);
+        durationDisplay.textContent = formatTime(audio.duration);
+    }
+    function handleTimeUpdate() {
+        seekBar.value = Math.floor(audio.currentTime);
+        currentTimeDisplay.textContent = formatTime(audio.currentTime);
+    }
+    function handleSeekBarInput() { audio.currentTime = seekBar.value; }
+    function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+        return `${mins}:${secs}`;
+    }
+    window.togglePlay = togglePlay;
+    window.nextTrack = nextTrack;
+    window.prevTrack = prevTrack;
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMusicPlayer);
+    } else {
+        initMusicPlayer();
+    }
+})();
+</script>
+
+<script>
+// ===== js/projects.js =====
+(function() {
+    'use strict';
+    let galleryIntervals = new Map();
+    function initProjectsPage() {
+        setupProjectGalleries();
+        setupProjectHoverEffects();
+    }
+    function setupProjectGalleries() {
+        const galleries = document.querySelectorAll('.project-gallery');
+        galleries.forEach(gallery => {
+            const images = gallery.querySelectorAll('img');
+            if (images.length <= 1) return;
+            let currentIndex = 0;
+            const rotateImages = () => {
+                images[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].classList.add('active');
+            };
+            const projectCard = gallery.closest('.project-card');
+            if (projectCard) {
+                projectCard.addEventListener('mouseenter', () => {
+                    if (!galleryIntervals.has(gallery)) {
+                        const interval = setInterval(rotateImages, 1000);
+                        galleryIntervals.set(gallery, interval);
+                    }
+                });
+                projectCard.addEventListener('mouseleave', () => {
+                    const interval = galleryIntervals.get(gallery);
+                    if (interval) {
+                        clearInterval(interval);
+                        galleryIntervals.delete(gallery);
+                        images.forEach(img => img.classList.remove('active'));
+                        images[0].classList.add('active');
+                        currentIndex = 0;
+                    }
+                });
+            }
+        });
+    }
+    function setupProjectHoverEffects() {
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            card.addEventListener('mouseenter', () => { card.style.boxShadow = '0 0 30px #ff00aa, 4px 4px 0 #ff00aa'; });
+            card.addEventListener('mouseleave', () => { card.style.boxShadow = '4px 4px 0 #ff00aa'; });
+            card.addEventListener('click', (e) => {
+                const ripple = document.createElement('div');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 0, 170, 0.6)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.left = (e.clientX - card.offsetLeft) + 'px';
+                ripple.style.top = (e.clientY - card.offsetTop) + 'px';
+                ripple.style.width = ripple.style.height = '20px';
+                ripple.style.pointerEvents = 'none';
+                card.style.position = 'relative';
+                card.appendChild(ripple);
+                setTimeout(() => { ripple.remove(); }, 600);
+            });
+        });
+        if (!document.querySelector('#ripple-animation')) {
+            const style = document.createElement('style');
+            style.id = 'ripple-animation';
+            style.textContent = `@keyframes ripple { to { transform: scale(4); opacity: 0; } }`;
+            document.head.appendChild(style);
+        }
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initProjectsPage);
+    } else {
+        initProjectsPage();
+    }
+})();
+</script>
+
+</body>
+</html>
