@@ -10,15 +10,7 @@
         const projectCards = document.querySelectorAll('.project-card');
 
         projectCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                // Add subtle glow effect
-                card.style.boxShadow = '0 0 30px #ff00aa, 4px 4px 0 #ff00aa';
-            });
-
-            card.addEventListener('mouseleave', () => {
-                // Reset to default shadow
-                card.style.boxShadow = '4px 4px 0 #ff00aa';
-            });
+            // Hover shadow color-shift is handled by the .project-card:hover CSS rule.
 
             // Add click ripple effect
             card.addEventListener('click', (e) => {

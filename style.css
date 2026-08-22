@@ -515,8 +515,8 @@ body:not(.homepage) .centered-container {
 }
 
 .project-card {
-  border: 2px solid #fff;
-  background-color: #1c1c40;
+  border: 1px solid var(--accent);
+  background-color: var(--panel);
   padding: 15px;
   margin: 15px;
   display: block;
@@ -525,7 +525,7 @@ body:not(.homepage) .centered-container {
   font-family: var(--font-head);
   color: #fff;
   box-shadow: 4px 4px 0 #ff00aa;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -533,8 +533,8 @@ body:not(.homepage) .centered-container {
 
 .project-card:hover {
   transform: scale(1.05);
-  background-color: #252560;
-  box-shadow: 0 0 20px #ff00aa, 4px 4px 0 #ff00aa;
+  background-color: #1c1c40;
+  box-shadow: 4px 4px 0 var(--accent);
   z-index: 10;
 }
 
@@ -672,7 +672,8 @@ body:not(.homepage) .centered-container {
 }
 
 .project-card .project-info h2 {
-  color: #ff00aa;
+  font-family: var(--font-head);
+  color: #fff;
   font-size: 0.9rem;
   margin-bottom: 8px;
   text-align: center;
@@ -707,7 +708,8 @@ body:not(.homepage) .centered-container {
 }
 
 .project-summary h3 {
-  color: #ff00aa;
+  font-family: var(--font-head);
+  color: var(--accent);
   font-size: 0.8rem;
   margin-bottom: 10px;
 }
@@ -728,11 +730,11 @@ body:not(.homepage) .centered-container {
 }
 
 .projects-section h2 {
-  color: #ff00aa;
+  font-family: var(--font-head);
+  color: #fff;
   font-size: 1.5rem;
   text-align: center;
   margin-bottom: 30px;
-  text-shadow: 0 0 10px #ff00aa;
 }
 
 .projects-grid {
@@ -1012,8 +1014,8 @@ body:not(.homepage) .centered-container {
 .blog-post {
   max-width: 1200px;
   margin: 40px auto;
-  border: 2px solid #fff;
-  background-color: #1c1c40;
+  border: 1px solid var(--border);
+  background-color: var(--panel);
   padding: 40px;
   font-family: var(--font-head);
   color: #fff;
@@ -1050,8 +1052,8 @@ body:not(.homepage) .centered-container {
 .blog-post .tech-used {
   margin-top: 20px;
   padding: 15px;
-  background-color: #0b0c2a;
-  border: 1px solid #33ff33;
+  background-color: var(--bg);
+  border: 1px solid var(--accent);
   border-radius: 4px;
   font-style: italic;
   color: #aaf;
@@ -1059,7 +1061,8 @@ body:not(.homepage) .centered-container {
 }
 
 .blog-post h2 {
-  color: #ff00aa;
+  font-family: var(--font-head);
+  color: var(--accent);
   margin-top: 30px;
   margin-bottom: 15px;
 }
@@ -1069,11 +1072,17 @@ body:not(.homepage) .centered-container {
 }
 
 .blog-post li {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text);
   margin-bottom: 8px;
   line-height: 1.6;
 }
 
 .blog-post p {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text);
   margin-bottom: 15px;
   line-height: 1.7;
 }
