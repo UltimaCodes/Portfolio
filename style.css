@@ -924,6 +924,12 @@ body:not(.homepage) .centered-container {
   text-transform: uppercase;
 }
 
+/* 2-column variant (e.g. the /uses spec table) — avoids reserving a
+   3rd column track that would sit empty and stretch the row */
+.about-table.cols-2 .about-row {
+  grid-template-columns: 1fr 1fr;
+}
+
 /* Contact terminal readout — sized to its own content, not full width */
 .about-terminal {
   background: #050611;
