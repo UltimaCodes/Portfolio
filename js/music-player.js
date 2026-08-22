@@ -10,7 +10,7 @@
     ];
 
     let currentTrack = 0;
-    let audio, trackTitle, seekBar, currentTimeDisplay, durationDisplay;
+    let audio, trackTitle, seekBar, currentTimeDisplay, durationDisplay, playButton;
 
     function initMusicPlayer() {
         audio = utils.getElement("#audio");
@@ -18,6 +18,7 @@
         seekBar = utils.getElement("#seek-bar");
         currentTimeDisplay = utils.getElement("#current-time");
         durationDisplay = utils.getElement("#duration");
+        playButton = utils.getElement("#play-pause-btn");
 
         if (!audio) return; // Exit if music player not on this page
 
@@ -28,7 +29,13 @@
     function setupEventListeners() {
         audio.addEventListener("loadedmetadata", handleLoadedMetadata);
         audio.addEventListener("timeupdate", handleTimeUpdate);
+        audio.addEventListener("play", () => updatePlayButtonLabel());
+        audio.addEventListener("pause", () => updatePlayButtonLabel());
         seekBar.addEventListener("input", handleSeekBarInput);
+    }
+
+    function updatePlayButtonLabel() {
+        if (playButton) playButton.textContent = audio.paused ? 'PLAY' : 'PAUSE';
     }
 
     function loadTrack(index) {
@@ -36,6 +43,7 @@
         audio.src = track.src;
         trackTitle.textContent = track.title;
         audio.load();
+        updatePlayButtonLabel();
     }
 
     function togglePlay() {

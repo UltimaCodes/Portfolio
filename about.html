@@ -14,7 +14,7 @@
 <nav>
   <div class="left">
     <a href="projects.html" class="btn-pixel">Projects</a>
-    <a href="uses.html" class="btn-pixel">Uses</a>
+    <a href="setup.html" class="btn-pixel">Setup</a>
   </div>
   <div class="center">
     <a href="index.html" class="nav-home">"wgat"</a>
@@ -30,20 +30,21 @@
   <div class="about-chips">
     <span class="about-chip">18 years old</span>
     <span class="about-chip">A-Levels @ Nixor</span>
-    <span class="about-chip">Coding since age 9</span>
   </div>
 </div>
 
-<nav class="about-jumpnav">
-  <a href="#about-profile" class="about-jumptab active">Profile</a>
-  <a href="#about-skills" class="about-jumptab">Skills</a>
-  <a href="#about-mun" class="about-jumptab">MUN</a>
-  <a href="#about-goals" class="about-jumptab">Goals</a>
-  <a href="#about-contact" class="about-jumptab">Contact</a>
+<nav class="about-jumpnav" role="tablist">
+  <button class="about-jumptab active" role="tab" data-tab="profile">Profile</button>
+  <button class="about-jumptab" role="tab" data-tab="education">Education</button>
+  <button class="about-jumptab" role="tab" data-tab="skills">Skills</button>
+  <button class="about-jumptab" role="tab" data-tab="hobbies">Hobbies</button>
+  <button class="about-jumptab" role="tab" data-tab="mun">MUN</button>
+  <button class="about-jumptab" role="tab" data-tab="goals">Goals</button>
+  <button class="about-jumptab" role="tab" data-tab="contact">Contact</button>
 </nav>
 
-<!-- Personal Introduction -->
-<section id="about-profile" class="about-section">
+<!-- Profile -->
+<section id="about-profile" class="about-section about-panel active" style="max-width: 700px;">
   <h2>Introduction</h2>
   <div class="about-quote">
     Hi, I'm Ryaan — a developer, game designer, and robotics enthusiast who's been writing code since I was 9.
@@ -54,6 +55,15 @@
     I'm proud of how far I've come, and even more excited for what's next.
   </div>
 
+  <h3 style="margin-top: 20px;">Real-Time Age Tracker</h3>
+  <section class="age-tracker">
+    <span class="glitch"><p id="age-display">Loading...</p></span>
+  </section>
+</section>
+
+<!-- Education -->
+<section id="about-education" class="about-section about-panel" style="max-width: 480px;">
+  <h2>Education</h2>
   <h3>Current Studies</h3>
   <ul>
     <li>A Levels @ Nixor College (Class of 2027)</li>
@@ -62,7 +72,7 @@
 </section>
 
 <!-- Skills -->
-<section id="about-skills" class="about-section">
+<section id="about-skills" class="about-section about-panel" style="max-width: 720px;">
   <h2>Skills &amp; Technologies</h2>
   <div class="about-skills-grid">
     <div class="about-skill-card">
@@ -112,8 +122,8 @@
 </section>
 
 <!-- Hobbies -->
-<div class="about-section">
-  <h2>🎮 Hobbies &amp; Interests</h2>
+<section id="about-hobbies" class="about-section about-panel" style="max-width: 600px;">
+  <h2>Hobbies &amp; Interests</h2>
   <h3>Gaming</h3>
   <ul>
     <li>Indie Games (Cuphead, Deltarune, Ultrakill)</li>
@@ -129,10 +139,10 @@
     <li>Open Source Contributions</li>
     <li>Casual Game Dev</li>
   </ul>
-</div>
+</section>
 
 <!-- MUN Experience -->
-<section id="about-mun" class="about-section">
+<section id="about-mun" class="about-section about-panel">
   <h2>MUNS</h2>
   <div class="about-table">
     <div class="about-row about-row-head"><span>Event</span><span>Committee</span><span>Result</span></div>
@@ -148,7 +158,7 @@
 </section>
 
 <!-- Goals & Ambitions -->
-<section id="about-goals" class="about-section">
+<section id="about-goals" class="about-section about-panel" style="max-width: 480px;">
   <h2>Goals &amp; Ambitions</h2>
   <div class="goals-checklist">
     <div class="goal-item">
@@ -182,16 +192,8 @@
   </div>
 </section>
 
-<!-- Age Tracker -->
-<div class="about-section">
-  <h2>Real-Time Age Tracker</h2>
-  <section class="age-tracker">
-    <span class="glitch"><p id="age-display">Loading...</p></span>
-  </section>
-</div>
-
 <!-- Contact & Resume -->
-<section id="about-contact" class="about-section">
+<section id="about-contact" class="about-section about-panel" style="max-width: 560px;">
   <h2>Contact &amp; Resume</h2>
   <div class="about-terminal">
     <div><span class="dim">email:</span> ryaanaqil3@gmail.com</div>
@@ -203,25 +205,24 @@
   <div class="resume-buttons">
     <a href="/res/Resume.pdf" class="btn-pixel">MUN Portfolio</a>
   </div>
-</section>
 
-<!-- Music Player -->
-<div class="music-player bio">
-  <span class="glitch">Some really good songs that I like</span>
-  <div class="track-info">
-    <span id="track-title">Track Title</span>
+  <div class="music-player bio" style="margin-top: 25px;">
+    <span class="glitch">Some really good songs that I like</span>
+    <div class="track-info">
+      <span id="track-title">Track Title</span>
+    </div>
+    <audio id="audio" preload="metadata"></audio>
+    <div class="controls">
+      <button onclick="prevTrack()">PREV</button>
+      <button id="play-pause-btn" onclick="togglePlay()">PLAY</button>
+      <button onclick="nextTrack()">NEXT</button>
+    </div>
+    <input type="range" id="seek-bar" value="0" step="1" />
+    <div class="time-display">
+      <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+    </div>
   </div>
-  <audio id="audio" preload="metadata"></audio>
-  <div class="controls">
-    <button onclick="prevTrack()">⏮</button>
-    <button onclick="togglePlay()">▶️/⏸️</button>
-    <button onclick="nextTrack()">⏭</button>
-  </div>
-  <input type="range" id="seek-bar" value="0" step="1" />
-  <div class="time-display">
-    <span id="current-time">0:00</span> / <span id="duration">0:00</span>
-  </div>
-</div>
+</section>
 
 <footer>
   &copy; 2025 Ryaan Aaqil. All rights NOT reserved.
@@ -231,6 +232,7 @@
 <script src="js/shared.js"></script>
 <script src="js/age-tracker.js"></script>
 <script src="js/music-player.js"></script>
+<script src="js/about-tabs.js"></script>
 <script src="js/easter-eggs.js"></script>
 </body>
 </html>

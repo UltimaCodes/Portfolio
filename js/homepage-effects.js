@@ -496,9 +496,42 @@
     function animateDog() {
         if (!dog || !title) return;
 
-        // Enhanced Devourer of Gods animation
+        // Devourer of Gods animation. The name should only vanish while the
+        // dog is actually passing over it — sync visibility to the dog's
+        // real on-screen position each frame instead of guessing timeouts,
+        // so it lines up regardless of viewport size or the animation's
+        // ease-in-out speed curve.
         dog.classList.add('animate');
-        title.classList.add('hidden');
+
+        const animDuration = 2500;
+        const animStart = performance.now();
+        let titleHidden = false;
+
+        function syncTitleToDogPosition(now) {
+            const elapsed = now - animStart;
+            if (elapsed >= animDuration) {
+                if (titleHidden) {
+                    title.classList.remove('hidden');
+                    titleHidden = false;
+                }
+                return;
+            }
+
+            const dogRect = dog.getBoundingClientRect();
+            const titleRect = title.getBoundingClientRect();
+            const dogIsOverTitle = dogRect.right > titleRect.left && dogRect.left < titleRect.right;
+
+            if (dogIsOverTitle && !titleHidden) {
+                title.classList.add('hidden');
+                titleHidden = true;
+            } else if (!dogIsOverTitle && titleHidden) {
+                title.classList.remove('hidden');
+                titleHidden = false;
+            }
+
+            requestAnimationFrame(syncTitleToDogPosition);
+        }
+        requestAnimationFrame(syncTitleToDogPosition);
 
         // Add screen effects during animation
         const screenEffect = utils.createElement('div');
