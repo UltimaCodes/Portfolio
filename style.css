@@ -1,4 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Jersey+15&display=swap');
+
+:root {
+  --bg: #0b0c2a;
+  --panel: #101233;
+  --border: #2a2d5c;
+  --accent: #33ff33;
+  --accent-alert: #ff3fa8;
+  --accent-alert-shadow: #ff00aa;
+  --text: #c9cbe8;
+  --text-dim: #6d71a8;
+  --text-dim-2: #8b8fc9;
+  --font-head: 'Press Start 2P', monospace;
+  --font-body: 'Jersey 15', monospace;
+}
 
 * {
   margin: 0;
@@ -7,9 +21,9 @@
 }
 
 body {
-  font-family: 'Press Start 2P', cursive;
-  background-color: #0b0c2a;
-  color: #fff;
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--text);
   overflow-x: hidden;
   padding: 20px;
 }
@@ -20,7 +34,7 @@ body {
   left: 0;
   width: 100vw;
   height: 150vh;
-  background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+  background-image: url('images/stardust-texture.png');
   background-repeat: repeat;
   background-size: cover;
   transform: translateZ(0);
@@ -55,32 +69,39 @@ nav .center {
   all: unset;
   cursor: pointer;
   display: inline-block;
-  color: white; /* or whatever your navbar text color is */
+  font-family: var(--font-head);
+  color: white;
   text-decoration: none;
   transition: transform 0.2s ease-in-out;
 }
 
 .nav-home:visited {
-  color: white; /* override purple visited color */
+  color: white;
 }
 
 .nav-home:hover {
   transform: scale(1.5);
 }
 
-
 nav a {
+  position: relative;
+  font-family: var(--font-head);
   color: #fff;
   text-decoration: none;
   padding: 5px 10px;
   background-color: #1a1b40;
   border: 2px solid #fff;
-  transition: all 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 nav a:hover {
-  background-color: #ff00aa;
-  color: #000;
+  color: var(--accent);
+}
+
+nav a.active {
+  background-color: var(--accent);
+  color: var(--bg);
+  pointer-events: none;
 }
 
 .title-container {
@@ -90,16 +111,19 @@ nav a:hover {
 }
 
 h1.title {
+  font-family: var(--font-head);
   font-size: 3.5rem;
   background: linear-gradient(180deg, #ffffff 0%, #ff00aa 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 2px;
+  text-shadow: 2px 2px 0 var(--accent-alert-shadow);
   transition: opacity 0.3s ease;
 }
 
 h1.title.hidden {
   opacity: 0;
+  visibility: hidden;
 }
 
 .dog {
@@ -178,8 +202,8 @@ h1.title.hidden {
 }
 
 @keyframes mgr-pulse {
-  0%, 100% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.5); }
-  50% { box-shadow: 0 0 60px rgba(255, 0, 0, 1); }
+  0%, 100% { border-width: 3px; }
+  50% { border-width: 6px; }
 }
 
 @keyframes terraria-slide {
@@ -190,10 +214,6 @@ h1.title.hidden {
 @keyframes particle-float {
   0% { opacity: 1; transform: translateY(0) rotate(0deg); }
   100% { opacity: 0; transform: translateY(-200px) rotate(360deg); }
-}
-
-h1.title.hidden {
-  visibility: hidden;
 }
 
 .subtitle {
@@ -243,23 +263,10 @@ h1.title.hidden {
   flex: 1;
   min-width: 200px;
   text-align: center;
-  font-family: monospace;
+  font-family: var(--font-body);
   letter-spacing: 2px;
   overflow: hidden;
   white-space: nowrap;
-}
-
-@media (max-width: 768px) {
-  .info {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-  }
-
-  .info .separator {
-    min-width: auto;
-    font-size: 0.6rem;
-  }
 }
 
 @media (min-width: 1440px) {
@@ -301,27 +308,6 @@ h1.title.hidden {
   order: 2;
 }
 
-@media (max-width: 768px) {
-  .main-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .cat-roulette {
-    width: 100%;
-    max-width: 300px;
-    height: 300px;
-    margin: 0 auto 20px auto;
-    order: 1;
-  }
-
-  .bio-centered {
-    padding: 20px 25px;
-    font-size: 0.8rem;
-    order: 2;
-  }
-}
-
 /* Enhanced Status Grid */
 .status-grid {
   display: grid;
@@ -335,7 +321,7 @@ h1.title.hidden {
   background-color: #000;
   border: 2px solid #33ff33;
   padding: 15px;
-  font-family: monospace;
+  font-family: var(--font-body);
   color: #33ff33;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(51, 255, 51, 0.2);
@@ -372,7 +358,7 @@ h1.title.hidden {
   padding: 20px;
   margin: 30px auto;
   max-width: 800px;
-  font-family: monospace;
+  font-family: var(--font-body);
   color: #33ff33;
   border-radius: 4px;
   box-shadow: 0 0 15px rgba(51, 255, 51, 0.3);
@@ -416,77 +402,6 @@ h1.title.hidden {
   50.01%, 100% { opacity: 0; }
 }
 
-@media (max-width: 768px) {
-  .status-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    margin: 20px;
-  }
-
-  .status-box, .code-matrix {
-    padding: 15px;
-    margin: 15px;
-  }
-
-  .status-content, .matrix-content {
-    font-size: 0.65rem;
-  }
-
-  .status-header, .matrix-header {
-    font-size: 0.75rem;
-  }
-}
-
-.analytics-section {
-  background-color: #1c1c40;
-  border: 2px solid #33ff33;
-  padding: 20px;
-  margin: 30px auto;
-  max-width: 600px;
-  text-align: center;
-  font-family: monospace;
-  color: #33ff33;
-  border-radius: 8px;
-}
-
-.analytics-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 15px;
-}
-
-.analytics-item {
-  background-color: #000;
-  border: 1px solid #33ff33;
-  padding: 15px;
-  border-radius: 4px;
-}
-
-.analytics-number {
-  font-size: 1.5rem;
-  color: #ff00aa;
-  display: block;
-  margin-top: 5px;
-  text-shadow: 0 0 5px #ff00aa;
-}
-
-@media (max-width: 768px) {
-  .analytics-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .analytics-section {
-    padding: 15px;
-    font-size: 0.7rem;
-  }
-
-  .analytics-number {
-    font-size: 1.2rem;
-  }
-}
-
 .dogger-terminal {
   position: fixed;
   top: 20px;
@@ -495,7 +410,7 @@ h1.title.hidden {
   color: #33ff33;
   border: 2px solid #33ff33;
   padding: 10px;
-  font-family: monospace;
+  font-family: var(--font-body);
   font-size: 0.8rem;
   z-index: 1000;
   max-width: 300px;
@@ -519,7 +434,7 @@ h1.title.hidden {
   margin: 2px 0;
   opacity: 0;
   animation: fadeInLine 0.5s ease-in forwards;
-  font-family: monospace;
+  font-family: var(--font-body);
   color: #33ff33;
 }
 
@@ -543,11 +458,19 @@ h1.title.hidden {
   color: #33ff33;
   padding: 20px;
   border: 2px solid #fff;
-  font-family: monospace;
+  font-family: var(--font-body);
   white-space: nowrap;
   text-align: left;
 }
 
+.terminal .cursor {
+  display: inline-block;
+  width: 10px;
+  background-color: #33ff33;
+  margin-left: 2px;
+  animation: blink 1s steps(2, start) infinite;
+  vertical-align: bottom;
+}
 
 .btn-pixel {
   display: inline-block;
@@ -558,15 +481,15 @@ h1.title.hidden {
   border: 2px solid #fff;
   box-shadow: 4px 4px 0 #ff00aa;
   text-decoration: none;
-  font-family: 'Press Start 2P', cursive;
+  font-family: var(--font-head);
   font-size: 0.75rem;
-  transition: 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-pixel:hover {
   background-color: #ff00aa;
   color: #0b0c2a;
-  box-shadow: 0 0 0 #ff00aa;
+  box-shadow: none;
 }
 
 footer {
@@ -576,42 +499,10 @@ footer {
   border-top: 2px solid #fff;
   padding-top: 20px;
   color: #aaa;
+  font-family: var(--font-head);
 }
 
-/* 1. Nav button hover glow/flicker effect */
-nav a {
-  position: relative;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-nav a:hover {
-  color: #ff66cc;
-  text-shadow:
-          0 0 5px #ff66cc,
-          0 0 10px #ff33aa,
-          0 0 15px #ff0088,
-          0 0 20px #ff0088;
-  animation: flicker 1.5s infinite alternate;
-}
-@keyframes flicker {
-  0%, 100% { text-shadow: 0 0 10px #ff33aa; }
-  50% { text-shadow: 0 0 20px #ff66cc, 0 0 30px #ff00aa; }
-}
-
-/* 2. Homepage terminal blinking cursor */
-.terminal .cursor {
-  display: inline-block;
-  width: 10px;
-  background-color: #33ff33;
-  margin-left: 2px;
-  animation: blink 1s steps(2, start) infinite;
-  vertical-align: bottom;
-}
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  50.01%, 100% { opacity: 0; }
-}
-
-/* 3. Glitch effect for static text */
+/* Glitch effect for static text */
 .glitch {
   color: #33ff33;
   position: relative;
@@ -626,9 +517,8 @@ nav a:hover {
   100% { text-shadow: 0 0 transparent; }
 }
 
-/* 3. Boot sequence style */
 .boot-sequence {
-  font-family: monospace;
+  font-family: var(--font-body);
   color: #33ff33;
   background-color: #000;
   border: 2px solid #fff;
@@ -641,9 +531,13 @@ nav a:hover {
   animation: flicker 2s infinite alternate;
 }
 
-/* 3. Fake system diagnostics style */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
 .sys-diag {
-  font-family: monospace;
+  font-family: var(--font-body);
   background-color: #000;
   border: 2px solid #33ff33;
   color: #33ff33;
@@ -654,10 +548,6 @@ nav a:hover {
   line-height: 1.3;
 }
 
-.cat-roulette {
-  /* Moved to main-content section above */
-}
-
 .cat-roulette img {
   width: 300px;
   height: 300px;
@@ -666,7 +556,7 @@ nav a:hover {
   border: 1px solid #fff;
 }
 
-/* 4. Centered container for other pages */
+/* Centered container for other pages */
 .bio-centered {
   background-color: #1c1c40;
   padding: 40px 50px;
@@ -676,25 +566,14 @@ nav a:hover {
   max-width: 1200px;
   margin: 40px auto;
   border-radius: 8px;
-  font-family: 'Press Start 2P', cursive;
+  font-family: var(--font-head);
   color: #fff;
   text-align: center;
 }
 
-/* Footer styles for all pages */
-footer {
-  text-align: center;
-  font-size: 0.75rem;
-  margin-top: 40px;
-  border-top: 2px solid #fff;
-  padding-top: 20px;
-  color: #aaa;
-  font-family: 'Press Start 2P', cursive;
-}
-
 body:not(.homepage) .terminal,
 body:not(.homepage) .centered-container {
-  font-family: 'Press Start 2P', cursive !important;
+  font-family: var(--font-head) !important;
   background-color: #1c1c40 !important;
   color: #fff !important;
   border-color: #fff !important;
@@ -709,10 +588,10 @@ body:not(.homepage) .centered-container {
   display: block;
   width: 300px;
   border-radius: 8px;
-  font-family: 'Press Start 2P', cursive;
+  font-family: var(--font-head);
   color: #fff;
   box-shadow: 4px 4px 0 #ff00aa;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -881,7 +760,7 @@ body:not(.homepage) .centered-container {
   padding: 15px;
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -904,7 +783,6 @@ body:not(.homepage) .centered-container {
   line-height: 1.4;
   margin-bottom: 10px;
 }
-
 
 .projects-container {
   max-width: 1400px;
@@ -930,21 +808,6 @@ body:not(.homepage) .centered-container {
   gap: 20px;
 }
 
-@media (max-width: 768px) {
-  .project-card {
-    width: 280px;
-    margin: 10px;
-  }
-
-  .projects-grid {
-    gap: 15px;
-  }
-
-  .projects-section h2 {
-    font-size: 1.2rem;
-  }
-}
-
 .about-section {
   background-color: #1c1c40;
   padding: 30px;
@@ -952,7 +815,7 @@ body:not(.homepage) .centered-container {
   margin: 20px auto;
   max-width: 1200px;
   border-radius: 8px;
-  font-family: 'Press Start 2P', cursive;
+  font-family: var(--font-head);
   color: #fff;
 }
 
@@ -1063,30 +926,13 @@ body:not(.homepage) .centered-container {
   flex-wrap: wrap;
 }
 
-@media (max-width: 768px) {
-  .about-section {
-    padding: 20px;
-    margin: 15px;
-  }
-
-  .skills-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .resume-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
 .blog-post {
   max-width: 1200px;
   margin: 40px auto;
   border: 2px solid #fff;
   background-color: #1c1c40;
   padding: 40px;
-  font-family: 'Press Start 2P', cursive;
+  font-family: var(--font-head);
   color: #fff;
   border-radius: 8px;
   line-height: 1.8;
@@ -1133,7 +979,6 @@ body:not(.homepage) .centered-container {
   color: #ff00aa;
   margin-top: 30px;
   margin-bottom: 15px;
-  text-shadow: 0 0 5px #ff00aa;
 }
 
 .blog-post ul {
@@ -1148,29 +993,6 @@ body:not(.homepage) .centered-container {
 .blog-post p {
   margin-bottom: 15px;
   line-height: 1.7;
-}
-
-@media (max-width: 768px) {
-  .blog-post {
-    margin: 20px;
-    padding: 25px;
-  }
-
-  .blog-post h1 {
-    font-size: 1.5rem;
-  }
-
-  .project-hero {
-    height: 150px;
-  }
-}
-
-/* 4. Nav active page highlight */
-nav a.active {
-  background-color: #ff00aa;
-  color: #000;
-  box-shadow: 0 0 8px #ff00aa;
-  pointer-events: none;
 }
 
 .status-row {
@@ -1190,12 +1012,12 @@ nav a.active {
 }
 
 #ultrakill-message {
-  font-family: 'Press Start 2P', monospace;
+  font-family: var(--font-head);
   color: red;
   white-space: pre-line;
   font-size: 0.8rem;
   line-height: 1.2rem;
-  text-shadow: 0 0 5px #f00;
+  text-shadow: 2px 2px 0 #f00;
   padding-left: 0; /* remove left padding */
   text-align: center; /* center text inside the div */
   animation: ultrakill-fade 3s ease-in-out forwards;
@@ -1208,7 +1030,7 @@ nav a.active {
 }
 
 .music-player {
-  font-family: 'Press Start 2P', cursive;
+  font-family: var(--font-head);
   background: #1a1b40;
   color: #fff;
   border: 2px solid #fff;
@@ -1260,17 +1082,12 @@ nav a.active {
   color: #ff0000;
   border: 3px solid #ff0000;
   padding: 20px;
-  font-family: monospace;
+  font-family: var(--font-body);
   font-size: 1rem;
   z-index: 1000;
   text-align: center;
-  box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+  box-shadow: 4px 4px 0 rgba(255, 0, 0, 0.6);
   animation: mgr-pulse 2s ease-in-out infinite;
-}
-
-@keyframes mgr-pulse {
-  0%, 100% { box-shadow: 0 0 30px rgba(255, 0, 0, 0.5); }
-  50% { box-shadow: 0 0 50px rgba(255, 0, 0, 0.8); }
 }
 
 .nier-glitch {
@@ -1304,4 +1121,124 @@ nav a.active {
   0% { transform: translateY(0) scale(1); opacity: 1; }
   50% { transform: translateY(-50px) scale(1.2); }
   100% { transform: translateY(-100px) scale(0.8); opacity: 0; }
+}
+
+/* ===== Shared design-system components (Refined Classic) ===== */
+/* "Hard-Shadow Sticker" card shell — used by later page-specific rebuilds */
+.card-shell {
+  background: var(--panel);
+  border: 1px solid var(--accent);
+  box-shadow: 4px 4px 0 rgba(51, 255, 51, 0.35);
+}
+.card-titlebar {
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--font-head);
+  font-size: 0.5rem;
+  padding: 8px 12px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.card-body {
+  padding: 12px 14px 14px;
+  font-family: var(--font-body);
+  color: var(--text);
+}
+.card-row-grid {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 5px 16px;
+}
+
+/* ===== Consolidated responsive rules (was 6 separate max-width:768px blocks) ===== */
+@media (max-width: 768px) {
+  .info {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .info .separator {
+    min-width: auto;
+    font-size: 0.6rem;
+  }
+
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cat-roulette {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+    margin: 0 auto 20px auto;
+    order: 1;
+  }
+
+  .bio-centered {
+    padding: 20px 25px;
+    font-size: 0.8rem;
+    order: 2;
+  }
+
+  .status-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin: 20px;
+  }
+
+  .status-box, .code-matrix {
+    padding: 15px;
+    margin: 15px;
+  }
+
+  .status-content, .matrix-content {
+    font-size: 0.65rem;
+  }
+
+  .status-header, .matrix-header {
+    font-size: 0.75rem;
+  }
+
+  .project-card {
+    width: 280px;
+    margin: 10px;
+  }
+
+  .projects-grid {
+    gap: 15px;
+  }
+
+  .projects-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .about-section {
+    padding: 20px;
+    margin: 15px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .resume-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .blog-post {
+    margin: 20px;
+    padding: 25px;
+  }
+
+  .blog-post h1 {
+    font-size: 1.5rem;
+  }
+
+  .project-hero {
+    height: 150px;
+  }
 }
