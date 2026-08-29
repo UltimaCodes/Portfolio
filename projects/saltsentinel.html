@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Salt Sentinel | Ryaan Aaqil</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="icon" type="image/png" href="../images/logo.png" />
+</head>
+<body>
+<div id="parallax-background"></div>
+
+<nav>
+    <div class="left">
+        <a href="../projects.html" class="btn-pixel">← Back to Projects</a>
+        <a href="../setup.html" class="btn-pixel">Setup</a>
+    </div>
+    <div class="center">
+        <a href="../index.html" class="nav-home">"wgat"</a>
+    </div>
+    <div class="right">
+        <a href="../about.html" class="btn-pixel">About</a>
+    </div>
+</nav>
+
+<div class="proj-header">
+    <h1>SALT SENTINEL</h1>
+    <p class="proj-tagline">A rover that finds salt damage on a 4,500 year old wall before conservators do. Never touches the brick.</p>
+    <div class="about-chips">
+        <span class="about-chip">Raspberry Pi 5</span>
+        <span class="about-chip">ESP32</span>
+        <span class="about-chip">Python</span>
+    </div>
+</div>
+
+<div class="proj-hero-shot"><div class="saltsentinel-design" style="width:100%;height:100%;"></div></div>
+
+<div class="proj-layout">
+    <div class="proj-main">
+        <div class="proj-quote">
+            Mohenjo-daro is 4,500 years old and salt is rising up through the fired brick from below, crystallising
+            and breaking it apart. Right now the only way to know where it is worst is a conservator deciding by
+            eye. Salt Sentinel patrols a wall without ever touching it, stops at fixed stations, and turns a
+            thermal camera and four-light photometric stereo into a risk map instead of a guess. Built for WRO
+            Pakistan, heading to nationals in Lahore.
+        </div>
+
+        <h2>Why It Never Touches the Wall</h2>
+        <p>
+            The rules require non-contact sensing, but the report exists to explain what got ruled out and why,
+            not just what got built. A touch probe was the obvious first idea and the first one cut. EMI
+            conductivity looked promising until the physics said otherwise. Dry salt is non-conductive, so an EMI
+            channel would have offered specificity once damage was already visible, not earliness. Ultrasonic,
+            a LIDAR-on-stepper rig, a depth camera and spin-in-place scanning were all considered and rejected too.
+            The team that can explain what it did not build, and why, is rarer than the team that only shows what
+            it did.
+        </p>
+
+        <div class="proj-shot"><div class="saltsentinel-design" style="width:100%;height:100%;"></div><span class="proj-shot-label">thermal pass, wall side</span></div>
+
+        <h2>Two Processors, Split by Timing</h2>
+        <p>
+            The Pi owns vision and scoring. The ESP32 owns motor PWM, servos, and a 500ms safety watchdog that
+            stops the rover if the Pi ever stops talking to it. One USB cable carries both power and serial
+            between them. Splitting it this way means the safety-critical loop never waits on a vision pipeline
+            that might be busy solving photometric stereo.
+        </p>
+
+        <h2>What It Actually Measures</h2>
+        <p>
+            Thermal at roughly 1 metre standoff, so the frame is wide enough to contain a dry reference brick next
+            to the damp one. At that range a damp patch reads about 2.5°C colder in absolute terms, but the
+            pixel-to-pixel noise floor is closer to 0.05°C, and that gap is what an in-frame differential exploits.
+            Camera work happens closer, around 25cm, for four-light photometric stereo: light a brick from four
+            directions in turn and solve for albedo and surface normals from how the brightness changes between
+            them. The efflorescence channel is built to fail loudly instead of quietly: without a calibration card
+            imaged first, it returns NaN on purpose rather than report a percentile threshold that would call a
+            clean wall and a crusted one the same value.
+        </p>
+
+        <h2>What Actually Bit Us</h2>
+        <ul>
+            <li>Every VL53L0X ToF sensor ships at the same I2C address, so they have to be woken one at a time through XSHUT and reassigned, every single boot</li>
+            <li>Parallax between the thermal sensor and the camera is 16% of frame width at 250mm and scales with distance, so the two images do not measure the same brick unless the range is accounted for</li>
+            <li>The Pi 5's GPIO sits behind the RP1 chip, so RPi.GPIO and pigpio silently do not work. It needs gpiozero on the lgpio backend</li>
+            <li>A gravimetric ground-truth pass needs the dosing done blind, by someone who is not also driving the rover</li>
+        </ul>
+
+        <h2>Where It Actually Stands</h2>
+        <p>
+            Honest, because the report's own house rule is to state a limitation rather than fake a result. The
+            firmware watchdog is currently the only automatic stop; a physical e-stop was on the rover and got
+            removed during a rebuild. Only two of three ToF sensors are fitted, so there is no forward corner
+            detection yet. Demo footage is filmed on manual Bluetooth control with the Pi powered off, because
+            that is what is actually finished on any given day, and the report says so rather than implying more.
+        </p>
+    </div>
+
+    <div class="proj-side card-shell">
+        <div class="card-titlebar">QUICK FACTS</div>
+        <div class="card-body">
+            <div><b>STATUS</b><span style="color: var(--accent-alert);">Racing the Lahore nationals deadline</span></div>
+            <div><b>TYPE</b>Autonomous inspection rover</div>
+            <div><b>TEAM</b>Nixor Engineering Solutions</div>
+            <div><b>TECH</b>Raspberry Pi 5, ESP32, Python, C++</div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    &copy; 2025 Ryaan Aaqil. All rights NOT reserved.
+</footer>
+
+<script src="../js/shared.js"></script>
+<script src="../js/easter-eggs.js"></script>
+</body>
+</html>

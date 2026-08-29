@@ -182,11 +182,6 @@ h1.title {
   color: #fff;
   letter-spacing: 2px;
   text-shadow: 3px 3px 0 var(--accent-alert-shadow);
-  transition: opacity 0.3s ease;
-}
-
-h1.title.hidden {
-  opacity: 0;
 }
 
 .dog {
@@ -552,14 +547,6 @@ footer {
 }
 
 body:not(.homepage) .terminal,
-body:not(.homepage) .centered-container {
-  font-family: var(--font-head) !important;
-  background-color: #1c1c40 !important;
-  color: #fff !important;
-  border-color: #fff !important;
-  box-shadow: none !important;
-}
-
 .project-card {
   border: 1px solid var(--accent);
   background-color: var(--panel);
@@ -625,64 +612,6 @@ body:not(.homepage) .centered-container {
   border: 3px solid #fff;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.1);
-}
-
-/* Atomica Design - Atomic Structure */
-.atomica-design {
-  background: linear-gradient(45deg, #0066ff, #0088ff);
-  position: relative;
-}
-
-.atomica-design::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
-  border: 2px solid #fff;
-  border-radius: 50%;
-  background: transparent;
-}
-
-.atomica-design::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  width: 100px;
-  height: 100px;
-  border: 1px solid #fff;
-  border-radius: 50%;
-  background: transparent;
-}
-
-/* Graphorama Design - Chart Pattern */
-.graphorama-design {
-  background: linear-gradient(45deg, #00ff88, #00cc66);
-  position: relative;
-}
-
-.graphorama-design::before {
-  content: '';
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
-  height: 2px;
-  background: #fff;
-}
-
-.graphorama-design::after {
-  content: '';
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  bottom: 10px;
-  width: 2px;
-  background: #fff;
 }
 
 .robot-design {
@@ -784,6 +713,51 @@ body:not(.homepage) .centered-container {
   width: 30px; height: 30px;
   background: rgba(255,255,255,0.3);
   border: 2px solid #fff;
+}
+
+/* Salt Sentinel Design - Thermal Scan */
+.saltsentinel-design {
+  background: linear-gradient(45deg, #ff6b35, #2d8a8a);
+  position: relative;
+}
+.saltsentinel-design::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.15) 0 2px, transparent 2px 12px);
+}
+.saltsentinel-design::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 36px; height: 36px;
+  transform: translate(-50%, -50%);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+}
+
+/* Nixor FOC Design - PCB Traces */
+.nixorfoc-design {
+  background: linear-gradient(45deg, #0a5c36, #147a4a);
+  position: relative;
+}
+.nixorfoc-design::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+          linear-gradient(90deg, rgba(255,215,0,0.35) 2px, transparent 2px),
+          linear-gradient(0deg, rgba(255,215,0,0.25) 1px, transparent 1px);
+  background-size: 30px 30px, 10px 10px;
+}
+.nixorfoc-design::after {
+  content: '';
+  position: absolute;
+  top: 35%; left: 35%;
+  width: 24px; height: 24px;
+  border: 2px solid #fff;
+  background: rgba(10, 92, 54, 0.6);
 }
 
 .project-card .project-info h2 {

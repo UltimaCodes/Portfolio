@@ -14,7 +14,6 @@
     <div class="left">
         <a href="../projects.html" class="btn-pixel">← Back to Projects</a>
         <a href="../setup.html" class="btn-pixel">Setup</a>
-        <a href="../now.html" class="btn-pixel">Now</a>
     </div>
     <div class="center">
         <a href="../index.html" class="nav-home">"wgat"</a>
@@ -26,9 +25,9 @@
 
 <div class="proj-header">
     <h1>GORILLA WARFARE</h1>
-    <p class="proj-tagline">A multiplayer FPS where everyone plays as a gorilla and nobody asks why</p>
+    <p class="proj-tagline">A multiplayer FPS where everyone plays a gorilla and fights with bananas. It outgrew that sentence a while ago.</p>
     <div class="about-chips">
-        <span class="about-chip">Unity 2022.3</span>
+        <span class="about-chip">Unity 6000.2</span>
         <span class="about-chip">C#</span>
         <span class="about-chip">Photon PUN 2</span>
     </div>
@@ -39,60 +38,90 @@
 <div class="proj-layout">
     <div class="proj-main">
         <div class="proj-quote">
-            A multiplayer FPS where everyone plays as a gorilla. It's technically functional and very low effort.
-            Built in Unity over the course of a week, mostly to refresh my knowledge of Photon PUN networking.
+            What started as a week spent refreshing my Photon PUN knowledge now has three real game modes, five
+            distinct banana weapons, a full style-scoring system with named ranks, and a movement stack built out
+            of slide-hop chains and air brakes. At its core it is still a game where a gorilla can be finished off
+            by a weapon called Slip Hazard, and that has never once stopped being funny on purpose.
         </div>
 
-        <h2>Gameplay Summary</h2>
+        <h2>Five Weapons, Each an Actual Banana</h2>
+        <p>
+            Every weapon is a banana at a different shape, not just a different size anymore. Internally they stay
+            named by role, Pistol through Peel, because the gun game ladder is defined in power order and a role
+            name reads at a glance. What you actually see on screen is fruit.
+        </p>
         <ul>
-            <li>Multiplayer lobby system using Photon PUN</li>
-            <li>Host-controlled match starting</li>
-            <li>Custom room names and usernames</li>
-            <li>Basic FPS movement: WASD, Jump, Sprint, Shoot</li>
-            <li>Scoreboard tracking kills and deaths</li>
-            <li>Red bullet impact squares that vanish after 30 seconds, for realism</li>
-            <li>Gravity-enabled death via falling into the void</li>
-            <li>Permanent T-posing gorilla player models, for atmosphere</li>
+            <li><b>Cavendish</b>, the pistol. The supermarket banana, ordinary and dependable, everyone starts with it</li>
+            <li><b>The Split</b>, the shotgun. Two bananas taped together, and a split is two halves in one dish</li>
+            <li><b>The Bunch</b>, the automatic rifle. A lot of bananas at once, which is also what it does</li>
+            <li><b>Big Mike</b>, the sniper. Named for the Gros Michel cultivar wiped out in the fifties, and longer than a Cavendish</li>
+            <li><b>Slip Hazard</b>, the melee finisher. What's left after you eat one, and what everyone does about it</li>
+        </ul>
+        <p>
+            Balance is checked by a script, not eyeballed. It caught a real problem early on: the pistol was doing
+            221 damage per second against the automatic rifle's 210, which made the "harder to use" gun strictly
+            worse. Current numbers land the pistol at 34 damage, 5 shots a second, 3 hits to kill. The rifle does
+            21 a hit at 10 shots a second, 5 hits to kill, and sprays.
+        </p>
+
+        <div class="proj-shot"><div class="gorilla-design" style="width:100%;height:100%;"></div><span class="proj-shot-label">a gorilla, no longer T-posing</span></div>
+
+        <h2>Three Ways To Play</h2>
+        <p>
+            Deathmatch rolls a random set of three weapons and the most kills wins when the clock runs out. Gun
+            game puts everyone on a fixed ladder, two kills to advance, and the run only ends with a melee finish.
+            Team deathmatch is the same weapon roll, scored by side instead of by player. All three live entirely
+            in Photon room properties rather than local fields, which is what makes a late join or a host migration
+            just work instead of needing its own catch-up code.
+        </p>
+
+        <h2>Movement You Can Actually Learn</h2>
+        <p>
+            Slide at speed, hop out of it, and land back into another slide to chain speed instead of losing it.
+            A ground slam trades height for distance. An air brake kills your horizontal speed almost instantly,
+            which sounds like the boring one until you notice it is also the only counter-play against everyone
+            else's momentum. A ledge hop gives you one extra jump near a wall worth jumping at, gated so it can't
+            be spammed. Two earlier ideas, a scripted vault and an auto-latching wall run, both got built, both
+            got played, and neither survived contact with an actual playtest, so both were cut outright rather
+            than retuned a third time on a guess.
+        </p>
+
+        <h2>The Style Meter</h2>
+        <p>
+            Kills climb a multiplier through five ranks: PEELING, RIPE, GOING BANANAS, FULL SILVERBACK, RAMPAGE.
+            Headshots, no-scopes, point-blank finishes and weapon swaps all add on top of a kill's base value, the
+            multiplier decays after four seconds of quiet, and getting hit or smashing into a wall cuts it hard.
+            Score, not raw kill count, is what actually decides deathmatch and team deathmatch now. Gun game still
+            runs on its ladder, since that already is its own progression system.
+        </p>
+
+        <h2>Bugs Worth Admitting To</h2>
+        <ul>
+            <li>For a while, nobody could damage anyone. Remote players had their only collider disabled, and a disabled collider does not stop a raycast, it just lets it pass straight through</li>
+            <li>Every gun on a remote player's hand rendered a hundred times too big, because the rig's bones inherited a stray 100x scale from the original FBX import. The head hitbox came along for the ride as a 26 metre sphere nobody could walk into</li>
+            <li>Other players saw you holding a 2024 M1911 and an AK74, because the loadout only ever got rebuilt for the client that owned it. Remote copies kept whatever the prefab shipped with</li>
+            <li>Screenshake never touched the HUD, not even a little, because a screen-space overlay canvas does not move with the camera under any circumstances. Every hit visibly rattled the world and left the UI dead still</li>
         </ul>
 
-        <div class="proj-shot"><div class="gorilla-design" style="width:100%;height:100%;"></div><span class="proj-shot-label">a gorilla, T-posing, as intended</span></div>
-
-        <h2>Technical Implementation</h2>
+        <h2>What ULTRAKILL and Cruelty Squad Actually Mean Here</h2>
         <p>
-            Created in Unity using Photon PUN for networked multiplayer. The lobby system supports room listing,
-            joining, naming, and host-based game control. A somewhat goofy FPS controller manages player input and
-            shooting. Enemies do not exist. Everyone is the same gorilla. There are no teams. No win condition.
-            Only meaningless violence.
+            Not a mood board, a checklist. Loud instead of tasteful, saturated and clashing on purpose, no
+            tasteful dark grey with one accent colour. Text sized and placed like part of the composition, not a
+            label sitting on top of it. Hard cuts between states instead of fades, because a fade reads as slow
+            and polite and this game is neither. Readable underneath all of it, the same way ULTRAKILL stays
+            chaotic without ever hiding your own health bar. And funny is allowed, because it's a game about
+            monkeys shooting each other with bananas, and pretending otherwise would be the actually embarrassing
+            choice.
         </p>
 
-        <h2>Design Notes</h2>
+        <h2>What's Next</h2>
         <p>
-            The map consists of ramps and walls. There is a gun — or so I thought. The credits file says otherwise
-            (see below). It makes no sound, but you'll know it fired because a red square will appear briefly where
-            the bullet hit. The T-posing gorillas are not placeholders. They are the vision.
+            A Steam launch is planned for roughly six months out, specifically so the game has room to feel
+            finished instead of shipped early. Photon PUN 2 is end of life and the eventual move off it is real,
+            but deliberately sequenced after that launch rather than before it, since the current peer-hosted
+            networking already works. Past that: a second and third map, and a voting system so a five person
+            lobby stops replaying the same one map by default.
         </p>
-
-        <h2>A Fact I'd Forgotten</h2>
-        <p>
-            Checking the credits for this rewrite turned up something: every weapon in the game is the same banana
-            model at a different size. There was never a gun. There has only ever been bananas.
-        </p>
-
-        <h2>Audio</h2>
-        <p>
-            There is one song, which plays in the main menu. That's it. No sound effects.
-            Credit to Dave Gunning for the track:
-            <a href="https://www.youtube.com/watch?v=TNW4Kgk7bvY" target="_blank">[link]</a>
-        </p>
-
-        <h2>Future Plans (Surely I Actually Do Something)</h2>
-        <ul>
-            <li>Boss fights (unclear what against)</li>
-            <li>Multiplayer modes that go beyond "everyone shoots everyone"</li>
-            <li>New maps, maybe ones that aren't just ramps and voids</li>
-            <li>SFX, probably</li>
-            <li>Gorillas that don't T-pose (low priority)</li>
-        </ul>
     </div>
 
     <div class="proj-side card-shell">
