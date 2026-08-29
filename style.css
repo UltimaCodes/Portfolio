@@ -1416,12 +1416,13 @@ body:not(.homepage) .centered-container {
 .setup-item-review {
   position: absolute;
   inset: 0;
-  background: rgba(11, 12, 42, 0.96);
+  background: rgba(11, 12, 42, 0.97);
   border: 1px solid var(--accent);
   padding: 12px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  overflow-y: auto;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
