@@ -188,6 +188,7 @@
     }
 
     function triggerDoggerEasterEgg() {
+        if (window.easterEggs) window.easterEggs.markFound('dogger');
         doggerCount++;
 
         if (glitchTerminal && glitchTerminal.parentNode) {
@@ -232,6 +233,7 @@
     }
 
     function showMGREasterEgg() {
+        if (window.easterEggs) window.easterEggs.markFound('nanomachines');
         // Create full-screen overlay
         const overlay = utils.createElement('div');
         overlay.style.cssText = `
@@ -280,6 +282,7 @@
     }
     
     function showUndertaleEasterEgg() {
+        if (window.easterEggs) window.easterEggs.markFound('determination');
         const battleBox = utils.createElement('div');
         battleBox.style.cssText = `
         position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%);
@@ -355,6 +358,7 @@
     }
 
     function showDeltaruneEasterEgg() {
+        if (window.easterEggs) window.easterEggs.markFound('spamton');
         const text = utils.createElement('div');
         text.style.cssText = `
                 position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -382,6 +386,7 @@
     }
 
     function showJonklerEasterEgg() {
+        if (window.easterEggs) window.easterEggs.markFound('jonkler');
 
         // Play Jonkler sound effect
         if (audioAllowed) {
@@ -444,6 +449,7 @@
     function triggerMatrixEffect() {
         const canvas = utils.getElement('#matrix-canvas');
         if (!canvas) return;
+        if (window.easterEggs) window.easterEggs.markFound('matrix');
 
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
@@ -603,6 +609,7 @@
         const lines = ["MANKIND IS DEAD", "BLOOD IS FUEL", "HELL IS FULL"];
         const container = utils.getElement("#ultrakill-container");
         if (!container) return;
+        if (window.easterEggs) window.easterEggs.markFound('ultrakill');
 
         if (audioAllowed) {
             const audio = getUltrakillAudio();
