@@ -14,7 +14,6 @@
     <div class="left">
         <a href="../projects.html" class="btn-pixel">← Back to Projects</a>
         <a href="../setup.html" class="btn-pixel">Setup</a>
-        <a href="../now.html" class="btn-pixel">Now</a>
     </div>
     <div class="center">
         <a href="../index.html" class="nav-home">"wgat"</a>
@@ -26,7 +25,7 @@
 
 <div class="proj-header">
     <h1>MACROFY</h1>
-    <p class="proj-tagline">Turns a spare keyboard into a dedicated macro pad — no driver, no bloat</p>
+    <p class="proj-tagline">Turns a spare keyboard into a dedicated macro pad. No driver, no bloat</p>
     <div class="about-chips">
         <span class="about-chip">C#</span>
         <span class="about-chip">WPF</span>
@@ -40,8 +39,8 @@
     <div class="proj-main">
         <div class="proj-quote">
             Plug in any USB keyboard, point Macrofy at it, and every key on <em>that specific keyboard</em> stops
-            typing and starts firing macros — launch apps, open URLs, type snippets, hotkeys, media control, run
-            commands — while the keyboard you're actually typing on keeps working like nothing's different.
+            typing and starts firing macros: launch apps, open URLs, type snippets, hotkeys, media control, run
+            commands, all while the keyboard you're actually typing on keeps working like nothing's different.
             Pitch, from my own README: "like a Stream Deck, except it's a whole keyboard and it's free."
         </div>
 
@@ -49,13 +48,13 @@
         <p>
             This sounds simple until you try to build it. Windows Raw Input can tell you <em>which physical
             keyboard</em> sent a keystroke, but it can't block that keystroke from reaching whatever app has focus.
-            The obvious fix — a low-level keyboard hook — can block keys just fine, but it's blind to device
+            The obvious fix, a low-level keyboard hook, can block keys just fine, but it's blind to device
             identity. And here's the part that actually breaks your afternoon: once you block a key at that level,
             Windows never generates the Raw Input event for it. You can't block a key <em>and</em> find out which
             keyboard it came from afterward. Blocking destroys the only evidence.
         </p>
         <p>
-            The fix was hooking <code>WH_KEYBOARD</code> instead of <code>WH_KEYBOARD_LL</code> — a message-based
+            The fix was hooking <code>WH_KEYBOARD</code> instead of <code>WH_KEYBOARD_LL</code>, a message-based
             hook that fires <em>after</em> Raw Input has already logged the device, instead of before. Everything
             downstream (layers, per-device profiles, the whole macro engine) sits on top of that one
             correctly-ordered fact.
@@ -65,11 +64,11 @@
 
         <h2>Features</h2>
         <ul>
-            <li>Per-device profiles — different macro sets for different spare keyboards</li>
+            <li>Per-device profiles: different macro sets for different spare keyboards</li>
             <li>Layers, so one keyboard can hold more macros than it has keys</li>
             <li>Layout calibration ("Learn Keys") instead of hardcoding a keyboard layout</li>
             <li>Tray integration, light/dark theme</li>
-            <li>Deliberately driver-free — a driver-based approach would risk getting flagged by anti-cheat (Vanguard/EAC/BattlEye), so this stays entirely in userspace</li>
+            <li>Deliberately driver-free: a driver-based approach would risk getting flagged by anti-cheat (Vanguard/EAC/BattlEye), so this stays entirely in userspace</li>
         </ul>
 
         <h2>Ships As</h2>

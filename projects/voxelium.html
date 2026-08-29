@@ -14,7 +14,6 @@
     <div class="left">
         <a href="../projects.html" class="btn-pixel">← Back to Projects</a>
         <a href="../setup.html" class="btn-pixel">Setup</a>
-        <a href="../now.html" class="btn-pixel">Now</a>
     </div>
     <div class="center">
         <a href="../index.html" class="nav-home">"wgat"</a>
@@ -48,7 +47,7 @@
         <h2>What's Actually In It</h2>
         <ul>
             <li>Binary greedy meshing and palette-compressed chunks</li>
-            <li>A jthread-based job system feeding GPU-driven culling — the whole visible world draws in one indirect draw call</li>
+            <li>A jthread-based job system feeding GPU-driven culling (the whole visible world draws in one indirect draw call)</li>
             <li>Flood-fill RGB lighting</li>
             <li>A forward HDR pipeline: cascaded shadows, SSAO, volumetrics, bloom, ACES tonemapping</li>
             <li>Flowing water and falling sand, region-file world persistence</li>
@@ -58,7 +57,7 @@
 
         <h2>The Audio Is Weirdly Thorough</h2>
         <p>
-            Sounds resolve by exact block first, then fall back to material — so all 25 lamp block IDs share one
+            Sounds resolve by exact block first, then fall back to material, so all 25 lamp block IDs share one
             sound file instead of shipping 25 copies of the same clip. Fall damage scales with landing weight,
             being underwater applies an actual sweeping low-pass filter instead of just muffling the volume, and
             "am I in a cave" is answered by reading the sky-light value the voxel data already has, not by
@@ -70,7 +69,7 @@
             The project's own docs open with a line worth stealing for basically everything: "Do not invent facts.
             Do not guess at numbers... A plausible-sounding wrong answer is worse than 'I don't know yet.'" There's
             also a <code>harden</code> build variant that runs with libstdc++ container assertions on, specifically
-            because it once caught a real data race — and an offscreen <code>--smoke</code> self-test mode for
+            because it once caught a real data race, plus an offscreen <code>--smoke</code> self-test mode for
             future CI. The msvc preset exists but is unverified, because "I don't have VS lying around."
         </p>
     </div>

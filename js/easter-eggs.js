@@ -1,4 +1,4 @@
-// Interactive easter-egg system — click/drag/hover/key-sequence triggers,
+// Interactive easter-egg system. Click/drag/hover/key-sequence triggers,
 // plus a sitewide discovery tracker that also counts the original
 // keyword-typed eggs from homepage-effects.js (via markFound()).
 (function() {
@@ -33,7 +33,7 @@
     }
     function saveFound(list) {
         try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); }
-        catch (e) { /* private browsing etc — tracker just won't persist */ }
+        catch (e) { /* private browsing etc, tracker just won't persist */ }
     }
 
     function showToast(label) {
@@ -196,7 +196,7 @@
         });
     }
 
-    // Sitewide eggs — every page, since the elements they use (nav logo,
+    // Sitewide eggs. Every page, since the elements they use (nav logo,
     // footer, page body) exist everywhere.
     function initSitewideEggs() {
         window.easterEggs.register('konami-glitch', {
@@ -250,7 +250,7 @@
     }
 
     // Hidden clickable element in the footer, plus a triple-click on the
-    // copyright text itself — both sitewide since every page has a footer.
+    // copyright text itself, both sitewide since every page has a footer.
     function initFooterEggs() {
         const footer = document.querySelector('footer');
         if (!footer || document.querySelector('#hidden-secret')) return;
@@ -286,7 +286,7 @@
         });
     }
 
-    // Small progress badge, bottom-right, every page — click to see the checklist.
+    // Small progress badge, bottom-right, every page. Click to see the checklist.
     function initSecretsBadge() {
         if (document.querySelector('#secrets-badge')) return;
         const badge = document.createElement('div');

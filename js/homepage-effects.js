@@ -25,7 +25,7 @@
         dog = utils.getElement('.dog');
         title = utils.getElement('.title');
         catImgElement = utils.getElement('#cat-img');
-        // Easter-egg audio is lazy-loaded on first trigger instead of here —
+        // Easter-egg audio is lazy-loaded on first trigger instead of here,
         // see the getXAudio() helpers below. Loading all 7 files upfront cost
         // ~750KB on every homepage visit regardless of whether any egg fires.
     }
@@ -502,38 +502,30 @@
     function animateDog() {
         if (!dog || !title) return;
 
-        // Devourer of Gods animation. The name should only vanish while the
-        // dog is actually passing over it — sync visibility to the dog's
-        // real on-screen position each frame instead of guessing timeouts,
-        // so it lines up regardless of viewport size or the animation's
-        // ease-in-out speed curve.
+        // Devourer of Gods animation. The title erodes away exactly as fast
+        // as the dog's leading edge sweeps across it. A clip-path driven by
+        // real position each frame means the name is only ever gone where
+        // the dog has actually passed, not toggled invisible the instant
+        // any part of the dog overlaps it.
         dog.classList.add('animate');
 
         const animDuration = 2500;
         const animStart = performance.now();
-        let titleHidden = false;
 
         function syncTitleToDogPosition(now) {
             const elapsed = now - animStart;
             if (elapsed >= animDuration) {
-                if (titleHidden) {
-                    title.classList.remove('hidden');
-                    titleHidden = false;
-                }
+                title.style.clipPath = '';
                 return;
             }
 
             const dogRect = dog.getBoundingClientRect();
             const titleRect = title.getBoundingClientRect();
-            const dogIsOverTitle = dogRect.right > titleRect.left && dogRect.left < titleRect.right;
+            const eatenFraction = titleRect.width > 0
+                ? Math.min(1, Math.max(0, (dogRect.right - titleRect.left) / titleRect.width))
+                : 0;
 
-            if (dogIsOverTitle && !titleHidden) {
-                title.classList.add('hidden');
-                titleHidden = true;
-            } else if (!dogIsOverTitle && titleHidden) {
-                title.classList.remove('hidden');
-                titleHidden = false;
-            }
+            title.style.clipPath = `inset(0 0 0 ${(eatenFraction * 100).toFixed(2)}%)`;
 
             requestAnimationFrame(syncTitleToDogPosition);
         }
@@ -578,7 +570,7 @@
         setTimeout(() => {
             clearInterval(particleInterval);
             dog.classList.remove('animate');
-            title.classList.remove('hidden');
+            title.style.clipPath = '';
 
             screenEffect.style.opacity = '0';
             setTimeout(() => {
