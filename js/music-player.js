@@ -10,7 +10,7 @@
     ];
 
     let currentTrack = 0;
-    let audio, trackTitle, seekBar, currentTimeDisplay, durationDisplay, playButton;
+    let audio, trackTitle, seekBar, currentTimeDisplay, durationDisplay, playButton, trackList;
 
     function initMusicPlayer() {
         audio = utils.getElement("#audio");
@@ -19,11 +19,34 @@
         currentTimeDisplay = utils.getElement("#current-time");
         durationDisplay = utils.getElement("#duration");
         playButton = utils.getElement("#play-pause-btn");
+        trackList = utils.getElement("#track-list");
 
         if (!audio) return; // Exit if music player not on this page
 
+        renderTrackList();
         setupEventListeners();
         loadTrack(currentTrack);
+    }
+
+    function renderTrackList() {
+        if (!trackList) return;
+        trackList.innerHTML = tracks.map((track, index) =>
+            `<div class="track-row" data-index="${index}">${track.title}</div>`
+        ).join('');
+        trackList.querySelectorAll('.track-row').forEach(row => {
+            row.addEventListener('click', () => {
+                currentTrack = parseInt(row.dataset.index, 10);
+                loadTrack(currentTrack);
+                audio.play().catch(() => {});
+            });
+        });
+    }
+
+    function highlightActiveTrack() {
+        if (!trackList) return;
+        trackList.querySelectorAll('.track-row').forEach(row => {
+            row.classList.toggle('playing', parseInt(row.dataset.index, 10) === currentTrack);
+        });
     }
 
     function setupEventListeners() {
@@ -44,6 +67,7 @@
         trackTitle.textContent = track.title;
         audio.load();
         updatePlayButtonLabel();
+        highlightActiveTrack();
     }
 
     function togglePlay() {
