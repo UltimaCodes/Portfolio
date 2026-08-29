@@ -1108,91 +1108,6 @@ body:not(.homepage) .centered-container {
   flex-wrap: wrap;
 }
 
-.blog-post {
-  max-width: 900px;
-  margin: 40px auto;
-  border: 1px solid var(--border);
-  background-color: var(--panel);
-  padding: 40px;
-  font-family: var(--font-head);
-  color: #fff;
-  border-radius: 8px;
-  line-height: 1.8;
-  box-shadow: 4px 4px 0 #ff00aa;
-}
-
-.blog-post h1 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  background: linear-gradient(180deg, #ffffff 0%, #ff00aa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-align: center;
-}
-
-.project-hero {
-  max-width: 100%;
-  height: 200px;
-  margin: 20px 0;
-  border: 2px solid #fff;
-  border-radius: 8px;
-}
-
-.blog-post img,
-.blog-post video {
-  max-width: 100%;
-  margin: 20px 0;
-  border: 2px solid #fff;
-  border-radius: 4px;
-}
-
-.blog-post .tech-used {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: var(--bg);
-  border: 1px solid var(--accent);
-  border-radius: 4px;
-  font-style: italic;
-  color: #aaf;
-  text-align: center;
-}
-
-.blog-post h2 {
-  font-family: var(--font-head);
-  color: var(--accent);
-  margin-top: 30px;
-  margin-bottom: 15px;
-}
-
-.blog-post ul {
-  margin-left: 20px;
-}
-
-.blog-post li {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  color: var(--text);
-  margin-bottom: 8px;
-  line-height: 1.6;
-}
-
-.blog-post p {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  color: var(--text);
-  margin-bottom: 15px;
-  line-height: 1.7;
-}
-
-.status-row {
-  display: flex;
-  justify-content: flex-start; /* Align items to the left */
-  align-items: flex-start;     /* Align items to the top */
-  gap: 30px;                   /* Optional spacing between boxes */
-  margin-top: 40px;
-  flex-wrap: wrap;             /* Enables wrapping on small screens */
-}
-
 #ultrakill-container {
   min-height: 2em;
   display: flex;
@@ -1333,6 +1248,119 @@ body:not(.homepage) .centered-container {
 }
 .hp-val.alert {
   color: var(--accent-alert);
+}
+
+/* ===== Project detail page template ===== */
+.proj-header {
+  text-align: center;
+  margin: 40px auto 20px;
+  max-width: 900px;
+}
+.proj-header h1 {
+  font-family: var(--font-head);
+  color: #fff;
+  text-shadow: 3px 3px 0 var(--accent-alert-shadow);
+  font-size: 2.2rem;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+.proj-tagline {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.proj-hero-shot {
+  max-width: 900px;
+  height: 220px;
+  margin: 0 auto 30px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.proj-layout {
+  display: flex;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto 40px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+.proj-main {
+  flex: 2;
+  min-width: 320px;
+  font-family: var(--font-body);
+  color: var(--text);
+  line-height: 1.7;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 30px;
+}
+.proj-main h2 {
+  font-family: var(--font-head);
+  color: var(--accent);
+  margin: 26px 0 14px;
+  font-size: 1rem;
+}
+.proj-main h2:first-child { margin-top: 0; }
+.proj-main p, .proj-main li { font-size: 1.05rem; margin-bottom: 12px; }
+.proj-main ul { margin-left: 20px; }
+.proj-main code {
+  background: var(--bg);
+  padding: 1px 6px;
+  border-radius: 3px;
+  color: var(--accent);
+}
+.proj-quote {
+  border-left: 3px solid var(--accent-alert-shadow);
+  padding-left: 16px;
+  font-size: 1.15rem;
+  margin-bottom: 16px;
+}
+.proj-shot {
+  height: 140px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  margin: 16px 0;
+  position: relative;
+  overflow: hidden;
+}
+.proj-shot-label {
+  position: absolute;
+  bottom: 8px; left: 8px;
+  font-family: var(--font-head);
+  font-size: 0.5rem;
+  color: rgba(255,255,255,0.85);
+  background: rgba(0,0,0,0.5);
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+
+.proj-side {
+  flex: 1;
+  min-width: 240px;
+  position: sticky;
+  top: 20px;
+}
+.proj-side .card-body div { margin-bottom: 10px; font-size: 0.95rem; }
+.proj-side .card-body b {
+  display: block;
+  color: var(--text-dim);
+  font-family: var(--font-head);
+  font-size: 0.5rem;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+.proj-side .btn-pixel { display: block; text-align: center; margin-top: 12px; }
+
+@media (max-width: 760px) {
+  .proj-side { position: static; }
 }
 
 /* Setup page: category boxes side by side, wrapping as needed —
@@ -1562,16 +1590,7 @@ body.konami-active {
     align-items: center;
   }
 
-  .blog-post {
-    margin: 20px;
-    padding: 25px;
-  }
-
-  .blog-post h1 {
-    font-size: 1.5rem;
-  }
-
-  .project-hero {
-    height: 150px;
+  .proj-layout {
+    flex-direction: column;
   }
 }

@@ -23,44 +23,58 @@
     </div>
 </nav>
 
-<div class="blog-post">
-    <h1>RetraceOSU</h1>
+<div class="proj-header">
+    <h1>RETRACEOSU</h1>
+    <p class="proj-tagline">A replay autopsy tool for osu!standard</p>
+    <div class="about-chips">
+        <span class="about-chip">Next.js 16</span>
+        <span class="about-chip">TypeScript</span>
+        <span class="about-chip">Tailwind v4</span>
+    </div>
+</div>
 
-    <div class="project-hero retraceosu-design"></div>
+<div class="proj-hero-shot"><div class="retraceosu-design" style="width:100%;height:100%;"></div></div>
 
-    <p>
-        A replay autopsy tool for osu!standard. Drop in an <code>.osr</code> replay and it reconstructs the play
-        hit by hit — unstable rate, timing bias, aim vs. tap breakdowns, a miss heatmap, and a strain-vs-UR overlay
-        that actually tells you the difference between "hit a genuine skill wall" and "lost focus on a section
-        that should've been free." It runs the real osu! ruleset client-side in your browser to do it, not a
-        rough approximation.
-    </p>
+<div class="proj-layout">
+    <div class="proj-main">
+        <div class="proj-quote">
+            Drop in an <code>.osr</code> replay and it reconstructs the play hit by hit — unstable rate, timing
+            bias, aim vs. tap breakdowns, a miss heatmap, and a strain-vs-UR overlay that actually tells you the
+            difference between "hit a genuine skill wall" and "lost focus on a section that should've been free."
+            It runs the real osu! ruleset client-side in your browser to do it, not a rough approximation.
+        </div>
 
-    <h2>What It Actually Does</h2>
-    <ul>
-        <li>Full replay reconstruction: UR, timing bias, pattern/aim/tap breakdowns, miss heatmap</li>
-        <li>Strain-vs-UR overlay to separate "difficulty" misses from "focus" misses</li>
-        <li>Farm-map recommendations ranked by real pp gain against your actual top 100 — not generic difficulty numbers</li>
-        <li>Full replay viewer with ghost-overlay comparison against another replay</li>
-        <li>Deterministic coaching output, plus an optional AI review — fed only the measured facts, "so it can't make things up"</li>
-        <li>Player/country lookup with pp milestones and trivia</li>
-    </ul>
+        <h2>What It Actually Does</h2>
+        <ul>
+            <li>Full replay reconstruction: UR, timing bias, pattern/aim/tap breakdowns, miss heatmap</li>
+            <li>Strain-vs-UR overlay to separate "difficulty" misses from "focus" misses</li>
+            <li>Farm-map recommendations ranked by real pp gain against your actual top 100 — not generic difficulty numbers</li>
+            <li>Full replay viewer with ghost-overlay comparison against another replay</li>
+            <li>Deterministic coaching output, plus an optional AI review — fed only the measured facts, "so it can't make things up"</li>
+            <li>Player/country lookup with pp milestones and trivia</li>
+        </ul>
 
-    <div class="tech-used">
-        <strong>Technologies:</strong> Next.js 16 (App Router, Turbopack), React 19, TypeScript, Tailwind v4, osu-parsers / osu-classes / osu-standard-stable (runs the actual ruleset client-side), rosu-pp-js (WASM, server-side pp/strain math)
+        <div class="proj-shot"><div class="retraceosu-design" style="width:100%;height:100%;"></div><span class="proj-shot-label">miss heatmap, judging you</span></div>
+
+        <h2>Architecture Notes</h2>
+        <p>
+            No database. Replay data lives in IndexedDB on your machine; anything that has to hit the osu! API
+            gets disk-cached server-side instead of round-tripping every time. Uses osu-parsers / osu-classes /
+            osu-standard-stable to run the actual ruleset, and rosu-pp-js (WASM) for pp/strain math server-side.
+            The AI review feature is deliberately constrained to only see numbers the rest of the tool already
+            computed — it's there to explain the replay, not to invent opinions about it.
+        </p>
     </div>
 
-    <h2>Architecture Notes</h2>
-    <p>
-        No database. Replay data lives in IndexedDB on your machine; anything that has to hit the osu! API gets
-        disk-cached server-side instead of round-tripping every time. The AI review feature is deliberately
-        constrained to only see numbers the rest of the tool already computed — it's there to explain the replay,
-        not to invent opinions about it.
-    </p>
-
-    <div style="text-align: center; margin-top: 30px;">
-        <a href="https://retrace-osu.vercel.app" class="btn-pixel" target="_blank">Live Site</a>
-        <a href="https://github.com/UltimaCodes/retraceosu" class="btn-pixel">View on GitHub</a>
+    <div class="proj-side card-shell">
+        <div class="card-titlebar">QUICK FACTS</div>
+        <div class="card-body">
+            <div><b>STATUS</b>Live, deployed</div>
+            <div><b>TYPE</b>Web app</div>
+            <div><b>TECH</b>Next.js 16, TypeScript, WASM</div>
+            <a href="https://retrace-osu.vercel.app" class="btn-pixel" target="_blank">Live Site</a>
+            <a href="https://github.com/UltimaCodes/retraceosu" class="btn-pixel">View on GitHub</a>
+        </div>
     </div>
 </div>
 

@@ -23,96 +23,99 @@
     </div>
 </nav>
 
-<div class="blog-post">
-    <h1>Graphorama</h1>
-
-    <div class="project-hero graphorama-design"></div>
-
-    <p>
-        Graphorama is a WPF-based function plotting application written in C#. It uses the OxyPlot library
-        to graph mathematical expressions in real-time, with support for multiple simultaneous plots, axis adjustments, and basic input validation.
-        It does exactly what you think it does... it draws lines based on equations. Not much more, not much less.
-    </p>
-
-    <h2>Functionality Overview</h2>
-    <ul>
-        <li>Plots mathematical functions using OxyPlot</li>
-        <li>Supports basic arithmetic, trig, logs, and exponentials</li>
-        <li>Multiple expressions can be plotted at once</li>
-        <li>Adjustable axis limits with live updates</li>
-        <li>Real-time graphing toggle with user-defined speed control</li>
-        <li>Input validation for malformed expressions</li>
-    </ul>
-
-    <h2>Technical Architecture</h2>
-    <p>
-        The application is built in C# using WPF for the user interface and OxyPlot for rendering.
-        Expression parsing is handled internally, with basic safeguards to avoid runtime crashes when someone inevitably types "log()" with no arguments.
-        The structure is straightforward: a text box, a graph, and some buttons. It does what it needs to.
-    </p>
-
-    <div class="tech-used">
-        <strong>Technologies:</strong> C#, WPF, OxyPlot, .NET 8.0
-    </div>
-
-    <h2>Real-Time Plotting</h2>
-    <p>
-        When real-time mode is enabled, functions are plotted progressively over time.
-        This feature exists mostly to make the plotting experience feel more dynamic.
-        Speed can be adjusted within a reasonable range. Values outside that range may break things.
-        That's on you.
-    </p>
-
-    <h2>Input Format</h2>
-    <p>
-        Function inputs accept typical math expressions. Example syntax:
-    </p>
-    <ul>
-        <li><code>2x + 3</code> - Linear</li>
-        <li><code>sin(x)</code> - Trig</li>
-        <li><code>log(x)</code> - Logarithmic</li>
-        <li><code>ArcTan(x)</code> - Inverse trig (case-sensitive)</li>
-        <li><code>sqrt(x)</code> - Square root</li>
-    </ul>
-    <p>
-        Syntax errors will prompt a warning message. Some functions are case-sensitive by design, which is either a technical limitation or a test of patience.
-    </p>
-
-    <h2>Graph Management</h2>
-    <ul>
-        <li>Update axis limits manually using X Min and X Max fields</li>
-        <li>Clear the graph with one button click</li>
-        <li>Select plotted functions from the list to delete</li>
-        <li>Zoom and pan with mouse input (assuming OxyPlot doesn’t crash)</li>
-    </ul>
-
-    <h2>Installation</h2>
-    <p>
-        Download the zip file from the releases tab in the repo<br>
-        Extract it, and run Graphorama.exe
-        If that doesn’t work, ionno
-    </p>
-
-    <h2>Demo</h2>
-    <p>
-        Here’s a short video showing what the application looks like in motion:
-        <br>
-        <a href="https://cloud-1ssjxizmq-hack-club-bot.vercel.app/02025-01-01_01-32-43.mp4" target="_blank">Watch the demo</a>
-    </p>
-
-    <h2>Use Cases</h2>
-    <ul>
-        <li>Quick function sketching</li>
-        <li>Visualizing math homework answers</li>
-        <li>Testing function behavior across intervals</li>
-        <li>Making your screen look vaguely educational</li>
-    </ul>
-
-    <div style="text-align: center; margin-top: 30px;">
-        <a href="https://github.com/UltimaCodes/Graphorama" class="btn-pixel">View on GitHub</a>
+<div class="proj-header">
+    <h1>GRAPHORAMA</h1>
+    <p class="proj-tagline">Draws lines based on equations. Not much more, not much less.</p>
+    <div class="about-chips">
+        <span class="about-chip">C#</span>
+        <span class="about-chip">WPF</span>
+        <span class="about-chip">OxyPlot</span>
+        <span class="about-chip">.NET 8.0</span>
     </div>
 </div>
 
+<div class="proj-hero-shot"><div class="graphorama-design" style="width:100%;height:100%;"></div></div>
+
+<div class="proj-layout">
+    <div class="proj-main">
+        <div class="proj-quote">
+            Graphorama is a WPF-based function plotting application written in C#. It uses the OxyPlot library
+            to graph mathematical expressions in real-time, with support for multiple simultaneous plots, axis
+            adjustments, and basic input validation. It does exactly what you think it does — it draws lines based
+            on equations. Not much more, not much less.
+        </div>
+
+        <h2>Functionality Overview</h2>
+        <ul>
+            <li>Plots mathematical functions using OxyPlot</li>
+            <li>Supports basic arithmetic, trig, logs, and exponentials</li>
+            <li>Multiple expressions can be plotted at once</li>
+            <li>Adjustable axis limits with live updates</li>
+            <li>Real-time graphing toggle with user-defined speed control</li>
+            <li>Input validation for malformed expressions</li>
+        </ul>
+
+        <div class="proj-shot"><div class="graphorama-design" style="width:100%;height:100%;"></div><span class="proj-shot-label">multiple functions, one axis, questionable choices</span></div>
+
+        <h2>Technical Architecture</h2>
+        <p>
+            The application is built in C# using WPF for the user interface and OxyPlot for rendering. Expression
+            parsing is handled internally, with basic safeguards to avoid runtime crashes when someone inevitably
+            types <code>log()</code> with no arguments. The structure is straightforward: a text box, a graph, and
+            some buttons. It does what it needs to.
+        </p>
+
+        <h2>Real-Time Plotting</h2>
+        <p>
+            When real-time mode is enabled, functions are plotted progressively over time. This feature exists
+            mostly to make the plotting experience feel more dynamic. Speed can be adjusted within a reasonable
+            range. Values outside that range may break things. That's on you.
+        </p>
+
+        <h2>Input Format</h2>
+        <p>Function inputs accept typical math expressions. Example syntax:</p>
+        <ul>
+            <li><code>2x + 3</code> — Linear</li>
+            <li><code>sin(x)</code> — Trig</li>
+            <li><code>log(x)</code> — Logarithmic</li>
+            <li><code>ArcTan(x)</code> — Inverse trig (case-sensitive)</li>
+            <li><code>sqrt(x)</code> — Square root</li>
+        </ul>
+        <p>Syntax errors will prompt a warning message. Some functions are case-sensitive by design, which is either a technical limitation or a test of patience.</p>
+
+        <h2>Graph Management</h2>
+        <ul>
+            <li>Update axis limits manually using X Min and X Max fields</li>
+            <li>Clear the graph with one button click</li>
+            <li>Select plotted functions from the list to delete</li>
+            <li>Zoom and pan with mouse input (assuming OxyPlot doesn't crash)</li>
+        </ul>
+
+        <h2>Installation</h2>
+        <p>Download the zip file from the releases tab in the repo, extract it, and run Graphorama.exe. If that doesn't work, ionno.</p>
+
+        <h2>Demo</h2>
+        <p>Here's a short video showing what the application looks like in motion: <a href="https://cloud-1ssjxizmq-hack-club-bot.vercel.app/02025-01-01_01-32-43.mp4" target="_blank">Watch the demo</a></p>
+
+        <h2>Use Cases</h2>
+        <ul>
+            <li>Quick function sketching</li>
+            <li>Visualizing math homework answers</li>
+            <li>Testing function behavior across intervals</li>
+            <li>Making your screen look vaguely educational</li>
+        </ul>
+    </div>
+
+    <div class="proj-side card-shell">
+        <div class="card-titlebar">QUICK FACTS</div>
+        <div class="card-body">
+            <div><b>STATUS</b>Complete</div>
+            <div><b>TYPE</b>Desktop app / graphing tool</div>
+            <div><b>TECH</b>C#, WPF, OxyPlot, .NET 8</div>
+            <a href="https://github.com/UltimaCodes/Graphorama" class="btn-pixel">View on GitHub</a>
+        </div>
+    </div>
+</div>
 
 <footer>
     &copy; 2025 Ryaan Aaqil. All rights NOT reserved.

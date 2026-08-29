@@ -23,56 +23,66 @@
     </div>
 </nav>
 
-<div class="blog-post">
-    <h1>Macrofy</h1>
+<div class="proj-header">
+    <h1>MACROFY</h1>
+    <p class="proj-tagline">Turns a spare keyboard into a dedicated macro pad — no driver, no bloat</p>
+    <div class="about-chips">
+        <span class="about-chip">C#</span>
+        <span class="about-chip">WPF</span>
+        <span class="about-chip">Win32</span>
+    </div>
+</div>
 
-    <div class="project-hero macrofy-design"></div>
+<div class="proj-hero-shot"><div class="macrofy-design" style="width:100%;height:100%;"></div></div>
 
-    <p>
-        Turns a spare keyboard into a dedicated macro pad, without a driver, without a second device eating your
-        Bluetooth pairings, and without your main keyboard noticing anything happened. Plug in any USB keyboard,
-        point Macrofy at it, and every key on <em>that specific keyboard</em> stops typing and starts firing
-        macros — launch apps, open URLs, type snippets, hotkeys, media control, run commands — while the keyboard
-        you're actually typing on keeps working like nothing's different. Pitch, from the README: "like a Stream
-        Deck, except it's a whole keyboard and it's free."
-    </p>
+<div class="proj-layout">
+    <div class="proj-main">
+        <div class="proj-quote">
+            Plug in any USB keyboard, point Macrofy at it, and every key on <em>that specific keyboard</em> stops
+            typing and starts firing macros — launch apps, open URLs, type snippets, hotkeys, media control, run
+            commands — while the keyboard you're actually typing on keeps working like nothing's different.
+            Pitch, from my own README: "like a Stream Deck, except it's a whole keyboard and it's free."
+        </div>
 
-    <h2>The Actual Hard Part</h2>
-    <p>
-        This sounds simple until you try to build it. Windows Raw Input can tell you <em>which physical keyboard</em>
-        sent a keystroke, but it can't block that keystroke from reaching whatever app has focus. The obvious fix —
-        a low-level keyboard hook — can block keys just fine, but it's blind to device identity. And here's the
-        part that actually breaks your afternoon: once you block a key at that level, Windows never generates the
-        Raw Input event for it. You can't block a key <em>and</em> find out which keyboard it came from afterward.
-        Blocking destroys the only evidence.
-    </p>
-    <p>
-        The fix was hooking <code>WH_KEYBOARD</code> instead of <code>WH_KEYBOARD_LL</code> — a message-based hook
-        that fires <em>after</em> Raw Input has already logged the device, instead of before. Everything downstream
-        (layers, per-device profiles, the whole macro engine) sits on top of that one correctly-ordered fact.
-    </p>
+        <h2>The Actual Hard Part</h2>
+        <p>
+            This sounds simple until you try to build it. Windows Raw Input can tell you <em>which physical
+            keyboard</em> sent a keystroke, but it can't block that keystroke from reaching whatever app has focus.
+            The obvious fix — a low-level keyboard hook — can block keys just fine, but it's blind to device
+            identity. And here's the part that actually breaks your afternoon: once you block a key at that level,
+            Windows never generates the Raw Input event for it. You can't block a key <em>and</em> find out which
+            keyboard it came from afterward. Blocking destroys the only evidence.
+        </p>
+        <p>
+            The fix was hooking <code>WH_KEYBOARD</code> instead of <code>WH_KEYBOARD_LL</code> — a message-based
+            hook that fires <em>after</em> Raw Input has already logged the device, instead of before. Everything
+            downstream (layers, per-device profiles, the whole macro engine) sits on top of that one
+            correctly-ordered fact.
+        </p>
 
-    <div class="tech-used">
-        <strong>Technologies:</strong> C# / WPF (Macrofy.App), Macrofy.Core (device + macro engine), Macrofy.Diag (diagnostics), native C (hook.c → MacrofyHook.dll, injected global keyboard hook)
+        <div class="proj-shot"><div class="macrofy-design" style="width:100%;height:100%;"></div><span class="proj-shot-label">tray app, mid-macro</span></div>
+
+        <h2>Features</h2>
+        <ul>
+            <li>Per-device profiles — different macro sets for different spare keyboards</li>
+            <li>Layers, so one keyboard can hold more macros than it has keys</li>
+            <li>Layout calibration ("Learn Keys") instead of hardcoding a keyboard layout</li>
+            <li>Tray integration, light/dark theme</li>
+            <li>Deliberately driver-free — a driver-based approach would risk getting flagged by anti-cheat (Vanguard/EAC/BattlEye), so this stays entirely in userspace</li>
+        </ul>
+
+        <h2>Ships As</h2>
+        <p>An unsigned zip on GitHub Releases, because signing certificates cost money I would rather spend on keyboards to test this on.</p>
     </div>
 
-    <h2>Features</h2>
-    <ul>
-        <li>Per-device profiles — different macro sets for different spare keyboards</li>
-        <li>Layers, so one keyboard can hold more macros than it has keys</li>
-        <li>Layout calibration ("Learn Keys") instead of hardcoding a keyboard layout</li>
-        <li>Tray integration, light/dark theme</li>
-        <li>Deliberately driver-free — a driver-based approach would risk getting flagged by anti-cheat (Vanguard/EAC/BattlEye), so this stays entirely in userspace</li>
-    </ul>
-
-    <h2>Ships As</h2>
-    <p>
-        An unsigned zip on GitHub Releases, because signing certificates cost money I would rather spend on
-        keyboards to test this on.
-    </p>
-
-    <div style="text-align: center; margin-top: 30px;">
-        <a href="https://github.com/UltimaCodes/RapidMacro" class="btn-pixel">View on GitHub</a>
+    <div class="proj-side card-shell">
+        <div class="card-titlebar">QUICK FACTS</div>
+        <div class="card-body">
+            <div><b>STATUS</b>Feature-complete</div>
+            <div><b>TYPE</b>Windows utility</div>
+            <div><b>TECH</b>C#/WPF, native C hook (Win32)</div>
+            <a href="https://github.com/UltimaCodes/RapidMacro" class="btn-pixel">View on GitHub</a>
+        </div>
     </div>
 </div>
 

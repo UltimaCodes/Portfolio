@@ -23,67 +23,85 @@
     </div>
 </nav>
 
-<div class="blog-post">
-    <h1>Gorilla Warfare</h1>
+<div class="proj-header">
+    <h1>GORILLA WARFARE</h1>
+    <p class="proj-tagline">A multiplayer FPS where everyone plays as a gorilla and nobody asks why</p>
+    <div class="about-chips">
+        <span class="about-chip">Unity 2022.3</span>
+        <span class="about-chip">C#</span>
+        <span class="about-chip">Photon PUN 2</span>
+    </div>
+</div>
 
-    <div class="project-hero gorilla-design"></div>
+<div class="proj-hero-shot"><div class="gorilla-design" style="width:100%;height:100%;"></div></div>
 
-    <p>
-        A multiplayer FPS where everyone plays as a gorilla. It’s technically functional and very low effort.
-        Built in Unity over the course of a week, mostly to refresh my knowledge on Photon PUN networking.
-    </p>
+<div class="proj-layout">
+    <div class="proj-main">
+        <div class="proj-quote">
+            A multiplayer FPS where everyone plays as a gorilla. It's technically functional and very low effort.
+            Built in Unity over the course of a week, mostly to refresh my knowledge of Photon PUN networking.
+        </div>
 
-    <h2>Gameplay Summary</h2>
-    <ul>
-        <li>Multiplayer lobby system using Photon PUN</li>
-        <li>Host-controlled match starting</li>
-        <li>Custom room names and usernames</li>
-        <li>Basic FPS movement: WASD, Jump, Sprint, Shoot</li>
-        <li>Scoreboard tracking kills and deaths</li>
-        <li>Red bullet impact squares that vanish after 30 seconds, for realism</li>
-        <li>Gravity-enabled death via falling into the void</li>
-        <li>Permanent T-posing gorilla player models, for atmosphere</li>
-    </ul>
+        <h2>Gameplay Summary</h2>
+        <ul>
+            <li>Multiplayer lobby system using Photon PUN</li>
+            <li>Host-controlled match starting</li>
+            <li>Custom room names and usernames</li>
+            <li>Basic FPS movement: WASD, Jump, Sprint, Shoot</li>
+            <li>Scoreboard tracking kills and deaths</li>
+            <li>Red bullet impact squares that vanish after 30 seconds, for realism</li>
+            <li>Gravity-enabled death via falling into the void</li>
+            <li>Permanent T-posing gorilla player models, for atmosphere</li>
+        </ul>
 
-    <h2>Technical Implementation</h2>
-    <p>
-        Created in Unity using Photon PUN for networked multiplayer. The lobby system supports room listing,
-        joining, naming, and host-based game control. A somehwat goofy FPS controller manages player input and shooting.
-        Enemies do not exist. Everyone is the same gorilla. There are no teams. No win condition. Only meaningless violence.
-    </p>
+        <div class="proj-shot"><div class="gorilla-design" style="width:100%;height:100%;"></div><span class="proj-shot-label">a gorilla, T-posing, as intended</span></div>
 
-    <div class="tech-used">
-        <strong>Technologies:</strong> Unity 2022.3, C#, Photon PUN 2, Unity Input System
+        <h2>Technical Implementation</h2>
+        <p>
+            Created in Unity using Photon PUN for networked multiplayer. The lobby system supports room listing,
+            joining, naming, and host-based game control. A somewhat goofy FPS controller manages player input and
+            shooting. Enemies do not exist. Everyone is the same gorilla. There are no teams. No win condition.
+            Only meaningless violence.
+        </p>
+
+        <h2>Design Notes</h2>
+        <p>
+            The map consists of ramps and walls. There is a gun — or so I thought. The credits file says otherwise
+            (see below). It makes no sound, but you'll know it fired because a red square will appear briefly where
+            the bullet hit. The T-posing gorillas are not placeholders. They are the vision.
+        </p>
+
+        <h2>A Fact I'd Forgotten</h2>
+        <p>
+            Checking the credits for this rewrite turned up something: every weapon in the game is the same banana
+            model at a different size. There was never a gun. There has only ever been bananas.
+        </p>
+
+        <h2>Audio</h2>
+        <p>
+            There is one song, which plays in the main menu. That's it. No sound effects.
+            Credit to Dave Gunning for the track:
+            <a href="https://www.youtube.com/watch?v=TNW4Kgk7bvY" target="_blank">[link]</a>
+        </p>
+
+        <h2>Future Plans (Surely I Actually Do Something)</h2>
+        <ul>
+            <li>Boss fights (unclear what against)</li>
+            <li>Multiplayer modes that go beyond "everyone shoots everyone"</li>
+            <li>New maps, maybe ones that aren't just ramps and voids</li>
+            <li>SFX, probably</li>
+            <li>Gorillas that don't T-pose (low priority)</li>
+        </ul>
     </div>
 
-    <h2>Design Notes</h2>
-    <p>
-        The map consists of ramps and walls. There is a gun. It makes no sound, but you’ll know it fired because
-        a red square will appear briefly where the bullet hit. The T-posing gorillas are not placeholders. They are the vision.
-    </p>
-
-    <h2>Audio</h2>
-    <p>
-        There is one song, which plays in the main menu. That’s it. No sound effects.
-        Credit to Dave Gunning for the track:
-        <a href="https://www.youtube.com/watch?v=TNW4Kgk7bvY" target="_blank">[link]</a>
-    </p>
-
-    <div class="tech-used" style="border-color: var(--accent-alert-shadow); font-style: normal;">
-        <strong>Credits check revealed a fact I'd forgotten:</strong> every weapon in the game is the same banana model at a different size. There was never a gun. There has only ever been bananas.
-    </div>
-
-    <h2>Future Plans (Surely I actually do something)</h2>
-    <ul>
-        <li>Boss fights (unclear what against)</li>
-        <li>Multiplayer modes that go beyond “everyone shoots everyone”</li>
-        <li>New maps, maybe ones that aren’t just ramps and voids</li>
-        <li>SFX, probably</li>
-        <li>Gorillas that don’t T-pose (low priority)</li>
-    </ul>
-
-    <div style="text-align: center; margin-top: 30px;">
-        <a href="https://github.com/UltimaCodes/GorillaWarfare" class="btn-pixel">View on GitHub</a>
+    <div class="proj-side card-shell">
+        <div class="card-titlebar">QUICK FACTS</div>
+        <div class="card-body">
+            <div><b>STATUS</b><span style="color: var(--accent-alert);">Actively updated</span></div>
+            <div><b>TYPE</b>Multiplayer FPS</div>
+            <div><b>TECH</b>Unity, C#, Photon PUN 2</div>
+            <a href="https://github.com/UltimaCodes/GorillaWarfare" class="btn-pixel">View on GitHub</a>
+        </div>
     </div>
 </div>
 

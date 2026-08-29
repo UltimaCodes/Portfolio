@@ -23,51 +23,65 @@
     </div>
 </nav>
 
-<div class="blog-post">
-    <h1>Voxelium</h1>
+<div class="proj-header">
+    <h1>VOXELIUM</h1>
+    <p class="proj-tagline">A voxel engine built from scratch. No engine, no bloat.</p>
+    <div class="about-chips">
+        <span class="about-chip">C++20</span>
+        <span class="about-chip">OpenGL 4.6</span>
+        <span class="about-chip">CMake</span>
+    </div>
+</div>
 
-    <div class="project-hero voxelium-design"></div>
+<div class="proj-hero-shot"><div class="voxelium-design" style="width:100%;height:100%;"></div></div>
 
-    <p>
-        A voxel engine built from scratch in C++20 and raw OpenGL 4.6. No engine, no bloat — infinite terrain
-        with no height limit, block breaking and placing with per-block hardness and crack overlays, colorable
-        lamps, world save/load, and a settings menu with actual measured quality presets instead of made-up ones.
-        All 12 items on the original roadmap are implemented and documented with real numbers, not aspirational
-        checkboxes.
-    </p>
+<div class="proj-layout">
+    <div class="proj-main">
+        <div class="proj-quote">
+            Infinite terrain with no height limit, block breaking and placing with per-block hardness and crack
+            overlays, colorable lamps, world save/load, and a settings menu with actual measured quality presets
+            instead of made-up ones. All 12 items on the original roadmap are implemented and documented with
+            real numbers, not aspirational checkboxes.
+        </div>
 
-    <h2>What's Actually In It</h2>
-    <ul>
-        <li>Binary greedy meshing and palette-compressed chunks</li>
-        <li>A jthread-based job system feeding GPU-driven culling — the whole visible world draws in one indirect draw call</li>
-        <li>Flood-fill RGB lighting</li>
-        <li>A forward HDR pipeline: cascaded shadows, SSAO, volumetrics, bloom, ACES tonemapping</li>
-        <li>Flowing water and falling sand, region-file world persistence</li>
-    </ul>
+        <h2>What's Actually In It</h2>
+        <ul>
+            <li>Binary greedy meshing and palette-compressed chunks</li>
+            <li>A jthread-based job system feeding GPU-driven culling — the whole visible world draws in one indirect draw call</li>
+            <li>Flood-fill RGB lighting</li>
+            <li>A forward HDR pipeline: cascaded shadows, SSAO, volumetrics, bloom, ACES tonemapping</li>
+            <li>Flowing water and falling sand, region-file world persistence</li>
+        </ul>
 
-    <h2>The Audio Is Weirdly Thorough</h2>
-    <p>
-        Sounds resolve by exact block first, then fall back to material — so all 25 lamp block IDs share one
-        sound file instead of shipping 25 copies of the same clip. Fall damage scales with landing weight, being
-        underwater applies an actual sweeping low-pass filter instead of just muffling the volume, and "am I in a
-        cave" is answered by reading the sky-light value the voxel data already has, not by raycasting for it.
-    </p>
+        <div class="proj-shot"><div class="voxelium-design" style="width:100%;height:100%;"></div><span class="proj-shot-label">terrain, greedily meshed</span></div>
 
-    <div class="tech-used">
-        <strong>Technologies:</strong> C++20, OpenGL 4.6 (core profile, DSA), CMake (mingw/gcc/msvc presets), FastNoise2, vendored glad
+        <h2>The Audio Is Weirdly Thorough</h2>
+        <p>
+            Sounds resolve by exact block first, then fall back to material — so all 25 lamp block IDs share one
+            sound file instead of shipping 25 copies of the same clip. Fall damage scales with landing weight,
+            being underwater applies an actual sweeping low-pass filter instead of just muffling the volume, and
+            "am I in a cave" is answered by reading the sky-light value the voxel data already has, not by
+            raycasting for it.
+        </p>
+
+        <h2>House Rules</h2>
+        <p>
+            The project's own docs open with a line worth stealing for basically everything: "Do not invent facts.
+            Do not guess at numbers... A plausible-sounding wrong answer is worse than 'I don't know yet.'" There's
+            also a <code>harden</code> build variant that runs with libstdc++ container assertions on, specifically
+            because it once caught a real data race — and an offscreen <code>--smoke</code> self-test mode for
+            future CI. The msvc preset exists but is unverified, because "I don't have VS lying around."
+        </p>
     </div>
 
-    <h2>House Rules</h2>
-    <p>
-        The project's own docs open with a line worth stealing for basically everything: "Do not invent facts.
-        Do not guess at numbers... A plausible-sounding wrong answer is worse than 'I don't know yet.'" There's
-        also a <code>harden</code> build variant that runs with libstdc++ container assertions on, specifically
-        because it once caught a real data race — and an offscreen <code>--smoke</code> self-test mode for future
-        CI. The msvc preset exists but is unverified, because "I don't have VS lying around."
-    </p>
-
-    <div style="text-align: center; margin-top: 30px;">
-        <a href="https://github.com/UltimaCodes/Voxelium" class="btn-pixel">View on GitHub</a>
+    <div class="proj-side card-shell">
+        <div class="card-titlebar">QUICK FACTS</div>
+        <div class="card-body">
+            <div><b>STATUS</b>All 12 milestones done</div>
+            <div><b>TYPE</b>Rendering engine</div>
+            <div><b>TECH</b>C++20, OpenGL 4.6, CMake</div>
+            <a href="https://github.com/UltimaCodes/Voxelium" class="btn-pixel">View on GitHub</a>
+        </div>
     </div>
 </div>
 
