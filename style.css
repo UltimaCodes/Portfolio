@@ -1335,6 +1335,22 @@ body:not(.homepage) .centered-container {
   color: var(--accent-alert);
 }
 
+/* Setup page: category boxes side by side, wrapping as needed —
+   flex rather than the About page's column-flow since these are
+   discrete boxes of similar weight, not variable-height text blocks */
+.setup-side-by-side {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.setup-side-by-side .about-section {
+  margin: 0;
+}
+
 /* ===== Setup page: item grid with hover review/rating ===== */
 .setup-grid {
   display: flex;
