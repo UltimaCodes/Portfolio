@@ -4,10 +4,10 @@
 
     let typedBuffer = '';
     let glitchTerminal = null;
-    let ultrakillTriggered = false;
     let audioAllowed = false;
+    let dogCycleStarted = false;
     let dog, title, devourerAudio, catImgElement;
-    let jonklerAudio, ultrakillAudio, undertaleAudio, spamtonAudio, matrixAudio, mgrrAudio, doggerCount = 0;
+    let jonklerAudio, matrixAudio, mgrrAudio, doggerCount = 0;
 
     function initHomepageEffects() {
         // Only run on homepage
@@ -33,18 +33,6 @@
     function getDevourerAudio() {
         if (!devourerAudio) { devourerAudio = new Audio('/res/DevourerSpawn.mp3'); devourerAudio.volume = 0.4; }
         return devourerAudio;
-    }
-    function getUltrakillAudio() {
-        if (!ultrakillAudio) { ultrakillAudio = new Audio('/res/ultrakillsfx.mp3'); ultrakillAudio.volume = 0.5; }
-        return ultrakillAudio;
-    }
-    function getUndertaleAudio() {
-        if (!undertaleAudio) { undertaleAudio = new Audio('/res/utale.mp3'); undertaleAudio.volume = 0.4; }
-        return undertaleAudio;
-    }
-    function getSpamtonAudio() {
-        if (!spamtonAudio) { spamtonAudio = new Audio('/res/spamt.mp3'); spamtonAudio.volume = 0.4; }
-        return spamtonAudio;
     }
     function getMatrixAudio() {
         if (!matrixAudio) { matrixAudio = new Audio('/res/mtrx.mp3'); matrixAudio.volume = 0.3; }
@@ -134,39 +122,15 @@
     }
 
     function checkEasterEggs() {
-        // Reset ultrakill trigger if buffer doesn't contain it
-        if (!typedBuffer.includes('ultrakill')) {
-            ultrakillTriggered = false;
-        }
-
         // DOGGER easter egg
         if (typedBuffer.includes('dogger')) {
             triggerDoggerEasterEgg();
             clearTypedBuffer();
         }
 
-        // ULTRAKILL easter egg
-        if (!ultrakillTriggered && typedBuffer.includes('ultrakill')) {
-            ultrakillTriggered = true;
-            showUltrakillMessage();
-            clearTypedBuffer();
-        }
-
         // Metal Gear Rising easter egg - Enhanced
         if (typedBuffer.includes('nanomachines')) {
             showMGREasterEgg();
-            clearTypedBuffer();
-        }
-
-        // Undertale easter egg - Enhanced with better visuals
-        if (typedBuffer.includes('determination')) {
-            showUndertaleEasterEgg();
-            clearTypedBuffer();
-        }
-
-        // Deltarune easter egg
-        if (typedBuffer.includes('spamton')) {
-            showDeltaruneEasterEgg();
             clearTypedBuffer();
         }
 
@@ -196,6 +160,10 @@
         }
 
         glitchTerminal = utils.createElement('div', 'dogger-terminal');
+        const titlebar = utils.createElement('div', 'card-titlebar', 'root@ryaan:~$ ./dogger.sh');
+        const body = utils.createElement('div', 'dogger-body');
+        glitchTerminal.appendChild(titlebar);
+        glitchTerminal.appendChild(body);
         document.body.appendChild(glitchTerminal);
 
         const commands = [
@@ -208,13 +176,14 @@
             '> IS THIS TRUE'
         ];
 
-        glitchTerminal.innerHTML = '';
-
         commands.forEach((command, index) => {
             setTimeout(() => {
                 const line = utils.createElement('div', 'glitch', command);
                 line.style.animationDelay = `${index * 0.1}s`;
-                glitchTerminal.appendChild(line);
+                body.appendChild(line);
+                if (index === commands.length - 1) {
+                    line.appendChild(utils.createElement('span', 'cursor'));
+                }
             }, index * 300);
         });
 
@@ -268,7 +237,7 @@
             shakeCount++;
             if (shakeCount > 20) {
                 clearInterval(shakeInterval);
-                document.body.style.transform = 'translate(0, 0)';
+                document.body.style.transform = '';
             }
         }, 100);
 
@@ -281,110 +250,6 @@
         }, 6000);
     }
     
-    function showUndertaleEasterEgg() {
-        if (window.easterEggs) window.easterEggs.markFound('determination');
-        const battleBox = utils.createElement('div');
-        battleBox.style.cssText = `
-        position: fixed; bottom: 50px; left: 50%; transform: translateX(-50%);
-        width: 600px; height: 150px; background: #000;
-        border: 4px solid #fff; z-index: 1000;
-        font-family: var(--font-head);
-    `;
-
-        const textBox = utils.createElement('div');
-        textBox.style.cssText = `
-        padding: 20px; color: #fff; font-size: 0.8rem;
-        line-height: 1.5; height: 100%;
-    `;
-
-        battleBox.appendChild(textBox);
-        document.body.appendChild(battleBox);
-
-        // Play Undertale sound effect
-        if (audioAllowed) {
-            const audio = getUndertaleAudio();
-            audio.currentTime = 0;
-            audio.play().catch(() => {});
-        }
-
-        const soul = utils.createElement('img');
-        soul.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Undertale.png/1200px-Undertale.png';
-        soul.style.cssText = `
-        position: fixed; bottom: 220px; left: 50%; transform: translateX(-50%);
-        width: 20px; height: 20px;
-        z-index: 1001; animation: soul-pulse 1s ease-in-out infinite;
-    `;
-        document.body.appendChild(soul);
-
-        const messages = [
-            "* Despite everything, it's still you.",
-            "* You are filled with DETERMINATION."
-        ];
-
-        let currentMessage = 0;
-        let currentChar = 0;
-
-        function typeMessage() {
-            if (currentMessage < messages.length) {
-                if (currentChar < messages[currentMessage].length) {
-                    textBox.textContent += messages[currentMessage][currentChar];
-                    currentChar++;
-                    setTimeout(typeMessage, 115);
-                } else {
-                    setTimeout(() => {
-                        textBox.textContent = '';
-                        currentMessage++;
-                        currentChar = 0;
-                        typeMessage();
-                    }, 3100);
-                }
-            } else {
-                hideElements();
-            }
-        }
-
-        function hideElements() {
-            battleBox.style.transition = 'opacity 0.5s ease-out';
-            soul.style.transition = 'opacity 0.5s ease-out';
-            battleBox.style.opacity = '0';
-            soul.style.opacity = '0';
-            setTimeout(() => {
-                battleBox.remove();
-                soul.remove();
-            }, 500);
-        }
-
-        typeMessage();
-    }
-
-    function showDeltaruneEasterEgg() {
-        if (window.easterEggs) window.easterEggs.markFound('spamton');
-        const text = utils.createElement('div');
-        text.style.cssText = `
-                position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-                color: #ffff00; font-family: var(--font-head); font-size: 1rem;
-                z-index: 1000; text-align: center; background: rgba(0,0,0,0.8);
-                padding: 20px; border: 2px solid #ffff00;
-            `;
-        text.innerHTML = `
-                <div>HEY [HYPERLINK BLOCKED]</div>
-                <div style="margin: 10px 0;">NOW'S YOUR CHANCE TO BE A</div>
-                <div style="color: #ff00ff;">[BIG SHOT]</div>
-            `;
-        document.body.appendChild(text);
-
-        // Play Spamton sound effect
-        if (audioAllowed) {
-            const audio = getSpamtonAudio();
-            audio.currentTime = 0;
-            audio.play().catch(() => {});
-        }
-
-        setTimeout(() => {
-            if (text.parentNode) text.parentNode.removeChild(text);
-        }, 3000);
-    }
-
     function showJonklerEasterEgg() {
         if (window.easterEggs) window.easterEggs.markFound('jonkler');
 
@@ -496,7 +361,18 @@
     }
 
     function enableAudio() {
+        if (audioAllowed) return;
         audioAllowed = true;
+        startDogCycle();
+    }
+
+    function startDogCycle() {
+        if (dogCycleStarted) return;
+        dogCycleStarted = true;
+        setTimeout(() => {
+            animateDog();
+            setInterval(animateDog, 45000);
+        }, 2000);
     }
 
     function animateDog() {
@@ -591,60 +467,12 @@
             }, 3000);
         }
 
-        setTimeout(() => {
-            animateDog();
-            setInterval(animateDog, 45000);
-        }, 5000);
-    }
-
-    function showUltrakillMessage() {
-        const lines = ["MANKIND IS DEAD", "BLOOD IS FUEL", "HELL IS FULL"];
-        const container = utils.getElement("#ultrakill-container");
-        if (!container) return;
-        if (window.easterEggs) window.easterEggs.markFound('ultrakill');
-
-        if (audioAllowed) {
-            const audio = getUltrakillAudio();
-            audio.currentTime = 0;
-            audio.play().catch(() => {});
-        }
-
-        const msg = utils.createElement("div");
-        msg.id = "ultrakill-message";
-        container.appendChild(msg);
-
-        let currentLine = 0;
-        let currentChar = 0;
-
-        function typeNextChar() {
-            if (currentLine < lines.length) {
-                msg.textContent += lines[currentLine][currentChar] || '';
-                currentChar++;
-
-                if (Math.random() > 0.7) {
-                    document.body.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
-                    setTimeout(() => {
-                        document.body.style.transform = 'translate(0, 0)';
-                    }, 50);
-                }
-
-                if (currentChar >= lines[currentLine].length) {
-                    msg.textContent += '\n';
-                    currentLine++;
-                    currentChar = 0;
-                }
-
-                setTimeout(typeNextChar, 50);
-            } else {
-                setTimeout(() => {
-                    if (msg.parentNode) {
-                        msg.parentNode.removeChild(msg);
-                    }
-                }, 2000);
-            }
-        }
-
-        typeNextChar();
+        // The automatic run waits for the page's first real click or
+        // keypress (enableAudio, above) instead of a blind timer, so its
+        // very first pass is never silent — browsers block audio before a
+        // genuine user gesture, and nothing before this point guarantees
+        // one has happened yet.
+        if (audioAllowed) startDogCycle();
     }
 
     // Exposed so js/easter-eggs.js can trigger the same sequence on demand
