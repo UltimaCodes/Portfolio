@@ -141,7 +141,6 @@
     }
 
     function triggerDoggerEasterEgg() {
-        if (window.easterEggs) window.easterEggs.markFound('dogger');
         doggerCount++;
 
         if (glitchTerminal && glitchTerminal.parentNode) {
@@ -191,7 +190,6 @@
     }
 
     function showMGREasterEgg() {
-        if (window.easterEggs) window.easterEggs.markFound('nanomachines');
         // Create full-screen overlay
         const overlay = utils.createElement('div');
         overlay.style.cssText = `
@@ -240,7 +238,6 @@
     }
     
     function showJonklerEasterEgg() {
-        if (window.easterEggs) window.easterEggs.markFound('jonkler');
 
         // Play Jonkler sound effect
         if (audioAllowed) {
@@ -303,7 +300,6 @@
     function triggerMatrixEffect() {
         const canvas = utils.getElement('#matrix-canvas');
         if (!canvas) return;
-        if (window.easterEggs) window.easterEggs.markFound('matrix');
 
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
