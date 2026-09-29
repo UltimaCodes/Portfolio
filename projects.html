@@ -3,10 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Things Ryaan has built: a gorilla FPS, a voxel engine, osu! replay forensics, macro tooling, and robots of varying stability." />
+  <meta property="og:title" content="Projects | Ryaan Aaqil" />
+  <meta property="og:description" content="Things Ryaan has built: a gorilla FPS, a voxel engine, osu! replay forensics, macro tooling, and robots of varying stability." />
+  <meta property="og:url" content="https://ryaan.org/projects.html" />
+  <meta property="og:image" content="https://ryaan.org/images/projects/gw-title.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0b0c2a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Jersey+15&display=swap" />
   <title>Projects | Ryaan Aaqil</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="images/logo.png" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-74WXTDJ616"></script>
 </head>
 <body>
 <div id="parallax-background"></div>
@@ -36,18 +46,18 @@
     <h2>Game Development</h2>
     <div class="projects-grid">
 
-      <div class="project-card" onclick="location.href='projects/gorilla-warfare.html'">
-        <div class="geometric-design gorilla-design"></div>
+      <a class="project-card" href="projects/gorilla-warfare.html">
+        <img class="card-media" src="images/projects/gw-title.jpg" alt="Gorilla Warfare's main menu: a gorilla holding a banana in the jungle arena" loading="lazy" />
         <div class="project-info">
           <h2>Gorilla Warfare</h2>
           <p>Unity • C#</p>
         </div>
         <div class="project-summary">
           <h3>Gorilla Warfare</h3>
-          <p>An intense multiplayer fps game featuring gorillas</p>
-          <p>Features: Fleshed out Multiplayer system, Lobby creation and management, did I mention gorillas?</p>
+          <p>A multiplayer FPS where gorillas fight with fruit</p>
+          <p>Features: 8 fruit weapons (grape gatling and chili flamethrower included), 3 modes, a Zoo map, did I mention gorillas?</p>
         </div>
-      </div>
+      </a>
 
     </div>
   </div>
@@ -57,8 +67,8 @@
     <h2>Programming</h2>
     <div class="projects-grid">
 
-      <div class="project-card" onclick="location.href='projects/voxelium.html'">
-        <div class="geometric-design voxelium-design"></div>
+      <a class="project-card" href="projects/voxelium.html">
+        <img class="card-media pixel-upscale" src="images/projects/voxelium-flythrough.gif" alt="A flythrough of terrain rendered by Voxelium" loading="lazy" />
         <div class="project-info">
           <h2>Voxelium</h2>
           <p>C++20 • OpenGL 4.6</p>
@@ -68,7 +78,7 @@
           <p>A voxel engine built from scratch. No engine, no bloat</p>
           <p>Features: Infinite terrain, greedy meshing, GPU-driven culling, full HDR pipeline</p>
         </div>
-      </div>
+      </a>
 
     </div>
   </div>
@@ -78,7 +88,7 @@
     <h2>Tools</h2>
     <div class="projects-grid">
 
-      <div class="project-card" onclick="location.href='projects/macrofy.html'">
+      <a class="project-card" href="projects/macrofy.html">
         <div class="geometric-design macrofy-design"></div>
         <div class="project-info">
           <h2>Macrofy</h2>
@@ -89,9 +99,9 @@
           <p>Turns a spare keyboard into a dedicated macro pad</p>
           <p>Features: Per-device profiles, layers, layout calibration, driver-free (won't trip anti-cheat)</p>
         </div>
-      </div>
+      </a>
 
-      <div class="project-card" onclick="location.href='projects/retraceosu.html'">
+      <a class="project-card" href="projects/retraceosu.html">
         <div class="geometric-design retraceosu-design"></div>
         <div class="project-info">
           <h2>RetraceOSU</h2>
@@ -102,7 +112,7 @@
           <p>A replay autopsy tool for osu!standard</p>
           <p>Features: Miss heatmaps, UR/strain analysis, farm-map recs by real pp gain</p>
         </div>
-      </div>
+      </a>
 
     </div>
   </div>
@@ -112,7 +122,7 @@
     <h2>Robotics</h2>
     <div class="projects-grid">
 
-      <div class="project-card" onclick="location.href='projects/shitbox.html'">
+      <a class="project-card" href="projects/shitbox.html">
         <div class="geometric-design robot-design"></div>
         <div class="project-info">
           <h2>Sumo Robot</h2>
@@ -123,9 +133,9 @@
           <p>High Torque, bluetooth controlled bot for competitions (we got 2nd place one time)</p>
           <p>Features: ESP32 BT Interface, Speed Control Optimization, Custom Welded Chasis</p>
         </div>
-      </div>
+      </a>
 
-      <div class="project-card" onclick="location.href='projects/saltsentinel.html'">
+      <a class="project-card" href="projects/saltsentinel.html">
         <div class="geometric-design saltsentinel-design"></div>
         <div class="project-info">
           <h2>Salt Sentinel</h2>
@@ -136,9 +146,9 @@
           <p>A non-contact rover mapping salt damage on Mohenjo-daro's brick, built for WRO</p>
           <p>Features: Thermal and photometric stereo sensing, ToF wall-following, per-station risk scoring</p>
         </div>
-      </div>
+      </a>
 
-      <div class="project-card" onclick="location.href='projects/nixorfoc.html'">
+      <a class="project-card" href="projects/nixorfoc.html">
         <div class="geometric-design nixorfoc-design"></div>
         <div class="project-info">
           <h2>Nixor FOC</h2>
@@ -149,19 +159,18 @@
           <p>A 3-phase BLDC motor controller board for a Shell Eco-marathon Qatar prototype</p>
           <p>Features: Hall-sensored commutation, hardware KILL line, SD-card telemetry logging</p>
         </div>
-      </div>
+      </a>
 
     </div>
   </div>
 </div>
 
 <footer>
-  &copy; 2025 Ryaan Aaqil. All rights NOT reserved.
+  &copy; <span class="footer-year">2026</span> Ryaan Aaqil. All rights NOT reserved.
 </footer>
 
 <!-- Scripts -->
 <script src="js/shared.js"></script>
-<script src="js/projects.js"></script>
 <script src="js/easter-eggs.js"></script>
 </body>
 </html>

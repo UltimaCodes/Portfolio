@@ -3,6 +3,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A multiplayer FPS where gorillas fight with bananas, grapes and chili peppers. Unity, C#, Photon." />
+    <meta property="og:title" content="Gorilla Warfare | Ryaan Aaqil" />
+    <meta property="og:description" content="A multiplayer FPS where gorillas fight with bananas, grapes and chili peppers. Unity, C#, Photon." />
+    <meta property="og:url" content="https://ryaan.org/projects/gorilla-warfare.html" />
+    <meta property="og:image" content="https://ryaan.org/images/projects/gw-title.jpg" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0b0c2a" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Jersey+15&display=swap" />
     <title>Gorilla Warfare | Ryaan Aaqil</title>
     <link rel="stylesheet" href="../style.css" />
     <link rel="icon" type="image/png" href="../images/logo.png" />
@@ -33,22 +44,24 @@
     </div>
 </div>
 
-<div class="proj-hero-shot"><div class="gorilla-design" style="width:100%;height:100%;"></div></div>
+<div class="proj-hero-shot media"><img src="../images/projects/gw-title.jpg" alt="Gorilla Warfare's main menu: a gorilla holding a banana in the jungle arena, with PLAY, CRATES, SETTINGS and QUIT" /></div>
 
 <div class="proj-layout">
     <div class="proj-main">
         <div class="proj-quote">
-            What started as a week spent refreshing my Photon PUN knowledge now has three real game modes, five
-            distinct banana weapons, a full style-scoring system with named ranks, and a movement stack built out
-            of slide-hop chains and air brakes. At its core it is still a game where a gorilla can be finished off
-            by a weapon called Slip Hazard, and that has never once stopped being funny on purpose.
+            What started as a week spent refreshing my Photon PUN knowledge now has three game modes, eight
+            weapons that are all fruit, two maps, a style-scoring system with named ranks, a crate opening screen
+            and a movement stack built out of slide-hop chains and air brakes. At its core it is still a game where
+            a gorilla can be finished off by a weapon called Slip Hazard, and that has never once stopped being
+            funny on purpose.
         </div>
 
-        <h2>Five Weapons, Each an Actual Banana</h2>
+        <h2>Eight Weapons, All of Them Fruit</h2>
         <p>
-            Every weapon is a banana at a different shape, not just a different size anymore. Internally they stay
-            named by role, Pistol through Peel, because the gun game ladder is defined in power order and a role
-            name reads at a glance. What you actually see on screen is fruit.
+            The original five are bananas at different shapes, not just a different size anymore, and the new
+            three branched out into the rest of the fruit bowl. Internally they stay named by role (Pistol, Gatling,
+            Flamer and so on) because the gun game ladder reads at a glance that way. What you actually see on
+            screen is fruit.
         </p>
         <ul>
             <li><b>Cavendish</b>, the pistol. The supermarket banana, ordinary and dependable, everyone starts with it</li>
@@ -56,6 +69,9 @@
             <li><b>The Bunch</b>, the automatic rifle. A lot of bananas at once, which is also what it does</li>
             <li><b>Big Mike</b>, the sniper. Named for the Gros Michel cultivar wiped out in the fifties, and longer than a Cavendish</li>
             <li><b>Slip Hazard</b>, the melee finisher. What's left after you eat one, and what everyone does about it</li>
+            <li><b>The Pineapple</b>, a launcher. Splash damage, and enough self-knockback to rocket jump onto things you weren't supposed to reach</li>
+            <li><b>Purple Haze</b>, a grape gatling named after a JoJo Stand. 1.2 seconds of spin-up you can see coming, then an actual stream of grapes, and it slows you to 60% while it's spun</li>
+            <li><b>Red Hot Chili Pepper</b>, also a Stand, also literally a chili. A 7 metre flame stream that sets you on fire for 4 seconds, chars whatever it touches (grass included), and an airblast on aim that throws people</li>
         </ul>
         <p>
             Balance is checked by a script, not eyeballed. It caught a real problem early on: the pistol was doing
@@ -64,16 +80,40 @@
             21 a hit at 10 shots a second, 5 hits to kill, and sprays.
         </p>
 
-        <div class="proj-shot"><div class="gorilla-design" style="width:100%;height:100%;"></div><span class="proj-shot-label">a gorilla, no longer T-posing</span></div>
+        <div class="proj-shot media"><img src="../images/projects/gw-chili.jpg" alt="First person view of the chili flamethrower setting a gorilla on fire" loading="lazy" /><span class="proj-shot-label">red hot chili pepper, working as intended</span></div>
 
         <h2>Three Ways To Play</h2>
         <p>
             Deathmatch rolls a random set of three weapons and the most kills wins when the clock runs out. Gun
-            game puts everyone on a fixed ladder, two kills to advance, and the run only ends with a melee finish.
+            game puts everyone on a fixed ladder (Pineapple, Sniper, Gatling, Shotgun, Flamer, Rifle, Pistol,
+            Peel), two kills to advance, 15 to win, and the run only ends with a melee finish.
             Team deathmatch is the same weapon roll, scored by side instead of by player. All three live entirely
             in Photon room properties rather than local fields, which is what makes a late join or a host migration
             just work instead of needing its own catch-up code.
         </p>
+
+        <h2>Two Maps, and a Zoo</h2>
+        <p>
+            The original jungle arena finally has company. Maps are a real system now: a map list, a map card the
+            host picks from in the lobby, late joiners loading whatever the room picked, and one shared HUD every
+            map gets instead of a copy per scene. The second map is a Zoo, because a game about gorillas was always
+            going to end up in one: a plaza, four avenues and four enclosures (a pool, a rock enclosure, a reptile
+            house and an aviary). It's still a greybox, built by a script so I can rework it by hand. Pick it and
+            the lobby's backdrop switches to the Zoo too.
+        </p>
+
+        <div class="proj-shot media"><img src="../images/projects/gw-zoo.jpg" alt="The Zoo map's plaza, with the bandstand and the aviary cage behind it" loading="lazy" /><span class="proj-shot-label">the zoo, greybox era</span></div>
+
+        <h2>Gore, PSX, and Crates</h2>
+        <p>
+            Walls and floors get real bullet holes. Gorillas get the same hole with gore off, and a bloody wound
+            with spray and splatter with it on, which it is by default. There's also an optional PSX filter,
+            colour quantization plus an ordered dither, that covers the gun as well as the world. Matches pay out
+            tokens scaled to your style score, and tokens open crates on a proper spinning carousel. Opening one
+            currently wins you nothing. The ceremony is finished, the loot isn't.
+        </p>
+
+        <div class="proj-shot media"><img src="../images/projects/gw-crates.jpg" alt="The crate opening carousel mid-spin, a row of banana cards in different rarity colours" loading="lazy" /><span class="proj-shot-label">gambling, but for bananas</span></div>
 
         <h2>Movement You Can Actually Learn</h2>
         <p>
@@ -116,11 +156,11 @@
 
         <h2>What's Next</h2>
         <p>
-            A Steam launch is planned for roughly six months out, specifically so the game has room to feel
-            finished instead of shipped early. Photon PUN 2 is end of life and the eventual move off it is real,
-            but deliberately sequenced after that launch rather than before it, since the current peer-hosted
-            networking already works. Past that: a second and third map, and a voting system so a five person
-            lobby stops replaying the same one map by default.
+            The Pomo-Grenade, the third new weapon. Two more maps, a Jungle Temple and Canopy, and then map
+            voting. Crates that actually give you something: titles, kill effects and wearables, earned with tokens
+            only. Real sounds for the grapes and the chili, which are still borrowing other weapons' audio. A Steam
+            launch is still the plan, and the move off Photon PUN 2 (end of life, but working) is deliberately
+            sequenced after it, not before.
         </p>
     </div>
 
@@ -129,6 +169,8 @@
         <div class="card-body">
             <div><b>STATUS</b><span style="color: var(--accent-alert);">Actively updated</span></div>
             <div><b>TYPE</b>Multiplayer FPS</div>
+            <div><b>WEAPONS</b>8, all fruit</div>
+            <div><b>MAPS</b>Jungle, Zoo</div>
             <div><b>TECH</b>Unity, C#, Photon PUN 2</div>
             <a href="https://github.com/UltimaCodes/GorillaWarfare" class="btn-pixel">View on GitHub</a>
         </div>
@@ -136,7 +178,7 @@
 </div>
 
 <footer>
-    &copy; 2025 Ryaan Aaqil. All rights NOT reserved.
+    &copy; <span class="footer-year">2026</span> Ryaan Aaqil. All rights NOT reserved.
 </footer>
 
 <script src="../js/shared.js"></script>

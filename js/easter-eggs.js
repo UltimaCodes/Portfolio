@@ -1,31 +1,40 @@
-// Interactive easter-egg system. Click/drag/hover/key-sequence triggers,
-// plus a sitewide discovery tracker that also counts the original
-// keyword-typed eggs from homepage-effects.js (via markFound()).
+// Interactive easter eggs and the game-reference fixtures (save point,
+// rings, vision mode, parry, Ultrakill). Keyword eggs live in
+// homepage-effects.js and report back through markFound().
 (function() {
     'use strict';
 
-    // Which eggs have fired this visit, kept in memory only — no tracker,
-    // no badge, no localStorage. Just enough bookkeeping so re-triggering
-    // the same egg doesn't re-award a ring every time it's clicked.
-    const foundThisSession = new Set();
+    // Rings, and which eggs have already paid out a ring, are saved so the
+    // count is a real running total across pages and visits. It used to
+    // live in memory only, which reset it to 0 on every navigation.
+    const STORE_KEY = 'ryaan-rings';
+    function loadStore() {
+        try {
+            const data = JSON.parse(localStorage.getItem(STORE_KEY));
+            if (data && Array.isArray(data.found)) return { rings: data.rings || 0, found: new Set(data.found) };
+        } catch (e) { /* private browsing etc */ }
+        return { rings: 0, found: new Set() };
+    }
+    const store = loadStore();
+    function saveStore() {
+        try { localStorage.setItem(STORE_KEY, JSON.stringify({ rings: store.rings, found: [...store.found] })); }
+        catch (e) { /* private browsing etc, rings just won't persist */ }
+    }
 
     window.easterEggs = {
-        _registered: [],
-        onFound: null, // set by initRingFixture; called after every new discovery
+        onFound: null, // set by initNavFixtures; called after every new discovery
         markFound: function(name) {
-            if (foundThisSession.has(name)) return;
-            foundThisSession.add(name);
+            if (store.found.has(name)) return;
+            store.found.add(name);
+            saveStore();
             if (typeof this.onFound === 'function') this.onFound(name);
         },
         register: function(name, config) {
-            this._registered.push({ name, ...config });
             const wrappedTrigger = () => { config.onTrigger(); this.markFound(name); };
             const armed = { ...config, onTrigger: wrappedTrigger };
             if (config.type === 'keydown-sequence') this._armKeySequence(armed);
             if (config.type === 'click-target') this._armClickTarget(armed);
             if (config.type === 'hover-hold') this._armHoverHold(armed);
-            if (config.type === 'drag-target') this._armDragTarget(armed);
-            if (config.type === 'double-click') this._armDoubleClick(armed);
             if (config.type === 'modifier-click') this._armModifierClick(armed);
             if (config.type === 'scroll-rush') this._armScrollRush(armed);
         },
@@ -64,22 +73,6 @@
             });
             el.addEventListener('mouseleave', () => clearTimeout(holdTimer));
         },
-        _armDragTarget: function(config) {
-            const source = document.querySelector(config.sourceSelector);
-            const target = document.querySelector(config.targetSelector);
-            if (!source || !target) return;
-            source.addEventListener('dragstart', (e) => e.dataTransfer.setData('text/plain', 'egg'));
-            target.addEventListener('dragover', (e) => e.preventDefault());
-            target.addEventListener('drop', (e) => {
-                e.preventDefault();
-                if (e.dataTransfer.getData('text/plain') === 'egg') config.onTrigger();
-            });
-        },
-        _armDoubleClick: function(config) {
-            const el = document.querySelector(config.selector);
-            if (!el) return;
-            el.addEventListener('dblclick', config.onTrigger);
-        },
         _armModifierClick: function(config) {
             document.addEventListener('click', (e) => {
                 if (config.modifier === 'shift' && e.shiftKey) config.onTrigger(e);
@@ -104,24 +97,11 @@
         if (!document.querySelector('.title-container')) return;
 
         window.easterEggs.register('dog-devour', {
-            type: 'drag-target',
-            sourceSelector: '.dog',
-            targetSelector: '.title',
+            type: 'click-target',
+            selector: '.dog',
+            clicksRequired: 1,
             onTrigger: function() {
                 if (typeof window.triggerDevourerSequence === 'function') window.triggerDevourerSequence();
-            }
-        });
-
-        window.easterEggs.register('dog-double-click', {
-            type: 'double-click',
-            selector: '.dog',
-            onTrigger: function() {
-                const dog = document.querySelector('.dog');
-                if (!dog) return;
-                dog.style.transition = 'transform 0.15s ease';
-                dog.style.transform = 'translateY(-50%) scale(1.15) rotate(-3deg)';
-                setTimeout(() => { dog.style.transform = 'translateY(-50%) scale(1.15) rotate(3deg)'; }, 150);
-                setTimeout(() => { dog.style.transform = 'translateY(-50%)'; dog.style.transition = ''; }, 300);
             }
         });
 
@@ -239,16 +219,9 @@
         });
     }
 
-    // Small progress badge, bottom-right, every page. Click to see the checklist.
-    // Referential fixtures. Five sitewide, always-visible interactions built
-    // around specific game mechanics rather than a typed keyword and a text
-    // popup — same idea as the homepage dog (Devourer of Gods), applied to a
-    // few more of the things Ryaan actually likes. All shapes below are
-    // drawn in CSS, nothing is a copied sprite or asset from the source games.
-    // Real pixel-grid icons (SVG rects on an integer grid, crisp-edged),
-    // not smooth CSS shapes. Each is drawn from scratch, not traced from
-    // any existing sprite — reads as the idea (a save star, a ring, a
-    // parry orb) rather than a copy of one.
+    // Game-reference fixtures: real mechanics shaped like the source games,
+    // the same idea as the homepage dog. The eye and the snowflake are still
+    // drawn as pixel grids below until there's a real image for them.
     function pixelIcon(layers, viewSize, renderSize) {
         const rects = layers.map(layer =>
             layer.cells.map(([x, y]) => `<rect x="${x}" y="${y}" width="1" height="1" fill="${layer.color}"/>`).join('')
@@ -279,16 +252,12 @@
 
     let ultrakillAudio;
     function getUltrakillAudio() {
-        if (!ultrakillAudio) { ultrakillAudio = new Audio('/res/ultrakillsfx.mp3'); ultrakillAudio.volume = 0.5; }
+        if (!ultrakillAudio) { ultrakillAudio = new Audio(utils.asset('res/ultrakillsfx.mp3')); ultrakillAudio.volume = 0.5; }
         return ultrakillAudio;
     }
 
-    // Real, CC0-licensed icons where one was actually found (Kenney.nl),
-    // self-hosted in images/ the same way every other site image is.
-    // The rest (ring, eye, skull, snowflake, the parry starburst) are still
-    // the hand-drawn pixel-grid versions above pending a source for those.
     function assetIcon(file, alt, size) {
-        return `<img src="/images/${file}" alt="${alt}" width="${size}" height="${size}">`;
+        return `<img src="${utils.asset('images/' + file)}" alt="${alt}" width="${size}" height="${size}">`;
     }
 
     // Undertale/Deltarune: a real save point, not a typed line. Lives in
@@ -351,7 +320,7 @@
     }
 
     function offerContinueFromSave() {
-        // Just arrived here from a cross-page continue click — finish the
+        // Just arrived here from a cross-page continue click. Finish the
         // job by scrolling to the saved spot, no prompt needed twice.
         let pending;
         try { pending = JSON.parse(sessionStorage.getItem(SAVE_PENDING_KEY)); } catch (e) {}
@@ -395,6 +364,8 @@
     }
 
     function spawnParryObject() {
+        // Nobody's looking: don't spawn one just to punish them for missing it.
+        if (document.hidden) { scheduleParry(); return; }
         const obj = document.createElement('div');
         obj.className = 'parry-object';
         obj.innerHTML = assetIcon('icon-parry.png', '', 26);
@@ -440,18 +411,18 @@
     // Sonic: a persistent ring count. Every discovery anywhere on the site
     // earns a ring (see markFound's onFound hook below); a missed parry
     // scatters them, same grace period the games give you to grab them back.
-    let ringCount = 0;
     let ringCountEl;
 
     function addRings(n) {
-        ringCount = Math.max(0, ringCount + n);
-        if (ringCountEl) ringCountEl.textContent = String(ringCount);
+        store.rings = Math.max(0, store.rings + n);
+        saveStore();
+        if (ringCountEl) ringCountEl.textContent = String(store.rings);
     }
 
     function scatterRings() {
-        if (!ringCountEl || ringCount === 0) { window.easterEggs.markFound('sonic-rings'); return; }
+        if (!ringCountEl || store.rings === 0) { window.easterEggs.markFound('sonic-rings'); return; }
         const rect = ringCountEl.getBoundingClientRect();
-        const lost = Math.min(ringCount, 6);
+        const lost = Math.min(store.rings, 6);
         addRings(-lost);
 
         for (let i = 0; i < lost; i++) {
@@ -493,7 +464,7 @@
         const ringEl = document.createElement('span');
         ringEl.className = 'game-fixture fixture-rings fixture-nav';
         ringEl.title = 'Rings';
-        ringEl.innerHTML = assetIcon('icon-ring.png', '', 16) + '<span class="ring-count">0</span>';
+        ringEl.innerHTML = assetIcon('icon-ring.png', '', 16) + `<span class="ring-count">${store.rings}</span>`;
         navRight.insertBefore(ringEl, navRight.firstChild);
         ringCountEl = ringEl.querySelector('.ring-count');
         window.easterEggs.onFound = function(name) {
@@ -522,7 +493,7 @@
     }
 
     // Ultrakill: same typed payload and sound as before, now a button
-    // instead of a keyword, and placed specifically rather than sitewide —
+    // instead of a keyword, and placed specifically rather than sitewide:
     // the Gorilla Warfare project page (whose own design philosophy cites
     // Ultrakill directly) and the About page, next to where Ultrakill is
     // actually named among the games Ryaan plays.
@@ -565,7 +536,7 @@
         overlay.className = 'ultrakill-overlay';
         const msg = document.createElement('div');
         msg.id = 'ultrakill-message';
-        msg.style.textShadow = `2px 2px 0 #f00, 0 0 ${intensity * 4}px #ff0000`;
+        msg.style.textShadow = Array.from({ length: intensity + 1 }, (_, i) => `${(i + 1) * 2}px ${(i + 1) * 2}px 0 ${i % 2 ? '#000' : '#f00'}`).join(', ');
         overlay.appendChild(msg);
         document.body.appendChild(overlay);
 

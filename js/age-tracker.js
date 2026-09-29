@@ -19,6 +19,10 @@
 
         const ageText = `${timeDiff.years} years, ${timeDiff.months} months, ${timeDiff.days} days, ${timeDiff.hours} hours, ${timeDiff.minutes} minutes, ${timeDiff.seconds} seconds`;
         ageDisplay.textContent = ageText;
+
+        // the header chip used to be hardcoded and would have quietly gone stale
+        const chip = utils.getElement('#age-chip');
+        if (chip) chip.textContent = `${timeDiff.years} years old`;
     }
 
     function calculateTimeDifference(start, end) {

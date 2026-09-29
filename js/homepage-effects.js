@@ -31,19 +31,19 @@
     }
 
     function getDevourerAudio() {
-        if (!devourerAudio) { devourerAudio = new Audio('/res/DevourerSpawn.mp3'); devourerAudio.volume = 0.4; }
+        if (!devourerAudio) { devourerAudio = new Audio(utils.asset('res/DevourerSpawn.mp3')); devourerAudio.volume = 0.4; }
         return devourerAudio;
     }
     function getMatrixAudio() {
-        if (!matrixAudio) { matrixAudio = new Audio('/res/mtrx.mp3'); matrixAudio.volume = 0.3; }
+        if (!matrixAudio) { matrixAudio = new Audio(utils.asset('res/mtrx.mp3')); matrixAudio.volume = 0.3; }
         return matrixAudio;
     }
     function getMgrrAudio() {
-        if (!mgrrAudio) { mgrrAudio = new Audio('/res/nanomachines.mp3'); mgrrAudio.volume = 0.5; }
+        if (!mgrrAudio) { mgrrAudio = new Audio(utils.asset('res/nanomachines.mp3')); mgrrAudio.volume = 0.5; }
         return mgrrAudio;
     }
     function getJonklerAudio() {
-        if (!jonklerAudio) { jonklerAudio = new Audio('/res/jonkler.mp3'); jonklerAudio.volume = 0.4; }
+        if (!jonklerAudio) { jonklerAudio = new Audio(utils.asset('res/jonkler.mp3')); jonklerAudio.volume = 0.4; }
         return jonklerAudio;
     }
 
@@ -96,17 +96,6 @@
             }, index * 200);
         });
 
-        // Animate commit lines
-        const commitLines = document.querySelectorAll('.commit-line');
-        commitLines.forEach((line, index) => {
-            if (!line.classList.contains('cursor')) {
-                line.style.opacity = '0';
-                setTimeout(() => {
-                    line.style.opacity = '1';
-                    line.style.transition = 'opacity 0.3s ease';
-                }, index * 400 + 1000);
-            }
-        });
     }
 
     function handleKeydown(e) {
@@ -305,7 +294,7 @@
         canvas.id = 'matrix-canvas';
         canvas.style.cssText = `
                 position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-                z-index: -2; opacity: 0; pointer-events: none;
+                z-index: -1; opacity: 0; pointer-events: none;
                 transition: opacity 1s ease;
             `;
         document.body.appendChild(canvas);
@@ -376,7 +365,7 @@
     }
 
     function animateDog() {
-        if (!dog || !title) return;
+        if (!dog || !title || dog.classList.contains('animate')) return;
 
         // Devourer of Gods animation. The title erodes away exactly as fast
         // as the dog's leading edge sweeps across it. A clip-path driven by
@@ -447,6 +436,9 @@
             clearInterval(particleInterval);
             dog.classList.remove('animate');
             title.style.clipPath = '';
+            // slide back into its lurking spot instead of popping in
+            dog.classList.add('returning');
+            setTimeout(() => dog.classList.remove('returning'), 800);
 
             screenEffect.style.opacity = '0';
             setTimeout(() => {
@@ -469,14 +461,14 @@
 
         // The automatic run waits for the page's first real click or
         // keypress (enableAudio, above) instead of a blind timer, so its
-        // very first pass is never silent — browsers block audio before a
+        // very first pass is never silent. Browsers block audio before a
         // genuine user gesture, and nothing before this point guarantees
         // one has happened yet.
         if (audioAllowed) startDogCycle();
     }
 
-    // Exposed so js/easter-eggs.js can trigger the same sequence on demand
-    // (e.g. dragging the dog onto the title), not just on the 45s interval.
+    // Exposed so js/easter-eggs.js can trigger the same run on demand
+    // (poking the lurking dog), not just on the 45s interval.
     window.triggerDevourerSequence = animateDog;
 
     if (document.readyState === 'loading') {

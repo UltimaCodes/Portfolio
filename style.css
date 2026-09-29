@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Jersey+15&display=swap');
 
 :root {
   --bg: #0b0c2a;
@@ -164,12 +163,6 @@ nav a:hover {
   color: var(--accent);
 }
 
-nav a.active {
-  background-color: var(--accent);
-  color: var(--bg);
-  pointer-events: none;
-}
-
 .title-container {
   position: relative;
   text-align: center;
@@ -184,20 +177,42 @@ h1.title {
   text-shadow: 3px 3px 0 var(--accent-alert-shadow);
 }
 
+/* The Devourer lurks between runs: only its head pokes in from the left
+   edge, and poking it back starts a run. It used to sit at opacity 0 with
+   pointer-events off, which made both dog easter eggs impossible to trigger.
+   Width is auto so dog.png keeps its real proportions (it was being
+   stretched from ~5.5:1 to 8:1). */
 .dog {
   position: absolute;
   top: 50%;
-  left: -200px;
+  left: -460px;
   transform: translateY(-50%);
   height: 100px;
-  width: 800px;
-  max-width: 80vw;
-  opacity: 0;
-  pointer-events: none;
+  width: auto;
+  max-width: none;
+  opacity: 0.9;
+  cursor: pointer;
+  transition: left 0.25s ease;
+  animation: dog-lurk 3s ease-in-out infinite;
 }
+.dog:hover { left: -410px; }
 
 .dog.animate {
   animation: dog-eat 2.5s ease-in-out forwards;
+  pointer-events: none;
+}
+.dog.returning {
+  animation: dog-return 0.8s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes dog-lurk {
+  0%, 100% { transform: translateY(-50%); }
+  50% { transform: translateY(calc(-50% - 5px)); }
+}
+@keyframes dog-return {
+  from { left: -620px; opacity: 0; }
+  to { left: -460px; opacity: 0.9; }
 }
 
 /* Enhanced Dog Animation - Devourer of Gods Style */
@@ -444,27 +459,6 @@ h1.title {
   to { opacity: 1; }
 }
 
-.terminal {
-  display: table; /* Shrinks to fit content width */
-  margin: 20px auto; /* Horizontally center the block */
-  background-color: #000;
-  color: #33ff33;
-  padding: 20px;
-  border: 2px solid #fff;
-  font-family: var(--font-body);
-  white-space: nowrap;
-  text-align: left;
-}
-
-.terminal .cursor {
-  display: inline-block;
-  width: 10px;
-  background-color: #33ff33;
-  margin-left: 2px;
-  animation: blink 1s steps(2, start) infinite;
-  vertical-align: bottom;
-}
-
 .btn-pixel {
   display: inline-block;
   padding: 10px 20px;
@@ -510,37 +504,6 @@ footer {
   100% { text-shadow: 0 0 transparent; }
 }
 
-.boot-sequence {
-  font-family: var(--font-body);
-  color: #33ff33;
-  background-color: #000;
-  border: 2px solid #fff;
-  padding: 15px;
-  font-size: 0.75rem;
-  max-width: 600px;
-  margin: 20px auto;
-  white-space: pre-line;
-  user-select: none;
-  animation: flicker 2s infinite alternate;
-}
-
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.85; }
-}
-
-.sys-diag {
-  font-family: var(--font-body);
-  background-color: #000;
-  border: 2px solid #33ff33;
-  color: #33ff33;
-  padding: 10px;
-  max-width: 400px;
-  margin: 20px auto;
-  font-size: 0.75rem;
-  line-height: 1.3;
-}
-
 .cat-roulette img {
   width: 300px;
   height: 300px;
@@ -569,7 +532,6 @@ footer {
   color: #fff;
 }
 
-body:not(.homepage) .terminal,
 .project-card {
   border: 1px solid var(--accent);
   background-color: var(--panel);
@@ -585,6 +547,20 @@ body:not(.homepage) .terminal,
   cursor: pointer;
   position: relative;
   overflow: hidden;
+}
+
+a.project-card { text-decoration: none; }
+.project-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.project-card .card-media {
+  display: block;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border: 2px solid #fff;
+  margin-bottom: 10px;
 }
 
 .project-card:hover {
@@ -1026,27 +1002,6 @@ body:not(.homepage) .terminal,
 .about-terminal a { color: var(--accent); }
 .about-terminal div { padding: 2px 0; }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  margin-top: 15px;
-}
-
-.skill-category {
-  background-color: #0b0c2a;
-  border: 1px solid #33ff33;
-  padding: 15px;
-  border-radius: 4px;
-}
-
-.skill-category h4 {
-  color: #33ff33;
-  font-size: 0.7rem;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
 .goals-checklist {
   margin-top: 15px;
 }
@@ -1087,15 +1042,6 @@ body:not(.homepage) .terminal,
   text-decoration: line-through;
   opacity: 0.7;
 }
-
-.resume-buttons {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
 
 @keyframes ultrakill-fade {
   0% { opacity: 1; }
@@ -1325,6 +1271,21 @@ body:not(.homepage) .terminal,
   position: relative;
   overflow: hidden;
 }
+/* Real screenshots, where a project has them, instead of placeholder art */
+.proj-hero-shot.media,
+.proj-shot.media {
+  height: auto;
+  background: #000;
+}
+.proj-hero-shot.media img,
+.proj-shot.media img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* the Voxelium flythrough is 480px wide; blow it up as chunky pixels rather than blur */
+.pixel-upscale { image-rendering: pixelated; }
+
 .proj-shot-label {
   position: absolute;
   bottom: 8px; left: 8px;
@@ -1722,7 +1683,7 @@ body.vision-mode .fixture-rings {
 }
 .parry-object.flashing {
   transform: scale(1.35);
-  filter: brightness(1.6) drop-shadow(0 0 5px #fff);
+  filter: brightness(1.6);
 }
 .parry-success {
   position: fixed;
@@ -1811,6 +1772,52 @@ body.konami-active {
   cursor: default;
 }
 
+/* ===== 404: the Devourer got here first ===== */
+.lost {
+  text-align: center;
+  margin: 50px auto 30px;
+  padding: 0 20px;
+  max-width: 640px;
+}
+.lost-stage {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.lost-code {
+  font-family: var(--font-head);
+  font-size: 6rem;
+  color: #fff;
+  letter-spacing: 6px;
+  text-shadow: 6px 6px 0 var(--accent-alert-shadow);
+  /* a bite taken out of the left edge, teeth marks and all */
+  clip-path: polygon(14% 0, 100% 0, 100% 100%, 14% 100%, 20% 86%, 11% 72%, 19% 57%, 10% 43%, 18% 28%, 11% 14%);
+}
+.lost-dog {
+  position: absolute;
+  top: 50%;
+  right: calc(100% - 70px);
+  height: 90px;
+  width: auto;
+  max-width: none;
+  animation: dog-lurk 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+.lost-sub {
+  font-family: var(--font-body);
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  margin: 6px 0 20px;
+}
+.lost-terminal {
+  margin-bottom: 24px;
+  text-align: left;
+}
+@media (max-width: 480px) {
+  .lost-code { font-size: 3.6rem; }
+  .lost-dog { height: 60px; right: calc(100% - 45px); }
+}
+
 /* ===== Consolidated responsive rules (was 6 separate max-width:768px blocks) ===== */
 @media (max-width: 768px) {
   .info {
@@ -1859,16 +1866,6 @@ body.konami-active {
   .about-section {
     padding: 20px;
     margin: 15px;
-  }
-
-  .skills-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .resume-buttons {
-    flex-direction: column;
-    align-items: center;
   }
 
   .proj-layout {

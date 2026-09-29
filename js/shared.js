@@ -2,71 +2,58 @@
 (function() {
     'use strict';
 
-    // Google Analytics setup
+    // Site root, worked out from where this file was loaded from, so asset
+    // paths resolve the same on ryaan.org, a github.io subpath, or a local
+    // server, no matter how deep the current page is.
+    const scriptSrc = document.currentScript ? document.currentScript.src : location.href;
+    const siteRoot = scriptSrc.replace(/js\/shared\.js(\?.*)?$/, '');
+
+    // Google Analytics, loaded once here so every page is actually counted
+    // (the tag used to be pasted into only four of the thirteen pages).
+    const GA_ID = 'G-74WXTDJ616';
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-74WXTDJ616');
+    gtag('config', GA_ID);
+    const gaScript = document.createElement('script');
+    gaScript.async = true;
+    gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+    document.head.appendChild(gaScript);
 
-    // Utility functions
     window.utils = {
-        // Debounce function for performance optimization
+        asset: function(path) {
+            return siteRoot + path.replace(/^\//, '');
+        },
+
         debounce: function(func, wait) {
             let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
+            return function(...args) {
                 clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
+                timeout = setTimeout(() => func(...args), wait);
             };
         },
 
-        // Safe element selector
         getElement: function(selector) {
             return document.querySelector(selector);
         },
 
-        // Safe element creation
         createElement: function(tag, className, textContent) {
             const element = document.createElement(tag);
             if (className) element.className = className;
             if (textContent) element.textContent = textContent;
             return element;
-        },
-
-        // Responsive breakpoint checker
-        isMobile: function() {
-            return window.innerWidth <= 768;
-        },
-
-        // Smooth scroll utility
-        smoothScroll: function(target, duration = 800) {
-            const targetElement = typeof target === 'string' ? this.getElement(target) : target;
-            if (!targetElement) return;
-
-            const targetPosition = targetElement.offsetTop;
-            const startPosition = window.pageYOffset;
-            const distance = targetPosition - startPosition;
-            let startTime = null;
-
-            function animation(currentTime) {
-                if (startTime === null) startTime = currentTime;
-                const timeElapsed = currentTime - startTime;
-                const run = ease(timeElapsed, startPosition, distance, duration);
-                window.scrollTo(0, run);
-                if (timeElapsed < duration) requestAnimationFrame(animation);
-            }
-
-            function ease(t, b, c, d) {
-                t /= d / 2;
-                if (t < 1) return c / 2 * t * t + b;
-                t--;
-                return -c / 2 * (t * (t - 2) - 1) + b;
-            }
-
-            requestAnimationFrame(animation);
         }
     };
+
+    function stampFooterYear() {
+        document.querySelectorAll('.footer-year').forEach(el => {
+            el.textContent = String(new Date().getFullYear());
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', stampFooterYear);
+    } else {
+        stampFooterYear();
+    }
 })();

@@ -3,40 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="This page doesn't exist. The Devourer of Gods ate it." />
+  <meta property="og:title" content="404 | Ryaan Aaqil" />
+  <meta property="og:description" content="This page doesn't exist. The Devourer of Gods ate it." />
+  <meta property="og:url" content="https://ryaan.org/404.html" />
+  <meta property="og:image" content="https://ryaan.org/images/logo.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0b0c2a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Jersey+15&display=swap" />
   <title>404 | Ryaan Aaqil</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="images/logo.png" />
+  <!-- Root-absolute on purpose: GitHub Pages serves this page for any missing
+       URL at any depth, so relative paths would break on /projects/whatever. -->
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/png" href="/images/logo.png" />
 </head>
 <body>
 <div id="parallax-background"></div>
 
 <nav>
   <div class="left">
-    <a href="projects.html" class="btn-pixel">Projects</a>
-    <a href="setup.html" class="btn-pixel">Setup</a>
+    <a href="/projects.html" class="btn-pixel">Projects</a>
+    <a href="/setup.html" class="btn-pixel">Setup</a>
   </div>
   <div class="center">
-    <a href="index.html" class="nav-home">"wgat"</a>
+    <a href="/index.html" class="nav-home">"wgat"</a>
   </div>
   <div class="right">
-    <a href="about.html" class="btn-pixel">About</a>
+    <a href="/about.html" class="btn-pixel">About</a>
   </div>
 </nav>
 
-<div class="about-header" style="padding: 60px 20px;">
-  <h1>404</h1>
-  <p class="about-tagline">This page doesn't exist. Much like my sleep schedule.</p>
-  <div style="margin-top: 30px;">
-    <a href="index.html" class="btn-pixel">Take me home</a>
+<div class="lost">
+  <div class="lost-stage">
+    <h1 class="lost-code">404</h1>
+    <img src="/images/dog.png" alt="" class="lost-dog" />
   </div>
+  <p class="about-tagline">The Devourer of Gods ate this page.</p>
+  <p class="lost-sub">It does that. There was probably nothing good on it anyway.</p>
+  <div class="about-terminal lost-terminal">
+    <div><span class="dim">requested:</span> <span id="lost-path"></span></div>
+    <div><span class="dim">status:</span> digested</div>
+    <div><span class="dim">survivors:</span> the homepage, allegedly</div>
+  </div>
+  <a href="/index.html" class="btn-pixel">Take me home</a>
 </div>
 
 <footer>
-  &copy; 2025 Ryaan Aaqil. All rights NOT reserved.
+  &copy; <span class="footer-year">2026</span> Ryaan Aaqil. All rights NOT reserved.
 </footer>
 
-<!-- Scripts -->
-<script src="js/shared.js"></script>
-<script src="js/easter-eggs.js"></script>
+<script src="/js/shared.js"></script>
+<script>
+  document.getElementById('lost-path').textContent = location.pathname;
+</script>
+<script src="/js/easter-eggs.js"></script>
 </body>
 </html>
