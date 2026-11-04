@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bête | ryaan aaqil</title>
+  <meta name="description" content="A short roguelike roulette game where you pay your debts with the rest of your life." />
+  <meta property="og:title" content="Bête | ryaan aaqil" />
+  <meta property="og:description" content="A short roguelike roulette game where you pay your debts with the rest of your life." />
+  <meta property="og:url" content="https://ryaan.org/projects/bete.html" />
+  <meta property="og:image" content="https://ryaan.org/images/projects/bete-table.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0b0c2a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&family=Jersey+10&family=Jersey+15&display=swap" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../images/logo.png" />
+  <script>try{if(localStorage.getItem('theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}</script>
+</head>
+<body data-swirl="bete">
+<div class="wrap">
+<nav class="nav box">
+  <a class="home" href="../index.html"><img src="../images/logo.png" alt="" width="30" height="30" />"wgat"</a>
+  <a href="../projects.html" aria-current="page">./projects</a>
+  <a href="../setup.html">./setup</a>
+  <a href="../about.html">./about</a>
+  <span class="nav-btns"><button class="theme-btn" type="button">light</button></span>
+</nav>
+<main>
+<h1 class="page-title">Bête</h1>
+<p class="lede box">A short roguelike roulette game where you pay your debts with the rest of your life.</p>
+<div class="proj-layout">
+  <div class="proj-main">
+    <figure class="fig box "><img src="../images/projects/bete-table.jpg" alt="the table" loading="lazy" /><figcaption>the table</figcaption></figure>
+    <div class="prose box">
+<h2>what it is</h2>
+<p>You owe the Dealer six escalating installments, and the only thing you can bargain with is the rest of your life. Stake years on a spin to bend the wheel toward your bets, keep them if you come out even or ahead, lose them if you don't.</p>
+<p>I made it for a game jam, then rebuilt it from the ground up afterwards. Inspired by Balatro, and by Doggerism for the music idea.</p>
+
+<h2>how a run goes</h2>
+<ul>
+  <li>Six installments, each with a target to reach within 8 spins. Hit it early and collect for a bonus on every unused spin. Fall short and the Dealer takes the difference in years</li>
+  <li>Normal roulette table and payouts, and stacking even-money bets of the same size earns a cover bonus</li>
+  <li>Stake up to 10 years on a spin for luck</li>
+  <li>Between installments you go to the Back Room to buy charms with chips or with years, sell them, reroll the offers, or sell years for chips</li>
+  <li>Two bosses: installment 3 runs at midnight, and the last one is played on a double-zero wheel</li>
+</ul>
+
+<h2>how it's built</h2>
+<p>The whole game model lives in plain code with no engine dependency, covered by 256 tests that run in about two seconds without Unity, plus a balance simulator that plays thousands of runs with scripted players. The interface is built entirely in code on a 640x360 grid shown at 3x. The pixel art and all 66 sound effects come out of Python scripts.</p>
+<p>There's also a play-testing harness that drives a built copy of the game with a virtual mouse and keyboard, checks that every button did what it should, and flags any overlapping text.</p>
+    </div>
+  </div>
+  <aside class="proj-side">
+    <section class="box">
+      <div class="win-bar">the short version</div>
+      <div class="win-body">
+        <ul class="facts">
+        <li><b>status</b>: jam version on itch, the rebuild isn't out yet</li>
+        <li><b>type</b>: roguelike</li>
+        <li><b>made for</b>: Hack Club's Daydream 2025 game jam @ Cedar PECHS Karachi</li>
+        <li><b>made with</b>: Unity 6000.2, C#, URP 2D</li>
+        <li><b>links</b>: <a href="https://notryaan.itch.io/bete">itch.io</a>, <a href="https://github.com/UltimaCodes/Bete">github</a></li>
+        </ul>
+      </div>
+    </section>
+    <a class="btn box" href="../projects.html">&larr; ./projects</a>
+  </aside>
+</div>
+</main>
+<footer class="foot box">
+  <span class="who">ryaan aaqil</span>
+  <span>currently in karachi (<span class="local-time">--:--</span>)</span>
+  <span>website status: live (wip)</span>
+  <span class="links"><a href="https://github.com/UltimaCodes">github</a><a href="mailto:ryaanaqil3@gmail.com">email</a><a class="mini box" href="../settings.html">settings</a></span>
+  <span class="fine">&copy; <span class="footer-year">2026</span> all rights NOT reserved. there are 4 words you can type on this site that do something (actually real)</span>
+</footer>
+</div>
+<script src="../js/shared.js"></script>
+<script src="../js/background.js"></script>
+<script src="../js/juice.js"></script>
+<script src="../js/easter-eggs.js"></script>
+</body>
+</html>

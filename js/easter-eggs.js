@@ -1,206 +1,160 @@
-// Interactive easter eggs: click, hover, key-sequence and scroll triggers.
-// The typed keyword eggs live in homepage-effects.js.
+// The typed easter eggs. Type a word anywhere on the site. Esc or a click
+// ends any of them early.
 (function() {
     'use strict';
 
-    window.easterEggs = {
-        register: function(name, config) {
-            if (config.type === 'keydown-sequence') this._armKeySequence(config);
-            if (config.type === 'click-target') this._armClickTarget(config);
-            if (config.type === 'hover-hold') this._armHoverHold(config);
-            if (config.type === 'modifier-click') this._armModifierClick(config);
-            if (config.type === 'scroll-rush') this._armScrollRush(config);
-        },
-        _armKeySequence: function(config) {
-            let buffer = [];
-            document.addEventListener('keydown', (e) => {
-                buffer.push(e.key);
-                if (buffer.length > config.sequence.length) buffer.shift();
-                if (buffer.join(',') === config.sequence.join(',')) {
-                    buffer = [];
-                    config.onTrigger();
-                }
-            });
-        },
-        _armClickTarget: function(config) {
-            const el = document.querySelector(config.selector);
-            if (!el) return;
-            let count = 0;
-            let resetTimer;
-            el.addEventListener('click', () => {
-                count++;
-                clearTimeout(resetTimer);
-                resetTimer = setTimeout(() => { count = 0; }, config.resetMs || 1500);
-                if (count >= config.clicksRequired) {
-                    count = 0;
-                    config.onTrigger();
-                }
-            });
-        },
-        _armHoverHold: function(config) {
-            const el = document.querySelector(config.selector);
-            if (!el) return;
-            let holdTimer;
-            el.addEventListener('mouseenter', () => {
-                holdTimer = setTimeout(config.onTrigger, config.holdMs || 2000);
-            });
-            el.addEventListener('mouseleave', () => clearTimeout(holdTimer));
-        },
-        _armModifierClick: function(config) {
-            document.addEventListener('click', (e) => {
-                if (config.modifier === 'shift' && e.shiftKey) config.onTrigger(e);
-            });
-        },
-        _armScrollRush: function(config) {
-            let hitBottom = false;
-            let bottomTime = 0;
-            window.addEventListener('scroll', () => {
-                const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 10;
-                const atTop = window.scrollY < 10;
-                if (atBottom) { hitBottom = true; bottomTime = Date.now(); }
-                if (atTop && hitBottom && Date.now() - bottomTime < (config.windowMs || 2000)) {
-                    hitBottom = false;
-                    config.onTrigger();
-                }
-            });
-        }
+    let typed = '';
+    let stopCurrent = null;
+    let doggerCount = 0;
+
+    const eggs = {
+        dogger: runDogger,
+        nanomachines: runNanomachines,
+        jonkler: runJonkler,
+        matrix: runMatrix
     };
 
-    function initHomepageOnlyEggs() {
-        if (!document.querySelector('.title-container')) return;
+    function onKeydown(e) {
+        if (e.key === 'Escape' && stopCurrent) { stopCurrent(); return; }
+        if (e.ctrlKey || e.metaKey || e.altKey || e.key.length !== 1) return;
 
-        window.easterEggs.register('dog-devour', {
-            type: 'click-target',
-            selector: '.dog',
-            clicksRequired: 1,
-            onTrigger: function() {
-                if (typeof window.triggerDevourerSequence === 'function') window.triggerDevourerSequence();
+        typed = (typed + e.key.toLowerCase()).slice(-30);
+        for (const word in eggs) {
+            if (typed.endsWith(word)) {
+                typed = '';
+                if (stopCurrent) stopCurrent();
+                eggs[word]();
             }
-        });
-
-        window.easterEggs.register('cat-frenzy', {
-            type: 'click-target',
-            selector: '#cat-img',
-            clicksRequired: 5,
-            resetMs: 1500,
-            onTrigger: function() {
-                const img = document.querySelector('#cat-img');
-                if (!img) return;
-                img.classList.add('cat-frenzy-spin');
-                let spins = 0;
-                const cats = ['images/cat1.png', 'images/cat2.png', 'images/cat3.png', 'images/cat4.png', 'images/cat5.png'];
-                const spinInterval = setInterval(() => {
-                    img.src = cats[spins % cats.length];
-                    img.alt = `Pixel cat ${spins % cats.length + 1}`;
-                    spins++;
-                    if (spins > 10) {
-                        clearInterval(spinInterval);
-                        img.classList.remove('cat-frenzy-spin');
-                    }
-                }, 100);
-            }
-        });
+        }
     }
 
-    // Sitewide eggs. Every page, since the elements they use (nav logo,
-    // footer, page body) exist everywhere.
-    function initSitewideEggs() {
-        window.easterEggs.register('konami-glitch', {
-            type: 'keydown-sequence',
-            sequence: ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight'],
-            onTrigger: function() {
-                document.body.classList.add('konami-active');
-                setTimeout(() => document.body.classList.remove('konami-active'), 4000);
-            }
-        });
-
-        window.easterEggs.register('wgat-hover-reveal', {
-            type: 'hover-hold',
-            selector: '.nav-home',
-            holdMs: 2000,
-            onTrigger: function() {
-                const el = document.querySelector('.nav-home');
-                if (!el) return;
-                const original = el.textContent;
-                el.textContent = '"wait, genuinely?"';
-                el.classList.add('glitch');
-                setTimeout(() => {
-                    el.textContent = original;
-                    el.classList.remove('glitch');
-                }, 2500);
-            }
-        });
-
-        window.easterEggs.register('shift-click-static', {
-            type: 'modifier-click',
-            modifier: 'shift',
-            onTrigger: function() {
-                const flash = document.createElement('div');
-                flash.className = 'static-flash';
-                document.body.appendChild(flash);
-                setTimeout(() => flash.remove(), 250);
-            }
-        });
-
-        window.easterEggs.register('scroll-rush', {
-            type: 'scroll-rush',
-            windowMs: 2000,
-            onTrigger: function() {
-                const el = document.createElement('div');
-                el.className = 'scroll-rush-msg glitch';
-                el.textContent = 'WHERE\'S THE FIRE';
-                document.body.appendChild(el);
-                setTimeout(() => el.remove(), 2000);
-            }
-        });
+    // Everything an egg creates gets cleaned up through here, so ending one
+    // early and letting it run out behave exactly the same.
+    function start(cleanup, durationMs) {
+        const timer = setTimeout(stop, durationMs);
+        function stop() {
+            clearTimeout(timer);
+            cleanup();
+            stopCurrent = null;
+        }
+        stopCurrent = stop;
+        return stop;
     }
 
-    // Hidden clickable element in the footer, plus a triple-click on the
-    // copyright text itself, both sitewide since every page has a footer.
-    function initFooterEggs() {
-        const footer = document.querySelector('footer');
-        if (!footer || document.querySelector('#hidden-secret')) return;
-
-        const dot = document.createElement('span');
-        dot.id = 'hidden-secret';
-        dot.textContent = '•';
-        dot.setAttribute('aria-hidden', 'true');
-        footer.appendChild(dot);
-        window.easterEggs.register('hidden-footer-dot', {
-            type: 'click-target',
-            selector: '#hidden-secret',
-            clicksRequired: 1,
-            onTrigger: function() {
-                dot.classList.add('found');
-                dot.textContent = 'you found it. there is nothing else here.';
-            }
-        });
-
-        footer.id = footer.id || 'site-footer';
-        window.easterEggs.register('footer-triple-click', {
-            type: 'click-target',
-            selector: 'footer',
-            clicksRequired: 3,
-            resetMs: 1200,
-            onTrigger: function() {
-                const note = document.createElement('div');
-                note.className = 'footer-note glitch';
-                note.textContent = 'TERMS: THERE ARE NO TERMS';
-                footer.appendChild(note);
-                setTimeout(() => note.remove(), 2500);
-            }
-        });
+    function playSound(file, volume) {
+        const audio = new Audio(utils.asset('res/' + file));
+        audio.volume = volume;
+        if (siteSettings.get('sound') === 'on') audio.play().catch(() => {});
+        return audio;
     }
 
-    function init() {
-        initHomepageOnlyEggs();
-        initSitewideEggs();
-        initFooterEggs();
+    function runDogger() {
+        doggerCount++;
+        const lines = [
+            `> DOGGER PROTOCOL ACTIVATED [${doggerCount}]`,
+            '> ACCESSING FORGES...',
+            '> NUKING OSUPK...',
+            '> #EXECUTEDOGGERISM',
+            '> GOON.EXE RUNNING...',
+            '> HAMZA FOUND',
+            '> IS THIS TRUE'
+        ];
+
+        const term = utils.createElement('div', 'egg-term box');
+        const body = utils.createElement('div', 'win-body');
+        term.appendChild(utils.createElement('div', 'win-bar', 'root@ryaan:~$ ./dogger.sh'));
+        term.appendChild(body);
+        document.body.appendChild(term);
+
+        const timers = lines.map((line, i) =>
+            setTimeout(() => body.appendChild(utils.createElement('div', '', line)), i * 320)
+        );
+
+        const stop = start(() => {
+            timers.forEach(clearTimeout);
+            term.remove();
+        }, 6500);
+        term.addEventListener('click', stop);
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
+    function runNanomachines() {
+        const audio = playSound('nanomachines.mp3', 0.5);
+        const screen = utils.createElement('div', 'egg-full egg-mgr');
+        screen.appendChild(utils.createElement('div', 'big', 'Nanomachines, son.'));
+        document.body.appendChild(screen);
+
+        const timers = [
+            setTimeout(() => screen.appendChild(utils.createElement('div', 'line', 'They harden in response to physical trauma.')), 1300),
+            setTimeout(() => screen.appendChild(utils.createElement('div', 'line', "We're making the mother of all omelettes, Jack.")), 2900)
+        ];
+
+        const stop = start(() => {
+            timers.forEach(clearTimeout);
+            audio.pause();
+            screen.remove();
+        }, 6000);
+        screen.addEventListener('click', stop);
     }
+
+    function runJonkler() {
+        const audio = playSound('jonkler.mp3', 0.4);
+        const texts = [
+            'WHY SO SERIOUS?', 'YOU WANNA KNOW HOW I GOT THESE SCARS', 'WE LIVE IN A SOCIETY',
+            'JONKLERISM RISES', 'BUY TIMESHARES', 'EVERYTHING BURNS', 'NO ESCAPE', 'ONE QUESTION'
+        ];
+
+        const layer = utils.createElement('div', 'egg-layer');
+        document.body.appendChild(layer);
+
+        const spawner = setInterval(() => {
+            const text = texts[Math.floor(Math.random() * texts.length)];
+            const sticker = utils.createElement('div', 'egg-sticker', text);
+            sticker.style.top = `${Math.random() * 90}%`;
+            sticker.style.left = `${Math.random() * 78}%`;
+            sticker.style.transform = `rotate(${Math.random() * 10 - 5}deg)`;
+            layer.appendChild(sticker);
+        }, 130);
+
+        start(() => {
+            clearInterval(spawner);
+            audio.pause();
+            layer.remove();
+        }, 5000);
+    }
+
+    function runMatrix() {
+        const audio = playSound('mtrx.mp3', 0.3);
+        const screen = utils.createElement('div', 'egg-full egg-matrix');
+        const canvas = document.createElement('canvas');
+        screen.appendChild(canvas);
+        document.body.appendChild(screen);
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const ctx = canvas.getContext('2d');
+        const glyphs = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789';
+        const fontSize = 20;
+        const drops = Array(Math.ceil(canvas.width / fontSize)).fill(0).map(() => Math.random() * -40);
+
+        ctx.font = `${fontSize}px monospace`;
+        const painter = setInterval(() => {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#33ff33';
+            drops.forEach((y, i) => {
+                ctx.fillText(glyphs[Math.floor(Math.random() * glyphs.length)], i * fontSize, y * fontSize);
+                drops[i] = y * fontSize > canvas.height && Math.random() > 0.97 ? 0 : y + 1;
+            });
+        }, 40);
+
+        const stop = start(() => {
+            clearInterval(painter);
+            audio.pause();
+            screen.remove();
+        }, 6000);
+        screen.addEventListener('click', stop);
+    }
+
+    document.addEventListener('keydown', onKeydown);
 })();

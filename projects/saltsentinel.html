@@ -1,128 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="A non-contact rover that maps salt damage on Mohenjo-daro's brick walls. Built for WRO Pakistan." />
-    <meta property="og:title" content="Salt Sentinel | Ryaan Aaqil" />
-    <meta property="og:description" content="A non-contact rover that maps salt damage on Mohenjo-daro's brick walls. Built for WRO Pakistan." />
-    <meta property="og:url" content="https://ryaan.org/projects/saltsentinel.html" />
-    <meta property="og:image" content="https://ryaan.org/images/logo.png" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#0b0c2a" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Jersey+15&display=swap" />
-    <title>Salt Sentinel | Ryaan Aaqil</title>
-    <link rel="stylesheet" href="../style.css" />
-    <link rel="icon" type="image/png" href="../images/logo.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Salt Sentinel | ryaan aaqil</title>
+  <meta name="description" content="A rover that looks for salt damage on the walls of Mohenjo-daro without touching them." />
+  <meta property="og:title" content="Salt Sentinel | ryaan aaqil" />
+  <meta property="og:description" content="A rover that looks for salt damage on the walls of Mohenjo-daro without touching them." />
+  <meta property="og:url" content="https://ryaan.org/projects/saltsentinel.html" />
+  <meta property="og:image" content="https://ryaan.org/images/projects/salt-rover-wide.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0b0c2a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&family=Jersey+10&family=Jersey+15&display=swap" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../images/logo.png" />
+  <script>try{if(localStorage.getItem('theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}</script>
 </head>
-<body>
-<div id="parallax-background"></div>
-
-<nav>
-    <div class="left">
-        <a href="../projects.html" class="btn-pixel">← Back to Projects</a>
-        <a href="../setup.html" class="btn-pixel">Setup</a>
-    </div>
-    <div class="center">
-        <a href="../index.html" class="nav-home">"wgat"</a>
-    </div>
-    <div class="right">
-        <a href="../about.html" class="btn-pixel">About</a>
-    </div>
+<body data-swirl="saltsentinel">
+<div class="wrap">
+<nav class="nav box">
+  <a class="home" href="../index.html"><img src="../images/logo.png" alt="" width="30" height="30" />"wgat"</a>
+  <a href="../projects.html" aria-current="page">./projects</a>
+  <a href="../setup.html">./setup</a>
+  <a href="../about.html">./about</a>
+  <span class="nav-btns"><button class="theme-btn" type="button">light</button></span>
 </nav>
-
-<div class="proj-header">
-    <h1>SALT SENTINEL</h1>
-    <p class="proj-tagline">A rover that finds salt damage on a 4,500 year old wall before conservators do. Never touches the brick.</p>
-    <div class="about-chips">
-        <span class="about-chip">Raspberry Pi 5</span>
-        <span class="about-chip">ESP32</span>
-        <span class="about-chip">Python</span>
-    </div>
-</div>
-
-<div class="proj-hero-shot"><div class="saltsentinel-design" style="width:100%;height:100%;"></div></div>
-
+<main>
+<h1 class="page-title">Salt Sentinel</h1>
+<p class="lede box">A rover that looks for salt damage on the walls of Mohenjo-daro without touching them.</p>
 <div class="proj-layout">
-    <div class="proj-main">
-        <div class="proj-quote">
-            Mohenjo-daro is 4,500 years old and salt is rising up through the fired brick from below, crystallising
-            and breaking it apart. Right now the only way to know where it is worst is a conservator deciding by
-            eye. Salt Sentinel patrols a wall without ever touching it, stops at fixed stations, and turns a
-            thermal camera and four-light photometric stereo into a risk map instead of a guess. Built for WRO
-            Pakistan, heading to nationals in Lahore.
-        </div>
+  <div class="proj-main">
+    <figure class="fig box tall"><img src="../images/projects/salt-rover.jpg" alt="the rover, in front of our test wall" loading="lazy" /><figcaption>the rover, in front of our test wall</figcaption></figure>
+    <div class="prose box">
+<h2>what it's for</h2>
+<p>Mohenjo-daro is 4,500 years old and it's being destroyed by salt. The water table under it is high and salty, the water climbs up through the fired brick, and when it evaporates the salt crystallises inside the pores and breaks the brick apart from the inside.</p>
+<p>There's already a fix. Conservators put a sacrificial layer of mud on the wall, the salt crystallises in the mud instead of the brick, and the mud gets scraped off and replaced. The hard part is knowing where to put it. The site is about 250 hectares, it has 16 workers where about 350 are needed, and right now the decision gets made by walking around and looking.</p>
+<p>Salt Sentinel drives along a wall, stops at fixed stations and writes down what it measures, so you get a ranked list of where to send the mud first and a record you can compare against next month. Salt-weakened brick is powdery and anything pressed into it causes the exact damage we're trying to prevent, so it never touches the wall.</p>
+<figure class="fig box "><img src="../images/projects/salt-poster.jpg" alt="our booth poster" loading="lazy" /><figcaption>our booth poster</figcaption></figure>
 
-        <h2>Why It Never Touches the Wall</h2>
-        <p>
-            The rules require non-contact sensing, but the report exists to explain what got ruled out and why,
-            not just what got built. A touch probe was the obvious first idea and the first one cut. EMI
-            conductivity looked promising until the physics said otherwise. Dry salt is non-conductive, so an EMI
-            channel would have offered specificity once damage was already visible, not earliness. Ultrasonic,
-            a LIDAR-on-stepper rig, a depth camera and spin-in-place scanning were all considered and rejected too.
-            The team that can explain what it did not build, and why, is rarer than the team that only shows what
-            it did.
-        </p>
-
-        <div class="proj-shot"><div class="saltsentinel-design" style="width:100%;height:100%;"></div><span class="proj-shot-label">thermal pass, wall side</span></div>
-
-        <h2>Two Processors, Split by Timing</h2>
-        <p>
-            The Pi owns vision and scoring. The ESP32 owns motor PWM, servos, and a 500ms safety watchdog that
-            stops the rover if the Pi ever stops talking to it. One USB cable carries both power and serial
-            between them. Splitting it this way means the safety-critical loop never waits on a vision pipeline
-            that might be busy solving photometric stereo.
-        </p>
-
-        <h2>What It Actually Measures</h2>
-        <p>
-            Thermal at roughly 1 metre standoff, so the frame is wide enough to contain a dry reference brick next
-            to the damp one. At that range a damp patch reads about 2.5°C colder in absolute terms, but the
-            pixel-to-pixel noise floor is closer to 0.05°C, and that gap is what an in-frame differential exploits.
-            Camera work happens closer, around 25cm, for four-light photometric stereo: light a brick from four
-            directions in turn and solve for albedo and surface normals from how the brightness changes between
-            them. The efflorescence channel is built to fail loudly instead of quietly: without a calibration card
-            imaged first, it returns NaN on purpose rather than report a percentile threshold that would call a
-            clean wall and a crusted one the same value.
-        </p>
-
-        <h2>What Actually Bit Us</h2>
-        <ul>
-            <li>Every VL53L0X ToF sensor ships at the same I2C address, so they have to be woken one at a time through XSHUT and reassigned, every single boot</li>
-            <li>Parallax between the thermal sensor and the camera is 16% of frame width at 250mm and scales with distance, so the two images do not measure the same brick unless the range is accounted for</li>
-            <li>The Pi 5's GPIO sits behind the RP1 chip, so RPi.GPIO and pigpio silently do not work. It needs gpiozero on the lgpio backend</li>
-            <li>A gravimetric ground-truth pass needs the dosing done blind, by someone who is not also driving the rover</li>
-        </ul>
-
-        <h2>Where It Actually Stands</h2>
-        <p>
-            Honest, because the report's own house rule is to state a limitation rather than fake a result. The
-            firmware watchdog is currently the only automatic stop; a physical e-stop was on the rover and got
-            removed during a rebuild. Only two of three ToF sensors are fitted, so there is no forward corner
-            detection yet. Demo footage is filmed on manual Bluetooth control with the Pi powered off, because
-            that is what is actually finished on any given day, and the report says so rather than implying more.
-        </p>
-    </div>
-
-    <div class="proj-side card-shell">
-        <div class="card-titlebar">QUICK FACTS</div>
-        <div class="card-body">
-            <div><b>STATUS</b><span style="color: var(--accent-alert);">Racing the Lahore nationals deadline</span></div>
-            <div><b>TYPE</b>Autonomous inspection rover</div>
-            <div><b>TEAM</b>Nixor Engineering Solutions</div>
-            <div><b>TECH</b>Raspberry Pi 5, ESP32, Python, C++</div>
-        </div>
-    </div>
+<h2>how it works</h2>
+<p>There are two processors. The Pi does vision and scoring, and the ESP32 does the motors and a 500ms watchdog that stops the rover if the Pi stops talking to it. One USB cable carries power and serial between them.</p>
+<p>Damp brick reads colder than dry brick because of evaporation, so the thermal pass runs at about 1 metre, where the frame is wide enough to have both in it. Comparing them in the same frame cancels out most of the sensor's error. A station only gets flagged if the frame has an actual dry-then-suddenly-cooler step in it, so a rock or a hand in front of the sensor doesn't count.</p>
+<p>Every station gets a risk score, scored against the median of the whole patrol so one wet month doesn't make the entire wall look like it's getting worse. Readings taken in the rain, too close to the dew point or without a valid distance from the wall don't go into the trend at all.</p>
+<div class="two">
+  <figure class="fig box "><img src="../images/projects/salt-sensors.jpg" alt="the sensor head: thermal camera, Pi camera and a climate sensor, on a PVC pipe" loading="lazy" /><figcaption>the sensor head: thermal camera, Pi camera and a climate sensor, on a PVC pipe</figcaption></figure>
+  <figure class="fig box "><img src="../images/projects/salt-rover-side.jpg" alt="the whole thing from behind" loading="lazy" /><figcaption>the whole thing from behind</figcaption></figure>
 </div>
 
-<footer>
-    &copy; <span class="footer-year">2026</span> Ryaan Aaqil. All rights NOT reserved.
-</footer>
+<h2>what comes out of it</h2>
+<p>Three files that open without any special software: a CSV of every reading, a wall panorama with a thermal overlay, and a PDF report listing every station with a risk score.</p>
+<p>The two pictures below came from a staged run that I used to build the report pipeline before the sensors were working, so they show the format and not a real result. The demo code is gone now and the real patrol writes the same files from real readings.</p>
+<figure class="fig box "><img src="../images/projects/salt-heatmap.jpg" alt="the panorama format, from the staged run. dark spots are cold, which means damp" loading="lazy" /><figcaption>the panorama format, from the staged run. dark spots are cold, which means damp</figcaption></figure>
+<figure class="fig box "><img src="../images/projects/salt-report.jpg" alt="the report format, also from the staged run" loading="lazy" /><figcaption>the report format, also from the staged run</figcaption></figure>
 
+<h2>what changed from the plan</h2>
+<ul>
+  <li>We designed around an MLX90640 thermal camera with 768 pixels. It couldn't be sourced in Pakistan in time, so the rover uses an AMG8833 with 64. The smallest temperature change it can reliably see is about 15 to 20 times bigger</li>
+  <li>The sensor head was going to be on pan and tilt servos. It's a fixed bracket now</li>
+  <li>The four-light camera pass for measuring salt crust is written, but the LED ring isn't fitted, so that pass is switched off</li>
+  <li>Two of the three ToF sensors are fitted, so there's no corner detection</li>
+  <li>The firmware watchdog is the only automatic stop, the e-stop got removed in a rebuild</li>
+  <li>The risk weights are provisional until they're calibrated against a wall with known patches</li>
+</ul>
+
+<h2>things that bit us</h2>
+<ul>
+  <li>Every VL53L0X ships at the same I2C address, so they have to be woken one at a time and reassigned on every boot</li>
+  <li>At 250mm the thermal frame is about one brick wide, so a big damp patch fills it and the comparison subtracts to zero</li>
+  <li>The Pi 5's GPIO sits behind the RP1 chip, so RPi.GPIO and pigpio silently don't work</li>
+  <li>The risk score had a sign bug that only showed up when real readings replaced the staged ones, because the staged data had the same sign backwards</li>
+</ul>
+    </div>
+  </div>
+  <aside class="proj-side">
+    <section class="box">
+      <div class="win-bar">the short version</div>
+      <div class="win-body">
+        <ul class="facts">
+        <li><b>competition</b>: WRO Pakistan National Final, Aitchison College, Lahore, 4-5 september 2026</li>
+        <li><b>category</b>: Future Innovators, Senior</li>
+        <li><b>team</b>: Nixor Engineering Solutions: me, Ayaan Hameed Khan and Muhammad Ruhail Khan</li>
+        <li><b>coach</b>: Qasim Naveed</li>
+        <li><b>my part</b>: the code, the power supply and the video</li>
+        <li><b>made with</b>: Raspberry Pi 5, ESP32, Python, C++</li>
+        <li><b>sensors</b>: AMG8833 thermal camera, Pi camera, SHT31, 2x VL53L0X ToF</li>
+        <li><b>build cost</b>: under PKR 200,000</li>
+        <li><b>links</b>: <a href="https://github.com/UltimaCodes/salt-sentinel">github</a></li>
+        </ul>
+      </div>
+    </section>
+    <a class="btn box" href="../projects.html">&larr; ./projects</a>
+  </aside>
+</div>
+</main>
+<footer class="foot box">
+  <span class="who">ryaan aaqil</span>
+  <span>currently in karachi (<span class="local-time">--:--</span>)</span>
+  <span>website status: live (wip)</span>
+  <span class="links"><a href="https://github.com/UltimaCodes">github</a><a href="mailto:ryaanaqil3@gmail.com">email</a><a class="mini box" href="../settings.html">settings</a></span>
+  <span class="fine">&copy; <span class="footer-year">2026</span> all rights NOT reserved. there are 4 words you can type on this site that do something (actually real)</span>
+</footer>
+</div>
 <script src="../js/shared.js"></script>
+<script src="../js/background.js"></script>
+<script src="../js/juice.js"></script>
 <script src="../js/easter-eggs.js"></script>
 </body>
 </html>

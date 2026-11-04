@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mako | ryaan aaqil</title>
+  <meta name="description" content="The motor controller Ryaan Aaqil designed for Team Nixor Sharks' Shell Eco-marathon car." />
+  <meta property="og:title" content="Mako | ryaan aaqil" />
+  <meta property="og:description" content="The motor controller Ryaan Aaqil designed for Team Nixor Sharks' Shell Eco-marathon car." />
+  <meta property="og:url" content="https://ryaan.org/projects/mako.html" />
+  <meta property="og:image" content="https://ryaan.org/images/projects/mako-top.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0b0c2a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&family=Jersey+10&family=Jersey+15&display=swap" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../images/logo.png" />
+  <script>try{if(localStorage.getItem('theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}</script>
+</head>
+<body data-swirl="mako">
+<div class="wrap">
+<nav class="nav box">
+  <a class="home" href="../index.html"><img src="../images/logo.png" alt="" width="30" height="30" />"wgat"</a>
+  <a href="../projects.html" aria-current="page">./projects</a>
+  <a href="../setup.html">./setup</a>
+  <a href="../about.html">./about</a>
+  <span class="nav-btns"><button class="theme-btn" type="button">light</button></span>
+</nav>
+<main>
+<h1 class="page-title">Mako</h1>
+<p class="lede box">The motor controller I designed for our Shell Eco-marathon car.</p>
+<div class="proj-layout">
+  <div class="proj-main">
+    <figure class="fig box "><img src="../images/projects/mako-top.jpg" alt="the top of the board. the silkscreen says &quot;spin go brrr&quot;, &quot;no magic smoke please&quot; and &quot;meow meow&quot;" loading="lazy" /><figcaption>the top of the board. the silkscreen says "spin go brrr", "no magic smoke please" and "meow meow"</figcaption></figure>
+    <div class="prose box">
+<h2>what it is</h2>
+<p>A 3-phase BLDC controller for a battery-electric prototype car. An ESP32-S3 DevKit plugs into sockets on the board and runs everything.</p>
+<p>Last year's car ran, but that's about all it did: no testing, no data, no spares, and the throttle got damaged at the competition. This board and the plan around it are built around not repeating that, which is why it logs everything to an SD card.</p>
+
+<h2>what's on it</h2>
+<ul>
+  <li><b>Power stage</b>: 3 half-bridges, 6 IPP023N10N5 FETs driven by IR2184S gate drivers</li>
+  <li><b>Current sense</b>: 1 m&#8486; shunts on phases A and B with INA240A2 amps. Phase C is worked out in firmware</li>
+  <li><b>Telemetry</b>: an INA228 on a 0.5 m&#8486; bus shunt for voltage, current, power and a running energy total, logged to a microSD card</li>
+  <li><b>Rails</b>: two LM5164 bucks, 48 V to 12 V for gate drive and 12 V to 5 V for logic</li>
+  <li><b>Inputs and outputs</b>: motor halls, throttle, wheel speed, motor and board temperature, a status LED and a USB port for the steering wheel</li>
+</ul>
+
+<h2>safety</h2>
+<p>Nothing safety-critical depends on firmware. Every gate stays off until the firmware sets a drive enable, and letting go of the throttle pulls a KILL line through a comparator in hardware. The e-stops, the dead-man and the throttle kill all work with the ESP32 unplugged. There's also reverse-polarity protection and a TVS diode on the input.</p>
+<figure class="fig box "><img src="../images/projects/mako-bottom.jpg" alt="the bottom of the board" loading="lazy" /><figcaption>the bottom of the board</figcaption></figure>
+
+<h2>where it's at</h2>
+<p>The board is designed and ordered from JLCPCB, and the wiring plan for the whole car is written. The competition is around January 2027, so the next few months are building all of it.</p>
+    </div>
+  </div>
+  <aside class="proj-side">
+    <section class="box">
+      <div class="win-bar">the short version</div>
+      <div class="win-body">
+        <ul class="facts">
+        <li><b>status</b>: designed and ordered, car wiring planned</li>
+        <li><b>team</b>: Team Nixor Sharks</li>
+        <li><b>competition</b>: Shell Eco-marathon Asia 2027, Lusail, Qatar</li>
+        <li><b>my role</b>: technical lead, the only electrical person, also the driver</li>
+        <li><b>made with</b>: KiCad 9, ESP32-S3</li>
+        <li><b>board</b>: 4 layers, 123 x 97.5 mm, made by JLCPCB</li>
+        <li><b>pack</b>: 13S, 54.6 V full</li>
+        </ul>
+      </div>
+    </section>
+    <a class="btn box" href="../projects.html">&larr; ./projects</a>
+  </aside>
+</div>
+</main>
+<footer class="foot box">
+  <span class="who">ryaan aaqil</span>
+  <span>currently in karachi (<span class="local-time">--:--</span>)</span>
+  <span>website status: live (wip)</span>
+  <span class="links"><a href="https://github.com/UltimaCodes">github</a><a href="mailto:ryaanaqil3@gmail.com">email</a><a class="mini box" href="../settings.html">settings</a></span>
+  <span class="fine">&copy; <span class="footer-year">2026</span> all rights NOT reserved. there are 4 words you can type on this site that do something (actually real)</span>
+</footer>
+</div>
+<script src="../js/shared.js"></script>
+<script src="../js/background.js"></script>
+<script src="../js/juice.js"></script>
+<script src="../js/easter-eggs.js"></script>
+</body>
+</html>

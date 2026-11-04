@@ -1,99 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="An osu!standard replay autopsy tool. Drop in a replay and find out exactly why you missed." />
-    <meta property="og:title" content="RetraceOSU | Ryaan Aaqil" />
-    <meta property="og:description" content="An osu!standard replay autopsy tool. Drop in a replay and find out exactly why you missed." />
-    <meta property="og:url" content="https://ryaan.org/projects/retraceosu.html" />
-    <meta property="og:image" content="https://ryaan.org/images/logo.png" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#0b0c2a" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Jersey+15&display=swap" />
-    <title>RetraceOSU | Ryaan Aaqil</title>
-    <link rel="stylesheet" href="../style.css" />
-    <link rel="icon" type="image/png" href="../images/logo.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RetraceOSU | ryaan aaqil</title>
+  <meta name="description" content="Replay analysis for osu!standard." />
+  <meta property="og:title" content="RetraceOSU | ryaan aaqil" />
+  <meta property="og:description" content="Replay analysis for osu!standard." />
+  <meta property="og:url" content="https://ryaan.org/projects/retraceosu.html" />
+  <meta property="og:image" content="https://ryaan.org/images/projects/retrace-landing.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0b0c2a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&family=Jersey+10&family=Jersey+15&display=swap" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../images/logo.png" />
+  <script>try{if(localStorage.getItem('theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}</script>
 </head>
-<body>
-<div id="parallax-background"></div>
-
-<nav>
-    <div class="left">
-        <a href="../projects.html" class="btn-pixel">← Back to Projects</a>
-        <a href="../setup.html" class="btn-pixel">Setup</a>
-    </div>
-    <div class="center">
-        <a href="../index.html" class="nav-home">"wgat"</a>
-    </div>
-    <div class="right">
-        <a href="../about.html" class="btn-pixel">About</a>
-    </div>
+<body data-swirl="retraceosu">
+<div class="wrap">
+<nav class="nav box">
+  <a class="home" href="../index.html"><img src="../images/logo.png" alt="" width="30" height="30" />"wgat"</a>
+  <a href="../projects.html" aria-current="page">./projects</a>
+  <a href="../setup.html">./setup</a>
+  <a href="../about.html">./about</a>
+  <span class="nav-btns"><button class="theme-btn" type="button">light</button></span>
 </nav>
-
-<div class="proj-header">
-    <h1>RETRACEOSU</h1>
-    <p class="proj-tagline">A replay autopsy tool for osu!standard</p>
-    <div class="about-chips">
-        <span class="about-chip">Next.js 16</span>
-        <span class="about-chip">TypeScript</span>
-        <span class="about-chip">Tailwind v4</span>
-    </div>
-</div>
-
-<div class="proj-hero-shot"><div class="retraceosu-design" style="width:100%;height:100%;"></div></div>
-
+<main>
+<h1 class="page-title">RetraceOSU</h1>
+<p class="lede box">Replay analysis for osu!standard. Drop in a replay and it tells you what actually went wrong.</p>
 <div class="proj-layout">
-    <div class="proj-main">
-        <div class="proj-quote">
-            Drop in an <code>.osr</code> replay and it reconstructs the play hit by hit: unstable rate, timing
-            bias, aim vs. tap breakdowns, a miss heatmap, and a strain-vs-UR overlay that actually tells you the
-            difference between "hit a genuine skill wall" and "lost focus on a section that should've been free."
-            It runs the real osu! ruleset client-side in your browser to do it, not a rough approximation.
-        </div>
+  <div class="proj-main">
+    <figure class="fig box "><img src="../images/projects/retrace-landing.jpg" alt="the landing page" loading="lazy" /><figcaption>the landing page</figcaption></figure>
+    <div class="prose box">
+<h2>what it does</h2>
+<ul>
+  <li><b>Replay analysis</b>: drop a .osr and it finds the beatmap by hash, then gives you UR, timing bias, a section and pattern breakdown, key balance and tap style, snap vs flow aim, a miss heatmap, and a strain vs UR overlay that shows whether you're hitting a skill wall or losing focus on easy parts</li>
+  <li><b>Replay viewer</b>: full player controls, variable speed, frame stepping, click to seek to a miss, and a ghost overlay to compare two replays of the same map</li>
+  <li><b>Coaching</b>: strengths, weaknesses and what to practice, worked out from the measured numbers, plus an optional AI review that only sees those real numbers so it can't make things up</li>
+  <li><b>Farm maps</b>: profiles your top 100 and recommends maps ranked by actual pp gain to your total, and flags chokes and bad-acc plays worth fixing</li>
+  <li><b>Player and country lookup</b>: rank history, pp milestones and a pile of trivia like your oldest surviving play and most farmed mapper</li>
+  <li><b>History</b>: replays you analyze save locally, with recurring weakness tracking and per-map progress</li>
+</ul>
 
-        <h2>What It Actually Does</h2>
-        <ul>
-            <li>Full replay reconstruction: UR, timing bias, pattern/aim/tap breakdowns, miss heatmap</li>
-            <li>Strain-vs-UR overlay to separate "difficulty" misses from "focus" misses</li>
-            <li>Farm-map recommendations ranked by real pp gain against your actual top 100, not generic difficulty numbers</li>
-            <li>Full replay viewer with ghost-overlay comparison against another replay</li>
-            <li>Deterministic coaching output, plus an optional AI review, fed only the measured facts, "so it can't make things up"</li>
-            <li>Player/country lookup with pp milestones and trivia</li>
+<h2>how it's built</h2>
+<p>Everything to do with the replay runs in your browser, including the actual osu! ruleset. Only pp math and osu! API calls touch the server, with <code>rosu-pp-js</code> running as WASM there. There's no database, just in-memory and disk caching for the API.</p>
+    </div>
+  </div>
+  <aside class="proj-side">
+    <section class="box">
+      <div class="win-bar">the short version</div>
+      <div class="win-body">
+        <ul class="facts">
+        <li><b>status</b>: live</li>
+        <li><b>type</b>: web app</li>
+        <li><b>made with</b>: Next.js 16, TypeScript, WASM</li>
+        <li><b>links</b>: <a href="https://retrace-osu.vercel.app">live site</a>, <a href="https://github.com/UltimaCodes/retraceosu">github</a></li>
         </ul>
-
-        <div class="proj-shot"><div class="retraceosu-design" style="width:100%;height:100%;"></div><span class="proj-shot-label">miss heatmap, judging you</span></div>
-
-        <h2>Architecture Notes</h2>
-        <p>
-            No database. Replay data lives in IndexedDB on your machine; anything that has to hit the osu! API
-            gets disk-cached server-side instead of round-tripping every time. Uses osu-parsers / osu-classes /
-            osu-standard-stable to run the actual ruleset, and rosu-pp-js (WASM) for pp/strain math server-side.
-            The AI review feature is deliberately constrained to only see numbers the rest of the tool already
-            computed. It's there to explain the replay, not to invent opinions about it.
-        </p>
-    </div>
-
-    <div class="proj-side card-shell">
-        <div class="card-titlebar">QUICK FACTS</div>
-        <div class="card-body">
-            <div><b>STATUS</b>Live, deployed</div>
-            <div><b>TYPE</b>Web app</div>
-            <div><b>TECH</b>Next.js 16, TypeScript, WASM</div>
-            <a href="https://retrace-osu.vercel.app" class="btn-pixel" target="_blank">Live Site</a>
-            <a href="https://github.com/UltimaCodes/retraceosu" class="btn-pixel">View on GitHub</a>
-        </div>
-    </div>
+      </div>
+    </section>
+    <a class="btn box" href="../projects.html">&larr; ./projects</a>
+  </aside>
 </div>
-
-<footer>
-    &copy; <span class="footer-year">2026</span> Ryaan Aaqil. All rights NOT reserved.
+</main>
+<footer class="foot box">
+  <span class="who">ryaan aaqil</span>
+  <span>currently in karachi (<span class="local-time">--:--</span>)</span>
+  <span>website status: live (wip)</span>
+  <span class="links"><a href="https://github.com/UltimaCodes">github</a><a href="mailto:ryaanaqil3@gmail.com">email</a><a class="mini box" href="../settings.html">settings</a></span>
+  <span class="fine">&copy; <span class="footer-year">2026</span> all rights NOT reserved. there are 4 words you can type on this site that do something (actually real)</span>
 </footer>
-
+</div>
 <script src="../js/shared.js"></script>
+<script src="../js/background.js"></script>
+<script src="../js/juice.js"></script>
 <script src="../js/easter-eggs.js"></script>
 </body>
 </html>

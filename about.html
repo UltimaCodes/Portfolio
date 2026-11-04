@@ -3,223 +3,192 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Who Ryaan is, what he plays, what he's studying, and how long he's been doing this to himself, down to the second." />
-  <meta property="og:title" content="About | Ryaan Aaqil" />
-  <meta property="og:description" content="Who Ryaan is, what he plays, what he's studying, and how long he's been doing this to himself, down to the second." />
+  <title>about | ryaan aaqil</title>
+  <meta name="description" content="About Ryaan Aaqil, who has been writing code since age 9 and now makes games and hardware." />
+  <meta property="og:title" content="about | ryaan aaqil" />
+  <meta property="og:description" content="About Ryaan Aaqil, who has been writing code since age 9 and now makes games and hardware." />
   <meta property="og:url" content="https://ryaan.org/about.html" />
-  <meta property="og:image" content="https://ryaan.org/images/logo.png" />
+  <meta property="og:image" content="https://ryaan.org/images/projects/voxelium-night.jpg" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#0b0c2a" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Jersey+15&display=swap" />
-  <title>About | Ryaan Aaqil</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&family=Jersey+10&family=Jersey+15&display=swap" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="images/logo.png" />
+  <script>try{if(localStorage.getItem('theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}</script>
 </head>
-<body>
-<div id="parallax-background"></div>
-
-<nav>
-  <div class="left">
-    <a href="projects.html" class="btn-pixel">Projects</a>
-    <a href="setup.html" class="btn-pixel">Setup</a>
-  </div>
-  <div class="center">
-    <a href="index.html" class="nav-home">"wgat"</a>
-  </div>
-  <div class="right">
-    <a href="about.html" class="btn-pixel">About</a>
-  </div>
+<body data-swirl="about">
+<div class="wrap">
+<nav class="nav box">
+  <a class="home" href="index.html"><img src="images/logo.png" alt="" width="30" height="30" />"wgat"</a>
+  <a href="projects.html">./projects</a>
+  <a href="setup.html">./setup</a>
+  <a href="about.html" aria-current="page">./about</a>
+  <span class="nav-btns"><button class="theme-btn" type="button">light</button></span>
 </nav>
-
-<div class="about-header">
-  <h1>RYAAN AAQIL</h1>
-  <p class="about-tagline">Developer · Game Designer · Robotics Enthusiast</p>
-  <div class="about-chips">
-    <span class="about-chip" id="age-chip">18 years old</span>
-    <span class="about-chip">A-Levels @ Nixor</span>
-  </div>
+<main>
+<div class="banner pano box" role="img" aria-label="A slow 360 degree pan across a Voxelium world at night">
+  <div class="pano-track"><img src="images/projects/voxelium-pano.jpg" alt="" /><img src="images/projects/voxelium-pano.jpg" alt="" /></div>
 </div>
+<h1 class="page-title" data-depth="0.5">about me</h1>
 
-<div class="about-scattered">
-
-<!-- Profile -->
-<section class="about-section">
-  <h2>Introduction</h2>
-  <div class="about-quote">
-    Hi, I'm Ryaan. I've been writing code since I was 9, which either makes me a prodigy or just means I've
-    had nine extra years to accumulate bad habits. The jury's still out. Started with Bash scripts because
-    I didn't know any better, graduated to Python and Pygame, and eventually landed in Unity with C#, where
-    I discovered my two true callings: building interactive experiences, and generating bugs so specific they
-    deserve their own Wikipedia page. I've shipped everything from text games nobody played to robots that
-    have, on at least one occasion, tried to set themselves on fire (ask Setup about the battery incidents).
-    These days I split my time between playing games, building things that mostly work, and quietly panicking
-    about my A Levels. Certified early achiever, undiagnosed chaos engineer.
-  </div>
-
-  <h3 style="margin-top: 20px;">Real-Time Age Tracker</h3>
-  <p style="font-family: var(--font-body); color: var(--text-dim); font-size: 0.95rem; margin-bottom: 8px;">Precisely how long I've been doing this to myself:</p>
-  <section class="age-tracker">
-    <span class="glitch"><p id="age-display">Loading...</p></span>
+<div class="me">
+  <section class="me-intro box">
+    <div class="win-bar">introduction</div>
+    <div class="win-body">
+      <p>I'm Ryaan. I've been writing code since I was 9. I started with Bash scripts because I didn't know any better, moved to Python and Pygame, and ended up in Unity with C#, which is still most of what I do.</p>
+      <p>I also like hardware. So far that's been a sumo robot, a rover for WRO, boards for a smart cane and a motor controller for our Shell Eco-marathon car, and at least one of those has tried to set itself on fire.</p>
+      <p>Right now I'm doing A Levels at Nixor College and trying very hard not to get cooked by them. On Team Nixor Sharks I'm the technical lead, the only electrical person and also the driver.</p>
+    </div>
   </section>
-</section>
-
-<!-- Education -->
-<section class="about-section">
-  <h2>Education</h2>
-  <h3>Current Studies</h3>
-  <ul>
-    <li>A Levels @ Nixor College (Class of 2027)</li>
-    <li>O Levels @ Beaconhouse (2022-2025)</li>
-  </ul>
-</section>
-
-<!-- Skills -->
-<section class="about-section">
-  <h2>Skills &amp; Technologies</h2>
-  <div class="about-skills-grid">
-    <div class="about-skill-card">
-      <h4>Programming</h4>
-      <div class="about-chip-row">
-        <span class="about-skill-chip">C# (Advanced)</span>
-        <span class="about-skill-chip">C++ (Intermediate)</span>
-        <span class="about-skill-chip">Python (Intermediate)</span>
-        <span class="about-skill-chip">JavaScript (Beginner)</span>
-        <span class="about-skill-chip">HTML/CSS (Intermediate)</span>
-      </div>
+  <figure class="me-pic box" data-depth="1.3">
+    <img id="cat" src="images/cat4.png" alt="A pixelated cat" title="click for another cat" />
+    <figcaption>a cat, until i pick a photo of me</figcaption>
+  </figure>
+  <section class="me-facts box">
+    <div class="win-bar">basic info</div>
+    <div class="win-body">
+      <ul class="facts cols">
+        <li><b>age</b>: <span id="age-display">18</span></li>
+        <li><b>from</b>: karachi, pakistan</li>
+        <li><b>languages</b>: urdu, english</li>
+        <li><b>school</b>: a levels @ nixor college, class of 2027 (math, comp sci, physics, econ)</li>
+        <li><b>before that</b>: o levels @ beaconhouse pechs (2022-2025)</li>
+        <li><b>work</b>: game dev intern @ tekrevol, summer 2024. made a connect four and a 2d mmorpg prototype</li>
+        <li><b>team</b>: technical lead, only electrical person and driver @ team nixor sharks</li>
+        <li><b>also with</b>: nixor engineering solutions</li>
+        <li><b>mun</b>: 3 best delegates and some honourable mentions. i have been dprk (twice), the uae, iron man, erich honecker, the director of the fbi and player 246</li>
+        <li><b>olympiads</b>: awards at hypercube, scicon and technopreneur</li>
+        <li><b>games</b>: <a href="index.html#games">there's a whole wall of them on the homepage</a></li>
+        <li><b>also into</b>: electronics, circuit building, open source, casual game dev</li>
+      </ul>
     </div>
-
-    <div class="about-skill-card">
-      <h4>Game Development</h4>
-      <div class="about-chip-row">
-        <span class="about-skill-chip">Unity Engine</span>
-        <span class="about-skill-chip">Game Design</span>
-        <span class="about-skill-chip">2D/3D Graphics</span>
-        <span class="about-skill-chip">Physics Systems</span>
-        <span class="about-skill-chip">Audio Management</span>
-      </div>
-    </div>
-
-    <div class="about-skill-card">
-      <h4>Robotics &amp; Hardware</h4>
-      <div class="about-chip-row">
-        <span class="about-skill-chip">Arduino Programming</span>
-        <span class="about-skill-chip">Sensor Integration</span>
-        <span class="about-skill-chip">Motor Control</span>
-        <span class="about-skill-chip">Circuit Design</span>
-        <span class="about-skill-chip">Chassis Design</span>
-      </div>
-    </div>
-
-    <div class="about-skill-card">
-      <h4>Tools &amp; Software</h4>
-      <div class="about-chip-row">
-        <span class="about-skill-chip">JetBrains Rider</span>
-        <span class="about-skill-chip">Arduino IDE</span>
-        <span class="about-skill-chip">Photoshop</span>
-        <span class="about-skill-chip">Premiere Pro</span>
-        <span class="about-skill-chip">Git/GitHub</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Hobbies -->
-<section class="about-section">
-  <h2>Hobbies &amp; Interests</h2>
-  <h3>Gaming (a load-bearing personality trait)</h3>
-  <ul>
-    <li>Indie Games (Cuphead, Deltarune, Ultrakill)</li>
-    <li>RPG Games (Terraria, Witcher, Dishonoured)</li>
-    <li>Story-Based Games (Batman Arkham Games, Assassin's Creed, Marvel's Spiderman)</li>
-    <li>Multiplayer Games (Ready or Not, Lethal Company, Counter Strike, Marvel Rivals)</li>
-    <li>Puzzle Games (Stray, Portal)</li>
-  </ul>
-
-  <h3>Tech &amp; Learning</h3>
-  <ul>
-    <li>Electronics &amp; Circuit Building (see: things that have caught fire)</li>
-    <li>Open Source Contributions</li>
-    <li>Casual Game Dev</li>
-  </ul>
-</section>
-
-<!-- Goals & Ambitions -->
-<section class="about-section">
-  <h2>Goals &amp; Ambitions</h2>
-  <div class="goals-checklist">
-    <div class="goal-item">
-      <div class="goal-checkbox completed">✓</div>
-      <div class="goal-text completed">ReLearn Unity and Game Dev</div>
-    </div>
-    <div class="goal-item">
-      <div class="goal-checkbox completed">✓</div>
-      <div class="goal-text completed">Learn Arduino and Mechatronics (Gist of it)</div>
-    </div>
-    <div class="goal-item">
-      <div class="goal-checkbox completed">✓</div>
-      <div class="goal-text completed">Create personal portfolio website</div>
-    </div>
-    <div class="goal-item">
-      <div class="goal-checkbox">☐</div>
-      <div class="goal-text">Release a commercial indie game</div>
-    </div>
-    <div class="goal-item">
-      <div class="goal-checkbox">☐</div>
-      <div class="goal-text">Not get cooked by A Levels</div>
-    </div>
-    <div class="goal-item">
-      <div class="goal-checkbox">☐</div>
-      <div class="goal-text">Create a good portfolio</div>
-    </div>
-    <div class="goal-item">
-      <div class="goal-checkbox">☐</div>
-      <div class="goal-text">Get accepted to a good uni</div>
-    </div>
-  </div>
-</section>
-
-<!-- Contact & Resume -->
-<section class="about-section">
-  <h2>Contact &amp; Resume</h2>
-  <div class="about-terminal">
-    <div><span class="dim">email:</span> ryaanaqil3@gmail.com</div>
-    <div><span class="dim">github:</span> <a href="https://github.com/UltimaCodes">UltimaCodes</a></div>
-    <div><span class="dim">phone:</span> [removed]</div>
-    <div>carrier pigeon also accepted</div>
-  </div>
-
-  <div class="music-player" style="margin-top: 25px;">
-    <span class="glitch">Songs I've replayed enough times to feel legally obligated to share</span>
-    <div class="track-info">
-      <span id="track-title">Track Title</span>
-    </div>
-    <audio id="audio" preload="metadata"></audio>
-    <div class="controls">
-      <button onclick="prevTrack()">PREV</button>
-      <button id="play-pause-btn" onclick="togglePlay()">PLAY</button>
-      <button onclick="nextTrack()">NEXT</button>
-    </div>
-    <input type="range" id="seek-bar" value="0" step="1" />
-    <div class="time-display">
-      <span id="current-time">0:00</span> / <span id="duration">0:00</span>
-    </div>
-    <div class="track-list" id="track-list"></div>
-  </div>
-</section>
-
+  </section>
 </div>
 
-<footer>
-  &copy; <span class="footer-year">2026</span> Ryaan Aaqil. All rights NOT reserved.
-</footer>
+<h2 class="sec-title">what i can do</h2>
+<div class="skills">
+<details class="skill box">
+  <summary>game development<span class="toggle"></span></summary>
+  <div class="skill-body">
+    <p>Unity and C# are what I know best. Netcode with Photon PUN, movement and weapon systems, game design, physics and audio.</p>
+    <p><b>used in</b>: <a href="projects/gorilla-warfare.html">Gorilla Warfare</a>, <a href="projects/bete.html">Bête</a></p>
+  </div>
+</details>
+<details class="skill box">
+  <summary>robotics and embedded<span class="toggle"></span></summary>
+  <div class="skill-body">
+    <p>ESP32, Arduino and Raspberry Pi, mostly in C++ and Python. Sensors, motor drivers, wiring and building the chassis.</p>
+    <p><b>used in</b>: <a href="projects/saltsentinel.html">Salt Sentinel</a>, <a href="projects/shitbox.html">Sumo Robot</a></p>
+  </div>
+</details>
+<details class="skill box">
+  <summary>electronics and pcb design<span class="toggle"></span></summary>
+  <div class="skill-body">
+    <p>Schematics and boards in KiCad, power stages, gate drivers and current sensing.</p>
+    <p><b>used in</b>: <a href="projects/mako.html">Mako</a>, <a href="projects/raheroshan.html">Rah E Roshan 2.0</a></p>
+  </div>
+</details>
+<details class="skill box">
+  <summary>graphics and engine programming<span class="toggle"></span></summary>
+  <div class="skill-body">
+    <p>C++20 and OpenGL 4.6. Greedy meshing, GPU culling, shadows, SSAO and the rest of a renderer.</p>
+    <p><b>used in</b>: <a href="projects/voxelium.html">Voxelium</a></p>
+  </div>
+</details>
+<details class="skill box">
+  <summary>desktop tools<span class="toggle"></span></summary>
+  <div class="skill-body">
+    <p>C#, WPF and the Win32 API, including keyboard hooks.</p>
+    <p><b>used in</b>: <a href="projects/macrofy.html">Macrofy</a></p>
+  </div>
+</details>
+<details class="skill box">
+  <summary>web<span class="toggle"></span></summary>
+  <div class="skill-body">
+    <p>A bit of web dev (we don't talk about that). HTML and CSS are fine, JavaScript less so. This site is plain HTML, CSS and JavaScript.</p>
+    <p><b>used in</b>: <a href="projects/retraceosu.html">RetraceOSU</a></p>
+  </div>
+</details>
+<details class="skill box">
+  <summary>video and image editing<span class="toggle"></span></summary>
+  <div class="skill-body">
+    <p>Photoshop and Premiere Pro, enough to get things done.</p>
+    
+  </div>
+</details>
+</div>
 
-<!-- Scripts -->
+<h2 class="sec-title">goals</h2>
+<section class="goals-win box">
+  <div class="win-bar">goals.txt</div>
+  <div class="win-body">
+    <ul class="goals">
+        <li class="done"><span class="tick">[x]</span><span>Relearn Unity and game dev</span></li>
+        <li class="done"><span class="tick">[x]</span><span>Learn Arduino and mechatronics (the gist of it)</span></li>
+        <li class="done"><span class="tick">[x]</span><span>Create a personal portfolio website</span></li>
+        <li class="done"><span class="tick">[x]</span><span>Release Voxelium</span></li>
+        <li class="done"><span class="tick">[x]</span><span>Build a robot for WRO nationals</span></li>
+        <li><span class="tick">[ ]</span><span>Get Mako running in the car at Shell Eco-marathon Asia 2027</span></li>
+        <li><span class="tick">[ ]</span><span>Put Gorilla Warfare on Steam</span></li>
+        <li><span class="tick">[ ]</span><span>Release the Bête rebuild</span></li>
+        <li><span class="tick">[ ]</span><span>Create a good portfolio</span></li>
+        <li><span class="tick">[ ]</span><span>Not get cooked by A Levels</span></li>
+        <li><span class="tick">[ ]</span><span>Get accepted to a good uni</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="spotify" hidden>
+  <h2 class="sec-title">songs i've replayed enough times to feel legally obligated to share</h2>
+  <div class="music">
+    <section class="music-now box">
+      <div class="win-bar" id="now-label">listening to right now</div>
+      <a class="now-body" id="now-link">
+        <img id="now-cover" alt="" width="96" height="96" referrerpolicy="no-referrer" />
+        <span class="now-text"><b id="now-song"></b><span id="now-artist"></span><span id="now-when"></span></span>
+      </a>
+    </section>
+    <section class="box">
+      <div class="win-bar">top songs, last 4 weeks</div>
+      <ol class="music-list" id="top-songs"></ol>
+    </section>
+    <section class="box">
+      <div class="win-bar">top artists, last 4 weeks</div>
+      <ol class="music-list" id="top-artists"></ol>
+    </section>
+  </div>
+  <a class="btn box" id="spotify-profile" hidden>./spotify &rarr;</a>
+</section>
+
+<h2 class="sec-title center-title">contact</h2>
+<section class="contact box">
+  <div class="win-body">
+    <ul class="facts">
+      <li><b>email</b>: <a href="mailto:ryaanaqil3@gmail.com">ryaanaqil3@gmail.com</a></li>
+      <li><b>github</b>: <a href="https://github.com/UltimaCodes">UltimaCodes</a></li>
+      <li><b>discord</b>: notryaan</li>
+      <li><b>instagram</b>: <a href="https://www.instagram.com/not_ryaan_/">not_ryaan_</a></li>
+      <li>carrier pigeon also accepted</li>
+    </ul>
+  </div>
+</section>
+</main>
+<footer class="foot box">
+  <span class="who">ryaan aaqil</span>
+  <span>currently in karachi (<span class="local-time">--:--</span>)</span>
+  <span>website status: live (wip)</span>
+  <span class="links"><a href="https://github.com/UltimaCodes">github</a><a href="mailto:ryaanaqil3@gmail.com">email</a><a class="mini box" href="settings.html">settings</a></span>
+  <span class="fine">&copy; <span class="footer-year">2026</span> all rights NOT reserved. there are 4 words you can type on this site that do something (actually real)</span>
+</footer>
+</div>
 <script src="js/shared.js"></script>
+<script src="js/background.js"></script>
 <script src="js/age-tracker.js"></script>
-<script src="js/music-player.js"></script>
+<script src="js/spotify.js"></script>
+<script src="js/juice.js"></script>
 <script src="js/easter-eggs.js"></script>
 </body>
 </html>

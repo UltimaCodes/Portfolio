@@ -1,4 +1,4 @@
-// Age tracker functionality
+// The live age readout in the facts window on the About page
 (function() {
     'use strict';
 
@@ -14,15 +14,8 @@
     }
 
     function updateAge() {
-        const now = new Date();
-        const timeDiff = calculateTimeDifference(birthDate, now);
-
-        const ageText = `${timeDiff.years} years, ${timeDiff.months} months, ${timeDiff.days} days, ${timeDiff.hours} hours, ${timeDiff.minutes} minutes, ${timeDiff.seconds} seconds`;
-        ageDisplay.textContent = ageText;
-
-        // the header chip used to be hardcoded and would have quietly gone stale
-        const chip = utils.getElement('#age-chip');
-        if (chip) chip.textContent = `${timeDiff.years} years old`;
+        const t = calculateTimeDifference(birthDate, new Date());
+        ageDisplay.textContent = `${t.years} years, ${t.months} months, ${t.days} days, ${t.hours} hours, ${t.minutes} minutes, ${t.seconds} seconds`;
     }
 
     function calculateTimeDifference(start, end) {

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rah E Roshan 2.0 | ryaan aaqil</title>
+  <meta name="description" content="PCBs Ryaan Aaqil designed to optimize the electrical system on a smart cane for blind people." />
+  <meta property="og:title" content="Rah E Roshan 2.0 | ryaan aaqil" />
+  <meta property="og:description" content="PCBs Ryaan Aaqil designed to optimize the electrical system on a smart cane for blind people." />
+  <meta property="og:url" content="https://ryaan.org/projects/raheroshan.html" />
+  <meta property="og:image" content="https://ryaan.org/images/projects/rah-3d.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0b0c2a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&family=Jersey+10&family=Jersey+15&display=swap" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../images/logo.png" />
+  <script>try{if(localStorage.getItem('theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}</script>
+</head>
+<body data-swirl="raheroshan">
+<div class="wrap">
+<nav class="nav box">
+  <a class="home" href="../index.html"><img src="../images/logo.png" alt="" width="30" height="30" />"wgat"</a>
+  <a href="../projects.html" aria-current="page">./projects</a>
+  <a href="../setup.html">./setup</a>
+  <a href="../about.html">./about</a>
+  <span class="nav-btns"><button class="theme-btn" type="button">light</button></span>
+</nav>
+<main>
+<h1 class="page-title">Rah E Roshan 2.0</h1>
+<p class="lede box">PCBs I designed to optimize the electrical system on a smart cane for blind people. More detail on this soon.</p>
+<div class="proj-layout">
+  <div class="proj-main">
+    <figure class="fig box "><img src="../images/projects/rah-3d.jpg" alt="a render of the board with the Nano, charger and boost converter on it" loading="lazy" /><figcaption>a render of the board with the Nano, charger and boost converter on it</figcaption></figure>
+    <div class="prose box">
+<h2>what it is</h2>
+<p>A white cane only finds what it touches, so a low branch, an open shutter or a parked vehicle at chest height doesn't get found until you've already walked into it. This cane has two ultrasonic sensors watching the space ahead, and it warns you with vibration in the handle instead of sound, because your hearing is already busy on a street.</p>
+<p>For 2.0 I designed the board that all of that runs on. It sits inside the handle.</p>
+
+<h2>what's on the board</h2>
+<ul>
+  <li><b>Brain</b>: an Arduino Nano V3 on sockets, with its USB port at the edge of the board so it can be reprogrammed without taking everything apart</li>
+  <li><b>Power</b>: a TP4056 USB-C charger with battery protection, and an MT3608 boost converter that holds a 5 V rail off a single 3.7 V Li-Po</li>
+  <li><b>Sensors</b>: two HC-SR04s, one at the handle and one down the shaft on a cable about a metre long</li>
+  <li><b>Feedback</b>: an HW-738 vibration module</li>
+  <li><b>Small stuff</b>: a low battery LED, a battery sense line to the Nano, and a 1N5819 across the battery that only conducts if it gets plugged in backwards</li>
+</ul>
+<figure class="fig box "><img src="../images/projects/rah-top.jpg" alt="the top of the board" loading="lazy" /><figcaption>the top of the board</figcaption></figure>
+
+<h2>how it's laid out</h2>
+<ul>
+  <li>Everything electrical lives at the handle so the cane stays light at the tip. Only the lower sensor runs down the shaft</li>
+  <li>The power switch sits after the charger, so the cane can charge overnight while it's switched off</li>
+  <li>System ground starts at the charger's OUT- instead of the battery negative, because grounding anything to the battery side bypasses the protection chip</li>
+</ul>
+<p>The whole board comes out of a Python script using KiCad's own API: footprints, placement, routing, 3D models, gerbers, and a 1:1 PDF you can print and lay the real modules on to check they fit. The design rule check comes back with zero violations.</p>
+<figure class="fig box "><img src="../images/projects/rah-bottom.jpg" alt="the bottom of the board. the silkscreen says &quot;switch off before nano usb and charging :3&quot;, and there is a cat" loading="lazy" /><figcaption>the bottom of the board. the silkscreen says "switch off before nano usb and charging :3", and there is a cat</figcaption></figure>
+    </div>
+  </div>
+  <aside class="proj-side">
+    <section class="box">
+      <div class="win-bar">the short version</div>
+      <div class="win-body">
+        <ul class="facts">
+        <li><b>status</b>: boards designed, more on this soon</li>
+        <li><b>team</b>: Nixor Engineering Solutions</li>
+        <li><b>my part</b>: designing and making the PCBs</li>
+        <li><b>type</b>: assistive hardware</li>
+        <li><b>made with</b>: KiCad 9, Python, Arduino Nano V3</li>
+        <li><b>board</b>: 2 layers, 64 x 47.4 mm</li>
+        <li><b>power</b>: 3.7 V Li-Po, charged over USB-C</li>
+        </ul>
+      </div>
+    </section>
+    <a class="btn box" href="../projects.html">&larr; ./projects</a>
+  </aside>
+</div>
+</main>
+<footer class="foot box">
+  <span class="who">ryaan aaqil</span>
+  <span>currently in karachi (<span class="local-time">--:--</span>)</span>
+  <span>website status: live (wip)</span>
+  <span class="links"><a href="https://github.com/UltimaCodes">github</a><a href="mailto:ryaanaqil3@gmail.com">email</a><a class="mini box" href="../settings.html">settings</a></span>
+  <span class="fine">&copy; <span class="footer-year">2026</span> all rights NOT reserved. there are 4 words you can type on this site that do something (actually real)</span>
+</footer>
+</div>
+<script src="../js/shared.js"></script>
+<script src="../js/background.js"></script>
+<script src="../js/juice.js"></script>
+<script src="../js/easter-eggs.js"></script>
+</body>
+</html>

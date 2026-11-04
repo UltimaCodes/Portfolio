@@ -429,7 +429,6 @@ Replace the current `.boot-sequence.sys-diag` block with:
 <div class="about-terminal">
   <div><span class="dim">email:</span> ryaanaqil3@gmail.com</div>
   <div><span class="dim">github:</span> <a href="https://github.com/UltimaCodes">UltimaCodes</a></div>
-  <div><span class="dim">phone:</span> [removed]</div>
   <div>carrier pigeon also accepted</div>
 </div>
 ```

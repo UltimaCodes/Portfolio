@@ -1,104 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="A voxel engine written from scratch in C++20 and OpenGL 4.6. Infinite terrain, greedy meshing, one draw call for the whole world." />
-    <meta property="og:title" content="Voxelium | Ryaan Aaqil" />
-    <meta property="og:description" content="A voxel engine written from scratch in C++20 and OpenGL 4.6. Infinite terrain, greedy meshing, one draw call for the whole world." />
-    <meta property="og:url" content="https://ryaan.org/projects/voxelium.html" />
-    <meta property="og:image" content="https://ryaan.org/images/projects/voxelium-still.jpg" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#0b0c2a" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Jersey+15&display=swap" />
-    <title>Voxelium | Ryaan Aaqil</title>
-    <link rel="stylesheet" href="../style.css" />
-    <link rel="icon" type="image/png" href="../images/logo.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Voxelium | ryaan aaqil</title>
+  <meta name="description" content="A voxel game made from scratch in C++ and OpenGL." />
+  <meta property="og:title" content="Voxelium | ryaan aaqil" />
+  <meta property="og:description" content="A voxel game made from scratch in C++ and OpenGL." />
+  <meta property="og:url" content="https://ryaan.org/projects/voxelium.html" />
+  <meta property="og:image" content="https://ryaan.org/images/projects/voxelium-coast.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0b0c2a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&family=Jersey+10&family=Jersey+15&display=swap" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" type="image/png" href="../images/logo.png" />
+  <script>try{if(localStorage.getItem('theme')==='light')document.documentElement.dataset.theme='light'}catch(e){}</script>
 </head>
-<body>
-<div id="parallax-background"></div>
-
-<nav>
-    <div class="left">
-        <a href="../projects.html" class="btn-pixel">← Back to Projects</a>
-        <a href="../setup.html" class="btn-pixel">Setup</a>
-    </div>
-    <div class="center">
-        <a href="../index.html" class="nav-home">"wgat"</a>
-    </div>
-    <div class="right">
-        <a href="../about.html" class="btn-pixel">About</a>
-    </div>
+<body data-swirl="voxelium">
+<div class="wrap">
+<nav class="nav box">
+  <a class="home" href="../index.html"><img src="../images/logo.png" alt="" width="30" height="30" />"wgat"</a>
+  <a href="../projects.html" aria-current="page">./projects</a>
+  <a href="../setup.html">./setup</a>
+  <a href="../about.html">./about</a>
+  <span class="nav-btns"><button class="theme-btn" type="button">light</button></span>
 </nav>
-
-<div class="proj-header">
-    <h1>VOXELIUM</h1>
-    <p class="proj-tagline">A voxel engine built from scratch. No engine, no bloat.</p>
-    <div class="about-chips">
-        <span class="about-chip">C++20</span>
-        <span class="about-chip">OpenGL 4.6</span>
-        <span class="about-chip">CMake</span>
-    </div>
-</div>
-
-<div class="proj-hero-shot media"><img class="pixel-upscale" src="../images/projects/voxelium-flythrough.gif" alt="A flythrough of Voxelium's terrain, captured with the engine's own --flythrough mode" /></div>
-
+<main>
+<h1 class="page-title">Voxelium</h1>
+<p class="lede box">A voxel game I made from scratch in C++ and OpenGL (I'm aware that I could have used a game engine but it's more fun this way)</p>
 <div class="proj-layout">
-    <div class="proj-main">
-        <div class="proj-quote">
-            Infinite terrain with no height limit, block breaking and placing with per-block hardness and crack
-            overlays, colorable lamps, world save/load, and a settings menu with actual measured quality presets
-            instead of made-up ones. All 12 items on the original roadmap are implemented and documented with
-            real numbers, not aspirational checkboxes.
-        </div>
+  <div class="proj-main">
+    <figure class="fig box "><img src="../images/projects/voxelium-coast.jpg" alt="a mountain range over the sea" loading="lazy" /><figcaption>a mountain range over the sea</figcaption></figure>
+    <div class="prose box">
+<h2>what it is</h2>
+<p>It's a Minecraft-ish sandbox, but with more realistic terrain generation, better and more optimized graphics and cool lighting.</p>
 
-        <h2>What's Actually In It</h2>
-        <ul>
-            <li>Binary greedy meshing and palette-compressed chunks</li>
-            <li>A jthread-based job system feeding GPU-driven culling (the whole visible world draws in one indirect draw call)</li>
-            <li>Flood-fill RGB lighting</li>
-            <li>A forward HDR pipeline: cascaded shadows, SSAO, volumetrics, bloom, ACES tonemapping</li>
-            <li>Flowing water and falling sand, region-file world persistence</li>
+<h2>what's in it</h2>
+<ul>
+  <li>Endless worlds from a seed, with oceans, beaches, mountains, deserts and forests</li>
+  <li>Caves, ravines, flooded caves and old mineshafts naturally generated</li>
+  <li>Lighthouses, shipwrecks, desert ruins and pyramids. There's also a cool easter egg under the pyramids too :D</li>
+  <li>Actual physics for the water (waves and all) and sand shifting via particles and gravity</li>
+  <li>Rain that makes puddles, snow that piles up and melts, and thunderstorms with actual lightning</li>
+  <li>Crabs, turtles, fish, glowing jellyfish, birds, butterflies and fireflies. You can punch all of them and they will run (thats all they do)</li>
+  <li>No build height limit, lamps in 25 colours, and save files that are only a few KB because they only store what you changed</li>
+</ul>
+<figure class="fig box "><img src="../images/projects/voxelium-pyramid.jpg" alt="pyramids in the desert" loading="lazy" /><figcaption>pyramids in the desert</figcaption></figure>
+
+<h2>problemos i encountered</h2>
+<ul>
+  <li>A NaN turned the seabed into solid black rectangles and then a different NaN later put black squares on the screen every time it rained</li>
+  <li>The mountains were random spikes, then walls, then 40 block deep trenches running in straight lines through the hills, took about five tries to get actual mountain ranges</li>
+  <li>Tree tops looked unlit for ages. They were lit, the auto exposure was just staring at the sky</li>
+  <li>If you walked away from spawn nothing would generate, and you would only see glitchy chunks</li>
+  <li>Funny memory leak (the game was eating 20 gigs)</li>
+</ul>
+<figure class="fig box "><img src="../images/projects/voxelium-storm.jpg" alt="a thunderstorm over the sea" loading="lazy" /><figcaption>a thunderstorm over the sea</figcaption></figure>
+
+<h2>how it works</h2>
+<p>Chunks are greedy meshed into 16 byte quads with no vertex buffers, the GPU does the culling, and the whole visible world is one indirect draw call. Lighting is flood filled on its own thread. The renderer has cascaded shadows, SSAO, volumetric light, bloom and TAA, and the water is tessellated near the camera. Libraries are GLFW, glm, Dear ImGui, FastNoise2, stb, miniaudio and unordered_dense, everything else is written from scratch.</p>
+<figure class="fig box "><img src="../images/projects/voxelium-flythrough.gif" alt="a quick flythrough" loading="lazy" /><figcaption>a quick flythrough</figcaption></figure>
+    </div>
+  </div>
+  <aside class="proj-side">
+    <section class="box">
+      <div class="win-bar">the short version</div>
+      <div class="win-body">
+        <ul class="facts">
+        <li><b>status</b>: v1.0, released october 2026</li>
+        <li><b>type</b>: sandbox game</li>
+        <li><b>made with</b>: C++20, OpenGL 4.6</li>
+        <li><b>runs on</b>: windows, your GPU needs OpenGL 4.6</li>
+        <li><b>links</b>: <a href="https://github.com/UltimaCodes/Voxelium/releases/latest">download</a>, <a href="https://github.com/UltimaCodes/Voxelium">github</a></li>
         </ul>
-
-        <h2>The Audio Is Weirdly Thorough</h2>
-        <p>
-            Sounds resolve by exact block first, then fall back to material, so all 25 lamp block IDs share one
-            sound file instead of shipping 25 copies of the same clip. Fall damage scales with landing weight,
-            being underwater applies an actual sweeping low-pass filter instead of just muffling the volume, and
-            "am I in a cave" is answered by reading the sky-light value the voxel data already has, not by
-            raycasting for it.
-        </p>
-
-        <h2>House Rules</h2>
-        <p>
-            The project's own docs open with a line worth stealing for basically everything: "Do not invent facts.
-            Do not guess at numbers... A plausible-sounding wrong answer is worse than 'I don't know yet.'" There's
-            also a <code>harden</code> build variant that runs with libstdc++ container assertions on, specifically
-            because it once caught a real data race, plus an offscreen <code>--smoke</code> self-test mode for
-            future CI. The msvc preset exists but is unverified, because "I don't have VS lying around."
-        </p>
-    </div>
-
-    <div class="proj-side card-shell">
-        <div class="card-titlebar">QUICK FACTS</div>
-        <div class="card-body">
-            <div><b>STATUS</b>All 12 milestones done</div>
-            <div><b>TYPE</b>Rendering engine</div>
-            <div><b>TECH</b>C++20, OpenGL 4.6, CMake</div>
-            <a href="https://github.com/UltimaCodes/Voxelium" class="btn-pixel">View on GitHub</a>
-        </div>
-    </div>
+      </div>
+    </section>
+    <a class="btn box" href="../projects.html">&larr; ./projects</a>
+  </aside>
 </div>
-
-<footer>
-    &copy; <span class="footer-year">2026</span> Ryaan Aaqil. All rights NOT reserved.
+</main>
+<footer class="foot box">
+  <span class="who">ryaan aaqil</span>
+  <span>currently in karachi (<span class="local-time">--:--</span>)</span>
+  <span>website status: live (wip)</span>
+  <span class="links"><a href="https://github.com/UltimaCodes">github</a><a href="mailto:ryaanaqil3@gmail.com">email</a><a class="mini box" href="../settings.html">settings</a></span>
+  <span class="fine">&copy; <span class="footer-year">2026</span> all rights NOT reserved. there are 4 words you can type on this site that do something (actually real)</span>
 </footer>
-
+</div>
 <script src="../js/shared.js"></script>
+<script src="../js/background.js"></script>
+<script src="../js/juice.js"></script>
 <script src="../js/easter-eggs.js"></script>
 </body>
 </html>
