@@ -9,4 +9,4 @@ There are 4 words you can type on any page that do something
 - Matrix thingy because it's cool (matrix)
 - Evil Jonkler spam because why not (jonkler)
 
-The old version of the site is still up at /legacy.html
+The old version of the site is still up at /legacy

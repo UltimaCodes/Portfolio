@@ -8,6 +8,12 @@
     const scriptSrc = document.currentScript ? document.currentScript.src : location.href;
     const siteRoot = scriptSrc.replace(/js\/shared\.js(\?.*)?$/, '');
 
+    // Old links ending in .html still work, the address bar just shouldn't show it
+    const cleanPath = location.pathname.replace(/(^|\/)index(\.html)?$/, '$1').replace(/\.html$/, '');
+    if (cleanPath !== location.pathname && location.protocol.startsWith('http')) {
+        history.replaceState(null, '', cleanPath + location.search + location.hash);
+    }
+
     // Google Analytics, loaded once here so every page is actually counted
     // (the tag used to be pasted into only four of the thirteen pages).
     const GA_ID = 'G-74WXTDJ616';
